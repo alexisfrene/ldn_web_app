@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { router } from '@presentation/pages';
+import router from '@presentation/pages';
 import { LoadingIndicator, Toaster } from '@components';
 
 const App: React.FC = () => {

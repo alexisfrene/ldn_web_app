@@ -40,7 +40,7 @@ const FinanceRoutes = [
   },
 ];
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <FilingPage />,
@@ -88,3 +88,5 @@ export const router = createBrowserRouter([
     element: <SignUpPage />,
   },
 ]);
+
+export default router;

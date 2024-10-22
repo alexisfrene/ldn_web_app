@@ -22,7 +22,7 @@ export const FormCreateAccount: React.FC = () => {
       initialValues={{
         account: '',
         account_type: 'inflow_of_money',
-        current_quota: 0,
+        current_quota: 1,
         type_installments: 'equal_installments',
         number_quota: 1,
         minimum_payment: 1,

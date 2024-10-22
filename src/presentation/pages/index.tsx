@@ -1,9 +1,9 @@
 import { lazy } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { WithAuth } from '@components';
 
 const FilingPage = lazy(() => import('./filing'));
-const SingUpPage = lazy(() => import('./sign'));
+const SignUpPage = lazy(() => import('./sign'));
 const HomePage = lazy(() => import('./home'));
 const LoginPage = lazy(() => import('./login'));
 const ErrorPage = lazy(() => import('./error'));
@@ -11,6 +11,34 @@ const ConfigPage = lazy(() => import('./config'));
 const FinancePage = lazy(() => import('./finance'));
 const ProductsPage = lazy(() => import('./products'));
 const VariationsPage = lazy(() => import('./variations'));
+
+const RelevantInfo = lazy(() => import('./finance/RelevantInfo'));
+const Movement = lazy(() => import('./finance/Movement'));
+const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
+const PaymentMethod = lazy(() => import('./finance/PaymentMethod'));
+
+const FinanceRoutes = [
+  {
+    index: true,
+    element: <Navigate to="/app/finance/info" replace />,
+  },
+  {
+    path: 'info',
+    element: <RelevantInfo />,
+  },
+  {
+    path: 'movement',
+    element: <Movement />,
+  },
+  {
+    path: 'financial-account',
+    element: <AccountFinancial />,
+  },
+  {
+    path: 'payment-method',
+    element: <PaymentMethod />,
+  },
+];
 
 export const router = createBrowserRouter([
   {
@@ -25,10 +53,17 @@ export const router = createBrowserRouter([
         <HomePage />
       </WithAuth>
     ),
+    errorElement: <ErrorPage />,
+    hasErrorBoundary: true,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/app/finance" replace />,
+      },
       {
         path: 'finance',
         element: <FinancePage />,
+        children: FinanceRoutes,
       },
       {
         path: 'products',
@@ -43,8 +78,6 @@ export const router = createBrowserRouter([
         element: <ConfigPage />,
       },
     ],
-    errorElement: <ErrorPage />,
-    hasErrorBoundary: true,
   },
   {
     path: '/login',
@@ -52,6 +85,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: <SingUpPage />,
+    element: <SignUpPage />,
   },
 ]);

@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
 
       if (res?.data.session_token) {
         insertSessionToken(res?.data.session_token);
-        return setTimeout(() => navigate('/app'), 200);
+        return setTimeout(() => navigate('/app/finance'), 200);
       }
       alert('Error');
     },

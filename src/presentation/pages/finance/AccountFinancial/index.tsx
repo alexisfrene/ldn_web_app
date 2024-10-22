@@ -28,7 +28,7 @@ import {
 import { deleteFinancialAccount, getAllFinancialAccount } from '@services';
 import { cn, formattedValue } from '@lib';
 
-export const AccountFinancial: React.FC = () => {
+const AccountFinancial: React.FC = () => {
   const financialAccount = useQuery({
     queryKey: ['financial_accounts'],
     queryFn: getAllFinancialAccount,
@@ -139,3 +139,4 @@ export const AccountFinancial: React.FC = () => {
     </Card>
   );
 };
+export default AccountFinancial;

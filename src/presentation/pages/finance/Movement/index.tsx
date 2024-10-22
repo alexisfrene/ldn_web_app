@@ -8,7 +8,7 @@ import {
 } from '@components';
 import { MovementList } from './MovementList';
 
-export const Movement: React.FC = () => {
+const Movement: React.FC = () => {
   return (
     <ResizablePanelGroup
       direction="horizontal"
@@ -26,3 +26,5 @@ export const Movement: React.FC = () => {
     </ResizablePanelGroup>
   );
 };
+
+export default Movement;

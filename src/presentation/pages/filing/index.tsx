@@ -42,7 +42,10 @@ const Filing: React.FC = () => {
               <div className="m-3 flex gap-5 bg-slate-200 p-3 text-center text-lg font-bold text-blue-600 dark:bg-slate-900">
                 Estas loqueado !
               </div>
-              <Button onClick={() => navigate('/app')} variant="outline">
+              <Button
+                onClick={() => navigate('/app/finance')}
+                variant="outline"
+              >
                 Ir a la <span className="p-3 text-blue-600">Home</span>
               </Button>
             </div>

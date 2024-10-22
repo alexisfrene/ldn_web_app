@@ -12,7 +12,7 @@ import {
 } from '@components';
 import { CardsInfo } from './CardsInfo';
 
-export const RelevantInfo: React.FC = () => {
+const RelevantInfo: React.FC = () => {
   const totalMonth = useQuery({
     queryKey: ['movements', 'total_month'],
     queryFn: () => getMovementTotalMonth(),
@@ -35,3 +35,4 @@ export const RelevantInfo: React.FC = () => {
     </Card>
   );
 };
+export default RelevantInfo;

@@ -18,7 +18,7 @@ import { getAllPaymentMethod } from '@services';
 import { cn } from '@lib';
 import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
 
-export const PaymentMethod: React.FC = () => {
+const PaymentMethod: React.FC = () => {
   const paymentMethod = useQuery({
     queryKey: ['payment_method'],
     queryFn: () => getAllPaymentMethod(),
@@ -63,3 +63,4 @@ export const PaymentMethod: React.FC = () => {
     </Card>
   );
 };
+export default PaymentMethod;

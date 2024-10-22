@@ -67,31 +67,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getCurrentFormattedDate = () => {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
-  const day = ('0' + currentDate.getDate()).slice(-2);
-  const formattedDate = year + '-' + month + '-' + day;
-
-  return formattedDate;
-};
-
-export const removeEmptyStringProperties = (obj: Product): Product => {
-  const cleanedObject: Partial<Product> = {};
-
-  for (const [key, value] of Object.entries(obj)) {
-    if (
-      (typeof value === 'string' && value.trim() !== '') ||
-      typeof value !== 'string'
-    ) {
-      cleanedObject[key as keyof Product] = value;
-    }
-  }
-
-  return cleanedObject as Product;
-};
-
 export const fetchImage = async (url: string) => {
   const response = await axios.get(url, { responseType: 'blob' });
   return URL.createObjectURL(response.data);
@@ -103,7 +78,7 @@ export const formatDate = (date: {
   getDate: () => any;
 }) => {
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0, por eso sumamos 1
+  const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;

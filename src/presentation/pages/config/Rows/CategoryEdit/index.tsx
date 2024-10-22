@@ -21,7 +21,7 @@ export const CategoryEdit: React.FC<CategoryEditProps> = ({ showSheet }) => {
 
   return (
     <div className="flex min-w-[70vw] flex-col">
-      {data.length === 0 ? (
+      {!!data && data?.length === 0 ? (
         <NotCategories showSheet={showSheet} />
       ) : (
         <ViewCategories showSheet={showSheet} data={data} />

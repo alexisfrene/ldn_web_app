@@ -53,11 +53,13 @@ const PaymentMethod: React.FC = () => {
           </DialogContent>
         </Dialog>
         <div className="flex flex-wrap gap-1">
-          {paymentMethod.data.map((account: { name: string }) => (
-            <Card className={cn(['h-52 w-52'])}>
-              <CardHeader>{account.name}</CardHeader>
-            </Card>
-          ))}
+          {paymentMethod.data.map(
+            (account: { name: string }, index: number) => (
+              <Card className={cn(['h-52 w-52'])} key={index}>
+                <CardHeader>{account.name}</CardHeader>
+              </Card>
+            ),
+          )}
         </div>
       </CardContent>
     </Card>

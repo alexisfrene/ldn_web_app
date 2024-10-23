@@ -17,6 +17,12 @@ const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
 const PaymentMethod = lazy(() => import('./finance/PaymentMethod'));
 
+const ProductGrid = lazy(() => import('./products/ViewTab'));
+const CreateProducts = lazy(() => import('./products/CreateTab'));
+
+const VariantsGrid = lazy(() => import('./variations/ViewTab'));
+const CreateVariation = lazy(() => import('./variations/CreateTab'));
+
 const FinanceRoutes = [
   {
     index: true,
@@ -37,6 +43,34 @@ const FinanceRoutes = [
   {
     path: 'payment-method',
     element: <PaymentMethod />,
+  },
+];
+const ProductsRoutes = [
+  {
+    index: true,
+    element: <Navigate to="/app/products/view" replace />,
+  },
+  {
+    path: 'view',
+    element: <ProductGrid />,
+  },
+  {
+    path: 'create-products',
+    element: <CreateProducts />,
+  },
+];
+const VariationsRoutes = [
+  {
+    index: true,
+    element: <Navigate to="/app/variations/view" replace />,
+  },
+  {
+    path: 'view',
+    element: <VariantsGrid />,
+  },
+  {
+    path: 'create-variations',
+    element: <CreateVariation />,
   },
 ];
 
@@ -68,10 +102,12 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <ProductsPage />,
+        children: ProductsRoutes,
       },
       {
         path: 'variations',
         element: <VariationsPage />,
+        children: VariationsRoutes,
       },
       {
         path: 'config',

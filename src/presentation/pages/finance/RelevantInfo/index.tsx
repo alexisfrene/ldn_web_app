@@ -19,6 +19,8 @@ const RelevantInfo: React.FC = () => {
     queryFn: () => getMovementTotalMonth(),
   });
 
+  if (totalMonth.isPending) return <LoadingIndicator isLoading />;
+
   return (
     <Card className="col-span-6">
       <CardHeader className="flex flex-row justify-between text-xl">
@@ -33,7 +35,6 @@ const RelevantInfo: React.FC = () => {
           </ScrollArea>
         </div>
       </CardContent>
-      {/* <LoadingIndicator isLoading /> */}
     </Card>
   );
 };

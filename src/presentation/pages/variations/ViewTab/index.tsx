@@ -7,7 +7,7 @@ import { deleteVariationById, getAllVariations } from '@services';
 import { useModal } from '@hooks';
 import { Button, Label, LoadingIndicator, Modal } from '@components';
 
-export const VariantsGrid: React.FC = () => {
+const VariantsGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
     useModal();
   const queryClient = useQueryClient();
@@ -78,3 +78,5 @@ export const VariantsGrid: React.FC = () => {
     </div>
   );
 };
+
+export default VariantsGrid;

@@ -11,3 +11,4 @@ export * from './DataTable';
 export * from './MenuTabs';
 export * from './Clock';
 export * from './InfoCard';
+export * from './TabsComponent';

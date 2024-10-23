@@ -11,11 +11,11 @@ const getToken = () => {
   return parsedDataUser?.state?.session_token || '';
 };
 
-const axiosInstanceCreate = () => {
+const axiosInstanceCreate = (contentType: string) => {
   const instance = axios.create({
     baseURL: import.meta.env.VITE_API_NAME,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': contentType,
     },
   });
 
@@ -34,34 +34,9 @@ const axiosInstanceCreate = () => {
 
   return instance;
 };
+export const axiosInstance = axiosInstanceCreate('application/json');
 
-const axiosInstanceFormDataCreate = () => {
-  const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_NAME,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-
-  instance.interceptors.request.use(
-    (config) => {
-      const token = getToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    },
-  );
-
-  return instance;
-};
-
-export const axiosInstance = axiosInstanceCreate();
-
-export const axiosInstanceFormData = axiosInstanceFormDataCreate();
+export const axiosInstanceFormData = axiosInstanceCreate('multipart/form-data');
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

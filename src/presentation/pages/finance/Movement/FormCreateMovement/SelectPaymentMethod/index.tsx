@@ -29,10 +29,6 @@ export const SelectPaymentMethod: React.FC = () => {
     queryFn: getAllPaymentMethod,
   });
 
-  if (isLoading) {
-    return <LoadingIndicator isLoading />;
-  }
-
   if (error) {
     return (
       <div>Error: {(error as Error).message || 'An error has occurred'}</div>
@@ -81,6 +77,7 @@ export const SelectPaymentMethod: React.FC = () => {
           </DialogClose>
         </DialogFooter>
       </DialogContent>
+      {isLoading && <LoadingIndicator isLoading />}
     </Dialog>
   );
 };

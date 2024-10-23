@@ -16,7 +16,7 @@ import handleSubmit from './handleSubmit';
 import initialValues from './initialValues';
 import validationSchema from './validationSchema';
 
-export const CreateProducts: React.FC = () => {
+const CreateProducts: React.FC = () => {
   const [image, setImage] = useState<ImagesValues[]>([]);
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
     useModal();
@@ -138,3 +138,5 @@ export const CreateProducts: React.FC = () => {
     </Formik>
   );
 };
+
+export default CreateProducts;

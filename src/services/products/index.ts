@@ -1,5 +1,5 @@
 import { toast } from 'sonner';
-import { axiosInstance, axiosInstanceFormData } from '@lib';
+import { axiosInstance, axiosInstanceFormData } from '@utils';
 
 export const getAllProducts = async () => {
   try {

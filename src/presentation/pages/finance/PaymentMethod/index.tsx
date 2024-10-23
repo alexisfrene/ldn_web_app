@@ -15,7 +15,7 @@ import {
   LoadingIndicator,
 } from '@components';
 import { getAllPaymentMethod } from '@services';
-import { cn } from '@lib';
+import { cn } from '@utils';
 import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
 
 const PaymentMethod: React.FC = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSessionStore } from '@global';
 import { Icons, Layout, LoadingIndicator, ScrollArea } from '@components';
-import { cn } from '@lib';
+import { cn } from '@utils';
 
 const tabImágenes = 'Variaciones';
 const tabProductos = 'Productos';

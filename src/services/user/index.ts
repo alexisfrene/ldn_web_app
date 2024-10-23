@@ -1,4 +1,4 @@
-import { axiosInstance, axiosInstanceFormData } from '@src/lib';
+import { axiosInstance, axiosInstanceFormData } from '@utils';
 import axios from 'axios';
 import { toast } from 'sonner';
 

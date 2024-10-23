@@ -1,4 +1,4 @@
-import { axiosInstance } from '@src/lib';
+import { axiosInstance } from '@utils';
 import { toast } from 'sonner';
 
 export const getAllSizes = async () => {

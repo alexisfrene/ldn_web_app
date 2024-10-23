@@ -1,6 +1,6 @@
 import * as ResizablePrimitive from 'react-resizable-panels';
 
-import { cn } from '@lib';
+import { cn } from '@utils';
 import { Icons } from '../common';
 
 const ResizablePanelGroup = ({

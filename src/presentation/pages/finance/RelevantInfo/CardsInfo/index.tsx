@@ -1,6 +1,6 @@
 import React from 'react';
 import { InfoCard, Skeleton } from '@components';
-import { formattedValue } from '@lib';
+import { formattedValue } from '@utils';
 
 interface TotalMonthData {
   inflow_of_money: number;

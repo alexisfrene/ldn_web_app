@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { Icons } from '@components';
-import { cn } from '@lib';
+import { cn } from '@utils';
 
 interface SnackbarProps {
   message: string;

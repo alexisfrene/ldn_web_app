@@ -1,4 +1,4 @@
-import { axiosInstance } from '@lib';
+import { axiosInstance } from '@utils';
 import { toast } from 'sonner';
 
 export const createFinancialAccount = async (data: {

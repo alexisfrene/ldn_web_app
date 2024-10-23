@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn, formattedValue } from '@lib';
+import { cn, formattedValue } from '@utils';
 import {
   AlertDialog,
   AlertDialogAction,

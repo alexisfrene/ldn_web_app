@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, FieldProps, useFormikContext } from 'formik';
-import { capitalizeFirstLetter } from '@lib';
+import { capitalizeFirstLetter } from '@utils';
 import {
   Label,
   Select,

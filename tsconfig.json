@@ -10,13 +10,13 @@
       "@config/*": ["./src/config/*"],
       "@core/*": ["./src/core/*"],
       "@services": ["./src/services"],
-      "@lib": ["./src/lib"],
+      "@utils": ["./src/utils"],
       "@global": ["./src/presentation/global"],
       "@assets/*": ["./src/presentation/assets/*"],
       "@hooks": ["./src/presentation/hooks"],
       "@components": ["./src/presentation/components"],
       "@presentation/*": ["./src/presentation/*"],
-      "@src/*": ["./src/*"],
+      "@src/*": ["./src/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Card, CardContent, CardHeader, Label } from '@components';
-import { cn } from '@lib';
+import { cn } from '@utils';
 
 const FinanceTabs = [
   {

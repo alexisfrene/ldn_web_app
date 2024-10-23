@@ -9,6 +9,7 @@ import {
   CardContent,
   ScrollArea,
   Clock,
+  LoadingIndicator,
 } from '@components';
 import { CardsInfo } from './CardsInfo';
 
@@ -32,6 +33,7 @@ const RelevantInfo: React.FC = () => {
           </ScrollArea>
         </div>
       </CardContent>
+      {/* <LoadingIndicator isLoading /> */}
     </Card>
   );
 };

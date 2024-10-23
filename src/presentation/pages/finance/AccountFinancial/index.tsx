@@ -26,7 +26,7 @@ import {
   LoadingIndicator,
 } from '@components';
 import { deleteFinancialAccount, getAllFinancialAccount } from '@services';
-import { cn, formattedValue } from '@lib';
+import { cn, formattedValue } from '@utils';
 
 const AccountFinancial: React.FC = () => {
   const financialAccount = useQuery({

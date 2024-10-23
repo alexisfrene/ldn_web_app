@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     visualizer({
-      open: true,
+      open: false,
     }),
   ],
   resolve: {

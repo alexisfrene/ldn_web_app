@@ -16,7 +16,7 @@ const Filing: React.FC = () => {
   const sessionToken = useSessionStore((state) => state.session_token);
   return (
     <Layout>
-      <Card className="mx-48 my-10">
+      <Card className="mx-56 my-20">
         <CardHeader>
           <CardTitle className="text-center">Acción a realizar </CardTitle>
         </CardHeader>

@@ -27,7 +27,7 @@ export const ImageUploader: React.FC<Props> = ({
   };
 
   return (
-    <>
+    <div className="flex">
       <Input
         ref={inputRef}
         accept="image/*"
@@ -65,6 +65,6 @@ export const ImageUploader: React.FC<Props> = ({
       >
         Agregar
       </Button>
-    </>
+    </div>
   );
 };

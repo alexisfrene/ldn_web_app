@@ -34,9 +34,13 @@ export const VariationCard: React.FC<Props> = ({
       </CardHeader>
       <CardContent className="flex justify-center" onClick={onCLickImage}>
         <ImageLoader
-          alt={variation.title}
           url={variation.values[0].images[0]}
-          className="cursor-pointer rounded-xl object-fill"
+          className={`h-[230px] w-[230px] cursor-pointer rounded-sm sm:rounded-md ${
+            false && 'border-2 border-dashed border-amber-900'
+          }`}
+          alt={variation.title}
+          height={'[230px]'}
+          width={'[230px]'}
         />
       </CardContent>
     </Card>

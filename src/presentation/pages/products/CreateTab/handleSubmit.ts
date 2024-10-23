@@ -46,6 +46,7 @@ const handleSubmit = async (
     const res = await createProducts(product);
     if (res) {
       formikHelpers.resetForm();
+      formikHelpers.setFieldValue('detail[brand]', '');
       toast('Producto creado con éxito !');
     }
   } catch (error) {

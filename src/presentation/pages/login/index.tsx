@@ -37,39 +37,37 @@ const LoginPage: React.FC = () => {
   });
   return (
     <Layout>
-      <div className="mt-10 flex items-center justify-center">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ingresar </CardTitle>
-            <CardDescription>
-              Proporcionar sus credenciales de acceso
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={formik.handleSubmit}>
-              <Label>Correo electrónico o username</Label>
-              <Input
-                id="email_or_user"
-                name="email_or_user"
-                placeholder="Ej : juanperez003"
-                value={formik.values.email_or_user}
-                onChange={formik.handleChange}
-              />
-              <Label>Contraseña</Label>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-              />
-              <Button type="submit" className="my-3">
-                Iniciar sesión
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
+      <Card className="mx-96 mt-28">
+        <CardHeader>
+          <CardTitle>Ingresar </CardTitle>
+          <CardDescription>
+            Proporcionar sus credenciales de acceso
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={formik.handleSubmit}>
+            <Label>Correo electrónico o username</Label>
+            <Input
+              id="email_or_user"
+              name="email_or_user"
+              placeholder="Ej : juanperez003"
+              value={formik.values.email_or_user}
+              onChange={formik.handleChange}
+            />
+            <Label>Contraseña</Label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+            />
+            <Button type="submit" className="my-3">
+              Iniciar sesión
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </Layout>
   );
 };

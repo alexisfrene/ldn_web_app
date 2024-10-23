@@ -23,7 +23,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
     }
   }, []);
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="row-span-1 flex items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 dark:from-slate-700 dark:to-slate-900">
         <a
           href="https://www.facebook.com/tiendaLDN/"

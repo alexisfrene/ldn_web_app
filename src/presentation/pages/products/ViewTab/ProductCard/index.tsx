@@ -36,13 +36,17 @@ export const ProductCard: React.FC<Props> = ({
         </Button>
       </CardHeader>
       <CardContent onClick={handleClick} className="cursor-pointer">
-        <ImageLoader
-          url={product.primary_image?.toString()!}
-          className={`h-28 w-28 cursor-pointer rounded-sm sm:h-96 sm:w-96 sm:rounded-xl sm:object-fill lg:h-48 xl:h-64 2xl:h-56 ${
-            false && 'border-2 border-dashed border-amber-900'
-          }`}
-          alt={product.name}
-        />
+        <div className="flex justify-center">
+          <ImageLoader
+            url={product.primary_image?.toString()!}
+            className={`h-[230px] w-[230px] cursor-pointer rounded-sm sm:rounded-md ${
+              false && 'border-2 border-dashed border-amber-900'
+            }`}
+            alt={product.name}
+            height={'[230px]'}
+            width={'[230px]'}
+          />
+        </div>
       </CardContent>
       <CardFooter className="flex justify-between lg:mt-1 2xl:mt-3">
         <p>{product.size === 'Sin talla/numero' ? 'N/A' : product.size}</p>

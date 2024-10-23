@@ -24,19 +24,33 @@ export const LabelInput: React.FC<Props> = ({
   max = undefined,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
-  const handleChange = onChange
-    ? onChange
-    : (e: React.ChangeEvent<HTMLInputElement>) =>
-        setFieldValue(name, e.target.value);
+  const path = name.split(/\[|\]\./).filter(Boolean);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (onChange) {
+      onChange(e);
+    }
+    if (path.length > 1) {
+      const [parent, child] = path;
+      setFieldValue(parent, {
+        ...values[parent],
+        [child]: value,
+      });
+    } else {
+      setFieldValue(name, value);
+    }
+  };
+  const inputValue =
+    path.length > 1 ? values[path[0]]?.[path[1]] || '' : values[name] || '';
 
   return (
     <Label htmlFor={label}>
-      <span className={errors[name] && 'text-red-600'}> {label} :</span>
+      <span className={errors[name] ? 'text-red-600' : ''}> {label} :</span>
       <Input
         onChange={handleChange}
         type={inputType}
-        value={values[name]}
-        className={errors[name] && 'border-red-600'}
+        value={inputValue}
+        className={errors[name] ? 'border-red-600' : ''}
         maxLength={maxLength}
         minLength={minLength}
         min={min}

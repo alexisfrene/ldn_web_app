@@ -16,6 +16,7 @@ const RelevantInfo = lazy(() => import('./finance/RelevantInfo'));
 const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
 const PaymentMethod = lazy(() => import('./finance/PaymentMethod'));
+const Debts = lazy(() => import('./finance/Debts'));
 
 const ProductGrid = lazy(() => import('./products/ViewTab'));
 const CreateProducts = lazy(() => import('./products/CreateTab'));
@@ -39,6 +40,10 @@ const FinanceRoutes = [
   {
     path: 'financial-account',
     element: <AccountFinancial />,
+  },
+  {
+    path: 'debts',
+    element: <Debts />,
   },
   {
     path: 'payment-method',

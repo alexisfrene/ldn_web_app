@@ -15,6 +15,10 @@ const FinanceTabs = [
     label: 'Cuentas Financieras',
   },
   {
+    path: '/app/finance/debts',
+    label: 'Deudas',
+  },
+  {
     path: '/app/finance/payment-method',
     label: 'Métodos de pago',
   },

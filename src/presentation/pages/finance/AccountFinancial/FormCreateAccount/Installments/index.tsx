@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useFormikContext } from 'formik';
 import {
   Card,
   CardContent,
@@ -10,7 +11,6 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@components';
-import { useFormikContext } from 'formik';
 
 export const Installments: React.FC = () => {
   const { values, setFieldValue } = useFormikContext<{
@@ -67,7 +67,7 @@ export const Installments: React.FC = () => {
         <CardContent>
           <LabelInput
             label="Monto"
-            name={`installments[${index}].amount`}
+            name={`installments[${index}][amount]`}
             inputType="number"
           />
           <RadioGroup
@@ -89,7 +89,7 @@ export const Installments: React.FC = () => {
           </RadioGroup>
           <LabelInput
             label="Fecha de pago"
-            name={`installments[${index}].due_date`}
+            name={`installments[${index}][due_date]`}
             inputType="date"
           />
         </CardContent>
@@ -180,7 +180,7 @@ export const Installments: React.FC = () => {
           ) : (
             <LabelInput
               label="Fecha de pago"
-              name={'installments[0].due_date'}
+              name={'installments[0][due_date]'}
               inputType="date"
               onChange={(e) => {
                 const newInstallments = [...values.installments];

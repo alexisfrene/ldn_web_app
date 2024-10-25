@@ -1,6 +1,7 @@
 import React from 'react';
 import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
 import { Input, Label } from '@components';
+import { get } from 'lodash';
 
 interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -24,33 +25,22 @@ export const LabelInput: React.FC<Props> = ({
   max = undefined,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
-  const path = name.split(/\[|\]\./).filter(Boolean);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (onChange) {
-      onChange(e);
-    }
-    if (path.length > 1) {
-      const [parent, child] = path;
-      setFieldValue(parent, {
-        ...values[parent],
-        [child]: value,
-      });
-    } else {
-      setFieldValue(name, value);
-    }
-  };
-  const inputValue =
-    path.length > 1 ? values[path[0]]?.[path[1]] || '' : values[name] || '';
+
+  const inputValue = get(values, name, '');
+
+  const handleChange = onChange
+    ? onChange
+    : (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFieldValue(name, e.target.value);
 
   return (
     <Label htmlFor={label}>
-      <span className={errors[name] ? 'text-red-600' : ''}> {label} :</span>
+      <span className={get(errors, name) ? 'text-red-600' : ''}>{label} :</span>
       <Input
         onChange={handleChange}
         type={inputType}
         value={inputValue}
-        className={errors[name] ? 'border-red-600' : ''}
+        className={get(errors, name) ? 'border-red-600' : ''}
         maxLength={maxLength}
         minLength={minLength}
         min={min}

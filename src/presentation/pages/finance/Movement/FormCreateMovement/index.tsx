@@ -71,7 +71,7 @@ export const FormCreateMovement: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="money_outflow" id="r2" />
-                  <Label htmlFor="r2">Salida de dinero</Label>
+                  <Label htmlFor="r2">Registrar un gasto</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="debt" id="r3" />

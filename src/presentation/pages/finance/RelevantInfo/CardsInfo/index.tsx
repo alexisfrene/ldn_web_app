@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoCard, Skeleton } from '@components';
+import { InfoCard, Separator, Skeleton } from '@components';
 import { formattedValue } from '@utils';
 
 interface TotalMonthData {
@@ -17,7 +17,7 @@ interface Props {
 
 export const CardsInfo: React.FC<Props> = ({ totalMonth }) => {
   return (
-    <div className="mb-3 grid grid-cols-3 gap-3">
+    <div className="mb-3 grid grid-cols-4 gap-3">
       {totalMonth.isPending ? (
         <>
           <Skeleton className="h-[130px] w-[435px]" />
@@ -30,10 +30,20 @@ export const CardsInfo: React.FC<Props> = ({ totalMonth }) => {
             title="Total entradas en el mes"
             value={formattedValue(totalMonth.data?.inflow_of_money || 0)}
             currency={true}
+            valueStyles="text-green-500"
           />
           <InfoCard
             title="Total de salidas del mes"
             value={formattedValue(totalMonth.data?.money_outflow || 0)}
+            currency={true}
+            valueStyles="text-red-500"
+          />
+          <InfoCard
+            title="Ganancias del mes"
+            value={formattedValue(
+              (totalMonth.data?.inflow_of_money || 0) -
+                (totalMonth.data?.money_outflow || 0),
+            )}
             currency={true}
           />
           <InfoCard

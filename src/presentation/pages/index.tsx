@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { WithAuth } from '@components';
+import { LoadingIndicator, WithAuth } from '@components';
 
 const FilingPage = lazy(() => import('./filing'));
 const SignUpPage = lazy(() => import('./sign'));
@@ -85,6 +85,7 @@ const router = createBrowserRouter([
     element: <FilingPage />,
     errorElement: <ErrorPage />,
   },
+
   {
     path: '/app',
     element: (
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
         path: 'finance',
         element: <FinancePage />,
         children: FinanceRoutes,
+      },
+      {
+        path: 'schedule',
+        element: <div className="mt-96 text-center">Próximamente ...</div>,
       },
       {
         path: 'products',

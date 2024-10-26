@@ -4,11 +4,6 @@ import { useSessionStore } from '@global';
 import { Icons, Layout, LoadingIndicator, ScrollArea } from '@components';
 import { cn } from '@utils';
 
-const tabImágenes = 'Variaciones';
-const tabProductos = 'Productos';
-const tabConfig = 'Ajustes';
-const tabFinance = 'Finanzas';
-
 const tabsStyles = 'h-8 sm:h-6 md:h-8 lg:h-10 xl:16 2xl:h-16';
 
 const HomePage: React.FC = () => {
@@ -16,22 +11,27 @@ const HomePage: React.FC = () => {
 
   const tabButtons = [
     {
-      title: tabFinance,
+      title: 'Finanzas',
       icon: <Icons type="statistics" className={tabsStyles} />,
       path: '/app/finance',
     },
     {
-      title: tabProductos,
+      title: 'Calendario',
+      icon: <Icons type="schedule" className={tabsStyles} />,
+      path: '/app/schedule',
+    },
+    {
+      title: 'Productos',
       icon: <Icons type="bag" className={tabsStyles} />,
       path: '/app/products',
     },
     {
-      title: tabImágenes,
+      title: 'Variaciones',
       icon: <Icons type="stack" className={tabsStyles} />,
       path: '/app/variations',
     },
     {
-      title: tabConfig,
+      title: 'Ajustes',
       icon: <Icons type="cog_6_tooth" className={tabsStyles} />,
       path: '/app/config',
     },
@@ -48,8 +48,6 @@ const HomePage: React.FC = () => {
               <NavLink
                 key={index}
                 to={path}
-                //"  hover:bg-gradient-to-t  "
-
                 className={(data) =>
                   cn([
                     'flex cursor-pointer flex-col items-center gap-y-1 bg-gradient-to-t p-3 transition-all duration-200 ease-in-out hover:from-amber-300 hover:to-amber-500 hover:shadow-lg dark:hover:from-slate-600 dark:hover:to-slate-800',

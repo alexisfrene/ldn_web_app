@@ -65,7 +65,7 @@ export const SelectPaymentMethod: React.FC = () => {
           <DialogDescription>Elegir uno :</DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-96">
-          {paymentMethods.length ? (
+          {paymentMethods?.length ? (
             paymentMethods?.map(
               (method: { name: string; payment_method_id: UUID }) => (
                 <div

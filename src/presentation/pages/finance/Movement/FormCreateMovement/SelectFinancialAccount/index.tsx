@@ -42,6 +42,7 @@ export const SelectFinancialAccount: React.FC = () => {
 
   const handleSelectFinancialAccount = (financialAccountId: UUID) => {
     setFieldValue('financial_accounts_id', financialAccountId);
+    setFieldValue('payment_method_id', '');
     setSelectedFinancialAccountId(financialAccountId);
   };
 

@@ -91,7 +91,12 @@ export const FormCreateMovement: React.FC = () => {
               <Button
                 className="col-span-full"
                 type="submit"
-                disabled={isSubmitting || mutation.isPending}
+                disabled={
+                  isSubmitting ||
+                  mutation.isPending ||
+                  !values.financial_accounts_id.length ||
+                  !values.payment_method_id.length
+                }
               >
                 {(isSubmitting || mutation.isPending) && (
                   <div className="mx-1 w-5">

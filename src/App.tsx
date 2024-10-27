@@ -13,7 +13,7 @@ const App: React.FC = () => {
         </DelayedFallback>
       }
     >
-      <div className="min-w-screen min-h-screen bg-gradient-to-t from-orange-100 to-orange-100 font-mono font-semibold text-slate-800 dark:from-slate-600 dark:to-slate-900">
+      <div className="bg-gradient-to-t from-orange-100 to-orange-100 font-mono font-semibold text-slate-800 dark:from-slate-600 dark:to-slate-900">
         <RouterProvider router={router} />
       </div>
       <Toaster />

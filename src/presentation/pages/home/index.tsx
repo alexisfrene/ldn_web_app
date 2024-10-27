@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
               </NavLink>
             ))}
           </div>
-          <ScrollArea className="col-span-11 h-[91vh] bg-slate-50 dark:bg-slate-950">
+          <ScrollArea className="col-span-11 h-[90vh] bg-slate-50 dark:bg-slate-950">
             <Outlet />
           </ScrollArea>
         </div>

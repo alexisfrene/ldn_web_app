@@ -17,6 +17,9 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@components';
+import { InflowOfMoney } from './InflowOfMoney';
+import { MoneyOutflow } from './MoneyOutflow';
+import { Debt } from './Debt';
 
 export const FormCreateMovement: React.FC = () => {
   const queryClient = useQueryClient();
@@ -79,8 +82,13 @@ export const FormCreateMovement: React.FC = () => {
                 </div>
               </RadioGroup>
               <div className="my-3 flex flex-wrap gap-5">
-                <SelectFinancialAccount />
-                <SelectPaymentMethod />
+                {values.type === 'inflow_of_money' ? (
+                  <InflowOfMoney />
+                ) : values.type === 'money_outflow' ? (
+                  <MoneyOutflow />
+                ) : (
+                  <Debt />
+                )}
               </div>
               <Button
                 className="col-span-full"

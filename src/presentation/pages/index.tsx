@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { LoadingIndicator, WithAuth } from '@components';
+import { WithAuth } from '@components';
 
 const FilingPage = lazy(() => import('./filing'));
 const SignUpPage = lazy(() => import('./sign'));
@@ -15,7 +15,6 @@ const VariationsPage = lazy(() => import('./variations'));
 const RelevantInfo = lazy(() => import('./finance/RelevantInfo'));
 const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
-const PaymentMethod = lazy(() => import('./finance/PaymentMethod'));
 const Debts = lazy(() => import('./finance/Debts'));
 
 const ProductGrid = lazy(() => import('./products/ViewTab'));
@@ -46,8 +45,8 @@ const FinanceRoutes = [
     element: <Debts />,
   },
   {
-    path: 'payment-method',
-    element: <PaymentMethod />,
+    path: 'expenses',
+    element: <div>Gastos ....</div>,
   },
 ];
 const ProductsRoutes = [

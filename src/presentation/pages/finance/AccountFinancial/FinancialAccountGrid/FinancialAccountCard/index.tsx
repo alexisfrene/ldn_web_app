@@ -15,11 +15,10 @@ import {
   CardTitle,
   Icons,
 } from '@components';
-import { cn, formattedValue } from '@utils';
+import { formattedValue } from '@utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteFinancialAccount } from '@services';
 interface Props {
-  type: string;
   financial_accounts_id: string;
   name: string;
   total: number;
@@ -29,7 +28,6 @@ export const FinancialAccountCard: React.FC<Props> = ({
   financial_accounts_id,
   name,
   total,
-  type,
 }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -42,10 +40,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   });
   return (
     <Card
-      className={cn([
-        'w-52',
-        `${type === 'inflow_of_money' ? 'bg-gradient-to-br from-emerald-500 to-emerald-200 dark:from-teal-700 dark:to-green-600' : type === 'debt' ? 'bg-gradient-to-br from-cyan-700 to-blue-600 dark:from-cyan-700 dark:to-blue-700' : 'bg-gradient-to-br from-red-400 to-red-200 dark:from-red-700 dark:to-amber-600'}`,
-      ])}
+      className="w-52 bg-gradient-to-br from-emerald-500 to-emerald-200 dark:from-teal-700 dark:to-green-600"
       key={financial_accounts_id}
     >
       <CardHeader>

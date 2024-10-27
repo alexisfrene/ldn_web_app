@@ -20,7 +20,7 @@ export const FinancialAccountGrid: React.FC = () => {
         financialAccount.data.map(
           ({
             name,
-            type,
+
             financial_accounts_id,
             total,
           }: {
@@ -31,7 +31,6 @@ export const FinancialAccountGrid: React.FC = () => {
           }) => (
             <FinancialAccountCard
               name={name}
-              type={type}
               financial_accounts_id={financial_accounts_id}
               total={total}
             />

@@ -3,8 +3,6 @@ import { Formik } from 'formik';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { formatDate } from '@utils';
 import { createMovement } from '@services';
-import { SelectPaymentMethod } from './SelectPaymentMethod';
-import { SelectFinancialAccount } from './SelectFinancialAccount';
 import {
   Button,
   Card,

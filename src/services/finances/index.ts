@@ -90,13 +90,13 @@ export const getAllFinancialAccount = async () => {
   }
 };
 
-export const getAllPaymentMethod = async () => {
+export const getAllPaymentMethodForAccount = async (id: string) => {
   try {
-    const res = await axiosInstance.get('/payment_methods');
+    const res = await axiosInstance.get(`/payment_methods/${id}`);
+    console.log('RESPONCE', res);
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una getAllPaymentMethod');
-    console.error('ERROR IN getAllPaymentMethod:', error);
+    return [];
   }
 };
 

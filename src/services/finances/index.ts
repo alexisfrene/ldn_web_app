@@ -3,27 +3,12 @@ import { toast } from 'sonner';
 
 export const createFinancialAccount = async (data: {
   account: string;
-  account_type: string;
-  notes?: string;
-  total_debt?: Number;
-  current_quota?: number;
-  installments?: { amount: number; due_date: Date; status: string }[];
+  payment_method: string[] | [];
 }) => {
   try {
     const res = await axiosInstance.post('/financial_accounts', {
       name: data.account,
-      type: data.account_type,
-      notes: data.notes || '-',
-      total_debt: Number(data.total_debt) || 1,
-      current_quota: Number(data.current_quota) || 1,
-      installments:
-        data.installments?.map((installment) => {
-          return {
-            amount: Number(installment.amount) || 1,
-            due_date: new Date(installment.due_date),
-            status: installment.status || 'unpaid',
-          };
-        }) || [],
+      paymentMethods: data.payment_method,
     });
     toast.success('Cuenta creada con éxito!');
 
@@ -93,7 +78,17 @@ export const getAllFinancialAccount = async () => {
 export const getAllPaymentMethodForAccount = async (id: string) => {
   try {
     const res = await axiosInstance.get(`/payment_methods/${id}`);
-    console.log('RESPONCE', res);
+
+    return res.data;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const getAllPaymentMethodForUser = async () => {
+  try {
+    const res = await axiosInstance.get('/payment_methods');
+
     return res.data;
   } catch (error) {
     return [];

@@ -33,6 +33,7 @@ export const FinancialAccountGrid: React.FC = () => {
               name={name}
               financial_accounts_id={financial_accounts_id}
               total={total}
+              key={financial_accounts_id}
             />
           ),
         )

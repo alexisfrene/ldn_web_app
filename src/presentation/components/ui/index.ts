@@ -24,3 +24,5 @@ export * from './alert-dialog';
 export * from './switch';
 export * from './menubar';
 export * from './dropdown-menu';
+export * from './sidebar';
+export * from './tooltip';

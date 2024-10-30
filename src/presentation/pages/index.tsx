@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { WithAuth } from '@components';
+import Expense from './finance/Expense';
 
 const FilingPage = lazy(() => import('./filing'));
 const SignUpPage = lazy(() => import('./sign'));
@@ -46,7 +47,7 @@ const FinanceRoutes = [
   },
   {
     path: 'expenses',
-    element: <div>Gastos ....</div>,
+    element: <Expense />,
   },
 ];
 const ProductsRoutes = [

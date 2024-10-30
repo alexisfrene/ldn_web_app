@@ -1,6 +1,6 @@
 import React from 'react';
-import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Field, Formik } from 'formik';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Button,
   Icons,
@@ -14,10 +14,13 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  LoadingIndicator,
+  Card,
+  CardContent,
 } from '@components';
-import { createFinancialAccount } from '@services';
-import { Installments } from './Installments';
-import { SelectAccountType } from './SelectAccountType';
+import { createFinancialAccount, getAllPaymentMethodForUser } from '@services';
+import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
+import { cn } from '@utils';
 
 export const FormCreateAccount: React.FC = () => {
   const queryClient = useQueryClient();
@@ -29,6 +32,15 @@ export const FormCreateAccount: React.FC = () => {
       });
     },
   });
+  const paymentMethod = useQuery({
+    queryKey: ['payment_method'],
+    queryFn: () => getAllPaymentMethodForUser(),
+  });
+
+  if (paymentMethod.isPending) {
+    return <LoadingIndicator isLoading />;
+  }
+  if (paymentMethod.error) return 'An error has occurred: ';
 
   return (
     <Dialog>
@@ -51,25 +63,15 @@ export const FormCreateAccount: React.FC = () => {
         <Formik
           initialValues={{
             account: '',
-            account_type: 'inflow_of_money',
-            current_quota: 1,
-            type_installments: 'equal_installments',
-            number_quota: 1,
-            minimum_payment: 1,
-            notes: '',
-            total_debt: 1,
-            installments: [],
+            payment_method: [] as string[],
           }}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               mutation.mutate({
                 account: values.account,
-                account_type: values.account_type,
-                current_quota: values.current_quota,
-                installments: values.installments,
-                notes: values.notes,
-                total_debt: values.total_debt,
+                payment_method: values.payment_method,
               });
+              //alert(JSON.stringify(values, null, 2));
             } finally {
               setSubmitting(false);
               resetForm();
@@ -80,9 +82,59 @@ export const FormCreateAccount: React.FC = () => {
             <form onSubmit={handleSubmit}>
               <ScrollArea className="h-[60vh]">
                 <LabelInput label="Nombre de la cuenta" name="account" />
-                <Label className="font-semibold">Tipo de cuenta:</Label>
-                <SelectAccountType />
-                <Installments />
+                <Label className="font-semibold">
+                  Que métodos de pagos afectan a esta cuenta :
+                </Label>
+                <Card className="min-h-[70vh] border-none">
+                  <CardContent>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          type="button"
+                          size="icon"
+                          className="bg-green-100 hover:bg-green-300"
+                        >
+                          <Icons type="plus_circle" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="h-96">
+                        <DialogHeader>
+                          <DialogTitle>
+                            Crear nuevo método de pago :
+                          </DialogTitle>
+                        </DialogHeader>
+                        <DialogDescription>
+                          Aquí puede crear método de pago
+                        </DialogDescription>
+                        <FormCreatePaymentMethod />
+                      </DialogContent>
+                    </Dialog>
+                    <div className="flex flex-wrap gap-1">
+                      {paymentMethod.data &&
+                        paymentMethod.data.map(
+                          (
+                            account: {
+                              name: string;
+                              payment_method_id: string;
+                            },
+                            index: number,
+                          ) => (
+                            <div
+                              key={index}
+                              className="w-32 rounded-sm bg-slate-700 py-3 text-center align-middle"
+                            >
+                              <Field
+                                type="checkbox"
+                                name="payment_method"
+                                value={account.payment_method_id}
+                              />
+                              {account.name}
+                            </div>
+                          ),
+                        )}
+                    </div>
+                  </CardContent>
+                </Card>
               </ScrollArea>
               <div className="col-span-full mt-6 flex justify-center">
                 <DialogClose asChild>

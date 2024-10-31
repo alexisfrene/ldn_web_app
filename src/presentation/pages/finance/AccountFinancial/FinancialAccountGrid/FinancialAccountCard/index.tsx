@@ -22,12 +22,14 @@ interface Props {
   financial_accounts_id: string;
   name: string;
   total: number;
+  paymentMethods: { name: string; payment_method_id: string }[];
 }
 
 export const FinancialAccountCard: React.FC<Props> = ({
   financial_accounts_id,
   name,
   total,
+  paymentMethods,
 }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -79,6 +81,17 @@ export const FinancialAccountCard: React.FC<Props> = ({
       </CardHeader>
       <CardContent>
         <p>{formattedValue(total || 0)}</p>
+        <div className="flex flex-wrap justify-between gap-1">
+          {paymentMethods &&
+            paymentMethods.map((paymentMethod) => (
+              <div
+                key={paymentMethod.payment_method_id}
+                className="rounded-md bg-green-300 p-1"
+              >
+                {paymentMethod.name}
+              </div>
+            ))}
+        </div>
       </CardContent>
     </Card>
   );

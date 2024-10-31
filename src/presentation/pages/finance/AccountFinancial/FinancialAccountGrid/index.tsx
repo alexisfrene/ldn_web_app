@@ -14,13 +14,14 @@ export const FinancialAccountGrid: React.FC = () => {
     return <LoadingIndicator isLoading />;
   }
   if (financialAccount.error) return 'An error has occurred: ';
+
   return (
     <div className="flex flex-wrap gap-1">
       {financialAccount.data.length ? (
         financialAccount.data.map(
           ({
             name,
-
+            paymentMethods,
             financial_accounts_id,
             total,
           }: {
@@ -28,12 +29,14 @@ export const FinancialAccountGrid: React.FC = () => {
             type: string;
             financial_accounts_id: string;
             total: number;
+            paymentMethods: { name: string; payment_method_id: string }[];
           }) => (
             <FinancialAccountCard
               name={name}
               financial_accounts_id={financial_accounts_id}
               total={total}
               key={financial_accounts_id}
+              paymentMethods={paymentMethods}
             />
           ),
         )

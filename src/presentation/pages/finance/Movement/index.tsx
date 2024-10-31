@@ -14,11 +14,11 @@ const Movement: React.FC = () => {
       direction="horizontal"
       className="min-w-screen min-h-[55vh] border-none"
     >
-      <ResizablePanel minSize={25} defaultSize={30}>
+      <ResizablePanel minSize={35} defaultSize={35}>
         <FormCreateMovement />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel minSize={35} defaultSize={70}>
+      <ResizablePanel minSize={35} defaultSize={65}>
         <ScrollArea className="h-[74vh]">
           <MovementList />
         </ScrollArea>

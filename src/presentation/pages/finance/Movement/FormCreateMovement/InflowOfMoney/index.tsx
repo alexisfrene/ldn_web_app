@@ -11,7 +11,7 @@ export const InflowOfMoney: React.FC = () => {
         <SelectFinancialAccount />
       </Label>
       <Label>
-        Destino del dinero :
+        Método de pago :
         <SelectPaymentMethod />
       </Label>
     </div>

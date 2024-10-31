@@ -38,6 +38,7 @@ export const createMovement = async ({
   payment_method_id,
   financial_accounts_id,
   entry_date,
+  expense_id,
 }: {
   label: string;
   value: number;
@@ -45,6 +46,7 @@ export const createMovement = async ({
   payment_method_id: UUID;
   financial_accounts_id: UUID;
   entry_date: string;
+  expense_id: UUID;
 }) => {
   try {
     const res = await axiosInstance.post('/movement', {
@@ -54,6 +56,7 @@ export const createMovement = async ({
       payment_method_id,
       financial_accounts_id,
       entry_date,
+      expense_id,
     });
     toast.success('Movimiento creado con éxito!');
 
@@ -136,5 +139,33 @@ export const deleteFinancialAccount = async (id: string) => {
   } catch (error) {
     toast.error('Ocurrió un error al crear una deleteFinancialAccount');
     console.error('ERROR IN deleteFinancialAccount:', error);
+  }
+};
+
+export const createExpense = async ({
+  name,
+  description,
+}: {
+  name: string;
+  description: string;
+}) => {
+  try {
+    const res = await axiosInstance.post('/expenses', { name, description });
+
+    return res.data;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una createExpense');
+    console.error('ERROR IN createExpense:', error);
+  }
+};
+
+export const getExpenses = async () => {
+  try {
+    const res = await axiosInstance.get('/expenses');
+
+    return res.data;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una getExpenses');
+    console.error('ERROR IN getExpenses:', error);
   }
 };

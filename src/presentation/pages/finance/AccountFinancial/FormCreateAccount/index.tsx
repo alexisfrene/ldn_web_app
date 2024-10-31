@@ -20,7 +20,6 @@ import {
 } from '@components';
 import { createFinancialAccount, getAllPaymentMethodForUser } from '@services';
 import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
-import { cn } from '@utils';
 
 export const FormCreateAccount: React.FC = () => {
   const queryClient = useQueryClient();

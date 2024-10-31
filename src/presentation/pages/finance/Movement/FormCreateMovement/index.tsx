@@ -43,6 +43,7 @@ export const FormCreateMovement: React.FC = () => {
             payment_method_id: '' as UUID,
             financial_accounts_id: '' as UUID,
             entry_date: formatDate(new Date()),
+            expense_id: '' as UUID,
           }}
           onSubmit={async (values, formikHelpers) => {
             mutation.mutate({
@@ -52,6 +53,7 @@ export const FormCreateMovement: React.FC = () => {
               type: values.type,
               value: values.value,
               entry_date: values.entry_date,
+              expense_id: values.expense_id,
             });
             formikHelpers.resetForm();
           }}

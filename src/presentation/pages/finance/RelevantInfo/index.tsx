@@ -9,7 +9,6 @@ import {
   CardContent,
   ScrollArea,
   Clock,
-  LoadingIndicator,
 } from '@components';
 import { CardsInfo } from './CardsInfo';
 
@@ -18,8 +17,6 @@ const RelevantInfo: React.FC = () => {
     queryKey: ['movements', 'total_month'],
     queryFn: () => getMovementTotalMonth(),
   });
-
-  if (totalMonth.isPending) return <LoadingIndicator isLoading />;
 
   return (
     <Card className="col-span-6">

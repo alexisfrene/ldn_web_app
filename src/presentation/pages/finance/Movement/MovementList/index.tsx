@@ -9,7 +9,9 @@ export const MovementList: React.FC = () => {
     queryKey: ['movements'],
     queryFn: () => getAllMovements(),
   });
-
+  if (movements.isPending) {
+    return <Skeleton className="h-[65vh] w-[85vw]" />;
+  }
   if (movements.error) return 'An error has occurred: ';
 
   const skeletonItems = Array(8).fill(null);

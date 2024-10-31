@@ -5,15 +5,9 @@ import { SelectPaymentMethod } from '../SelectPaymentMethod';
 
 export const InflowOfMoney: React.FC = () => {
   return (
-    <div className="flex flex-wrap justify-between gap-3">
-      <Label>
-        Destino del dinero :
-        <SelectFinancialAccount />
-      </Label>
-      <Label>
-        Método de pago :
-        <SelectPaymentMethod />
-      </Label>
+    <div className="mt-3 grid grid-cols-2 gap-3">
+      <Label>Destino del dinero :</Label> <SelectFinancialAccount />
+      <Label>Método de pago :</Label> <SelectPaymentMethod />
     </div>
   );
 };

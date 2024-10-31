@@ -1,22 +1,28 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { LoadingIndicator } from '@components';
+import { Skeleton } from '@components';
 import { getAllFinancialAccount } from '@services';
 import { FinancialAccountCard } from './FinancialAccountCard';
+import { useLoading } from '@hooks';
 
 export const FinancialAccountGrid: React.FC = () => {
+  const { doneLoading, startLoading } = useLoading();
   const financialAccount = useQuery({
     queryKey: ['financial_accounts'],
     queryFn: getAllFinancialAccount,
   });
 
   if (financialAccount.isPending) {
-    return <LoadingIndicator isLoading />;
+    startLoading();
+    return <Skeleton className="h-[65vh] w-[85vw]" />;
+  }
+  if (financialAccount.isSuccess) {
+    doneLoading();
   }
   if (financialAccount.error) return 'An error has occurred: ';
 
   return (
-    <div className="flex flex-wrap gap-1">
+    <div className="grid grid-cols-3 gap-3">
       {financialAccount.data.length ? (
         financialAccount.data.map(
           ({

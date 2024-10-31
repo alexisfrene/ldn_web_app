@@ -20,8 +20,10 @@ import {
 } from '@components';
 import { createFinancialAccount, getAllPaymentMethodForUser } from '@services';
 import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
+import { useLoading } from '@hooks';
 
 export const FormCreateAccount: React.FC = () => {
+  const { doneLoading, startLoading } = useLoading();
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: createFinancialAccount,
@@ -37,7 +39,10 @@ export const FormCreateAccount: React.FC = () => {
   });
 
   if (paymentMethod.isPending) {
-    return <LoadingIndicator isLoading />;
+    startLoading();
+  }
+  if (paymentMethod.isSuccess) {
+    doneLoading();
   }
   if (paymentMethod.error) return 'An error has occurred: ';
 

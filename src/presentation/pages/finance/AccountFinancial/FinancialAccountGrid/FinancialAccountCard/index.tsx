@@ -9,6 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  Badge,
   Card,
   CardContent,
   CardHeader,
@@ -42,7 +43,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   });
   return (
     <Card
-      className="w-52 bg-gradient-to-br from-emerald-500 to-emerald-200 dark:from-teal-700 dark:to-green-600"
+      className="bg-gradient-to-br from-emerald-500 to-emerald-200 dark:from-teal-700 dark:to-green-600"
       key={financial_accounts_id}
     >
       <CardHeader>
@@ -80,16 +81,15 @@ export const FinancialAccountCard: React.FC<Props> = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p>{formattedValue(total || 0)}</p>
+        <p className="mb-2 text-xl font-semibold">
+          {formattedValue(total || 0)}
+        </p>
         <div className="flex flex-wrap justify-between gap-1">
           {paymentMethods &&
             paymentMethods.map((paymentMethod) => (
-              <div
-                key={paymentMethod.payment_method_id}
-                className="rounded-md bg-green-300 p-1"
-              >
+              <Badge key={paymentMethod.payment_method_id}>
                 {paymentMethod.name}
-              </div>
+              </Badge>
             ))}
         </div>
       </CardContent>

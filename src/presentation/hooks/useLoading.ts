@@ -1,24 +1,20 @@
-import { useCallback, useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigation } from 'react-router-dom';
+import NProgress from 'nprogress';
 
-interface LoadingHook {
-  isLoading: boolean;
-  startLoading: () => void;
-  stopLoading: () => void;
-}
+export const useLoading = () => {
+  const navigation = useNavigation();
 
-export function useLoading(): LoadingHook {
-  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (navigation.state === 'loading') {
+      NProgress.start();
+    } else {
+      NProgress.done();
+    }
+  }, [navigation]);
 
-  const startLoading = useCallback(() => {
-    window.scrollTo(0, 0);
-    setIsLoading(true);
-  }, [setIsLoading]);
+  const startLoading = () => NProgress.start();
+  const doneLoading = () => NProgress.done();
 
-  const stopLoading = useCallback(() => setIsLoading(false), [setIsLoading]);
-
-  return {
-    isLoading,
-    startLoading,
-    stopLoading,
-  };
-}
+  return { startLoading, doneLoading };
+};

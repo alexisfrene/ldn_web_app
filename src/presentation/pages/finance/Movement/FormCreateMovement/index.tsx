@@ -81,7 +81,7 @@ export const FormCreateMovement: React.FC = () => {
                   <Label htmlFor="r3">Pago deuda</Label>
                 </div>
               </RadioGroup>
-              <div className="my-3 flex flex-wrap gap-5">
+              <div>
                 {values.type === 'inflow_of_money' ? (
                   <InflowOfMoney />
                 ) : values.type === 'money_outflow' ? (

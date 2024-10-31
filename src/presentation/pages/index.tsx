@@ -2,6 +2,9 @@ import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { WithAuth } from '@components';
 import Expense from './finance/Expense';
+import RelevantInfo from './finance/RelevantInfo';
+import ProductGrid from './products/ViewTab';
+import VariantsGrid from './variations/ViewTab';
 
 const FilingPage = lazy(() => import('./filing'));
 const SignUpPage = lazy(() => import('./sign'));
@@ -13,15 +16,10 @@ const FinancePage = lazy(() => import('./finance'));
 const ProductsPage = lazy(() => import('./products'));
 const VariationsPage = lazy(() => import('./variations'));
 
-const RelevantInfo = lazy(() => import('./finance/RelevantInfo'));
 const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
 const Debts = lazy(() => import('./finance/Debts'));
-
-const ProductGrid = lazy(() => import('./products/ViewTab'));
 const CreateProducts = lazy(() => import('./products/CreateTab'));
-
-const VariantsGrid = lazy(() => import('./variations/ViewTab'));
 const CreateVariation = lazy(() => import('./variations/CreateTab'));
 
 const FinanceRoutes = [

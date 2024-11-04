@@ -13,19 +13,14 @@ import {
   DialogTitle,
   DialogTrigger,
   Label,
-  LoadingIndicator,
   ScrollArea,
 } from '@components';
 
 export const SelectPaymentMethod: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();
-  const [selectedMethodId, setSelectedMethodId] = useState<UUID | null>(null);
+  const [selectedMethodId, setSelectedMethodId] = useState<number | null>(null);
 
-  const {
-    data: paymentMethods,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: paymentMethods, error } = useQuery({
     queryKey: ['finances', 'payment_method', values.financial_accounts_id],
     queryFn: () => {
       if (values.financial_accounts_id) {
@@ -43,7 +38,7 @@ export const SelectPaymentMethod: React.FC = () => {
     );
   }
 
-  const handleSelectMethod = (paymentMethodId: UUID) => {
+  const handleSelectMethod = (paymentMethodId: number) => {
     setFieldValue('payment_method_id', paymentMethodId);
     setSelectedMethodId(paymentMethodId);
   };
@@ -67,7 +62,7 @@ export const SelectPaymentMethod: React.FC = () => {
         <ScrollArea className="h-96">
           {paymentMethods?.length ? (
             paymentMethods?.map(
-              (method: { name: string; payment_method_id: UUID }) => (
+              (method: { name: string; payment_method_id: number }) => (
                 <div
                   key={method.payment_method_id}
                   className={`mb-2 cursor-pointer rounded-md p-2 ${
@@ -97,7 +92,6 @@ export const SelectPaymentMethod: React.FC = () => {
           </DialogClose>
         </DialogFooter>
       </DialogContent>
-      {isLoading && <LoadingIndicator isLoading />}
     </Dialog>
   );
 };

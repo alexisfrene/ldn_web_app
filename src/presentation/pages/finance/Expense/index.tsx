@@ -70,18 +70,20 @@ const Expense: React.FC = () => {
           </Formik>
         </DialogContent>
       </Dialog>
-      {expenses.data.map(
-        (expense: { description: string; expense_id: string }) => (
-          <Card
-            key={expense.expense_id}
-            className="bg-gradient-to-br from-rose-500 to-pink-300 dark:from-rose-700 dark:to-pink-700"
-          >
-            <CardHeader>
-              <CardTitle>{expense.description}</CardTitle>
-            </CardHeader>
-          </Card>
-        ),
-      )}
+      <div className="grid grid-cols-2 gap-3">
+        {expenses.data.map(
+          (expense: { description: string; expense_id: string }) => (
+            <Card
+              key={expense.expense_id}
+              className="bg-gradient-to-br from-rose-500 to-pink-300 dark:from-rose-700 dark:to-pink-700"
+            >
+              <CardHeader>
+                <CardTitle>{expense.description}</CardTitle>
+              </CardHeader>
+            </Card>
+          ),
+        )}
+      </div>
     </div>
   );
 };

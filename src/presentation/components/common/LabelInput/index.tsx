@@ -34,8 +34,10 @@ export const LabelInput: React.FC<Props> = ({
         setFieldValue(name, e.target.value);
 
   return (
-    <Label htmlFor={label}>
-      <span className={get(errors, name) ? 'text-red-600' : ''}>{label} :</span>
+    <Label htmlFor={label} className="ml-1">
+      <div className={get(errors, name) ? 'mb-1 text-red-600' : 'mb-1'}>
+        {label} :
+      </div>
       <Input
         onChange={handleChange}
         type={inputType}

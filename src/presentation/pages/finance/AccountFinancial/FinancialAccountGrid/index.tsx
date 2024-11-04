@@ -12,9 +12,19 @@ export const FinancialAccountGrid: React.FC = () => {
     queryFn: getAllFinancialAccount,
   });
 
+  const skeletonItems = Array(9).fill(null);
   if (financialAccount.isPending) {
     startLoading();
-    return <Skeleton className="h-[65vh] w-[85vw]" />;
+    return (
+      <>
+        {skeletonItems.map((_, index) => (
+          <React.Fragment key={index}>
+            <Skeleton className="col-span-1" />
+            <Skeleton className="col-span-1" />
+          </React.Fragment>
+        ))}
+      </>
+    );
   }
   if (financialAccount.isSuccess) {
     doneLoading();
@@ -35,7 +45,7 @@ export const FinancialAccountGrid: React.FC = () => {
             type: string;
             financial_accounts_id: string;
             total: number;
-            paymentMethods: { name: string; payment_method_id: string }[];
+            paymentMethods: { name: string; payment_method_id: number }[];
           }) => (
             <FinancialAccountCard
               name={name}

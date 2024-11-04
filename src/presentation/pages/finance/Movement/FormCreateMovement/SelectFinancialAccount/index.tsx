@@ -12,7 +12,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  LoadingIndicator,
   ScrollArea,
 } from '@components';
 
@@ -21,18 +20,10 @@ export const SelectFinancialAccount: React.FC = () => {
   const [selectedFinancialAccountId, setSelectedFinancialAccountId] =
     useState<UUID | null>(null);
 
-  const {
-    data: financialAccount,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: financialAccount, error } = useQuery({
     queryKey: ['finances', 'financial_account'],
     queryFn: getAllFinancialAccount,
   });
-
-  if (isLoading) {
-    return <LoadingIndicator isLoading />;
-  }
 
   if (error) {
     return (
@@ -42,7 +33,7 @@ export const SelectFinancialAccount: React.FC = () => {
 
   const handleSelectFinancialAccount = (financialAccountId: UUID) => {
     setFieldValue('financial_accounts_id', financialAccountId);
-    setFieldValue('payment_method_id', '');
+    setFieldValue('payment_method_id', null);
     setSelectedFinancialAccountId(financialAccountId);
   };
 

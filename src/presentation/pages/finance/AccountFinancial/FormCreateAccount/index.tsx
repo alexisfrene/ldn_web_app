@@ -14,7 +14,6 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-  LoadingIndicator,
   Card,
   CardContent,
 } from '@components';
@@ -67,7 +66,7 @@ export const FormCreateAccount: React.FC = () => {
         <Formik
           initialValues={{
             account: '',
-            payment_method: [] as string[],
+            payment_method: [],
           }}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
@@ -75,7 +74,6 @@ export const FormCreateAccount: React.FC = () => {
                 account: values.account,
                 payment_method: values.payment_method,
               });
-              //alert(JSON.stringify(values, null, 2));
             } finally {
               setSubmitting(false);
               resetForm();
@@ -119,7 +117,7 @@ export const FormCreateAccount: React.FC = () => {
                           (
                             account: {
                               name: string;
-                              payment_method_id: string;
+                              payment_method_id: number;
                             },
                             index: number,
                           ) => (
@@ -130,7 +128,7 @@ export const FormCreateAccount: React.FC = () => {
                               <Field
                                 type="checkbox"
                                 name="payment_method"
-                                value={account.payment_method_id}
+                                value={account.payment_method_id.toString()}
                               />
                               {account.name}
                             </div>

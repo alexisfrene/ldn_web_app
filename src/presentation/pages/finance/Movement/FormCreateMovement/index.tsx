@@ -40,12 +40,13 @@ export const FormCreateMovement: React.FC = () => {
             label: '',
             value: 0,
             type: 'inflow_of_money',
-            payment_method_id: '' as UUID,
+            payment_method_id: null,
             financial_accounts_id: '' as UUID,
             entry_date: formatDate(new Date()),
             expense_id: '' as UUID,
           }}
-          onSubmit={async (values, formikHelpers) => {
+          onSubmit={(values, formikHelpers) => {
+            // console.log(values.entry_date);
             mutation.mutate({
               financial_accounts_id: values.financial_accounts_id,
               label: values.label,
@@ -97,7 +98,7 @@ export const FormCreateMovement: React.FC = () => {
                   isSubmitting ||
                   mutation.isPending ||
                   !values.financial_accounts_id.length ||
-                  !values.payment_method_id.length
+                  !values.payment_method_id
                 }
               >
                 {(isSubmitting || mutation.isPending) && (

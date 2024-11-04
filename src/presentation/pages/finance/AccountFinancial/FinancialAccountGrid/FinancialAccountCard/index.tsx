@@ -23,7 +23,7 @@ interface Props {
   financial_accounts_id: string;
   name: string;
   total: number;
-  paymentMethods: { name: string; payment_method_id: string }[];
+  paymentMethods: { name: string; payment_method_id: number }[];
 }
 
 export const FinancialAccountCard: React.FC<Props> = ({

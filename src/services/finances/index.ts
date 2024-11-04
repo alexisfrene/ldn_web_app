@@ -3,7 +3,7 @@ import { toast } from 'sonner';
 
 export const createFinancialAccount = async (data: {
   account: string;
-  payment_method: string[] | [];
+  payment_method: number[] | [];
 }) => {
   try {
     const res = await axiosInstance.post('/financial_accounts', {
@@ -43,12 +43,13 @@ export const createMovement = async ({
   label: string;
   value: number;
   type: string;
-  payment_method_id: UUID;
+  payment_method_id: number | null;
   financial_accounts_id: UUID;
   entry_date: string;
   expense_id: UUID;
 }) => {
   try {
+    console.log(entry_date);
     const res = await axiosInstance.post('/movement', {
       label,
       value,
@@ -167,5 +168,53 @@ export const getExpenses = async () => {
   } catch (error) {
     toast.error('Ocurrió un error al crear una getExpenses');
     console.error('ERROR IN getExpenses:', error);
+  }
+};
+
+export const createDebt = async ({
+  notes,
+  name,
+  total_debt,
+  current_quota,
+  minimum_payment: minimum_payment,
+  payment_frequency,
+  installments,
+  interest_rate,
+}: {
+  notes: string;
+  name: string;
+  total_debt: number;
+  current_quota: number;
+  minimum_payment: number;
+  payment_frequency: string;
+  installments: { amount: number; due_date: string; status: string }[];
+  interest_rate: number;
+}) => {
+  try {
+    const res = await axiosInstance.post('/debt', {
+      notes,
+      name,
+      total_debt,
+      current_quota,
+      minimum_payment: minimum_payment,
+      payment_frequency,
+      installments,
+      interest_rate,
+    });
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error en create debt');
+    console.error('ERROR in createDebt', error);
+  }
+};
+
+export const getDebts = async () => {
+  try {
+    const res = await axiosInstance.get('/debt');
+
+    return res.data;
+  } catch (error) {
+    toast.error('Ocurrió un error al getDebts');
+    console.error('ERROR IN getDebts:', error);
   }
 };

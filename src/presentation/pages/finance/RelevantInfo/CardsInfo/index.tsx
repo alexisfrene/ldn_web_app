@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoCard, Separator, Skeleton } from '@components';
+import { InfoCard, Skeleton } from '@components';
 import { formattedValue } from '@utils';
 
 interface TotalMonthData {

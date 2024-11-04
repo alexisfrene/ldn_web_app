@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFormikContext } from 'formik';
+import { FormikValues, useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import { getAllFinancialAccount } from '@services';
 import {
@@ -12,27 +12,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  LoadingIndicator,
   ScrollArea,
 } from '@components';
+import { formattedValue } from '@utils';
 
 export const SelectFinancialAccount: React.FC = () => {
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue } = useFormikContext<FormikValues>();
   const [selectedFinancialAccountId, setSelectedFinancialAccountId] =
     useState<UUID | null>(null);
 
-  const {
-    data: financialAccount,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: financialAccount, error } = useQuery({
     queryKey: ['finances', 'financial_account'],
     queryFn: getAllFinancialAccount,
   });
-
-  if (isLoading) {
-    return <LoadingIndicator isLoading />;
-  }
 
   if (error) {
     return (
@@ -40,9 +32,17 @@ export const SelectFinancialAccount: React.FC = () => {
     );
   }
 
-  const handleSelectFinancialAccount = (financialAccountId: UUID) => {
-    setFieldValue('financial_accounts_id', financialAccountId);
-    setSelectedFinancialAccountId(financialAccountId);
+  const handleSelectFinancialAccount = ({
+    financial_accounts_id,
+    total,
+  }: {
+    financial_accounts_id: UUID;
+    total: number;
+  }) => {
+    setFieldValue('financial_accounts_id', financial_accounts_id);
+    setFieldValue('total', total);
+    setFieldValue('payment_method_id', null);
+    setSelectedFinancialAccountId(financial_accounts_id);
   };
 
   return (
@@ -55,13 +55,14 @@ export const SelectFinancialAccount: React.FC = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Elije una cuenta:</DialogTitle>
-          <DialogDescription>cuentas cargadas </DialogDescription>
+          <DialogDescription>Cuentas cargadas </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-96">
           {financialAccount?.map(
             (financialAccount: {
               name: string;
               financial_accounts_id: UUID;
+              total: number;
             }) => (
               <div
                 key={financialAccount.financial_accounts_id}
@@ -72,12 +73,15 @@ export const SelectFinancialAccount: React.FC = () => {
                     : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800'
                 }`}
                 onClick={() =>
-                  handleSelectFinancialAccount(
-                    financialAccount.financial_accounts_id,
-                  )
+                  handleSelectFinancialAccount({
+                    financial_accounts_id:
+                      financialAccount.financial_accounts_id,
+                    total: financialAccount.total,
+                  })
                 }
               >
-                {financialAccount.name}
+                <p>{financialAccount.name}</p>
+                <p>{formattedValue(financialAccount.total)}</p>
               </div>
             ),
           )}

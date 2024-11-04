@@ -1,16 +1,19 @@
 import React from 'react';
 import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
 import { Input, Label } from '@components';
+import { get } from 'lodash';
 
 interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
   name: string;
+  placeholder?: string;
   inputType?: React.HTMLInputTypeAttribute;
   maxLength?: number;
   minLength?: number;
   min?: number;
   max?: number;
+  disabled?: boolean;
 }
 
 export const LabelInput: React.FC<Props> = ({
@@ -22,25 +25,34 @@ export const LabelInput: React.FC<Props> = ({
   minLength = 1,
   min = undefined,
   max = undefined,
+  placeholder,
+  disabled = false,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
+
+  const inputValue = get(values, name, '');
+
   const handleChange = onChange
     ? onChange
     : (e: React.ChangeEvent<HTMLInputElement>) =>
         setFieldValue(name, e.target.value);
 
   return (
-    <Label htmlFor={label}>
-      <span className={errors[name] && 'text-red-600'}> {label} :</span>
+    <Label htmlFor={label} className="ml-1">
+      <div className={get(errors, name) ? 'mb-1 text-red-600' : 'mb-1'}>
+        {label} :
+      </div>
       <Input
         onChange={handleChange}
         type={inputType}
-        value={values[name]}
-        className={errors[name] && 'border-red-600'}
+        value={inputValue}
+        placeholder={placeholder}
+        className={get(errors, name) ? 'border-red-600' : ''}
         maxLength={maxLength}
         minLength={minLength}
         min={min}
         max={max}
+        disabled={disabled}
       />
       <p className="my-1 h-1 text-xs text-red-600">
         <ErrorMessage name={name} />

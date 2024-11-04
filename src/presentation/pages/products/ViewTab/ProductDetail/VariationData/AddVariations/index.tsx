@@ -20,7 +20,7 @@ import {
   SheetTrigger,
 } from '@components';
 import { getAllVariations, linkVariation } from '@services';
-import { cn } from '@lib';
+import { cn } from '@utils';
 
 interface AddVariationsProps {
   product_id: Product['product_id'];

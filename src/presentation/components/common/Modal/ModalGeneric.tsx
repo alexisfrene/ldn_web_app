@@ -29,7 +29,7 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
             <CardContent className="grid grid-cols-3 gap-3">
               {item.values.map((data: any, index: number) => (
                 <Button
-                  key={data[selectedKey] + index}
+                  key={data.id + index}
                   variant="link"
                   className={`col-span-1 ${
                     currentSelection[selectedKey] === item[selectedKey] &&

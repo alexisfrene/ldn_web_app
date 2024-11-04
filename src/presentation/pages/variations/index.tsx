@@ -1,20 +1,19 @@
 import React from 'react';
-import { MenuTabs, TabsContent } from '@components';
-import { VariantsGrid } from './ViewTab';
-import { CreateVariation } from './CreateTab';
-const imageTabs = ['Ver imágenes', 'Crear Producto'];
+import { TabsComponent } from '@components';
+
+const VariationsTabs = [
+  {
+    path: '/app/variations/view',
+    label: 'Ver imágenes',
+  },
+  {
+    path: '/app/variations/create-variations',
+    label: 'Crear Variaciones',
+  },
+];
 
 const Variations: React.FC = () => {
-  return (
-    <MenuTabs tabs={imageTabs}>
-      <TabsContent value="Ver imágenes">
-        <VariantsGrid />
-      </TabsContent>
-      <TabsContent value="Crear Producto">
-        <CreateVariation />
-      </TabsContent>
-    </MenuTabs>
-  );
+  return <TabsComponent tabs={VariationsTabs} />;
 };
 
 export default Variations;

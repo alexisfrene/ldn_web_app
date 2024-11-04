@@ -9,7 +9,6 @@ export const MovementList: React.FC = () => {
     queryKey: ['movements'],
     queryFn: () => getAllMovements(),
   });
-
   if (movements.error) return 'An error has occurred: ';
 
   const skeletonItems = Array(8).fill(null);

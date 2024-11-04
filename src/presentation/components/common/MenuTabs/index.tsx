@@ -8,7 +8,7 @@ import {
   CardContent,
   CardHeader,
 } from '@components';
-import { cn } from '@lib';
+import { cn } from '@utils';
 
 interface Props {
   tabs: string[];

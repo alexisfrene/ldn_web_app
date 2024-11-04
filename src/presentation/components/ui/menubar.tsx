@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
 
-import { cn } from 'src/lib';
+import { cn } from '@utils';
 import { Icons } from '../common';
 
 const MenubarMenu = MenubarPrimitive.Menu;

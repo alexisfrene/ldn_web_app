@@ -1,4 +1,4 @@
-import { axiosInstance, axiosInstanceFormData } from '@src/lib';
+import { axiosInstance, axiosInstanceFormData } from '@utils';
 import { toast } from 'sonner';
 
 export const getAllVariations = async () => {

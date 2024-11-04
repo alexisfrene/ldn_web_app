@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { cn, fetchImage } from '@lib';
+import { cn, fetchImage } from '@utils';
 import { Skeleton } from '@presentation/components/ui';
 
 export const ImageLoader: React.FC<Props> = ({

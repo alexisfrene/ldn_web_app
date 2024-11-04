@@ -20,7 +20,7 @@ import { useModal } from '@hooks';
 import { ProductsGrid } from './ProductsGrid';
 import { ProductsTable } from './ProductTable';
 
-export const ProductGrid: React.FC = () => {
+const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
     useModal();
   const queryClient = useQueryClient();
@@ -88,3 +88,4 @@ export const ProductGrid: React.FC = () => {
     </div>
   );
 };
+export default ProductGrid;

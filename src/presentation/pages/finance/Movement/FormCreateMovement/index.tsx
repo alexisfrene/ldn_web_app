@@ -44,9 +44,10 @@ export const FormCreateMovement: React.FC = () => {
             financial_accounts_id: '' as UUID,
             entry_date: formatDate(new Date()),
             expense_id: '' as UUID,
+            debt_id: '' as UUID,
+            installment_id: 0,
           }}
           onSubmit={(values, formikHelpers) => {
-            // console.log(values.entry_date);
             mutation.mutate({
               financial_accounts_id: values.financial_accounts_id,
               label: values.label,
@@ -55,14 +56,19 @@ export const FormCreateMovement: React.FC = () => {
               value: values.value,
               entry_date: values.entry_date,
               expense_id: values.expense_id,
+              debt_id: values.debt_id,
+              installment_id: values.installment_id,
             });
             formikHelpers.resetForm();
           }}
         >
           {({ handleSubmit, isSubmitting, setFieldValue, values }) => (
             <form onSubmit={handleSubmit} className="min-h-[63vh]">
-              <LabelInput label="Descripción" name="label" />
-              <LabelInput label="Monto" name="value" inputType="number" />
+              <LabelInput
+                label="Descripción"
+                name="label"
+                placeholder="Venta de remeras ..."
+              />
               <LabelInput label="Fecha" name="entry_date" inputType="date" />
               <RadioGroup
                 defaultValue="inflow_of_money"
@@ -91,6 +97,12 @@ export const FormCreateMovement: React.FC = () => {
                   <Debt />
                 )}
               </div>
+              <LabelInput
+                label="Monto"
+                name="value"
+                inputType="number"
+                disabled={values.type === 'debt'}
+              />
               <Button
                 className="col-span-full"
                 type="submit"

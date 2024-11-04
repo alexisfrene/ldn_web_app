@@ -1,32 +1,17 @@
 import React from 'react';
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Icons,
-  Label,
-  LabelInput,
-  ScrollArea,
   Skeleton,
 } from '@components';
-import { Formik } from 'formik';
-
-import { Installments } from './FormCreateDebt/Installments';
-import { useLoading } from '@hooks';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createDebt, getDebts } from '@services';
+import { useQuery } from '@tanstack/react-query';
+import { getDebts } from '@services';
 import { FormCreateDebt } from './FormCreateDebt';
-import { formatDate } from '@utils';
+import { cn, formatDate } from '@utils';
+
 const Debts: React.FC = () => {
   const debts = useQuery({
     queryKey: ['debts'],
@@ -61,7 +46,10 @@ const Debts: React.FC = () => {
                   }) => (
                     <div
                       key={installment.installment_id}
-                      className="bg-slate-700 p-3"
+                      className={cn([
+                        'bg-slate-700 p-3',
+                        installment.status === 'paid' && 'bg-red-900',
+                      ])}
                     >
                       <p>
                         {installment.status === 'paid'

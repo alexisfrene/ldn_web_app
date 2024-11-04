@@ -39,6 +39,8 @@ export const createMovement = async ({
   financial_accounts_id,
   entry_date,
   expense_id,
+  debt_id,
+  installment_id,
 }: {
   label: string;
   value: number;
@@ -47,9 +49,10 @@ export const createMovement = async ({
   financial_accounts_id: UUID;
   entry_date: string;
   expense_id: UUID;
+  debt_id: UUID;
+  installment_id: number;
 }) => {
   try {
-    console.log(entry_date);
     const res = await axiosInstance.post('/movement', {
       label,
       value,
@@ -58,6 +61,8 @@ export const createMovement = async ({
       financial_accounts_id,
       entry_date,
       expense_id,
+      debt_id,
+      installment_id,
     });
     toast.success('Movimiento creado con éxito!');
 
@@ -196,11 +201,12 @@ export const createDebt = async ({
       name,
       total_debt,
       current_quota,
-      minimum_payment: minimum_payment,
+      minimum_payment,
       payment_frequency,
       installments,
       interest_rate,
     });
+
     return res;
   } catch (error) {
     toast.error('Ocurrió un error en create debt');

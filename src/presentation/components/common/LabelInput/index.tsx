@@ -7,11 +7,13 @@ interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
   name: string;
+  placeholder?: string;
   inputType?: React.HTMLInputTypeAttribute;
   maxLength?: number;
   minLength?: number;
   min?: number;
   max?: number;
+  disabled?: boolean;
 }
 
 export const LabelInput: React.FC<Props> = ({
@@ -23,6 +25,8 @@ export const LabelInput: React.FC<Props> = ({
   minLength = 1,
   min = undefined,
   max = undefined,
+  placeholder,
+  disabled = false,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
@@ -42,11 +46,13 @@ export const LabelInput: React.FC<Props> = ({
         onChange={handleChange}
         type={inputType}
         value={inputValue}
+        placeholder={placeholder}
         className={get(errors, name) ? 'border-red-600' : ''}
         maxLength={maxLength}
         minLength={minLength}
         min={min}
         max={max}
+        disabled={disabled}
       />
       <p className="my-1 h-1 text-xs text-red-600">
         <ErrorMessage name={name} />

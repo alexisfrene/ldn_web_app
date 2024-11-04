@@ -26,7 +26,7 @@ export const FormCreateMovement: React.FC = () => {
     mutationFn: createMovement,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['movements'],
+        queryKey: ['movements', 'finances', 'financial_account'],
       });
     },
   });
@@ -40,6 +40,15 @@ export const FormCreateMovement: React.FC = () => {
         <Formik
           initialValues={initialValues}
           onSubmit={(values, formikHelpers) => {
+            if (values.type !== 'inflow_of_money') {
+              if (values.total < values.value) {
+                formikHelpers.setSubmitting(false);
+                return formikHelpers.setFieldError(
+                  'value',
+                  `La cuenta no tiene el saldo suficiente , solo cuenta con $ ${values.total}`,
+                );
+              }
+            }
             mutation.mutate({
               financial_accounts_id: values.financial_accounts_id,
               label: values.label,
@@ -130,13 +139,14 @@ export const FormCreateMovement: React.FC = () => {
                 disabled={values.type === 'debt'}
               />
               <Button
-                className="col-span-full w-full"
+                className="col-span-full mt-3 w-full"
                 type="submit"
                 disabled={
                   isSubmitting ||
                   mutation.isPending ||
                   !values.financial_accounts_id.length ||
-                  !values.payment_method_id
+                  !values.payment_method_id ||
+                  !values.label
                 }
               >
                 {(isSubmitting || mutation.isPending) && (

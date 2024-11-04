@@ -10,4 +10,5 @@ export const initialValues = {
   expense_id: '' as UUID,
   debt_id: '' as UUID,
   installment_id: 0,
+  total: 0,
 };

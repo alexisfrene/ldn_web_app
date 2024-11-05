@@ -35,7 +35,7 @@ export const Installments: React.FC = () => {
           const dueDate = new Date(today);
           dueDate.setMonth(today.getMonth() + i);
           newInstallments.push({
-            amount: 0,
+            amount: 1,
             due_date: dueDate.toISOString().split('T')[0],
             status: 'unpaid',
           });

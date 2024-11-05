@@ -27,8 +27,13 @@ const Debts: React.FC = () => {
     <div>
       <FormCreateDebt />
       {debts?.data.map(
-        (debt: { name: string; notes: string; installments: [] }) => (
-          <Card>
+        (debt: {
+          name: string;
+          notes: string;
+          debt_id: UUID;
+          installments: [];
+        }) => (
+          <Card key={debt.debt_id}>
             <CardHeader>
               <CardTitle>Deuda : {debt.name}</CardTitle>
             </CardHeader>
@@ -45,7 +50,7 @@ const Debts: React.FC = () => {
                     due_date: string;
                   }) => (
                     <div
-                      key={installment.installment_id}
+                      key={`installment_${installment.installment_id}`}
                       className={cn([
                         'bg-slate-700 p-3',
                         installment.status === 'paid' && 'bg-red-900',

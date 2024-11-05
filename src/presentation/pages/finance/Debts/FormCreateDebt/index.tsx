@@ -20,6 +20,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createDebt } from '@services';
 import { paymentFrequency } from '@presentation/mocks';
 import { initialValues } from './initialValues';
+import { debtSchema } from './validations';
 
 export const FormCreateDebt: React.FC = () => {
   const queryClient = useQueryClient();
@@ -51,6 +52,7 @@ export const FormCreateDebt: React.FC = () => {
         </DialogHeader>
         <Formik
           initialValues={initialValues}
+          validationSchema={debtSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               mutation.mutate({
@@ -117,26 +119,30 @@ export const FormCreateDebt: React.FC = () => {
                 </div>
                 <Installments />
               </ScrollArea>
-              <div className="col-span-full mt-6 flex justify-center">
+              <div className="col-span-full mt-6 flex justify-center gap-3">
                 <DialogClose asChild>
                   <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 dark:text-black"
+                    type="button"
+                    variant="secondary"
+                    className="w-full max-w-sm rounded-lg px-6 py-3 shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
                   >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center space-x-2">
-                        <Icons
-                          type="refresh"
-                          className="h-5 w-5 animate-spin"
-                        />
-                        <span>Creando cuenta...</span>
-                      </div>
-                    ) : (
-                      'Crear cuenta'
-                    )}
+                    Cancelar
                   </Button>
                 </DialogClose>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 dark:text-black"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <Icons type="refresh" className="h-5 w-5 animate-spin" />
+                      <span>Creando cuenta...</span>
+                    </div>
+                  ) : (
+                    'Crear cuenta'
+                  )}
+                </Button>
               </div>
             </form>
           )}

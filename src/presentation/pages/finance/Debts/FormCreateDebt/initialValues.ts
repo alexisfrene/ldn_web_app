@@ -1,5 +1,5 @@
 export const initialValues = {
-  name: '',
+  name: 'Nueva deuda',
   payment_frequency: 'monthly',
   current_quota: 1,
   number_quota: 1,
@@ -7,5 +7,5 @@ export const initialValues = {
   notes: '',
   total_debt: 1,
   installments: [],
-  interest_rate: 0,
+  interest_rate: 1,
 };

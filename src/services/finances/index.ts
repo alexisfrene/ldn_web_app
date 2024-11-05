@@ -206,7 +206,7 @@ export const createDebt = async ({
       installments,
       interest_rate,
     });
-
+    toast.success('Deuda creada con éxito!');
     return res;
   } catch (error) {
     toast.error('Ocurrió un error en create debt');

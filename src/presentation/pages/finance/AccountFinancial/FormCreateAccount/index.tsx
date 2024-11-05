@@ -56,7 +56,7 @@ export const FormCreateAccount: React.FC = () => {
           <Icons type="plus_circle" className="dark:text-slate-300" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="h-[80vh] max-w-5xl">
+      <DialogContent className="max-w-5xl">
         <DialogHeader>
           <DialogTitle>Crear nueva cuenta financiera :</DialogTitle>
           <DialogDescription>
@@ -82,32 +82,32 @@ export const FormCreateAccount: React.FC = () => {
         >
           {({ handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-              <ScrollArea className="h-[60vh]">
-                <LabelInput label="Nombre de la cuenta" name="account" />
-                <Label className="font-semibold">
-                  Que métodos de pagos afectan a esta cuenta :
-                </Label>
-                <Card className="min-h-[70vh] border-none">
+              <ScrollArea className="h-[40vh]">
+                <div className="mx-3">
+                  <LabelInput label="Nombre de la cuenta" name="account" />
+                  <Label className="font-semibold">
+                    Que métodos de pagos afectan a esta cuenta :
+                  </Label>
+                </div>
+                <Card className="border-none">
                   <CardContent>
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button
-                          type="button"
-                          size="icon"
-                          className="bg-green-100 hover:bg-green-300"
-                        >
-                          <Icons type="plus_circle" />
-                        </Button>
+                        <Label className="my-3 flex items-center gap-3 align-middle text-slate-400">
+                          <p>
+                            O puedes crear un método nuevo presionando aquí :
+                          </p>
+                          <Button
+                            type="button"
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-full"
+                          >
+                            <Icons type="plus_circle" height={35} />
+                          </Button>
+                        </Label>
                       </DialogTrigger>
-                      <DialogContent className="h-96">
-                        <DialogHeader>
-                          <DialogTitle>
-                            Crear nuevo método de pago :
-                          </DialogTitle>
-                        </DialogHeader>
-                        <DialogDescription>
-                          Aquí puede crear método de pago
-                        </DialogDescription>
+                      <DialogContent className="w-fit">
                         <FormCreatePaymentMethod />
                       </DialogContent>
                     </Dialog>
@@ -123,14 +123,19 @@ export const FormCreateAccount: React.FC = () => {
                           ) => (
                             <div
                               key={index}
-                              className="w-32 rounded-sm bg-slate-700 py-3 text-center align-middle"
+                              className="w-32 rounded-md bg-amber-200 p-4 text-center shadow-md dark:bg-slate-700"
                             >
-                              <Field
-                                type="checkbox"
-                                name="payment_method"
-                                value={account.payment_method_id.toString()}
-                              />
-                              {account.name}
+                              <label className="flex flex-col items-center space-y-2">
+                                <Field
+                                  type="checkbox"
+                                  name="payment_method"
+                                  value={account.payment_method_id.toString()}
+                                  className="h-5 w-5 cursor-pointer rounded-md text-blue-600 focus:ring-2 focus:ring-blue-500"
+                                />
+                                <span className="text-sm font-medium text-slate-800 dark:text-white">
+                                  {account.name}
+                                </span>
+                              </label>
                             </div>
                           ),
                         )}

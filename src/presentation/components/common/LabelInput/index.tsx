@@ -47,7 +47,11 @@ export const LabelInput: React.FC<Props> = ({
         type={inputType}
         value={inputValue}
         placeholder={placeholder}
-        className={get(errors, name) ? 'border-red-600' : ''}
+        className={
+          get(errors, name)
+            ? 'border-red-600 ring-0 focus-visible:ring-0 focus-visible:ring-ring'
+            : ''
+        }
         maxLength={maxLength}
         minLength={minLength}
         min={min}

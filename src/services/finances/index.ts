@@ -24,6 +24,7 @@ export const createPaymentMethod = async (data: { name: string }) => {
     const res = await axiosInstance.post('/payment_methods', {
       name: data.name,
     });
+    toast.success('Método de pago creado con éxito !');
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al crear una payment_methods');
@@ -48,9 +49,9 @@ export const createMovement = async ({
   payment_method_id: number | null;
   financial_accounts_id: UUID;
   entry_date: string;
-  expense_id: UUID;
-  debt_id: UUID;
-  installment_id: number;
+  expense_id?: UUID;
+  debt_id?: UUID;
+  installment_id?: number;
 }) => {
   try {
     const res = await axiosInstance.post('/movement', {
@@ -195,6 +196,14 @@ export const createDebt = async ({
   installments: { amount: number; due_date: string; status: string }[];
   interest_rate: number;
 }) => {
+  const formatterInstallments = installments.map((installment) => {
+    return {
+      amount: Number(installment.amount),
+      due_date: installment.due_date,
+      status: installment.status,
+    };
+  });
+
   try {
     const res = await axiosInstance.post('/debt', {
       notes,
@@ -203,7 +212,7 @@ export const createDebt = async ({
       current_quota,
       minimum_payment,
       payment_frequency,
-      installments,
+      installments: formatterInstallments,
       interest_rate,
     });
     toast.success('Deuda creada con éxito!');

@@ -19,6 +19,7 @@ import { SelectPaymentMethod } from './SelectPaymentMethod';
 import { SelectTag } from './SelectTag';
 import { SelectDebt } from './SelectDebt';
 import { initialValues } from './initialValues';
+import { movementSchema } from './validations';
 
 export const FormCreateMovement: React.FC = () => {
   const queryClient = useQueryClient();
@@ -39,6 +40,7 @@ export const FormCreateMovement: React.FC = () => {
       <CardContent>
         <Formik
           initialValues={initialValues}
+          validationSchema={movementSchema}
           onSubmit={(values, formikHelpers) => {
             if (values.type !== 'inflow_of_money') {
               if (values.total < values.value) {
@@ -51,14 +53,14 @@ export const FormCreateMovement: React.FC = () => {
             }
             mutation.mutate({
               financial_accounts_id: values.financial_accounts_id,
-              label: values.label,
+              label: values.label || 'Sin nombre',
               payment_method_id: values.payment_method_id,
               type: values.type,
               value: values.value,
               entry_date: values.entry_date,
-              expense_id: values.expense_id,
-              debt_id: values.debt_id,
-              installment_id: values.installment_id,
+              expense_id: values.expense_id || undefined,
+              debt_id: values.debt_id || undefined,
+              installment_id: values.installment_id || undefined,
             });
             formikHelpers.resetForm();
           }}

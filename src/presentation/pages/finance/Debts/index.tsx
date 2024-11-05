@@ -52,8 +52,9 @@ const Debts: React.FC = () => {
                     <div
                       key={`installment_${installment.installment_id}`}
                       className={cn([
-                        'bg-slate-700 p-3',
-                        installment.status === 'paid' && 'bg-red-900',
+                        'bg-slate-200 p-3 dark:bg-slate-700',
+                        installment.status === 'paid' &&
+                          'bg-red-900 dark:bg-red-950',
                       ])}
                     >
                       <p>

@@ -58,7 +58,7 @@ const Debts: React.FC = () => {
                       className={cn([
                         'rounded-md bg-slate-200 p-3 dark:bg-slate-700',
                         installment.status === 'paid' &&
-                          'bg-red-900 dark:bg-red-950',
+                          'bg-rose-600/60 dark:bg-red-950',
                       ])}
                     >
                       <p>Cuota numero {index + 1}</p>

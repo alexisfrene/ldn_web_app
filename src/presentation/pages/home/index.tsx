@@ -5,7 +5,7 @@ import { Icons, Layout, LoadingIndicator, ScrollArea } from '@components';
 import { cn } from '@utils';
 
 const tabsStyles =
-  'h-8 sm:h-6 md:h-8 lg:h-10 xl:16 2xl:h-16 dark:text-slate-200';
+  'h-8 sm:h-6 md:h-8 lg:h-10 xl:16 2xl:h-16 dark:text-slate-200 text-slate-100';
 
 const HomePage: React.FC = () => {
   const session_token = useSessionStore((state) => state.session_token);
@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
                 }
               >
                 <div>{icon}</div>
-                <span className="hidden text-sm font-medium dark:text-slate-200 lg:block">
+                <span className="hidden text-sm font-medium text-slate-100 dark:text-slate-200 lg:block">
                   {title}
                 </span>
               </NavLink>

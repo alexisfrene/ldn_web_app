@@ -185,7 +185,7 @@ export const createDebt = async ({
   minimum_payment: minimum_payment,
   payment_frequency,
   installments,
-  interest_rate,
+  money_to_receive,
 }: {
   notes: string;
   name: string;
@@ -194,7 +194,7 @@ export const createDebt = async ({
   minimum_payment: number;
   payment_frequency: string;
   installments: { amount: number; due_date: string; status: string }[];
-  interest_rate: number;
+  money_to_receive: number;
 }) => {
   const formatterInstallments = installments.map((installment) => {
     return {
@@ -208,12 +208,12 @@ export const createDebt = async ({
     const res = await axiosInstance.post('/debt', {
       notes,
       name,
-      total_debt,
+      total_debt: Number(total_debt),
       current_quota,
-      minimum_payment,
+      minimum_payment: Number(minimum_payment),
       payment_frequency,
       installments: formatterInstallments,
-      interest_rate,
+      money_to_receive: Number(money_to_receive),
     });
     toast.success('Deuda creada con éxito!');
     return res;

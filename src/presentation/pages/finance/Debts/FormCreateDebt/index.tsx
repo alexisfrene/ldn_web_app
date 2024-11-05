@@ -1,4 +1,5 @@
 import React from 'react';
+import { Formik } from 'formik';
 import {
   Button,
   Dialog,
@@ -13,7 +14,6 @@ import {
   LabelInput,
   ScrollArea,
 } from '@components';
-import { Formik } from 'formik';
 
 import { Installments } from './Installments';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -21,6 +21,32 @@ import { createDebt } from '@services';
 import { paymentFrequency } from '@presentation/mocks';
 import { initialValues } from './initialValues';
 import { debtSchema } from './validations';
+import { calculateInterest } from '@utils';
+
+type InterestProps = {
+  totalAmountToPay: number;
+  amountReceived: number;
+  numberOfInstallments: number;
+};
+
+const CalculateInterest = ({
+  totalAmountToPay,
+  amountReceived,
+  numberOfInstallments,
+}: InterestProps) => {
+  const { effectiveInterestPerInstallment, totalInterest } = calculateInterest({
+    totalAmountToPay,
+    amountReceived,
+    numberOfInstallments,
+  });
+
+  return (
+    <div>
+      <p>Total de interés: {totalInterest.toFixed(2)}%</p>
+      <p>Interés por cuota : {effectiveInterestPerInstallment.toFixed(2)}%</p>
+    </div>
+  );
+};
 
 export const FormCreateDebt: React.FC = () => {
   const queryClient = useQueryClient();
@@ -32,6 +58,7 @@ export const FormCreateDebt: React.FC = () => {
       });
     },
   });
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -63,7 +90,7 @@ export const FormCreateDebt: React.FC = () => {
                 installments: values.installments,
                 notes: values.notes,
                 total_debt: values.total_debt,
-                interest_rate: values.interest_rate,
+                money_to_receive: values.money_to_receive,
               });
             } finally {
               setSubmitting(false);
@@ -71,30 +98,37 @@ export const FormCreateDebt: React.FC = () => {
             }
           }}
         >
-          {({ handleSubmit, isSubmitting }) => (
+          {({ handleSubmit, isSubmitting, values }) => (
             <form onSubmit={handleSubmit}>
               <ScrollArea className="h-[60vh]">
                 <div className="grid grid-cols-3 gap-3">
                   <LabelInput label="Nombre de la cuenta" name="name" />
-                  <LabelInput
-                    label="Interés"
-                    name="interest_rate"
-                    inputType="number"
-                    min={1}
-                    max={1000}
-                  />
                   <LabelInput label="Agrega un nota de la deuda" name="notes" />
+                  <div className="-mt-1.5">
+                    <DropdownInput
+                      title="Elegir una frecuencia de pago"
+                      options={paymentFrequency}
+                      name="payment_frequency"
+                    />
+                  </div>
                   <LabelInput
-                    label="Pago mínimo"
-                    name="minimum_payment"
+                    label="Monto a recibir"
+                    name="money_to_receive"
                     inputType="number"
                     min={1}
+                    step="0.01"
                   />
                   <LabelInput
-                    label="Que cuota vas ?"
-                    name="current_quota"
+                    label="Cuanto es el total a pagar ?"
+                    name="total_debt"
                     inputType="number"
                     min={1}
+                    step="0.01"
+                  />
+                  <CalculateInterest
+                    totalAmountToPay={values.total_debt}
+                    amountReceived={values.money_to_receive}
+                    numberOfInstallments={values.number_quota}
                   />
                   <LabelInput
                     label="Total de cuotas"
@@ -104,18 +138,18 @@ export const FormCreateDebt: React.FC = () => {
                     max={72}
                   />
                   <LabelInput
-                    label="Cuanto es el total a pagar ?"
-                    name="total_debt"
+                    label="Que cuota vas ?"
+                    name="current_quota"
                     inputType="number"
                     min={1}
                   />
-                  <div className="-mt-1.5">
-                    <DropdownInput
-                      title="Elegir una frecuencia de pago"
-                      options={paymentFrequency}
-                      name="payment_frequency"
-                    />
-                  </div>
+                  <LabelInput
+                    label="Pago mínimo"
+                    name="minimum_payment"
+                    inputType="number"
+                    min={1}
+                    step="0.01"
+                  />
                 </div>
                 <Installments />
               </ScrollArea>

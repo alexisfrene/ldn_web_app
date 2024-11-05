@@ -3,6 +3,7 @@ import { useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import { getDebts } from '@services';
 import {
+  Badge,
   Button,
   Dialog,
   DialogClose,
@@ -12,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Label,
   ScrollArea,
 } from '@components';
 import { cn, formattedValue } from '@utils';
@@ -69,6 +71,7 @@ export const SelectDebt: React.FC = () => {
                 amount: number;
                 installment_id: number;
                 status: 'unpaid' | 'paid';
+                due_date: string;
               }[];
             }) => (
               <div
@@ -76,31 +79,49 @@ export const SelectDebt: React.FC = () => {
                 className={'mb-2 cursor-pointer rounded-md p-2'}
               >
                 {debt.name}
-                <div className="flex gap-3">
+                <div className="mt-3 flex gap-3">
                   {debt.installments.map((installment) => (
                     <div>
                       {installment.status === 'paid' ? (
-                        <p className="cursor-no-drop rounded-md bg-green-700 p-1">
-                          {formattedValue(installment.amount)}
-                        </p>
+                        <div className="flex h-20 cursor-no-drop flex-col items-center justify-center gap-3 rounded-md bg-slate-500 px-3 dark:bg-slate-900">
+                          <Label className="text-slate-600">
+                            {new Date(
+                              installment.due_date,
+                            ).toLocaleDateString()}
+                          </Label>
+                          <Badge
+                            className={
+                              'bg-slate-700 p-1 text-lg hover:bg-slate-800'
+                            }
+                          >
+                            {formattedValue(installment.amount)}
+                          </Badge>
+                        </div>
                       ) : (
-                        <p
-                          className={cn([
-                            'rounded-md bg-slate-700 p-1',
-                            selectedInstallmentId === installment.installment_id
-                              ? 'bg-blue-300 dark:bg-slate-700'
-                              : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800',
-                          ])}
-                          onClick={() =>
-                            handleSelectDebt({
-                              debt_id: debt.debt_id,
-                              installment_id: installment.installment_id,
-                              amount: installment.amount,
-                            })
-                          }
-                        >
-                          {formattedValue(installment.amount)}
-                        </p>
+                        <div className="flex h-20 flex-col items-center justify-center gap-3 rounded-md bg-slate-200 px-3 dark:bg-slate-700">
+                          <Label>
+                            {new Date(
+                              installment.due_date,
+                            ).toLocaleDateString()}
+                          </Label>
+                          <Badge
+                            className={cn([
+                              'bg-slate-300 p-1 text-lg',
+                              selectedInstallmentId ===
+                                installment.installment_id &&
+                                'bg-blue-300 dark:bg-slate-400',
+                            ])}
+                            onClick={() =>
+                              handleSelectDebt({
+                                debt_id: debt.debt_id,
+                                installment_id: installment.installment_id,
+                                amount: installment.amount,
+                              })
+                            }
+                          >
+                            {formattedValue(installment.amount)}
+                          </Badge>
+                        </div>
                       )}
                     </div>
                   ))}

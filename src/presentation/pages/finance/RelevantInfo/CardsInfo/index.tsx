@@ -20,9 +20,10 @@ export const CardsInfo: React.FC<Props> = ({ totalMonth }) => {
     <div className="mb-3 grid grid-cols-4 gap-3">
       {totalMonth.isPending ? (
         <>
-          <Skeleton className="h-[130px] w-[435px]" />
-          <Skeleton className="h-[130px] w-[435px]" />
-          <Skeleton className="h-[130px] w-[435px]" />
+          <Skeleton className="col-span-1" />
+          <Skeleton className="col-span-1" />
+          <Skeleton className="col-span-1" />
+          <Skeleton className="h-[130px] w-[320px]" />
         </>
       ) : (
         <>

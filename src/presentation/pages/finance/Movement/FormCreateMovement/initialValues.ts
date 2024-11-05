@@ -1,7 +1,7 @@
 import { formatDate } from '@utils';
 
 export const initialValues = {
-  label: null,
+  label: '',
   value: 0,
   type: 'inflow_of_money',
   payment_method_id: null,

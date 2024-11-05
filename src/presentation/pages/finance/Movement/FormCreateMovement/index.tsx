@@ -27,7 +27,13 @@ export const FormCreateMovement: React.FC = () => {
     mutationFn: createMovement,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['movements', 'finances', 'financial_account'],
+        queryKey: ['movements'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['finances'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['financial_account'],
       });
     },
   });

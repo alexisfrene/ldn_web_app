@@ -4,28 +4,22 @@ export const debtSchema = Yup.object().shape({
   name: Yup.string()
     .required('El nombre es obligatorio.')
     .max(50, 'El nombre debe tener como máximo 50 caracteres.'),
-
-  interest_rate: Yup.number()
-    .min(0, 'La tasa de interés debe ser un número mayor o igual a 0.')
-    .required('La tasa de interés es obligatoria.'),
-
+  money_to_receive: Yup.number()
+    .min(0, 'El monto recibido debe ser un número mayor o igual a 0.')
+    .required('El monto recibido es obligatoria.'),
   payment_frequency: Yup.string()
     .oneOf(
       ['monthly', 'bi-weekly', 'weekly'],
       'La frecuencia de pago debe ser "monthly", "bi-weekly" o "weekly".',
     )
     .required('La frecuencia de pago es obligatoria.'),
-
   minimum_payment: Yup.number()
     .min(0, 'El pago mínimo debe ser un número mayor o igual a 0.')
-    .nullable(), // Permite null para reflejar que es opcional
-
-  notes: Yup.string().nullable(), // Permite null para reflejar que es opcional
-
+    .nullable(),
+  notes: Yup.string().nullable(),
   total_debt: Yup.number()
     .min(0, 'La deuda total debe ser un número mayor o igual a 0.')
     .required('La deuda total es obligatoria.'),
-
   current_quota: Yup.number()
     .integer('La cuota actual debe ser un número entero.')
     .min(1, 'La cuota actual debe ser un número entero mayor o igual a 1.')

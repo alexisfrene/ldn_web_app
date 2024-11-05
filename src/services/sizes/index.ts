@@ -19,10 +19,6 @@ export const addSizeCollection = async (values: {
     const formatterValues = values.values.map((e) => {
       return { value: e.value };
     });
-    console.log({
-      title: values.title,
-      values: formatterValues,
-    });
     const res = await axiosInstance.post('/size', {
       title: values.title,
       values: formatterValues,

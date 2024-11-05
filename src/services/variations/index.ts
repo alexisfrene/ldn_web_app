@@ -89,7 +89,6 @@ export const removeImageCollection = async ({
   try {
     const formData = new FormData();
     const publicId = url.match(/\/variations\/([^/?]+)/);
-    console.log(publicId);
     const extractedNumber = publicId ? publicId[1] : null;
 
     if (extractedNumber) {

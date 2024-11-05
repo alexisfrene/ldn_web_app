@@ -7,5 +7,5 @@ export const initialValues = {
   notes: '',
   total_debt: 1,
   installments: [],
-  interest_rate: 1,
+  money_to_receive: 1,
 };

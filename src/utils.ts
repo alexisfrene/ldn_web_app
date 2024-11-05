@@ -225,3 +225,22 @@ export const calculateRgba = (color: string, opacity: number): string => {
 
   return `rgba(${rgbValues}, ${opacity})`;
 };
+type InterestProps = {
+  totalAmountToPay: number;
+  amountReceived: number;
+  numberOfInstallments: number;
+};
+export const calculateInterest = ({
+  totalAmountToPay,
+  amountReceived,
+  numberOfInstallments,
+}: InterestProps) => {
+  const totalInterest =
+    ((totalAmountToPay - amountReceived) / amountReceived) * 100;
+  const effectiveInterestPerInstallment =
+    (Math.pow(totalAmountToPay / amountReceived, 1 / numberOfInstallments) -
+      1) *
+    100;
+
+  return { totalInterest, effectiveInterestPerInstallment };
+};

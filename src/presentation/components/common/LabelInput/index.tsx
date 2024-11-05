@@ -14,6 +14,7 @@ interface Props {
   min?: number;
   max?: number;
   disabled?: boolean;
+  step?: string;
 }
 
 export const LabelInput: React.FC<Props> = ({
@@ -27,6 +28,7 @@ export const LabelInput: React.FC<Props> = ({
   max = undefined,
   placeholder,
   disabled = false,
+  step,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
@@ -57,6 +59,7 @@ export const LabelInput: React.FC<Props> = ({
         min={min}
         max={max}
         disabled={disabled}
+        step={step}
       />
       <p className="my-1 h-1 text-xs text-red-600">
         <ErrorMessage name={name} />

@@ -1,6 +1,5 @@
 export * from './DropDown';
 export * from './Loading';
-export * from './Snackbar';
 export * from './Modal';
 export * from './Layout';
 export * from './ImageLoader';

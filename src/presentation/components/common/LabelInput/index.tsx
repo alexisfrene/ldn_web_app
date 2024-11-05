@@ -1,7 +1,7 @@
 import React from 'react';
+import { get } from 'lodash';
 import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
 import { Input, Label } from '@components';
-import { get } from 'lodash';
 
 interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

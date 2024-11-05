@@ -1,8 +1,8 @@
 import React, { ReactNode, useEffect } from 'react';
-import logo from '@assets/ldn_icon-70x70.webp';
-import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
 import { useSessionStore } from '@global';
 import { getUrlAvatar } from '@services';
+import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
+import logo from '@assets/ldn_icon-70x70.webp';
 
 interface Props {
   children: ReactNode;

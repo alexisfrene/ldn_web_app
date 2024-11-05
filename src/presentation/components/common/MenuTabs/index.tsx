@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { cn } from '@utils';
 import {
   TabsList,
   Tabs,
@@ -8,7 +9,6 @@ import {
   CardContent,
   CardHeader,
 } from '@components';
-import { cn } from '@utils';
 
 interface Props {
   tabs: string[];

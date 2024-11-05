@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
+import { useModal } from '@hooks';
 import {
   Button,
   CardTitle,
@@ -8,7 +9,6 @@ import {
   ModalCategory,
   ModalSize,
 } from '@components';
-import { useModal } from '@hooks';
 
 export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   dataVist,

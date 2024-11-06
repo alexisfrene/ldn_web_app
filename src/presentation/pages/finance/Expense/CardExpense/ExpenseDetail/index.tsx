@@ -36,7 +36,9 @@ export const ExpenseDetail: React.FC<Props> = ({
   if (expenses.error) return 'An error has occurred: ';
   return (
     <Dialog>
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger className="w-full cursor-pointer">
+        {children}
+      </DialogTrigger>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
           <DialogTitle>

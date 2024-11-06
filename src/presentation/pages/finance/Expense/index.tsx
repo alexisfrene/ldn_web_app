@@ -1,12 +1,9 @@
 import React from 'react';
-
 import { Skeleton } from '@components';
 import { getExpenses } from '@services';
 import { useQuery } from '@tanstack/react-query';
-
 import { CardExpense } from './CardExpense';
 import { FormCreateExpense } from './FormCreateExpense';
-import { ExpenseDetail } from './ExpenseDetail';
 
 const Expense: React.FC = () => {
   const expenses = useQuery({
@@ -33,17 +30,16 @@ const Expense: React.FC = () => {
             money_outflow_month: number;
             count_movements_month: number;
           }) => (
-            <ExpenseDetail name={expense.name} expense_id={expense.expense_id}>
-              <CardExpense
-                count_movements={expense.count_movements}
-                count_movements_month={expense.count_movements_month}
-                description={expense.description}
-                expense_id={expense.expense_id}
-                money_outflow={expense.money_outflow}
-                money_outflow_month={expense.money_outflow_month}
-                name={expense.name}
-              />
-            </ExpenseDetail>
+            <CardExpense
+              count_movements={expense.count_movements}
+              count_movements_month={expense.count_movements_month}
+              description={expense.description}
+              expense_id={expense.expense_id}
+              money_outflow={expense.money_outflow}
+              money_outflow_month={expense.money_outflow_month}
+              name={expense.name}
+              key={expense.expense_id}
+            />
           ),
         )}
       </div>

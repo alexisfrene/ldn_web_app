@@ -114,3 +114,4 @@ package-lock.json
 .idea
 
 stats.html
+.env.production

@@ -43,7 +43,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   });
   return (
     <Card
-      className="bg-gradient-to-br from-emerald-500 to-emerald-200 dark:from-teal-700 dark:to-green-600"
+      className="bg-gradient-to-br from-amber-500/30 to-emerald-200 dark:from-teal-700 dark:to-green-600"
       key={financial_accounts_id}
     >
       <CardHeader>
@@ -87,7 +87,10 @@ export const FinancialAccountCard: React.FC<Props> = ({
         <div className="flex flex-wrap justify-between gap-1">
           {paymentMethods &&
             paymentMethods.map((paymentMethod) => (
-              <Badge key={paymentMethod.payment_method_id}>
+              <Badge
+                key={paymentMethod.payment_method_id}
+                className="bg-emerald-500/70 dark:bg-emerald-200"
+              >
                 {paymentMethod.name}
               </Badge>
             ))}

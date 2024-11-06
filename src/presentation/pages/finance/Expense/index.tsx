@@ -1,8 +1,7 @@
+import React from 'react';
+
 import {
   Button,
-  Card,
-  CardHeader,
-  CardTitle,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -16,7 +15,8 @@ import {
 import { createExpense, getExpenses } from '@services';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
-import React from 'react';
+
+import { CardExpense } from './CardExpense';
 
 const Expense: React.FC = () => {
   const queryClient = useQueryClient();
@@ -41,7 +41,9 @@ const Expense: React.FC = () => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline">Crear etiqueta de gasto</Button>
+          <Button variant="outline" className="my-3">
+            Crear etiqueta de gasto
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <Formik
@@ -56,8 +58,9 @@ const Expense: React.FC = () => {
                 <DialogHeader>
                   <DialogTitle>Crear etiqueta de gasto</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you're
-                    done.
+                    Este formulario es la creación de una nueva categoría de
+                    gastos , por ejemplos Gastos Varios , Gastos del Auto ,
+                    etc...
                   </DialogDescription>
                 </DialogHeader>
                 <LabelInput label="Nombre" name="name" />
@@ -72,15 +75,24 @@ const Expense: React.FC = () => {
       </Dialog>
       <div className="grid grid-cols-2 gap-3">
         {expenses.data.map(
-          (expense: { description: string; expense_id: string }) => (
-            <Card
-              key={expense.expense_id}
-              className="bg-gradient-to-br from-rose-500 to-pink-300 dark:from-rose-700 dark:to-pink-700"
-            >
-              <CardHeader>
-                <CardTitle>{expense.description}</CardTitle>
-              </CardHeader>
-            </Card>
+          (expense: {
+            description: string;
+            expense_id: string;
+            name: string;
+            money_outflow: number;
+            count_movements: number;
+            money_outflow_month: number;
+            count_movements_month: number;
+          }) => (
+            <CardExpense
+              count_movements={expense.count_movements}
+              count_movements_month={expense.count_movements_month}
+              description={expense.description}
+              expense_id={expense.expense_id}
+              money_outflow={expense.money_outflow}
+              money_outflow_month={expense.money_outflow_month}
+              name={expense.name}
+            />
           ),
         )}
       </div>

@@ -17,12 +17,13 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
       <CardHeader>
         <div
           className={cn(
-            'flex justify-between rounded-lg px-6 py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60',
+            'rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60',
             bgColor || 'bg-amber-300/90 ring-amber-400/50',
+            `grid grid-cols-${tabs.length}`,
           )}
         >
           {tabs.map((tab, index) => (
-            <div key={index} className="flex-grow">
+            <div key={index} className="col-span-1">
               <NavLink
                 to={tab.path}
                 className={(data) =>

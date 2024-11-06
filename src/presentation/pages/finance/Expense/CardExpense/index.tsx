@@ -1,3 +1,5 @@
+import React from 'react';
+import { formattedValue } from '@utils';
 import {
   Card,
   CardContent,
@@ -7,12 +9,11 @@ import {
   Label,
   Separator,
 } from '@components';
-import { formattedValue } from '@utils';
-import React from 'react';
+import { FormEditExpense } from './FormEditExpense';
 
 interface Props {
   description: string;
-  expense_id: string;
+  expense_id: UUID;
   name: string;
   money_outflow: number;
   count_movements: number;
@@ -32,11 +33,22 @@ export const CardExpense: React.FC<Props> = ({
   return (
     <Card
       key={expense_id}
-      className="bg-gradient-to-br from-amber-400/70 to-pink-300 dark:from-rose-700 dark:to-pink-700"
+      className="cursor-pointer bg-gradient-to-br from-amber-400/70 to-pink-300 transition delay-200 duration-300 ease-out hover:scale-[1.02] hover:from-amber-400/50 hover:to-pink-300 dark:from-pink-800/70 dark:to-slate-900/90 dark:hover:bg-red-900"
     >
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{description || ''}</CardDescription>
+        <CardTitle>
+          <div className="flex justify-between">
+            <p>{name}</p>
+            <FormEditExpense
+              description={description}
+              name={name}
+              expense_id={expense_id}
+            />
+          </div>
+        </CardTitle>
+        <CardDescription className="text-left">
+          {description || ''}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-between">

@@ -233,3 +233,36 @@ export const getDebts = async () => {
     console.error('ERROR IN getDebts:', error);
   }
 };
+
+export const editExpense = async ({
+  name,
+  description,
+  expense_id,
+}: {
+  name?: string;
+  description?: string;
+  expense_id: UUID;
+}) => {
+  try {
+    const res = await axiosInstance.patch(`/expenses/${expense_id}`, {
+      name,
+      description,
+    });
+
+    return res.data;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una editExpense');
+    console.error('ERROR IN editExpense:', error);
+  }
+};
+
+export const getExpenseById = async ({ expense_id }: { expense_id: UUID }) => {
+  try {
+    const res = await axiosInstance.get(`/expenses/${expense_id}`);
+
+    return res.data;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una getExpenseById');
+    console.error('ERROR IN getExpenseById:', error);
+  }
+};

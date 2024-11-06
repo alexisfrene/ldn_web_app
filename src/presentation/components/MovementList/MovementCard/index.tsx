@@ -36,7 +36,10 @@ export const MovementCard: React.FC<MovementCardProps> = ({
   const queryClient = useQueryClient();
   const deleteMutation = useMutation({
     mutationFn: deleteMovement,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['movements'] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['movements'] });
+      queryClient.invalidateQueries({ queryKey: ['expenses'] });
+    },
   });
 
   const isMoneyInflow = type === 'inflow_of_money';

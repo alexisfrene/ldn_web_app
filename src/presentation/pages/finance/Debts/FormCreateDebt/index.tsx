@@ -62,12 +62,8 @@ export const FormCreateDebt: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          type="button"
-          size="icon"
-          className="bg-green-100 hover:bg-green-300 dark:bg-slate-600 dark:hover:bg-slate-500"
-        >
-          <Icons type="plus_circle" className="dark:text-slate-300" />
+        <Button type="button" variant="ghost">
+          Crear nueva deuda
         </Button>
       </DialogTrigger>
       <DialogContent className="h-[80vh] max-w-5xl">

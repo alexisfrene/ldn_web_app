@@ -90,7 +90,6 @@ export const FormEditExpense: React.FC<Props> = ({
                   </Button>
                 </DialogClose>
               </DialogFooter>
-
               <LoadingIndicator isLoading={isSubmitting} />
             </Form>
           )}

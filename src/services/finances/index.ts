@@ -158,7 +158,7 @@ export const createExpense = async ({
 }) => {
   try {
     const res = await axiosInstance.post('/expenses', { name, description });
-
+    toast.success('Gasto creado con éxito!');
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al crear una createExpense');
@@ -262,7 +262,17 @@ export const getExpenseById = async ({ expense_id }: { expense_id: UUID }) => {
 
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una getExpenseById');
     console.error('ERROR IN getExpenseById:', error);
+  }
+};
+
+export const deleteExpense = async (expense_id: UUID) => {
+  try {
+    const res = await axiosInstance.delete(`/expenses/${expense_id}`);
+    toast.success('Gasto eliminado con éxito!');
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una deleteExpense');
+    console.error('ERROR IN deleteExpense:', error);
   }
 };

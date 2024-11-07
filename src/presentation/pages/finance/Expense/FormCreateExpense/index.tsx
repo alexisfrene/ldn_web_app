@@ -5,6 +5,7 @@ import { createExpense } from '@services';
 import {
   Button,
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -52,7 +53,9 @@ export const FormCreateExpense: React.FC = () => {
               <LabelInput label="Nombre" name="name" />
               <LabelInput label="Descripción" name="description" />
               <DialogFooter>
-                <Button type="submit">Crear</Button>
+                <DialogClose>
+                  <Button type="submit">Crear</Button>
+                </DialogClose>
               </DialogFooter>
             </form>
           )}

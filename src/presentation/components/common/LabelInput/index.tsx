@@ -41,7 +41,7 @@ export const LabelInput: React.FC<Props> = ({
 
   return (
     <Label htmlFor={label} className="ml-1">
-      <div className={get(errors, name) ? 'mb-1 text-red-600' : 'mb-1'}>
+      <div className={get(errors, name) ? 'mb-1.5 text-red-600' : 'mb-1.5'}>
         {label} :
       </div>
       <Input

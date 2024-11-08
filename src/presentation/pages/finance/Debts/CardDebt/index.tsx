@@ -9,6 +9,8 @@ import {
 } from '@components';
 
 import { cn, formattedValue } from '@utils';
+import { CardInstallment } from './CardInstallment';
+import { FormEditDebt } from './FormEditDebt';
 
 interface Props {
   debt_id: UUID;
@@ -31,35 +33,25 @@ export const CardDebt: React.FC<Props> = ({
   return (
     <Card
       key={debt_id}
-      className="bg-gradient-to-br from-amber-400/70 to-pink-300 transition delay-200 duration-300 ease-out hover:from-amber-400/50 hover:to-pink-300 dark:from-pink-800/70 dark:to-slate-900/90 dark:hover:bg-red-900"
+      className="my-3 bg-gradient-to-br from-amber-400/70 to-pink-300 transition delay-75 duration-300 ease-out hover:from-amber-400/50 hover:to-pink-300 dark:from-slate-900 dark:to-gray-700/60 dark:hover:bg-slate-700"
     >
       <CardHeader>
-        <CardTitle>Deuda : {name}</CardTitle>
+        <CardTitle className="flex justify-between">
+          <p>Deuda : {name}</p>
+          <FormEditDebt debt_id={debt_id} />
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <CardDescription>Notas : {notes || 'Sin Notas'}</CardDescription>
         <div className="mt-3 grid grid-cols-4 gap-3">
           {installments.map((installment, index) => (
-            <div
-              key={`installment_${installment.installment_id}`}
-              className={cn([
-                'rounded-md bg-slate-200 p-3 dark:bg-slate-700',
-                installment.status === 'paid' &&
-                  'bg-rose-600/60 dark:bg-red-950',
-              ])}
-            >
-              <p>Cuota numero {index + 1}</p>
-              <Separator />
-              <p>{installment.status === 'paid' ? 'Ya pagado' : 'Sin Pagar'}</p>
-              <Separator />
-              <p>Monto : {formattedValue(installment.amount)}</p>
-              <Separator />
-              <p>
-                Fecha de vencimiento :
-                {new Date(installment.due_date).toLocaleDateString()}
-              </p>
-              <Separator />
-            </div>
+            <CardInstallment
+              installment_id={installment.installment_id}
+              amount={installment.amount}
+              due_date={installment.due_date}
+              quota_number={index}
+              status={installment.status}
+            />
           ))}
         </div>
       </CardContent>

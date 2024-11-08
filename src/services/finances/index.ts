@@ -276,3 +276,50 @@ export const deleteExpense = async (expense_id: UUID) => {
     console.error('ERROR IN deleteExpense:', error);
   }
 };
+
+export const editDebt = async ({
+  debt_id,
+  name,
+  notes,
+  current_quota,
+  minimum_payment,
+  money_to_receive,
+  payment_frequency,
+  total_debt,
+}: {
+  debt_id: UUID;
+  name: string;
+  notes: string;
+  current_quota: number;
+  minimum_payment: number;
+  money_to_receive: number;
+  payment_frequency: string;
+  total_debt: number;
+}) => {
+  try {
+    const res = await axiosInstance.patch(`/debt/${debt_id}`, {
+      name,
+      notes,
+      current_quota,
+      minimum_payment,
+      money_to_receive,
+      payment_frequency,
+      total_debt,
+    });
+    toast.success('Gasto editado con éxito!');
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una editDebt');
+    console.error('ERROR IN deleteExpense:', error);
+  }
+};
+
+export const getDebtById = async ({ debt_id }: { debt_id: UUID }) => {
+  try {
+    const res = await axiosInstance.get(`/debt/${debt_id}`);
+
+    return res.data;
+  } catch (error) {
+    console.error('ERROR IN getDebtById:', error);
+  }
+};

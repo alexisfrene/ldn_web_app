@@ -12,18 +12,17 @@ interface TabsProps {
 }
 
 export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
+  const tabsStyles = cn(
+    `flex`,
+    'rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60',
+    bgColor || 'bg-amber-300/90 ring-amber-400/50',
+  );
   return (
     <Card className="border-none">
       <CardHeader>
-        <div
-          className={cn(
-            'rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60',
-            bgColor || 'bg-amber-300/90 ring-amber-400/50',
-            `grid grid-cols-${tabs.length}`,
-          )}
-        >
+        <div className={tabsStyles}>
           {tabs.map((tab, index) => (
-            <div key={index} className="col-span-1">
+            <div key={index} className={cn([`flex-grow basis-96`])}>
               <NavLink
                 to={tab.path}
                 className={(data) =>

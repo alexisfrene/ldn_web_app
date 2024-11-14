@@ -20,6 +20,7 @@ import { editDebt, getDebtById } from '@services';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLoading } from '@hooks';
 import { paymentFrequency } from '@presentation/mocks';
+import { CalculateInterest } from '../../CalculateInterest';
 
 interface Props {
   debt_id: UUID;
@@ -64,6 +65,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
     doneLoading();
   }
   if (error) return 'An error has occurred: ';
+  console.log(debt);
   return (
     <Dialog>
       <DialogTrigger>
@@ -73,7 +75,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
           className="cursor-pointer hover:scale-105"
         />
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-3xl">
         <DialogHeader>
           <DialogTitle>Editar los valores de : </DialogTitle>
           <DialogDescription>
@@ -91,6 +93,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
             money_to_receive: debt.money_to_receive,
             payment_frequency: debt.payment_frequency,
             total_debt: debt.total_debt,
+            number_quota: debt.installments.length,
           }}
           onSubmit={(
             {
@@ -119,7 +122,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
             resetForm();
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, values }) => (
             <Form>
               <div className="grid grid-cols-3 gap-3">
                 <LabelInput label="Nombre de la cuenta" name="name" />
@@ -145,11 +148,11 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
                   min={1}
                   step="0.01"
                 />
-                {/* <CalculateInterest
-                    totalAmountToPay={values.total_debt}
-                    amountReceived={values.money_to_receive}
-                    numberOfInstallments={values.number_quota}
-                  /> */}
+                <CalculateInterest
+                  totalAmountToPay={values.total_debt}
+                  amountReceived={values.money_to_receive}
+                  numberOfInstallments={values.number_quota}
+                />
                 <LabelInput
                   label="Total de cuotas"
                   name="number_quota"

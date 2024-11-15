@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton } from '@components';
+import { Icons, Label, Skeleton } from '@components';
 import { useQuery } from '@tanstack/react-query';
 import { getDebts } from '@services';
 import { FormCreateDebt } from './FormCreateDebt';
@@ -19,20 +19,30 @@ const Debts: React.FC = () => {
   return (
     <div>
       <FormCreateDebt />
-      {debts?.data.map(
-        (debt: {
-          name: string;
-          notes: string;
-          debt_id: UUID;
-          installments: [];
-        }) => (
-          <CardDebt
-            debt_id={debt.debt_id}
-            installments={debt.installments}
-            name={debt.name}
-            notes={debt.notes}
-          />
-        ),
+      {debts?.data.length ? (
+        debts?.data.map(
+          (debt: {
+            name: string;
+            notes: string;
+            debt_id: UUID;
+            installments: [];
+          }) => (
+            <CardDebt
+              debt_id={debt.debt_id}
+              installments={debt.installments}
+              name={debt.name}
+              notes={debt.notes}
+              key={debt.debt_id}
+            />
+          ),
+        )
+      ) : (
+        <div className="mx-auto mt-20 flex w-full flex-col justify-center">
+          <Icons type="wrench_screwdriver" height={250} className="m-3 p-10" />
+          <Label className="text-center text-2xl">
+            No hay deudas que mostrar ...
+          </Label>
+        </div>
       )}
     </div>
   );

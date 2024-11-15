@@ -1,4 +1,4 @@
-import { axiosInstance } from '@utils';
+import { axiosInstance, formatDate } from '@utils';
 import { toast } from 'sonner';
 
 export const createFinancialAccount = async (data: {
@@ -310,7 +310,7 @@ export const editDebt = async ({
     return res;
   } catch (error) {
     toast.error('Ocurrió un error al crear una editDebt');
-    console.error('ERROR IN deleteExpense:', error);
+    console.error('ERROR IN editDebt:', error);
   }
 };
 
@@ -321,5 +321,51 @@ export const getDebtById = async ({ debt_id }: { debt_id: UUID }) => {
     return res.data;
   } catch (error) {
     console.error('ERROR IN getDebtById:', error);
+  }
+};
+
+export const deleteDebt = async (debt_id: UUID) => {
+  try {
+    const res = await axiosInstance.delete(`/debt/${debt_id}`);
+    toast.success('deleteDebt eliminado con éxito!');
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una deleteDebt');
+    console.error('ERROR IN deleteDebt:', error);
+  }
+};
+
+export const markPaidDebt = async ({
+  label,
+  value,
+  payment_method_id,
+  financial_accounts_id,
+  debt_id,
+  installment_id,
+}: {
+  label: string;
+  value: number;
+  payment_method_id: number | null;
+  financial_accounts_id: UUID;
+  debt_id: UUID;
+  installment_id: number;
+}) => {
+  try {
+    const res = await createMovement({
+      label: `Pago a ${label}`,
+      value,
+      type: 'debt',
+      payment_method_id,
+      financial_accounts_id,
+      entry_date: formatDate(new Date()),
+      debt_id,
+      installment_id,
+    });
+    console.log(res);
+    toast.success('markPaidDebt con éxito!');
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una markPaidDebt');
+    console.error('ERROR IN markPaidDebt:', error);
   }
 };

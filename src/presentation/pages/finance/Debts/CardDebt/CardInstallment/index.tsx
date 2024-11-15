@@ -1,3 +1,6 @@
+import React from 'react';
+import { Formik } from 'formik';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Card,
   CardContent,
@@ -5,16 +8,27 @@ import {
   CardHeader,
   CardTitle,
   Label,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  Button,
 } from '@components';
+import { SelectFinancialAccount } from '@presentation/pages/finance/SelectFinancialAccount';
+import { SelectPaymentMethod } from '@presentation/pages/finance/SelectPaymentMethod';
+import { markPaidDebt } from '@services';
 import { cn, formattedValue } from '@utils';
-import React from 'react';
-
 interface Props {
   installment_id: number;
   quota_number: number;
   amount: number;
   due_date: string;
   status: string;
+  debt_id: string;
+  debt_name: string;
 }
 
 const statusColors = {
@@ -29,30 +43,118 @@ export const CardInstallment: React.FC<Props> = ({
   amount,
   due_date,
   status,
+  debt_id,
+  debt_name,
 }) => {
   const cardStatus = status === 'paid' ? 'paid' : 'pending';
-
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: markPaidDebt,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['debts', debt_id],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['debts'],
+      });
+    },
+  });
   return (
-    <Card
-      key={`installment_${installment_id}`}
-      className={cn([statusColors[cardStatus]])}
-    >
-      <CardHeader>
-        <CardTitle>Cuota número {quota_number + 1}</CardTitle>
-        <CardDescription>
-          {status === 'paid' ? 'Ya pagado' : 'Sin Pagar'}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center justify-between">
-          <Label>Monto:</Label>
-          <p>{formattedValue(amount)}</p>
-        </div>
-        <div className="flex items-center justify-between">
-          <Label>Fecha de vencimiento:</Label>
-          <p>{new Date(due_date).toLocaleDateString()}</p>
-        </div>
-      </CardContent>
-    </Card>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card key={installment_id} className={cn([statusColors[cardStatus]])}>
+          <CardHeader>
+            <CardTitle>Cuota número {quota_number + 1}</CardTitle>
+            <CardDescription>
+              {status === 'paid' ? 'Ya pagado' : 'Sin Pagar'}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <Label>Monto:</Label>
+              <p>{formattedValue(amount)}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <Label>Fecha de vencimiento:</Label>
+              <p>{new Date(due_date).toLocaleDateString()}</p>
+            </div>
+          </CardContent>
+        </Card>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Cuota número {quota_number + 1}</DialogTitle>
+          <DialogDescription>
+            Esta cuota se encenta con el estado de :
+            <div className="text-lg font-semibold">
+              {status === 'paid' ? 'Pagado' : 'Sin pagar'}
+            </div>
+          </DialogDescription>
+        </DialogHeader>
+        <Formik
+          initialValues={{
+            financial_accounts_id: '' as UUID,
+            total: 0,
+            payment_method_id: null,
+            value: amount,
+            debt_id: debt_id as UUID,
+            installment_id,
+            debt_name,
+          }}
+          onSubmit={(values, formikHelpers) => {
+            mutation.mutate({
+              debt_id: values.debt_id,
+              financial_accounts_id: values.financial_accounts_id,
+              installment_id: values.installment_id,
+              label: values.debt_name,
+              payment_method_id: values.payment_method_id,
+              value: values.value,
+            });
+            formikHelpers.resetForm();
+          }}
+        >
+          {({ handleSubmit, isSubmitting, values }) => (
+            <form onSubmit={handleSubmit} className="min-h-52">
+              <div>Monto : {formattedValue(amount)}</div>
+              <div>
+                Fecha de vencimiento : {new Date(due_date).toLocaleDateString()}
+              </div>
+              {status === 'unpaid' && (
+                <div>
+                  <div className="mt-3 grid grid-cols-2 gap-3">
+                    <Label className="my-auto">
+                      Cuenta donde saldrá el dinero :
+                    </Label>
+                    <SelectFinancialAccount />
+                    <Label className="my-auto">Método de pago :</Label>
+                    <SelectPaymentMethod />
+                  </div>
+                  {values.total < values.value &&
+                    values.financial_accounts_id && (
+                      <p className="text-rose-600">
+                        No cuentas con el saldo suficiente , te faltan :
+                        {formattedValue(values.total - values.value)}
+                      </p>
+                    )}
+
+                  <DialogFooter>
+                    <Button
+                      disabled={
+                        isSubmitting ||
+                        values.total < values.value ||
+                        !values.financial_accounts_id ||
+                        !values.payment_method_id
+                      }
+                    >
+                      Pagar cuota
+                    </Button>
+                  </DialogFooter>
+                </div>
+              )}
+            </form>
+          )}
+        </Formik>
+      </DialogContent>
+    </Dialog>
   );
 };

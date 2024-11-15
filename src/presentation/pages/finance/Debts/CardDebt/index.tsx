@@ -5,12 +5,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  Separator,
 } from '@components';
-
-import { cn, formattedValue } from '@utils';
 import { CardInstallment } from './CardInstallment';
 import { FormEditDebt } from './FormEditDebt';
+import { ModalDeleteDebt } from './ModalDeleteDebt';
 
 interface Props {
   debt_id: UUID;
@@ -38,7 +36,10 @@ export const CardDebt: React.FC<Props> = ({
       <CardHeader>
         <CardTitle className="flex justify-between">
           <p>Deuda : {name}</p>
-          <FormEditDebt debt_id={debt_id} />
+          <div>
+            <FormEditDebt debt_id={debt_id} />
+            <ModalDeleteDebt debt_id={debt_id} />
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -51,6 +52,9 @@ export const CardDebt: React.FC<Props> = ({
               due_date={installment.due_date}
               quota_number={index}
               status={installment.status}
+              key={installment.installment_id}
+              debt_id={debt_id}
+              debt_name={name}
             />
           ))}
         </div>

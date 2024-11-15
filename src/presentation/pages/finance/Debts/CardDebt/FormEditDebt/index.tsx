@@ -32,6 +32,9 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
     mutationFn: editDebt,
     onSuccess: () => {
       queryClient.invalidateQueries({
+        queryKey: ['debts', debt_id],
+      });
+      queryClient.invalidateQueries({
         queryKey: ['debts'],
       });
     },
@@ -65,7 +68,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
     doneLoading();
   }
   if (error) return 'An error has occurred: ';
-  console.log(debt);
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -106,7 +109,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
               payment_frequency,
               total_debt,
             },
-            { setSubmitting, resetForm },
+            { setSubmitting },
           ) => {
             mutation.mutate({
               debt_id,
@@ -119,7 +122,6 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
               total_debt,
             });
             setSubmitting(false);
-            resetForm();
           }}
         >
           {({ isSubmitting, values }) => (
@@ -175,20 +177,18 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
                 />
               </div>
               <DialogFooter>
-                <DialogClose asChild>
-                  <Button
-                    className="mt-6 w-full"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
-                    <div className="mx-1 w-5">
-                      {isSubmitting && (
-                        <Icons type="refresh" className="h-5 animate-spin" />
-                      )}
-                    </div>
-                    Editar
-                  </Button>
-                </DialogClose>
+                <Button
+                  className="mt-6 w-full"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  <div className="mx-1 w-5">
+                    {isSubmitting && (
+                      <Icons type="refresh" className="h-5 animate-spin" />
+                    )}
+                  </div>
+                  Editar
+                </Button>
               </DialogFooter>
               <LoadingIndicator isLoading={isSubmitting} />
             </Form>

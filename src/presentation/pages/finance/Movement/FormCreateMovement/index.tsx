@@ -14,10 +14,10 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@components';
-import { SelectFinancialAccount } from './SelectFinancialAccount';
-import { SelectPaymentMethod } from './SelectPaymentMethod';
-import { SelectTag } from './SelectTag';
-import { SelectDebt } from './SelectDebt';
+import { SelectFinancialAccount } from '../../SelectFinancialAccount';
+import { SelectPaymentMethod } from '../../SelectPaymentMethod';
+import { SelectTag } from '../../SelectTag';
+import { SelectDebt } from '../../SelectDebt';
 import { initialValues } from './initialValues';
 import { movementSchema } from './validations';
 

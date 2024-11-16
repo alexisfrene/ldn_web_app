@@ -59,7 +59,6 @@ export const FormCreateDebt: React.FC = () => {
                 current_quota: values.current_quota,
                 installments: values.installments,
                 notes: values.notes,
-                total_debt: values.total_debt,
                 money_to_receive: values.money_to_receive,
               });
             } finally {
@@ -89,25 +88,6 @@ export const FormCreateDebt: React.FC = () => {
                     step="0.01"
                   />
                   <LabelInput
-                    label="Cuanto es el total a pagar ?"
-                    name="total_debt"
-                    inputType="number"
-                    min={1}
-                    step="0.01"
-                  />
-                  <CalculateInterest
-                    totalAmountToPay={values.total_debt}
-                    amountReceived={values.money_to_receive}
-                    numberOfInstallments={values.number_quota}
-                  />
-                  <LabelInput
-                    label="Total de cuotas"
-                    name="number_quota"
-                    inputType="number"
-                    min={1}
-                    max={72}
-                  />
-                  <LabelInput
                     label="Que cuota vas ?"
                     name="current_quota"
                     inputType="number"
@@ -119,6 +99,26 @@ export const FormCreateDebt: React.FC = () => {
                     inputType="number"
                     min={1}
                     step="0.01"
+                  />
+                  <LabelInput
+                    label="Total de cuotas"
+                    name="number_quota"
+                    inputType="number"
+                    min={1}
+                    max={72}
+                  />
+                  <LabelInput
+                    label="Total a pagar "
+                    name="total_debt_str"
+                    inputType="text"
+                    min={1}
+                    disabled
+                    step="0.01"
+                  />
+                  <CalculateInterest
+                    totalAmountToPay={values.total_debt}
+                    amountReceived={values.money_to_receive}
+                    numberOfInstallments={values.number_quota}
                   />
                 </div>
                 <Installments />

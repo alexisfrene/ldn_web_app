@@ -180,7 +180,6 @@ export const getExpenses = async () => {
 export const createDebt = async ({
   notes,
   name,
-  total_debt,
   current_quota,
   minimum_payment: minimum_payment,
   payment_frequency,
@@ -189,7 +188,6 @@ export const createDebt = async ({
 }: {
   notes: string;
   name: string;
-  total_debt: number;
   current_quota: number;
   minimum_payment: number;
   payment_frequency: string;
@@ -208,7 +206,6 @@ export const createDebt = async ({
     const res = await axiosInstance.post('/debt', {
       notes,
       name,
-      total_debt: Number(total_debt),
       current_quota,
       minimum_payment: Number(minimum_payment),
       payment_frequency,

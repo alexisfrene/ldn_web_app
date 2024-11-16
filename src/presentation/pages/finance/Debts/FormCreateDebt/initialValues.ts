@@ -5,7 +5,7 @@ export const initialValues = {
   number_quota: 1,
   minimum_payment: 1,
   notes: '',
-  total_debt: 1,
+  total_debt: 0,
   installments: [],
   money_to_receive: 1,
 };

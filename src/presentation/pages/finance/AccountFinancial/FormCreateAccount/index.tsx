@@ -48,12 +48,8 @@ export const FormCreateAccount: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          type="button"
-          size="icon"
-          className="bg-green-100 hover:bg-green-300 dark:bg-slate-600 dark:hover:bg-slate-500"
-        >
-          <Icons type="plus_circle" className="dark:text-slate-300" />
+        <Button variant="outline" className="my-3">
+          Crear nueva cuenta
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-5xl">

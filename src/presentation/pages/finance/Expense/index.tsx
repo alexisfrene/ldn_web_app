@@ -19,7 +19,7 @@ const Expense: React.FC = () => {
   return (
     <div>
       <FormCreateExpense />
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-x-6">
         {expenses.data.length ? (
           expenses.data.map(
             (expense: {

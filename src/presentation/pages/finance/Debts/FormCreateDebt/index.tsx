@@ -36,7 +36,7 @@ export const FormCreateDebt: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button type="button" variant="ghost">
+        <Button variant="outline" className="mt-3">
           Crear nueva deuda
         </Button>
       </DialogTrigger>

@@ -43,7 +43,7 @@ export const FinancialAccountGrid: React.FC = () => {
           }: {
             name: string;
             type: string;
-            financial_accounts_id: string;
+            financial_accounts_id: UUID;
             total: number;
             paymentMethods: { name: string; payment_method_id: number }[];
           }) => (

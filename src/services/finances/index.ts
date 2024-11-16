@@ -369,3 +369,25 @@ export const markPaidDebt = async ({
     console.error('ERROR IN markPaidDebt:', error);
   }
 };
+
+export const editFinancialAccount = async ({
+  financial_account_id,
+  name,
+  payments_methods,
+}: {
+  financial_account_id: UUID;
+  name: string;
+  payments_methods: number[];
+}) => {
+  try {
+    const res = await axiosInstance.patch(
+      `/financial_accounts/${financial_account_id}`,
+      { name, payments_methods: payments_methods || [] },
+    );
+    toast.success('editFinancialAccount eliminado con éxito!');
+    return res;
+  } catch (error) {
+    toast.error('Ocurrió un error al crear una editFinancialAccount');
+    console.error('ERROR IN editFinancialAccount:', error);
+  }
+};

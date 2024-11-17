@@ -1,33 +1,11 @@
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardTitle,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  LabelInput,
-  Skeleton,
-} from '@components';
-import { createExpense, getExpenses } from '@services';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Formik } from 'formik';
 import React from 'react';
+import { Icons, Label, Skeleton } from '@components';
+import { getExpenses } from '@services';
+import { useQuery } from '@tanstack/react-query';
+import { CardExpense } from './CardExpense';
+import { FormCreateExpense } from './FormCreateExpense';
 
 const Expense: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createExpense,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['expenses'],
-      });
-    },
-  });
   const expenses = useQuery({
     queryKey: ['expenses'],
     queryFn: getExpenses,
@@ -37,51 +15,45 @@ const Expense: React.FC = () => {
     return <Skeleton className="h-[65vh] w-[85vw]" />;
   }
   if (expenses.error) return 'An error has occurred: ';
+
   return (
     <div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Crear etiqueta de gasto</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <Formik
-            initialValues={{ name: '', description: '' }}
-            onSubmit={(values, formikHelpers) => {
-              mutation.mutate(values);
-              formikHelpers.resetForm();
-            }}
-          >
-            {({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <DialogHeader>
-                  <DialogTitle>Crear etiqueta de gasto</DialogTitle>
-                  <DialogDescription>
-                    Make changes to your profile here. Click save when you're
-                    done.
-                  </DialogDescription>
-                </DialogHeader>
-                <LabelInput label="Nombre" name="name" />
-                <LabelInput label="Descripción" name="description" />
-                <DialogFooter>
-                  <Button type="submit">Crear</Button>
-                </DialogFooter>
-              </form>
-            )}
-          </Formik>
-        </DialogContent>
-      </Dialog>
-      <div className="grid grid-cols-2 gap-3">
-        {expenses.data.map(
-          (expense: { description: string; expense_id: string }) => (
-            <Card
-              key={expense.expense_id}
-              className="bg-gradient-to-br from-rose-500 to-pink-300 dark:from-rose-700 dark:to-pink-700"
-            >
-              <CardHeader>
-                <CardTitle>{expense.description}</CardTitle>
-              </CardHeader>
-            </Card>
-          ),
+      <FormCreateExpense />
+      <div className="grid grid-cols-2 gap-x-6">
+        {expenses.data.length ? (
+          expenses.data.map(
+            (expense: {
+              description: string;
+              expense_id: UUID;
+              name: string;
+              money_outflow: number;
+              count_movements: number;
+              money_outflow_month: number;
+              count_movements_month: number;
+            }) => (
+              <CardExpense
+                count_movements={expense.count_movements}
+                count_movements_month={expense.count_movements_month}
+                description={expense.description}
+                expense_id={expense.expense_id}
+                money_outflow={expense.money_outflow}
+                money_outflow_month={expense.money_outflow_month}
+                name={expense.name}
+                key={expense.expense_id}
+              />
+            ),
+          )
+        ) : (
+          <div className="col-span-2 mx-auto mt-20">
+            <Icons
+              type="wrench_screwdriver"
+              height={250}
+              className="m-3 p-10"
+            />
+            <Label className="text-center text-2xl">
+              No hay gastos que mostrar ...
+            </Label>
+          </div>
         )}
       </div>
     </div>

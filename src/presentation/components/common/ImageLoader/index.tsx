@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { cn, fetchImage } from '@utils';
 import { Skeleton } from '@presentation/components/ui';
+import defaultImage from '@assets/default.png';
 
 export const ImageLoader: React.FC<Props> = ({
   url,
@@ -17,12 +18,13 @@ export const ImageLoader: React.FC<Props> = ({
     isLoading,
   } = useQuery({ queryKey: ['image', url], queryFn: () => fetchImage(url) });
 
-  if (error) return <div>Error loading image</div>;
   const styles = cn(
     `col-span-1 ${
       isLoading ? 'hidden' : 'block'
     } object-fill h-${height} w-${width} ${className}`,
   );
+
+  if (error) return <img src={defaultImage} className={styles} alt={alt} />;
 
   return isLoading ? (
     <Skeleton className={cn(`h-${height} w-${width} col-span-1`)} />

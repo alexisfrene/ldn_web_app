@@ -1,21 +1,25 @@
-import { Card, Skeleton } from '@components';
 import React from 'react';
-import { MovementCard } from '../MovementCard';
-import { useQuery } from '@tanstack/react-query';
-import { getAllMovements } from '@services';
+import { MovementCard } from './MovementCard';
+import { Card, Skeleton } from '@components';
 
-export const MovementList: React.FC = () => {
-  const movements = useQuery({
-    queryKey: ['movements'],
-    queryFn: () => getAllMovements(),
-  });
-  if (movements.error) return 'An error has occurred: ';
+interface Props {
+  movements: {
+    label: string;
+    type: string;
+    value: number;
+    payment_method: string;
+    account: string;
+    id: string;
+  }[];
+  isPending: boolean;
+}
 
+export const MovementList: React.FC<Props> = ({ movements, isPending }) => {
   const skeletonItems = Array(8).fill(null);
 
   return (
     <Card className="min-h-96 border-none">
-      {movements.isPending ? (
+      {isPending ? (
         <>
           {skeletonItems.map((_, index) => (
             <React.Fragment key={index}>
@@ -26,9 +30,9 @@ export const MovementList: React.FC = () => {
         </>
       ) : (
         <>
-          {movements.data.length ? (
-            movements.data &&
-            movements.data.map(
+          {movements.length ? (
+            movements &&
+            movements.map(
               (movement: {
                 label: string;
                 type: string;
@@ -38,13 +42,13 @@ export const MovementList: React.FC = () => {
                 id: string;
               }) => (
                 <MovementCard
-                  account={movement.account}
+                  accountName={movement.account}
                   label={movement.label}
-                  value={movement.value}
+                  amount={movement.value}
                   type={movement.type}
-                  payment_method={movement.payment_method}
+                  paymentMethod={movement.payment_method}
                   key={movement.id}
-                  id={movement.id}
+                  movementId={movement.id}
                 />
               ),
             )

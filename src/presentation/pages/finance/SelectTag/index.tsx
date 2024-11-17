@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormikValues, useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
-import { getAllPaymentMethodForAccount, getExpenses } from '@services';
+import { getExpenses } from '@services';
 import {
   Button,
   Dialog,

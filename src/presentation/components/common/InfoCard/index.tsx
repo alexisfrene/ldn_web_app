@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardHeader } from '@components';
 import { cn } from '@utils';
+import { Card, CardContent, CardHeader } from '@components';
 
 interface Props {
   title: string;

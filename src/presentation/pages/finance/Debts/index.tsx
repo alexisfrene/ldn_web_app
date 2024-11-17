@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Skeleton,
-} from '@components';
+import { Icons, Label, Skeleton } from '@components';
 import { useQuery } from '@tanstack/react-query';
 import { getDebts } from '@services';
 import { FormCreateDebt } from './FormCreateDebt';
-import { cn, formatDate } from '@utils';
+import { CardDebt } from './CardDebt';
 
 const Debts: React.FC = () => {
   const debts = useQuery({
@@ -26,49 +19,30 @@ const Debts: React.FC = () => {
   return (
     <div>
       <FormCreateDebt />
-      {debts?.data.map(
-        (debt: { name: string; notes: string; installments: [] }) => (
-          <Card>
-            <CardHeader>
-              <CardTitle>Deuda : {debt.name}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription>
-                Notas : {debt.notes || 'Sin Notas'}
-              </CardDescription>
-              <div className="mt-3 flex gap-3">
-                {debt?.installments.map(
-                  (installment: {
-                    installment_id: number;
-                    status: string;
-                    amount: number;
-                    due_date: string;
-                  }) => (
-                    <div
-                      key={installment.installment_id}
-                      className={cn([
-                        'bg-slate-700 p-3',
-                        installment.status === 'paid' && 'bg-red-900',
-                      ])}
-                    >
-                      <p>
-                        {installment.status === 'paid'
-                          ? 'Ya pagado'
-                          : 'Sin Pagar'}
-                      </p>
-                      <p>Cuota {installment.installment_id}</p>
-                      <p>Monto : {installment.amount}</p>
-                      <p>
-                        Fecha de vencimiento :
-                        {formatDate(new Date(installment.due_date))}
-                      </p>
-                    </div>
-                  ),
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        ),
+      {debts?.data.length ? (
+        debts?.data.map(
+          (debt: {
+            name: string;
+            notes: string;
+            debt_id: UUID;
+            installments: [];
+          }) => (
+            <CardDebt
+              debt_id={debt.debt_id}
+              installments={debt.installments}
+              name={debt.name}
+              notes={debt.notes}
+              key={debt.debt_id}
+            />
+          ),
+        )
+      ) : (
+        <div className="mx-auto mt-20 flex w-full flex-col justify-center">
+          <Icons type="wrench_screwdriver" height={250} className="m-3 p-10" />
+          <Label className="text-center text-2xl">
+            No hay deudas que mostrar ...
+          </Label>
+        </div>
       )}
     </div>
   );

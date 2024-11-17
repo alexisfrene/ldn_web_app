@@ -1,12 +1,8 @@
 type FieldFormProps = {
   name: string;
   title: string;
-  option:  {
+  option: {
     type: string;
     title: string;
   }[];
 };
-
- 
-
-

@@ -1,7 +1,7 @@
 import React from 'react';
+import { get } from 'lodash';
 import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
 import { Input, Label } from '@components';
-import { get } from 'lodash';
 
 interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,6 +14,7 @@ interface Props {
   min?: number;
   max?: number;
   disabled?: boolean;
+  step?: string;
 }
 
 export const LabelInput: React.FC<Props> = ({
@@ -27,6 +28,7 @@ export const LabelInput: React.FC<Props> = ({
   max = undefined,
   placeholder,
   disabled = false,
+  step,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
@@ -39,7 +41,7 @@ export const LabelInput: React.FC<Props> = ({
 
   return (
     <Label htmlFor={label} className="ml-1">
-      <div className={get(errors, name) ? 'mb-1 text-red-600' : 'mb-1'}>
+      <div className={get(errors, name) ? 'mb-1.5 text-red-600' : 'mb-1.5'}>
         {label} :
       </div>
       <Input
@@ -47,12 +49,17 @@ export const LabelInput: React.FC<Props> = ({
         type={inputType}
         value={inputValue}
         placeholder={placeholder}
-        className={get(errors, name) ? 'border-red-600' : ''}
+        className={
+          get(errors, name)
+            ? 'border-red-600 ring-0 focus-visible:ring-0 focus-visible:ring-ring'
+            : ''
+        }
         maxLength={maxLength}
         minLength={minLength}
         min={min}
         max={max}
         disabled={disabled}
+        step={step}
       />
       <p className="my-1 h-1 text-xs text-red-600">
         <ErrorMessage name={name} />

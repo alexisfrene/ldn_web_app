@@ -1,4 +1,5 @@
 import React from 'react';
+import { Formik } from 'formik';
 import {
   Button,
   Dialog,
@@ -13,13 +14,13 @@ import {
   LabelInput,
   ScrollArea,
 } from '@components';
-import { Formik } from 'formik';
-
 import { Installments } from './Installments';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createDebt } from '@services';
 import { paymentFrequency } from '@presentation/mocks';
 import { initialValues } from './initialValues';
+import { debtSchema } from './validations';
+import { CalculateInterest } from '../CalculateInterest';
 
 export const FormCreateDebt: React.FC = () => {
   const queryClient = useQueryClient();
@@ -31,15 +32,12 @@ export const FormCreateDebt: React.FC = () => {
       });
     },
   });
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          type="button"
-          size="icon"
-          className="bg-green-100 hover:bg-green-300 dark:bg-slate-600 dark:hover:bg-slate-500"
-        >
-          <Icons type="plus_circle" className="dark:text-slate-300" />
+        <Button variant="outline" className="mt-3">
+          Crear nueva deuda
         </Button>
       </DialogTrigger>
       <DialogContent className="h-[80vh] max-w-5xl">
@@ -51,6 +49,7 @@ export const FormCreateDebt: React.FC = () => {
         </DialogHeader>
         <Formik
           initialValues={initialValues}
+          validationSchema={debtSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               mutation.mutate({
@@ -60,8 +59,7 @@ export const FormCreateDebt: React.FC = () => {
                 current_quota: values.current_quota,
                 installments: values.installments,
                 notes: values.notes,
-                total_debt: values.total_debt,
-                interest_rate: values.interest_rate,
+                money_to_receive: values.money_to_receive,
               });
             } finally {
               setSubmitting(false);
@@ -69,30 +67,38 @@ export const FormCreateDebt: React.FC = () => {
             }
           }}
         >
-          {({ handleSubmit, isSubmitting }) => (
+          {({ handleSubmit, isSubmitting, values }) => (
             <form onSubmit={handleSubmit}>
               <ScrollArea className="h-[60vh]">
                 <div className="grid grid-cols-3 gap-3">
                   <LabelInput label="Nombre de la cuenta" name="name" />
-                  <LabelInput
-                    label="Interés"
-                    name="interest_rate"
-                    inputType="number"
-                    min={1}
-                    max={1000}
-                  />
                   <LabelInput label="Agrega un nota de la deuda" name="notes" />
+                  <div className="-mt-1.5">
+                    <DropdownInput
+                      title="Elegir una frecuencia de pago"
+                      options={paymentFrequency}
+                      name="payment_frequency"
+                    />
+                  </div>
                   <LabelInput
-                    label="Pago mínimo"
-                    name="minimum_payment"
+                    label="Monto a recibir"
+                    name="money_to_receive"
                     inputType="number"
                     min={1}
+                    step="0.01"
                   />
                   <LabelInput
                     label="Que cuota vas ?"
                     name="current_quota"
                     inputType="number"
                     min={1}
+                  />
+                  <LabelInput
+                    label="Pago mínimo"
+                    name="minimum_payment"
+                    inputType="number"
+                    min={1}
+                    step="0.01"
                   />
                   <LabelInput
                     label="Total de cuotas"
@@ -102,41 +108,45 @@ export const FormCreateDebt: React.FC = () => {
                     max={72}
                   />
                   <LabelInput
-                    label="Cuanto es el total a pagar ?"
-                    name="total_debt"
-                    inputType="number"
+                    label="Total a pagar "
+                    name="total_debt_str"
+                    inputType="text"
                     min={1}
+                    disabled
+                    step="0.01"
                   />
-                  <div className="-mt-1.5">
-                    <DropdownInput
-                      title="Elegir una frecuencia de pago"
-                      options={paymentFrequency}
-                      name="payment_frequency"
-                    />
-                  </div>
+                  <CalculateInterest
+                    totalAmountToPay={values.total_debt}
+                    amountReceived={values.money_to_receive}
+                    numberOfInstallments={values.number_quota}
+                  />
                 </div>
                 <Installments />
               </ScrollArea>
-              <div className="col-span-full mt-6 flex justify-center">
+              <div className="col-span-full mt-6 flex justify-center gap-3">
                 <DialogClose asChild>
                   <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 dark:text-black"
+                    type="button"
+                    variant="secondary"
+                    className="w-full max-w-sm rounded-lg px-6 py-3 shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
                   >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center space-x-2">
-                        <Icons
-                          type="refresh"
-                          className="h-5 w-5 animate-spin"
-                        />
-                        <span>Creando cuenta...</span>
-                      </div>
-                    ) : (
-                      'Crear cuenta'
-                    )}
+                    Cancelar
                   </Button>
                 </DialogClose>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 dark:text-black"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <Icons type="refresh" className="h-5 w-5 animate-spin" />
+                      <span>Creando cuenta...</span>
+                    </div>
+                  ) : (
+                    'Crear cuenta'
+                  )}
+                </Button>
               </div>
             </form>
           )}

@@ -1,8 +1,8 @@
 import React, { ReactNode, useEffect } from 'react';
-import logo from '@assets/ldn_icon-70x70.webp';
-import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
 import { useSessionStore } from '@global';
 import { getUrlAvatar } from '@services';
+import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
+import logo from '@assets/ldn_icon-70x70.webp';
 
 interface Props {
   children: ReactNode;
@@ -24,7 +24,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
   }, []);
   return (
     <div className="min-h-screen">
-      <div className="row-span-1 flex h-[10vh] items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 dark:from-slate-700 dark:to-slate-900">
+      <div className="row-span-1 flex h-[10vh] items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 dark:from-slate-700 dark:to-slate-900 dark:text-slate-200">
         <a
           href="https://www.facebook.com/tiendaLDN/"
           target="_blank"

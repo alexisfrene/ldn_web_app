@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useFormikContext } from 'formik';
 import {
   Card,
@@ -10,6 +10,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@components';
+import { formattedValue } from '@utils';
 
 export const Installments: React.FC = () => {
   const { values, setFieldValue } = useFormikContext<{
@@ -23,8 +24,6 @@ export const Installments: React.FC = () => {
       status: string;
     }[];
   }>();
-  const [remainingAmount, setRemainingAmount] = useState(values.total_debt);
-  const [hasExceeded, setHasExceeded] = useState(false);
 
   useEffect(() => {
     if (values.number_quota !== values.installments.length) {
@@ -35,7 +34,7 @@ export const Installments: React.FC = () => {
           const dueDate = new Date(today);
           dueDate.setMonth(today.getMonth() + i);
           newInstallments.push({
-            amount: 0,
+            amount: 1,
             due_date: dueDate.toISOString().split('T')[0],
             status: 'unpaid',
           });
@@ -57,10 +56,8 @@ export const Installments: React.FC = () => {
       (sum, installment) => sum + Number(installment.amount),
       0,
     );
-    const remaining = values.total_debt - totalInstallmentsAmount;
-
-    setRemainingAmount(remaining);
-    setHasExceeded(remaining < 0);
+    setFieldValue('total_debt', totalInstallmentsAmount);
+    setFieldValue('total_debt_str', formattedValue(totalInstallmentsAmount));
   }, [values.installments, values.total_debt]);
 
   const renderInstallments = (installmentsCount: number) => {
@@ -106,15 +103,6 @@ export const Installments: React.FC = () => {
     <div>
       <div>
         <div>
-          {hasExceeded ? (
-            <span className="text-red-600">
-              ¡Te has pasado por {Math.abs(remainingAmount).toFixed(2)}!
-            </span>
-          ) : (
-            <span className="text-green-600">
-              Te faltan {remainingAmount.toFixed(2)} para completar el total.
-            </span>
-          )}
           <div className="flex flex-wrap gap-3 p-3">
             {renderInstallments(values.number_quota).map(
               (installment, index) => (

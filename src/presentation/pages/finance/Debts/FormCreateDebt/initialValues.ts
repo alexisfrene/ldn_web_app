@@ -1,11 +1,11 @@
 export const initialValues = {
-  name: '',
+  name: 'Nueva deuda',
   payment_frequency: 'monthly',
   current_quota: 1,
   number_quota: 1,
   minimum_payment: 1,
   notes: '',
-  total_debt: 1,
+  total_debt: 0,
   installments: [],
-  interest_rate: 0,
+  money_to_receive: 1,
 };

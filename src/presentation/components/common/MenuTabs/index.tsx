@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { cn } from '@utils';
 import {
   TabsList,
   Tabs,
@@ -8,7 +9,6 @@ import {
   CardContent,
   CardHeader,
 } from '@components';
-import { cn } from '@utils';
 
 interface Props {
   tabs: string[];
@@ -23,17 +23,16 @@ export const MenuTabs: React.FC<Props> = ({
   containerStyle,
   tabStyle,
 }) => {
+  const tabasStyles = cn([
+    'mb-3 grid',
+    `grid-cols-${tabs.length}`,
+    containerStyle,
+  ]);
   return (
     <Tabs defaultValue={tabs[0]}>
       <Card className="rounded-none border-none">
         <CardHeader>
-          <TabsList
-            className={cn([
-              'mb-3 grid',
-              `grid-cols-${tabs.length}`,
-              containerStyle,
-            ])}
-          >
+          <TabsList className={tabasStyles}>
             {tabs.map((title) => {
               return (
                 <TabsTrigger key={title} value={title}>

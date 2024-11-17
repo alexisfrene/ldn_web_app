@@ -58,6 +58,7 @@ import {
   EllipsisHorizontalIcon,
   ArrowsRightLeftIcon,
   ArrowsUpDownIcon,
+  WrenchScrewdriverIcon,
 } from '@heroicons/react/24/outline';
 
 interface IconsProps {
@@ -128,6 +129,7 @@ const icons = {
   sun: SunIcon,
   arrows_right_left: ArrowsRightLeftIcon,
   arrows_up_down: ArrowsUpDownIcon,
+  wrench_screwdriver: WrenchScrewdriverIcon,
 };
 export type IconsType = keyof typeof icons;
 export const Icons: React.FC<IconsProps> = ({

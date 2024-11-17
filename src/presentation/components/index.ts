@@ -3,3 +3,4 @@ export * from './WithAuth';
 export * from './ui';
 export * from './ThemeProvider';
 export * from './ModeToggle';
+export * from './MovementList';

@@ -70,7 +70,7 @@ export const FormEditExpense: React.FC<Props> = ({
             <Form>
               <LabelInput label="Nombre  " placeholder={name} name="name" />
               <LabelInput
-                label="Nombre  "
+                label="Descripción  "
                 placeholder={description}
                 name="description"
               />

@@ -6,6 +6,7 @@ import NProgress from 'nprogress';
 import { Toaster } from '@components';
 
 import 'nprogress/nprogress.css';
+
 const App: React.FC = () => {
   NProgress.configure({ showSpinner: false, speed: 500 });
   const isFetching = useIsFetching();

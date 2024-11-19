@@ -1,8 +1,15 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useSessionStore } from '@global';
 import { getUrlAvatar } from '@services';
-import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
-import logo from '@assets/ldn_icon-70x70.webp';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  ModeToggle,
+  SidebarProvider,
+  SidebarTrigger,
+} from '@components';
+import { AppSidebar } from '../AppSidebar';
 
 interface Props {
   children: ReactNode;
@@ -23,30 +30,23 @@ export const Layout: React.FC<Props> = ({ children }) => {
     }
   }, []);
   return (
-    <div className="min-h-screen">
-      <div className="row-span-1 flex h-[10vh] items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 dark:from-slate-700 dark:to-slate-900 dark:text-slate-200">
-        <a
-          href="https://www.facebook.com/tiendaLDN/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={logo}
-            className="cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:rotate-6 hover:scale-110 lg:ml-6"
-            alt="logo-ldn"
-          />
-        </a>
-        <div className="m-3 flex items-center">
-          <ModeToggle />
-          {session_token && (
-            <Avatar className="mx-5 my-2">
-              <AvatarImage src={avatar} alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          )}
+    <SidebarProvider>
+      <AppSidebar />
+      <main className="flex-1">
+        <div className="flex items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 p-3 dark:from-slate-700 dark:to-slate-900 dark:text-slate-200">
+          <SidebarTrigger />
+          <div className="flex items-center">
+            <ModeToggle />
+            {session_token && (
+              <Avatar className="mx-5 my-2">
+                <AvatarImage src={avatar} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            )}
+          </div>
         </div>
-      </div>
-      {children}
-    </div>
+        {children}
+      </main>
+    </SidebarProvider>
   );
 };

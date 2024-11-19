@@ -23,24 +23,28 @@ const Filing: React.FC = () => {
 
   return (
     <Layout>
-      <Card className="mx-56 my-20">
+      <Card className="sm:mx-56 sm:my-20">
         <CardHeader>
           <CardTitle className="text-center">Acción a realizar</CardTitle>
         </CardHeader>
-        <CardContent className="flex justify-center gap-10">
+        <CardContent className="sm:flex sm:justify-center sm:gap-10">
           {!sessionToken ? (
             <>
-              <div className="flex h-40 w-96 cursor-pointer flex-col justify-center border-2 px-14">
+              <div className="cursor-pointer flex-col justify-center px-14 sm:flex sm:h-40 sm:w-96 sm:border-2">
                 <CardDescription className="my-3 text-center">
                   Crear una cuenta
                 </CardDescription>
-                <Button onClick={() => navigate('/signup')}>Registrarme</Button>
+                <Button onClick={() => navigate('/signup')} className="w-full">
+                  Registrarme
+                </Button>
               </div>
-              <div className="flex h-40 w-96 cursor-pointer flex-col justify-center border-2 px-14">
+              <div className="cursor-pointer flex-col justify-center px-14 sm:flex sm:h-40 sm:w-96 sm:border-2">
                 <CardDescription className="my-3 text-center">
                   Iniciar sesión
                 </CardDescription>
-                <Button onClick={() => navigate('/login')}>Login</Button>
+                <Button onClick={() => navigate('/login')} className="w-full">
+                  Login
+                </Button>
               </div>
             </>
           ) : null}

@@ -30,11 +30,11 @@ export const Layout: React.FC<Props> = ({ children }) => {
     }
   }, []);
   return (
-    <SidebarProvider>
+    <SidebarProvider open={!!session_token}>
       <AppSidebar />
       <main className="flex-1">
         <div className="flex items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 p-3 dark:from-slate-700 dark:to-slate-900 dark:text-slate-200">
-          <SidebarTrigger />
+          {session_token && <SidebarTrigger />}
           <div className="flex items-center">
             <ModeToggle />
             {session_token && (

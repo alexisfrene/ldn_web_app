@@ -80,7 +80,7 @@ export const AppSidebar: React.FC = () => {
                   >
                     <NavLink key={index} to={path}>
                       <div>{icon}</div>
-                      <span className="hidden text-sm font-medium dark:text-slate-200 lg:block">
+                      <span className="text-sm font-medium dark:text-slate-200 lg:block">
                         {title}
                       </span>
                     </NavLink>

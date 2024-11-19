@@ -48,12 +48,12 @@ const SingUpPage: React.FC = () => {
   });
   return (
     <Layout>
-      <Card className="mx-20 mt-10">
+      <Card className="border-none shadow-none sm:mx-20 sm:mt-10">
         <CardHeader className="text-center">Crea una cuenta Gratis</CardHeader>
-        <CardDescription className="text-center">
+        <CardDescription className="mb-3 text-center">
           ¿Ya tienes cuenta?
           <b
-            className="text-blue-600 mx-3 cursor-pointer hover:text-blue-500"
+            className="mx-3 cursor-pointer text-blue-600 hover:text-blue-500"
             onClick={() => navigate('/login')}
           >
             Ingresa desde aquí.
@@ -62,7 +62,7 @@ const SingUpPage: React.FC = () => {
         <CardContent>
           <form
             onSubmit={formik.handleSubmit}
-            className="grid grid-cols-2 gap-x-3 gap-y-5 m-10"
+            className="grid grid-cols-2 gap-x-3 gap-y-5 sm:m-10"
           >
             <Label htmlFor="username" className="col-span-1">
               Nombre de la cuenta

@@ -68,21 +68,21 @@ export const FormCreateMovement: React.FC = () => {
             <Label className="col-span-full mt-6 text-base">
               Crear un nuevo movimiento :
             </Label>
-            <div className="col-span-4">
+            <div className="col-span-full sm:col-span-4">
               <LabelInput
                 label="Descripción"
                 name="label"
                 placeholder="Venta de remeras ..."
               />
             </div>
-            <div className="col-span-2">
+            <div className="col-span-full sm:col-span-2">
               <LabelInput label="Fecha" name="entry_date" inputType="date" />
             </div>
             <RadioGroup
               defaultValue="inflow_of_money"
               onValueChange={(value) => setFieldValue('type', value)}
               value={values.type}
-              className="col-span-2 h-40"
+              className="col-span-full h-40 sm:col-span-2"
             >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="inflow_of_money" id="r1" />
@@ -97,34 +97,44 @@ export const FormCreateMovement: React.FC = () => {
                 <Label htmlFor="r3">Pago deuda</Label>
               </div>
             </RadioGroup>
-            <div className="col-span-4 h-40 rounded-md px-3 dark:bg-slate-800/30">
+            <div className="col-span-full h-40 rounded-md px-3 dark:bg-slate-800/30 sm:col-span-4">
               {values.type === 'inflow_of_money' ? (
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <Label className="my-auto">Destino del dinero :</Label>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  <Label className="my-auto hidden sm:block">
+                    Destino del dinero :
+                  </Label>
                   <SelectFinancialAccount />
-                  <Label className="my-auto">Método de pago :</Label>
+                  <Label className="my-auto hidden sm:block">
+                    Método de pago :
+                  </Label>
                   <SelectPaymentMethod />
                 </div>
               ) : values.type === 'money_outflow' ? (
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <Label className="my-auto">
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  <Label className="my-auto hidden sm:block">
                     Cuenta donde saldrá el dinero :
                   </Label>
                   <SelectFinancialAccount />
-                  <Label className="my-auto">Método de pago :</Label>
+                  <Label className="my-auto hidden sm:block">
+                    Método de pago :
+                  </Label>
                   <SelectPaymentMethod />
-                  <Label className="my-auto">Etiqueta del gasto :</Label>
+                  <Label className="my-auto hidden sm:block">
+                    Etiqueta del gasto :
+                  </Label>
                   <SelectTag />
                 </div>
               ) : (
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <Label className="my-auto">
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  <Label className="my-auto hidden sm:block">
                     Cuenta donde saldrá el dinero :
                   </Label>
                   <SelectFinancialAccount />
-                  <Label className="my-auto">Método de pago :</Label>
+                  <Label className="my-auto hidden sm:block">
+                    Método de pago :
+                  </Label>
                   <SelectPaymentMethod />
-                  <Label className="my-auto">Que deuda :</Label>
+                  <Label className="my-auto hidden sm:block">Que deuda :</Label>
                   <SelectDebt />
                 </div>
               )}

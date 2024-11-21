@@ -32,7 +32,7 @@ export const FinancialAccountGrid: React.FC = () => {
   if (financialAccount.error) return 'An error has occurred: ';
 
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
       {financialAccount.data.length ? (
         financialAccount.data.map(
           ({

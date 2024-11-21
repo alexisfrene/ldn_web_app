@@ -16,9 +16,9 @@ export const InfoCard: React.FC<Props> = ({
 }) => {
   return (
     <Card>
-      <CardHeader>{title}</CardHeader>
+      <CardHeader className="text-xs sm:text-base">{title}</CardHeader>
       <CardContent>
-        <p className={cn(['text-2xl', valueStyles])}>
+        <p className={cn(['sm:text-2xl', valueStyles])}>
           {currency ? `${value || 0}` : value || 0}
         </p>
       </CardContent>

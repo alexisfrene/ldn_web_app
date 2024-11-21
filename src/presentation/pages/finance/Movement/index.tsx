@@ -19,10 +19,10 @@ const Movement: React.FC = () => {
   if (movements.error) return 'An error has occurred: ';
   return (
     <div className="grid grid-cols-12">
-      <div className="col-span-7">
+      <div className="col-span-full sm:col-span-7">
         <FormCreateMovement />
       </div>
-      <div className="col-span-5">
+      <div className="hidden sm:col-span-5 sm:block">
         <Card>
           <CardHeader>
             <CardTitle>Historial de movimientos :</CardTitle>

@@ -22,8 +22,9 @@ const RelevantInfo: React.FC = () => {
     queryFn: () => getAllMovements(),
   });
   if (movements.error) return 'An error has occurred: ';
+
   return (
-    <Card className="col-span-6">
+    <Card>
       <CardHeader className="flex flex-row justify-between text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />

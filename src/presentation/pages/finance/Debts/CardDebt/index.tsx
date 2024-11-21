@@ -9,6 +9,7 @@ import {
 import { CardInstallment } from './CardInstallment';
 import { FormEditDebt } from './FormEditDebt';
 import { ModalDeleteDebt } from './ModalDeleteDebt';
+import { useIsMobile } from '@hooks';
 
 interface Props {
   debt_id: UUID;
@@ -28,6 +29,7 @@ export const CardDebt: React.FC<Props> = ({
   notes,
   installments,
 }) => {
+  const isMobile = useIsMobile();
   return (
     <Card
       key={debt_id}
@@ -35,7 +37,10 @@ export const CardDebt: React.FC<Props> = ({
     >
       <CardHeader>
         <CardTitle className="flex justify-between">
-          <p>Deuda : {name}</p>
+          <p className="truncate">
+            {isMobile ? '' : ' Deuda :'}
+            {name}
+          </p>
           <div>
             <FormEditDebt debt_id={debt_id} />
             <ModalDeleteDebt debt_id={debt_id} />
@@ -44,7 +49,7 @@ export const CardDebt: React.FC<Props> = ({
       </CardHeader>
       <CardContent>
         <CardDescription>Notas : {notes || 'Sin Notas'}</CardDescription>
-        <div className="mt-3 grid grid-cols-4 gap-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-4">
           {installments.map((installment, index) => (
             <CardInstallment
               installment_id={installment.installment_id}

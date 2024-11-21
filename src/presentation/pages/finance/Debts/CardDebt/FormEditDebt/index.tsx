@@ -12,6 +12,7 @@ import {
   Icons,
   LabelInput,
   LoadingIndicator,
+  ScrollArea,
   Skeleton,
 } from '@components';
 import { Form, Formik } from 'formik';
@@ -125,71 +126,73 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
         >
           {({ isSubmitting, values }) => (
             <Form>
-              <div className="grid grid-cols-3 gap-3">
-                <LabelInput label="Nombre de la cuenta" name="name" />
-                <LabelInput label="Agrega un nota de la deuda" name="notes" />
-                <div className="-mt-1.5">
-                  <DropdownInput
-                    title="Elegir una frecuencia de pago"
-                    options={paymentFrequency}
-                    name="payment_frequency"
+              <ScrollArea className="h-96">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <LabelInput label="Nombre de la cuenta" name="name" />
+                  <LabelInput label="Agrega un nota de la deuda" name="notes" />
+                  <div className="-mt-1.5">
+                    <DropdownInput
+                      title="Elegir una frecuencia de pago"
+                      options={paymentFrequency}
+                      name="payment_frequency"
+                    />
+                  </div>
+                  <LabelInput
+                    label="Monto a recibir"
+                    name="money_to_receive"
+                    inputType="number"
+                    min={1}
+                    step="0.01"
+                  />
+                  <LabelInput
+                    label="Cuanto es el total a pagar ?"
+                    name="total_debt"
+                    inputType="number"
+                    min={1}
+                    step="0.01"
+                  />
+                  <CalculateInterest
+                    totalAmountToPay={values.total_debt}
+                    amountReceived={values.money_to_receive}
+                    numberOfInstallments={values.number_quota}
+                  />
+                  <LabelInput
+                    label="Total de cuotas"
+                    name="number_quota"
+                    inputType="number"
+                    min={1}
+                    max={72}
+                  />
+                  <LabelInput
+                    label="Que cuota vas ?"
+                    name="current_quota"
+                    inputType="number"
+                    min={1}
+                  />
+                  <LabelInput
+                    label="Pago mínimo"
+                    name="minimum_payment"
+                    inputType="number"
+                    min={1}
+                    step="0.01"
                   />
                 </div>
-                <LabelInput
-                  label="Monto a recibir"
-                  name="money_to_receive"
-                  inputType="number"
-                  min={1}
-                  step="0.01"
-                />
-                <LabelInput
-                  label="Cuanto es el total a pagar ?"
-                  name="total_debt"
-                  inputType="number"
-                  min={1}
-                  step="0.01"
-                />
-                <CalculateInterest
-                  totalAmountToPay={values.total_debt}
-                  amountReceived={values.money_to_receive}
-                  numberOfInstallments={values.number_quota}
-                />
-                <LabelInput
-                  label="Total de cuotas"
-                  name="number_quota"
-                  inputType="number"
-                  min={1}
-                  max={72}
-                />
-                <LabelInput
-                  label="Que cuota vas ?"
-                  name="current_quota"
-                  inputType="number"
-                  min={1}
-                />
-                <LabelInput
-                  label="Pago mínimo"
-                  name="minimum_payment"
-                  inputType="number"
-                  min={1}
-                  step="0.01"
-                />
-              </div>
-              <DialogFooter>
-                <Button
-                  className="mt-6 w-full"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  <div className="mx-1 w-5">
-                    {isSubmitting && (
-                      <Icons type="refresh" className="h-5 animate-spin" />
-                    )}
-                  </div>
-                  Editar
-                </Button>
-              </DialogFooter>
-              <LoadingIndicator isLoading={isSubmitting} />
+                <DialogFooter>
+                  <Button
+                    className="mt-6 w-full"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    <div className="mx-1 w-5">
+                      {isSubmitting && (
+                        <Icons type="refresh" className="h-5 animate-spin" />
+                      )}
+                    </div>
+                    Editar
+                  </Button>
+                </DialogFooter>
+                <LoadingIndicator isLoading={isSubmitting} />
+              </ScrollArea>
             </Form>
           )}
         </Formik>

@@ -69,7 +69,7 @@ export const FormCreateDebt: React.FC = () => {
         >
           {({ handleSubmit, isSubmitting, values }) => (
             <form onSubmit={handleSubmit}>
-              <ScrollArea className="h-[60vh]">
+              <ScrollArea className="h-96">
                 <div className="grid grid-cols-3 gap-3">
                   <LabelInput label="Nombre de la cuenta" name="name" />
                   <LabelInput label="Agrega un nota de la deuda" name="notes" />

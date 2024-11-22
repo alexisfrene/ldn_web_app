@@ -48,7 +48,7 @@ export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h3 className="mt-3 text-xl">
+      <h3 className="mt-3 text-xs sm:text-xl">
         ¿Deseas agregar más imágenes del producto?
       </h3>
       <Sheet>

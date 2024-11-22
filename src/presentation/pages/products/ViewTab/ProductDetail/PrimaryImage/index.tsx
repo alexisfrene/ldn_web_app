@@ -43,7 +43,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
         <AlertDialogTrigger className="relative">
           <Icons
             type="copy_manual"
-            className="absolute left-0 top-0 m-2 h-10 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50"
+            className="absolute left-0 top-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50 sm:h-10"
           />
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -87,10 +87,10 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
           </Formik>
         </AlertDialogContent>
       </AlertDialog>
-      <div className="h-60 w-60">
+      <div className="sm:h-60 sm:w-60">
         <ImageLoader
           url={product.primary_image?.toString()!}
-          className="h-60 w-60 rounded-lg"
+          className="h-32 w-32 rounded-lg sm:h-60 sm:w-60"
           alt={product.name}
         />
       </div>

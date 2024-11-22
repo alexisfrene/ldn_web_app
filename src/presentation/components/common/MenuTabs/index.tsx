@@ -1,14 +1,6 @@
 import React, { ReactNode } from 'react';
 import { cn } from '@utils';
-import {
-  TabsList,
-  Tabs,
-  TabsTrigger,
-  Label,
-  Card,
-  CardContent,
-  CardHeader,
-} from '@components';
+import { TabsList, Tabs, TabsTrigger, Label } from '@components';
 
 interface Props {
   tabs: string[];
@@ -24,33 +16,26 @@ export const MenuTabs: React.FC<Props> = ({
   tabStyle,
 }) => {
   const tabasStyles = cn([
-    'mb-3 grid',
+    'mb-3 grid sm:min-h-14',
     `grid-cols-${tabs.length}`,
     containerStyle,
   ]);
   return (
     <Tabs defaultValue={tabs[0]}>
-      <Card className="rounded-none border-none">
-        <CardHeader>
-          <TabsList className={tabasStyles}>
-            {tabs.map((title) => {
-              return (
-                <TabsTrigger key={title} value={title}>
-                  <Label
-                    className={cn([
-                      'cursor-pointer text-sm sm:text-xl',
-                      tabStyle,
-                    ])}
-                  >
-                    {title}
-                  </Label>
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
-        </CardHeader>
-        <CardContent>{children}</CardContent>
-      </Card>
+      <TabsList className={tabasStyles}>
+        {tabs.map((title) => {
+          return (
+            <TabsTrigger key={title} value={title}>
+              <Label
+                className={cn(['cursor-pointer text-xs sm:text-xl', tabStyle])}
+              >
+                {title}
+              </Label>
+            </TabsTrigger>
+          );
+        })}
+      </TabsList>
+      {children}
     </Tabs>
   );
 };

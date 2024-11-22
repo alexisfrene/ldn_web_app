@@ -16,13 +16,14 @@ import {
   MenubarCheckboxItem,
   Switch,
 } from '@components';
-import { useModal } from '@hooks';
+import { useIsMobile, useModal } from '@hooks';
 import { ProductsGrid } from './ProductsGrid';
 import { ProductsTable } from './ProductTable';
 
 const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
     useModal();
+  const isMobile = useIsMobile();
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: changePreferenceProductView,
@@ -67,7 +68,7 @@ const ProductGrid: React.FC = () => {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-      {preferments.data ? (
+      {preferments.data || isMobile ? (
         <ProductsGrid data={data} hideModal={hideModal} showModal={showModal} />
       ) : (
         <ProductsTable
@@ -79,7 +80,7 @@ const ProductGrid: React.FC = () => {
       <Modal
         isOpen={isOpenModal}
         onRequestClose={hideModal}
-        className="max-w-fit"
+        className="w-full sm:max-w-fit"
         aria-describedby="modal-description"
         title={modalTitle}
       >

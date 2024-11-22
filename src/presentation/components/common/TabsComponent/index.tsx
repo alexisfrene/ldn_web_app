@@ -48,7 +48,7 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
                   )}
                 </Label>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-96">
+              <DropdownMenuContent className="flex w-[90vw] flex-col">
                 <DropdownMenuLabel>Selecciona una pestaña</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {tabs.map((tab, index) => (

@@ -11,3 +11,8 @@ export * from './MenuTabs';
 export * from './Clock';
 export * from './InfoCard';
 export * from './TabsComponent';
+export * from './AppSidebar';
+export * from './ModeToggle';
+export * from './MovementList';
+export * from './WithAuth';
+export * from './ThemeProvider';

@@ -7,7 +7,7 @@ import {
   CardTitle,
   ScrollArea,
 } from '@components';
-import { MovementList } from '../../../components/MovementList';
+import { MovementList } from '../../../components/common/MovementList';
 import { useQuery } from '@tanstack/react-query';
 import { getAllMovements } from '@services';
 

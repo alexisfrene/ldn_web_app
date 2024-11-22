@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
   });
   return (
     <Layout>
-      <Card className="border-none shadow-none sm:mx-96 sm:mt-28 sm:bg-amber-100">
+      <Card className="border-none shadow-none dark:bg-slate-800 sm:mx-96 sm:mt-28 sm:bg-amber-100">
         <CardHeader>
           <CardTitle>Ingresar </CardTitle>
           <CardDescription>

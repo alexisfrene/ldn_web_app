@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { MovementList } from '../../../components/MovementList';
+import { MovementList } from '../../../components/common/MovementList';
 import { getAllMovements, getMovementTotalMonth } from '@services';
 import {
   Card,

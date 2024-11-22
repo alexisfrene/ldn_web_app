@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   Icons,
   Label,
-  ModeToggle,
   SidebarFooter,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -15,11 +14,20 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarHeader,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
 } from '@components';
 import logo from '@assets/ldn_icon-70x70.webp';
+import { useAvatar } from '@hooks';
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
+  const { avatar, session_token, username, email } = useAvatar();
   const tabsStyles = 'h-8 dark:text-slate-200 text-slate-950 text-slate-100';
   const tabButtons = [
     {
@@ -41,11 +49,6 @@ export const AppSidebar: React.FC = () => {
       title: 'Variaciones',
       icon: <Icons type="stack" className={tabsStyles} />,
       path: '/app/variations',
-    },
-    {
-      title: 'Ajustes',
-      icon: <Icons type="cog_6_tooth" className={tabsStyles} />,
-      path: '/app/config',
     },
   ];
   return (
@@ -94,9 +97,41 @@ export const AppSidebar: React.FC = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="m-3 flex items-center">
-              <ModeToggle />
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton className="flex justify-between">
+                  {session_token && (
+                    <div className="flex gap-1">
+                      <Avatar>
+                        <AvatarImage src={avatar} alt="User Avatar" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                      <div className="mb-1">
+                        <p>{username}</p>
+                        <p className="text-xs text-slate-400">{email}</p>
+                      </div>
+                    </div>
+                  )}
+                  <Icons type="arrow_top" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                className="w-[--radix-popper-anchor-width]"
+              >
+                <DropdownMenuItem>
+                  <NavLink
+                    to="/app/config"
+                    className="flex items-center align-middle"
+                  >
+                    <Icons type="cog_6_tooth" className={tabsStyles} />
+                    <span className="ml-1 font-medium dark:text-slate-200 lg:block">
+                      Configuración
+                    </span>
+                  </NavLink>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

@@ -52,7 +52,10 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
                 <DropdownMenuLabel>Selecciona una pestaña</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {tabs.map((tab, index) => (
-                  <DropdownMenuItem className="flex flex-col space-y-2">
+                  <DropdownMenuItem
+                    className="flex flex-col space-y-2"
+                    key={index}
+                  >
                     <NavLink
                       key={index}
                       to={tab.path}

@@ -1,43 +1,14 @@
-import React, { ReactNode, useEffect } from 'react';
-import { useSessionStore } from '@global';
-import { getUrlAvatar } from '@services';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  ModeToggle,
-  SidebarProvider,
-  SidebarTrigger,
-} from '@components';
+import React, { ReactNode } from 'react';
+import { ModeToggle, SidebarProvider, SidebarTrigger } from '@components';
 import { AppSidebar } from '../AppSidebar';
+import { useAvatar } from '@hooks';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const useAvatar = () => {
-  const { session_token, avatar, insertAvatar } = useSessionStore((state) => ({
-    session_token: state.session_token,
-    avatar: state.avatar,
-    insertAvatar: state.insertAvatar,
-  }));
-
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      if (session_token && !avatar) {
-        const avatarUrl = await getUrlAvatar();
-        insertAvatar(avatarUrl);
-      }
-    };
-
-    fetchAvatar();
-  }, [session_token, avatar, insertAvatar]);
-
-  return { avatar, session_token };
-};
-
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { avatar, session_token } = useAvatar();
+  const { session_token } = useAvatar();
 
   return (
     <SidebarProvider>
@@ -47,12 +18,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           {session_token && <SidebarTrigger />}
           <div className="flex items-center">
             <ModeToggle />
-            {session_token && (
-              <Avatar className="mx-5 my-2">
-                <AvatarImage src={avatar} alt="User Avatar" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            )}
           </div>
         </header>
         {children}

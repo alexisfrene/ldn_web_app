@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, CardTitle } from '@components';
+import { Button, Card, CardContent, CardTitle, ScrollArea } from '@components';
 
 interface ModalGenericProps {
   items: any[];
@@ -22,37 +22,39 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
 
   return (
     <>
-      {items.length ? (
-        items.map((item, index) => (
-          <Card key={index}>
-            <CardTitle className="my-3">{item.title}</CardTitle>
-            <CardContent className="grid grid-cols-3 gap-3">
-              {item.values.map((data: any, index: number) => (
-                <Button
-                  key={data.id + index}
-                  variant="link"
-                  className={`col-span-1 ${
-                    currentSelection[selectedKey] === item[selectedKey] &&
-                    currentSelection[selectedValueKey] === data.id
-                      ? 'bg-amber-300 dark:bg-slate-600'
-                      : 'bg-slate-200 dark:bg-slate-800'
-                  }`}
-                  onClick={() =>
-                    setCurrentSelection({
-                      [selectedKey]: item[selectedKey],
-                      [selectedValueKey]: data.id,
-                    })
-                  }
-                >
-                  <p className="text-xs">{data.value}</p>
-                </Button>
-              ))}
-            </CardContent>
-          </Card>
-        ))
-      ) : (
-        <div>No hay datos que mostrar ...</div>
-      )}
+      <ScrollArea className="h-96">
+        {items.length ? (
+          items.map((item, index) => (
+            <Card key={index}>
+              <CardTitle className="my-3">{item.title}</CardTitle>
+              <CardContent className="grid grid-cols-3 gap-3">
+                {item.values.map((data: any, index: number) => (
+                  <Button
+                    key={data.id + index}
+                    variant="link"
+                    className={`col-span-1 ${
+                      currentSelection[selectedKey] === item[selectedKey] &&
+                      currentSelection[selectedValueKey] === data.id
+                        ? 'bg-amber-300 dark:bg-slate-600'
+                        : 'bg-slate-200 dark:bg-slate-800'
+                    }`}
+                    onClick={() =>
+                      setCurrentSelection({
+                        [selectedKey]: item[selectedKey],
+                        [selectedValueKey]: data.id,
+                      })
+                    }
+                  >
+                    <p className="text-xs">{data.value}</p>
+                  </Button>
+                ))}
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <div>No hay datos que mostrar ...</div>
+        )}
+      </ScrollArea>
       <div className="flex justify-center gap-5">
         <Button
           onClick={() => handleChange(currentSelection)}

@@ -27,7 +27,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnSize = () => (
     <Button
-      className="w-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-700"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
       variant="outline"
       type="button"
       onClick={() =>
@@ -50,7 +50,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnCategory = () => (
     <Button
-      className="w-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-700"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
       variant="outline"
       type="button"
       onClick={() =>
@@ -103,7 +103,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
                   <input
                     name={name}
                     placeholder={value}
-                    className="w-52 truncate bg-slate-100 px-1 pb-1 dark:bg-slate-300"
+                    className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs dark:bg-slate-300 sm:text-base"
                     onChange={formik.handleChange}
                     value={formik.values[name]}
                   />

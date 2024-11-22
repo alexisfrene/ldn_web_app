@@ -122,7 +122,7 @@ export const AppSidebar: React.FC = () => {
                 <DropdownMenuItem>
                   <NavLink
                     to="/app/config"
-                    className="flex items-center align-middle"
+                    className="flex w-full items-center align-middle"
                   >
                     <Icons type="cog_6_tooth" className={tabsStyles} />
                     <span className="ml-1 font-medium dark:text-slate-200 lg:block">

@@ -4,7 +4,7 @@ import React from 'react';
 const FinanceTabs = [
   {
     path: '/app/finance/info',
-    label: 'Información general',
+    label: 'General',
   },
   {
     path: '/app/finance/movement',

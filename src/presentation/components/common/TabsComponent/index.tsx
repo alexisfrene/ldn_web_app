@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   Card,
@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   Icons,
+  LoadingIndicator,
 } from '@components';
 import { cn } from '@utils';
 import { useIsMobile } from '@hooks';
@@ -99,8 +100,10 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
           )}
         </div>
       </CardHeader>
-      <CardContent>
-        <Outlet />
+      <CardContent className="relative h-[80vh]">
+        <Suspense fallback={<LoadingIndicator isLoading />}>
+          <Outlet />
+        </Suspense>
       </CardContent>
     </Card>
   );

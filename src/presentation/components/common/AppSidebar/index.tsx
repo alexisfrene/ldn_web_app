@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   Icons,
   Label,
@@ -21,13 +21,16 @@ import {
   Avatar,
   AvatarImage,
   AvatarFallback,
+  DropdownMenuGroup,
 } from '@components';
-import logo from '@assets/ldn_icon-70x70.webp';
 import { useAvatar } from '@hooks';
+import logo from '@assets/ldn_icon-70x70.webp';
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { avatar, session_token, username, email } = useAvatar();
+
   const tabsStyles = 'h-8 dark:text-slate-200 text-slate-950 text-slate-100';
   const tabButtons = [
     {
@@ -62,7 +65,7 @@ export const AppSidebar: React.FC = () => {
           >
             <img
               src={logo}
-              className="h-12 cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:rotate-6 hover:scale-110"
+              className="relative h-12 cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:rotate-6 hover:scale-110"
               alt="logo-ldn"
             />
           </a>
@@ -119,17 +122,18 @@ export const AppSidebar: React.FC = () => {
                 side="top"
                 className="w-[--radix-popper-anchor-width]"
               >
-                <DropdownMenuItem>
-                  <NavLink
-                    to="/app/config"
+                <DropdownMenuGroup>
+                  <DropdownMenuItem
+                    onClick={() => navigate('/app/config')}
                     className="flex w-full items-center align-middle"
+                    disabled={location.pathname.includes('/app/config')}
                   >
                     <Icons type="cog_6_tooth" className={tabsStyles} />
                     <span className="ml-1 font-medium dark:text-slate-200 lg:block">
                       Configuración
                     </span>
-                  </NavLink>
-                </DropdownMenuItem>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>

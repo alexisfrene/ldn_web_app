@@ -13,6 +13,7 @@ import {
   Input,
   Label,
   Layout,
+  LoadingIndicator,
 } from '@components';
 
 const LoginPage: React.FC = () => {
@@ -37,7 +38,7 @@ const LoginPage: React.FC = () => {
   });
   return (
     <Layout>
-      <Card className="border-none shadow-none dark:bg-slate-800 sm:mx-96 sm:mt-28 sm:bg-amber-100">
+      <Card className="border-none shadow-none dark:bg-slate-900/90 sm:mx-96 sm:mt-28 sm:bg-amber-100">
         <CardHeader>
           <CardTitle>Ingresar </CardTitle>
           <CardDescription>
@@ -68,6 +69,7 @@ const LoginPage: React.FC = () => {
           </form>
         </CardContent>
       </Card>
+      <LoadingIndicator isLoading={formik.isSubmitting} />
     </Layout>
   );
 };

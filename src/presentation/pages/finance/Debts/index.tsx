@@ -12,7 +12,12 @@ const Debts: React.FC = () => {
   });
 
   if (debts.isPending) {
-    return <Skeleton className="h-[65vh] w-[85vw]" />;
+    return (
+      <div>
+        <FormCreateDebt />
+        <Skeleton className="h-96 w-full" />
+      </div>
+    );
   }
   if (debts.error) return 'An error has occurred: ';
 

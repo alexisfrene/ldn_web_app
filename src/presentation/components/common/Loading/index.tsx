@@ -8,7 +8,7 @@ interface Props {
 export const LoadingIndicator: React.FC<Props> = ({ isLoading }) => {
   return (
     isLoading && (
-      <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-slate-300/50 dark:bg-slate-400/50">
+      <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-slate-300/50 dark:bg-slate-900/10">
         <HashLoader />
       </div>
     )

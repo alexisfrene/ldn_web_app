@@ -115,3 +115,4 @@ package-lock.json
 
 stats.html
 .env.production
+CHANGELOG.md

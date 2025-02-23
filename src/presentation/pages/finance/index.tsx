@@ -1,5 +1,5 @@
-import { TabsComponent } from '@components';
 import React from 'react';
+import { TabsComponent } from '@components';
 
 const FinanceTabs = [
   {

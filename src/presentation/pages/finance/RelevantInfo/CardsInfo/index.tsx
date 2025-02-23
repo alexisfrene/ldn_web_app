@@ -31,27 +31,27 @@ export const CardsInfo: React.FC<Props> = ({ totalMonth }) => {
         <>
           <InfoCard
             title={isMobile ? 'Entrada del mes' : 'Total entradas en el mes'}
-            value={formattedValue(totalMonth.data?.inflow_of_money || 0)}
+            value={totalMonth.data?.inflow_of_money || 0}
             currency={true}
-            valueStyles="text-green-500"
+            valueStyles="text-green-500 dark:text-green-500"
           />
           <InfoCard
             title={isMobile ? 'Salida del mes' : 'Total de salidas del mes'}
-            value={formattedValue(totalMonth.data?.money_outflow || 0)}
+            value={totalMonth.data?.money_outflow || 0}
             currency={true}
-            valueStyles="text-red-500"
+            valueStyles="text-red-500 dark:text-red-500"
           />
           <InfoCard
             title={isMobile ? 'Ganancias' : 'Ganancias del mes'}
-            value={formattedValue(
+            value={
               (totalMonth.data?.inflow_of_money || 0) -
-                (totalMonth.data?.money_outflow || 0),
-            )}
+              (totalMonth.data?.money_outflow || 0)
+            }
             currency={true}
           />
           <InfoCard
             title={isMobile ? 'Movimientos' : 'Total de movimientos en el mes'}
-            value={totalMonth.data?.count_movements}
+            value={totalMonth.data?.count_movements || 0}
           />
         </>
       )}

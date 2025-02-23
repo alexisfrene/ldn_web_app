@@ -31,3 +31,5 @@ export * from './border-beam';
 export * from './particles';
 export * from './text-animate';
 export * from './aurora-text';
+export * from './number-ticker';
+export * from './grid-pattern';

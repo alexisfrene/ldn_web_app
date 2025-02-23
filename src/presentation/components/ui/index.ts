@@ -26,3 +26,8 @@ export * from './menubar';
 export * from './dropdown-menu';
 export * from './sidebar';
 export * from './tooltip';
+export * from './dot-pattern';
+export * from './border-beam';
+export * from './particles';
+export * from './text-animate';
+export * from './aurora-text';

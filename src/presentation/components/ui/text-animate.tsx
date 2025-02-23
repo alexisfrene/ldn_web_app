@@ -357,7 +357,7 @@ export function TextAnimate({
   }
 
   return (
-    <AnimatePresence mode="popLayout">
+    <AnimatePresence mode="wait">
       <MotionComponent
         variants={finalVariants.container}
         initial="hidden"

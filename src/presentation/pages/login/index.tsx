@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '@services';
 import { useSessionStore } from '@global';
 import {
+  BorderBeam,
   Button,
   Card,
   CardContent,
   CardDescription,
-  CardHeader,
   CardTitle,
   Input,
   Label,
-  Layout,
+  Particles,
+  useTheme,
   LoadingIndicator,
 } from '@components';
 
 const LoginPage: React.FC = () => {
+  const [color, setColor] = useState('#ffffff');
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const insertSessionToken = useSessionStore(
     (state) => state.insertSessionToken,
@@ -36,18 +39,28 @@ const LoginPage: React.FC = () => {
       alert('Error');
     },
   });
+  useEffect(() => {
+    setColor(theme === 'dark' ? '#ffffff' : '#000000');
+  }, [theme]);
   return (
-    <Layout>
-      <Card className="border-none shadow-none dark:bg-slate-900/90 sm:mx-96 sm:mt-28 sm:bg-amber-100">
-        <CardHeader>
-          <CardTitle>Ingresar </CardTitle>
-          <CardDescription>
-            Proporcionar sus credenciales de acceso
-          </CardDescription>
-        </CardHeader>
+    <div className="flex h-screen items-center justify-center">
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={color}
+        refresh
+      />
+      <Card className="relative w-[350px] overflow-hidden border-2 shadow-2xl">
         <CardContent>
+          <CardTitle>
+            <div className="text-3xl">Inicio de sesión</div>
+          </CardTitle>
+          <CardDescription className="mb-3 text-base">
+            Ingrese sus credenciales para iniciar sesión
+          </CardDescription>
           <form onSubmit={formik.handleSubmit}>
-            <Label>Correo electrónico o username</Label>
+            <Label>Email/Username</Label>
             <Input
               id="email_or_user"
               name="email_or_user"
@@ -61,16 +74,30 @@ const LoginPage: React.FC = () => {
               id="password"
               name="password"
               value={formik.values.password}
+              placeholder="********"
               onChange={formik.handleChange}
             />
-            <Button type="submit" className="my-3">
-              Iniciar sesión
-            </Button>
+            <div className="mt-6 flex justify-between">
+              <Button
+                variant="outline"
+                type="button"
+                onClick={() => navigate('/signup')}
+              >
+                Register
+              </Button>
+              <Button type="submit">Iniciar sesión</Button>
+            </div>
           </form>
         </CardContent>
+        <BorderBeam
+          duration={8}
+          size={100}
+          colorTo="#f6f6f4"
+          colorFrom="#2a2a27"
+        />
       </Card>
       <LoadingIndicator isLoading={formik.isSubmitting} />
-    </Layout>
+    </div>
   );
 };
 

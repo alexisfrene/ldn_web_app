@@ -14,7 +14,6 @@ import {
   Input,
   Label,
   Particles,
-  TextAnimate,
   useTheme,
 } from '@components';
 import { loginUser } from '@services';
@@ -24,6 +23,7 @@ const Filing: React.FC = () => {
   const sessionToken = useSessionStore((state) => state.session_token);
   const { theme } = useTheme();
   const [color, setColor] = useState('#ffffff');
+
   const insertSessionToken = useSessionStore(
     (state) => state.insertSessionToken,
   );
@@ -32,6 +32,7 @@ const Filing: React.FC = () => {
       email_or_user: '',
       password: '',
     },
+
     onSubmit: async (values, formikHelpers) => {
       const res = await loginUser(values);
 
@@ -43,6 +44,13 @@ const Filing: React.FC = () => {
       }
     },
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [hasAnimated]);
   useEffect(() => {
     setColor(theme === 'dark' ? '#ffffff' : '#000000');
   }, [theme]);
@@ -56,6 +64,17 @@ const Filing: React.FC = () => {
   return (
     <div className="grid grid-cols-12">
       <div className="relative col-span-5 flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-background">
+        <div className="absolute left-1 top-1 mx-3">
+          <div className="flex items-center space-x-3">
+            <img src="/icon.png" className="rounded-7xl h-16 w-16" />
+            <h1 className="flex pb-3 text-4xl font-bold tracking-tighter dark:text-white">
+              Lo de
+              <div className="to-error w-fit bg-gradient-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
+                Naty
+              </div>
+            </h1>
+          </div>
+        </div>
         <Particles
           className="absolute inset-0 z-0"
           quantity={100}
@@ -64,18 +83,12 @@ const Filing: React.FC = () => {
           refresh
         />
         <div>
-          <img src="/icon.png" className="rounded-7xl h-32 w-32" />
-          <h1 className="pb-3 text-5xl font-bold tracking-tighter">
-            Lo de <AuroraText className="py-3 pr-1">Naty</AuroraText>
-          </h1>
-          <Card className="relative w-[350px] overflow-hidden">
+          <Card className="relative w-[350px] overflow-hidden border-2 shadow-2xl">
             <CardContent>
               <CardTitle>
-                <TextAnimate animation="blurInUp" by="character" once>
-                  Inicio de sesión
-                </TextAnimate>
+                <div className="text-3xl">Inicio de sesión</div>
               </CardTitle>
-              <CardDescription className="mb-3">
+              <CardDescription className="mb-3 text-base">
                 Ingrese sus credenciales para iniciar sesión
               </CardDescription>
               <form onSubmit={formik.handleSubmit}>

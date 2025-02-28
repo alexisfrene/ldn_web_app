@@ -58,7 +58,7 @@ export const AppSidebar: React.FC = () => {
   ];
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
-      <SidebarHeader>
+      <SidebarHeader className="h-[8vh] bg-gradient-to-b from-amber-400 to-amber-500 dark:from-slate-950 dark:to-slate-900">
         <div className="flex items-center gap-3 align-middle">
           <a
             href="https://www.facebook.com/tiendaLDN/"
@@ -75,7 +75,7 @@ export const AppSidebar: React.FC = () => {
         </div>
         <SidebarSeparator />
       </SidebarHeader>
-      <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-background">
+      <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-gradient-to-bl from-amber-200 to-amber-400 dark:from-slate-950 dark:to-slate-900">
         <GridPattern
           squares={[
             [4, 4],
@@ -93,7 +93,7 @@ export const AppSidebar: React.FC = () => {
           ]}
           className={cn(
             '[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
-            'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12',
+            'inset-x-4 inset-y-[-10%] h-[200%] skew-y-12',
           )}
         />
         <SidebarGroup>
@@ -119,7 +119,7 @@ export const AppSidebar: React.FC = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="h-[5vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>

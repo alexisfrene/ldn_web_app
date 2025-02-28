@@ -36,16 +36,16 @@ const LoginPage: React.FC = () => {
         insertSessionToken(res?.data.session_token);
         return setTimeout(() => navigate('/app/finance'), 200);
       }
-      alert('Error');
     },
   });
   useEffect(() => {
     setColor(theme === 'dark' ? '#ffffff' : '#000000');
   }, [theme]);
+
   return (
     <div className="flex h-screen items-center justify-center">
       <Particles
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-white dark:bg-background"
         quantity={100}
         ease={80}
         color={color}

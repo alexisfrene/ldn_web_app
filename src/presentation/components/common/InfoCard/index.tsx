@@ -23,8 +23,8 @@ export const InfoCard: React.FC<Props> = ({
   return (
     <Card className="relative">
       <DotPattern
-        width={25}
-        height={25}
+        width={10}
+        height={10}
         cx={1}
         cy={1}
         cr={1}

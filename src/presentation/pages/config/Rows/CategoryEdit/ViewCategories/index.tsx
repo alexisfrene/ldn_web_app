@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   deleteCollectionCategory,
   deleteValueCategory,
@@ -22,6 +22,39 @@ import {
 import { FormAddCategory } from './FormAddCategory';
 import { AlertDelete } from './AlertDelete';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { axiosInstance } from '@utils';
+
+const TokenImage = ({ url }: { url: string }) => {
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchImage = async () => {
+      try {
+        const res = await axiosInstance.get(url, { responseType: 'blob' });
+        const blobUrl = URL.createObjectURL(res.data);
+
+        if (isMounted) setImageSrc(blobUrl);
+      } catch (error) {
+        console.error('Error cargando imagen:', error);
+      }
+    };
+
+    fetchImage();
+
+    return () => {
+      isMounted = false;
+      if (imageSrc) URL.revokeObjectURL(imageSrc); // Libera la memoria
+    };
+  }, [url]);
+
+  return (
+    <Avatar>
+      <AvatarImage src={imageSrc ?? ''} alt="Avatar" />
+    </Avatar>
+  );
+};
 
 interface Props {
   data: Category[];
@@ -85,7 +118,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   <Icons
                     type="copy_manual"
                     height={25}
-                    className=" cursor-pointer rounded-tr-sm  text-slate-300 hover:text-slate-900"
+                    className="cursor-pointer rounded-tr-sm text-slate-300 hover:text-slate-900"
                     onClick={() => {
                       setSelected(category_id);
                     }}
@@ -102,12 +135,11 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                 </div>
               )}
             </CardHeader>
-
             <CardContent className="flex flex-row flex-wrap gap-5">
               {values.map((e) => (
                 <Badge key={e.id} variant="secondary" className="relative">
                   <Avatar>
-                    <AvatarImage src={e.icon_url} alt="@ldn" />
+                    <TokenImage url={e.icon_url || ''} />
                     <AvatarFallback>{e.value[0]}</AvatarFallback>
                   </Avatar>
                   {e.value}

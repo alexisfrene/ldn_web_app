@@ -47,7 +47,7 @@ const SingUpPage: React.FC = () => {
         toast('Usuario creado exitosamente!');
         return formikHelpers.resetForm();
       } else {
-        alert('Error');
+        toast.error('Error al crear el usuario');
       }
     },
   });
@@ -56,7 +56,7 @@ const SingUpPage: React.FC = () => {
   }, [theme]);
 
   return (
-    <Card className="border-none shadow-none">
+    <Card className="min-h-screen border-none px-96 shadow-none">
       <CardHeader className="text-center text-2xl">Crea una cuenta</CardHeader>
       <CardDescription className="mb-3 text-center">
         ¿Ya tienes cuenta?

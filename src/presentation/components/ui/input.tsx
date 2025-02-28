@@ -27,7 +27,8 @@ Input.displayName = 'Input';
 const InputWithVerifyPassword: React.FC<{
   label?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}> = ({ label, onChange }) => {
+  name?: string;
+}> = ({ label, onChange, name = 'password' }) => {
   const id = React.useId();
   const [password, setPassword] = React.useState('');
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
@@ -76,6 +77,7 @@ const InputWithVerifyPassword: React.FC<{
         <div className="relative">
           <Input
             id={id}
+            name={name}
             className="pe-9"
             placeholder="Contraseña"
             type={isVisible ? 'text' : 'password'}

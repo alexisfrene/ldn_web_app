@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   deleteCollectionCategory,
   deleteValueCategory,
@@ -7,7 +7,6 @@ import {
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
   Badge,
   Button,
   Card,
@@ -18,43 +17,11 @@ import {
   Input,
   Label,
   ScrollArea,
+  TokenImage,
 } from '@components';
 import { FormAddCategory } from './FormAddCategory';
 import { AlertDelete } from './AlertDelete';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { axiosInstance } from '@utils';
-
-const TokenImage = ({ url }: { url: string }) => {
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchImage = async () => {
-      try {
-        const res = await axiosInstance.get(url, { responseType: 'blob' });
-        const blobUrl = URL.createObjectURL(res.data);
-
-        if (isMounted) setImageSrc(blobUrl);
-      } catch (error) {
-        console.error('Error cargando imagen:', error);
-      }
-    };
-
-    fetchImage();
-
-    return () => {
-      isMounted = false;
-      if (imageSrc) URL.revokeObjectURL(imageSrc); // Libera la memoria
-    };
-  }, [url]);
-
-  return (
-    <Avatar>
-      <AvatarImage src={imageSrc ?? ''} alt="Avatar" />
-    </Avatar>
-  );
-};
 
 interface Props {
   data: Category[];
@@ -139,7 +106,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
               {values.map((e) => (
                 <Badge key={e.id} variant="secondary" className="relative">
                   <Avatar>
-                    <TokenImage url={e.icon_url || ''} />
+                    <TokenImage url={e.icon_url || ''} variant="avatar" />
                     <AvatarFallback>{e.value[0]}</AvatarFallback>
                   </Avatar>
                   {e.value}

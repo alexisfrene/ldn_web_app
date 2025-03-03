@@ -7,8 +7,8 @@ import {
   CardHeader,
   CardTitle,
   Icons,
-  ImageLoader,
   LoadingIndicator,
+  TokenImage,
 } from '@components';
 import { AlertAddImage } from './AlertAddImage';
 import { AlertRemoveImage } from './AlertRemoveImage';
@@ -77,13 +77,7 @@ export const GalleryTab: React.FC<Props> = ({ variation }) => {
                   url={image}
                   key={value.label + index}
                 >
-                  <ImageLoader
-                    alt={value.label}
-                    url={image}
-                    className="m-0.5 rounded-md"
-                    height={32}
-                    width={32}
-                  />
+                  <TokenImage url={image} variant="default" />
                 </AlertRemoveImage>
               ))}
               {edit === value.id && (

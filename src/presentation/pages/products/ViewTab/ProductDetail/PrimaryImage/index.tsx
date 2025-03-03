@@ -13,9 +13,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Icons,
-  ImageUploader,
   ImageLoader,
+  ImageUploader,
   LoadingIndicator,
+  TokenImage,
 } from '@components';
 
 interface Props {
@@ -88,10 +89,9 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
         </AlertDialogContent>
       </AlertDialog>
       <div className="sm:h-60 sm:w-60">
-        <ImageLoader
-          url={product.primary_image?.toString()!}
-          className="h-32 w-32 rounded-lg sm:h-60 sm:w-60"
-          alt={product.name}
+        <TokenImage
+          url={product.primary_image?.toString() as string}
+          variant="default"
         />
       </div>
       <LoadingIndicator isLoading={mutation.isPending} />

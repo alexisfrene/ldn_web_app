@@ -16,3 +16,4 @@ export * from './ModeToggle';
 export * from './MovementList';
 export * from './WithAuth';
 export * from './ThemeProvider';
+export * from './ImagePrivate';

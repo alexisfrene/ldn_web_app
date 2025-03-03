@@ -33,7 +33,10 @@ export const VariationCard: React.FC<Props> = ({
         </CardTitle>
       </CardHeader>
       <CardContent className="flex justify-center" onClick={onCLickImage}>
-        <TokenImage url={variation.values[0].images[0]} variant="default" />
+        <TokenImage
+          url={`${variation.values[0].images[0]}?width=450&height=450&quality=70&format=webp`}
+          variant="default"
+        />
       </CardContent>
     </Card>
   );

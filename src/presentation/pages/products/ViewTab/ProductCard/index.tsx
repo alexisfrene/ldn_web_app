@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({
       <CardContent onClick={handleClick} className="cursor-pointer">
         <div className="flex justify-center">
           <TokenImage
-            url={product.primary_image?.toString()! as string}
+            url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
             variant="default"
           />
         </div>

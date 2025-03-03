@@ -106,7 +106,10 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
               {values.map((e) => (
                 <Badge key={e.id} variant="secondary" className="relative">
                   <Avatar>
-                    <TokenImage url={e.icon_url || ''} variant="avatar" />
+                    <TokenImage
+                      url={`${e.icon_url}?width=60&height=60&quality=50&format=webp`}
+                      variant="avatar"
+                    />
                     <AvatarFallback>{e.value[0]}</AvatarFallback>
                   </Avatar>
                   {e.value}

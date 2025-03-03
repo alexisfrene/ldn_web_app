@@ -90,7 +90,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
       </AlertDialog>
       <div className="sm:h-60 sm:w-60">
         <TokenImage
-          url={product.primary_image?.toString() as string}
+          url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
           variant="default"
         />
       </div>

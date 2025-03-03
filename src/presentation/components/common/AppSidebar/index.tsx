@@ -19,10 +19,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   Avatar,
-  AvatarImage,
   AvatarFallback,
   DropdownMenuGroup,
   GridPattern,
+  TokenImage,
 } from '@components';
 import { useAvatar } from '@hooks';
 import logo from '@assets/ldn_icon-70x70.webp';
@@ -56,6 +56,7 @@ export const AppSidebar: React.FC = () => {
       path: '/app/variations',
     },
   ];
+
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
       <SidebarHeader className="h-[8vh] bg-gradient-to-b from-amber-400 to-amber-500 dark:from-slate-950 dark:to-slate-900">
@@ -128,7 +129,10 @@ export const AppSidebar: React.FC = () => {
                   {session_token && (
                     <div className="flex gap-1">
                       <Avatar>
-                        <AvatarImage src={avatar} alt="User Avatar" />
+                        <TokenImage
+                          url={`${avatar}?width=100&height=100&quality=50&format=webp`}
+                          variant="avatar"
+                        />
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
                       <div className="mb-1">

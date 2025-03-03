@@ -32,6 +32,7 @@ import {
   Input,
   Checkbox,
   Icons,
+  TokenImage,
 } from '@components';
 import { ProductDetail } from '../ProductDetail';
 
@@ -77,7 +78,10 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
       header: 'Imagen',
       cell: ({ row }) => (
         <Avatar>
-          <AvatarImage src={row.getValue('primary_image')} />
+          <TokenImage
+            url={`${row.getValue('primary_image')}?width=60&height=60&quality=50&format=webp`}
+            variant="avatar"
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       ),

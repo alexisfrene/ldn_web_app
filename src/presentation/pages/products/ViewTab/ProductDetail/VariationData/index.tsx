@@ -1,7 +1,6 @@
 import React from 'react';
-// import { Gallery } from './Gallery';
 import { AddVariations } from './AddVariations';
-import { ImageLoader } from '@components';
+import { TokenImage } from '@components';
 
 interface ImagesVariantsProps {
   variation: Product['variation'];
@@ -21,12 +20,10 @@ export const VariationData: React.FC<ImagesVariantsProps> = ({
               <div className="grid grid-cols-4 gap-3" key={value.id}>
                 <p className="col-span-4">{value.label}</p>
                 {value.images.map((image, index) => (
-                  <ImageLoader
-                    key={`images-variations-${index}`}
-                    url={image}
-                    alt={value.label}
-                    height={36}
-                    width={36}
+                  <TokenImage
+                    key={index}
+                    url={`${image}?width=450&height=450&quality=70&format=webp`}
+                    variant="default"
                   />
                 ))}
               </div>

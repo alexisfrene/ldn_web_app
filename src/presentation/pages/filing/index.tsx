@@ -1,19 +1,58 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Opulento, Velustro } from 'uvcanvas';
+import { useFormik } from 'formik';
 import { useSessionStore } from '@global';
 import {
+  BorderBeam,
   Button,
   Card,
   CardContent,
   CardDescription,
-  CardHeader,
   CardTitle,
-  Layout,
+  Input,
+  Label,
+  Particles,
+  useTheme,
 } from '@components';
+import { loginUser } from '@services';
 
 const Filing: React.FC = () => {
   const navigate = useNavigate();
   const sessionToken = useSessionStore((state) => state.session_token);
+  const { theme } = useTheme();
+  const [color, setColor] = useState('#ffffff');
+
+  const insertSessionToken = useSessionStore(
+    (state) => state.insertSessionToken,
+  );
+  const formik = useFormik({
+    initialValues: {
+      email_or_user: '',
+      password: '',
+    },
+
+    onSubmit: async (values, formikHelpers) => {
+      const res = await loginUser(values);
+
+      if (res?.data.session_token) {
+        insertSessionToken(res?.data.session_token);
+        return setTimeout(() => navigate('/app/finance'), 200);
+      } else {
+        formikHelpers.resetForm();
+      }
+    },
+  });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [hasAnimated]);
+  useEffect(() => {
+    setColor(theme === 'dark' ? '#ffffff' : '#000000');
+  }, [theme]);
 
   useEffect(() => {
     if (sessionToken) {
@@ -22,35 +61,78 @@ const Filing: React.FC = () => {
   }, [sessionToken, navigate]);
 
   return (
-    <Layout>
-      <Card className="sm:mx-56 sm:my-20">
-        <CardHeader>
-          <CardTitle className="text-center">Acción a realizar</CardTitle>
-        </CardHeader>
-        <CardContent className="sm:flex sm:justify-center sm:gap-10">
-          {!sessionToken ? (
-            <>
-              <div className="cursor-pointer flex-col justify-center px-14 sm:flex sm:h-40 sm:w-96 sm:border-2">
-                <CardDescription className="my-3 text-center">
-                  Crear una cuenta
-                </CardDescription>
-                <Button onClick={() => navigate('/signup')} className="w-full">
-                  Registrarme
-                </Button>
+    <div className="grid grid-cols-12">
+      <div className="relative col-span-5 flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-background">
+        <div className="absolute left-1 top-1 mx-3">
+          <div className="flex items-center space-x-3">
+            <img src="/icon.png" className="rounded-7xl h-16 w-16" />
+            <h1 className="flex pb-3 text-4xl font-bold tracking-tighter dark:text-white">
+              Lo de
+              <div className="to-error w-fit bg-gradient-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
+                Naty
               </div>
-              <div className="cursor-pointer flex-col justify-center px-14 sm:flex sm:h-40 sm:w-96 sm:border-2">
-                <CardDescription className="my-3 text-center">
-                  Iniciar sesión
-                </CardDescription>
-                <Button onClick={() => navigate('/login')} className="w-full">
-                  Login
-                </Button>
-              </div>
-            </>
-          ) : null}
-        </CardContent>
-      </Card>
-    </Layout>
+            </h1>
+          </div>
+        </div>
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={100}
+          ease={80}
+          color={color}
+          refresh
+        />
+        <div>
+          <Card className="relative w-[350px] overflow-hidden border-2 shadow-2xl">
+            <CardContent>
+              <CardTitle>
+                <div className="text-3xl">Inicio de sesión</div>
+              </CardTitle>
+              <CardDescription className="mb-3 text-base">
+                Ingrese sus credenciales para iniciar sesión
+              </CardDescription>
+              <form onSubmit={formik.handleSubmit}>
+                <Label>Email/Username</Label>
+                <Input
+                  id="email_or_user"
+                  name="email_or_user"
+                  placeholder="Ej : juanperez003"
+                  value={formik.values.email_or_user}
+                  onChange={formik.handleChange}
+                />
+                <Label>Contraseña</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formik.values.password}
+                  placeholder="********"
+                  onChange={formik.handleChange}
+                />
+                <div className="mt-6 flex justify-between">
+                  <Button
+                    variant="outline"
+                    type="button"
+                    onClick={() => navigate('/signup')}
+                  >
+                    Register
+                  </Button>
+                  <Button type="submit">Iniciar sesión</Button>
+                </div>
+              </form>
+            </CardContent>
+            <BorderBeam
+              duration={8}
+              size={100}
+              colorTo="#f6f6f4"
+              colorFrom="#2a2a27"
+            />
+          </Card>
+        </div>
+      </div>
+      <div className="col-span-7">
+        {theme !== 'dark' ? <Velustro /> : <Opulento />}
+      </div>
+    </div>
   );
 };
 

@@ -19,12 +19,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   Avatar,
-  AvatarImage,
   AvatarFallback,
   DropdownMenuGroup,
+  GridPattern,
+  TokenImage,
 } from '@components';
 import { useAvatar } from '@hooks';
 import logo from '@assets/ldn_icon-70x70.webp';
+import { cn } from '@utils';
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
@@ -54,9 +56,10 @@ export const AppSidebar: React.FC = () => {
       path: '/app/variations',
     },
   ];
+
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
-      <SidebarHeader>
+      <SidebarHeader className="h-[8vh] bg-gradient-to-b from-amber-400 to-amber-500 dark:from-slate-950 dark:to-slate-900">
         <div className="flex items-center gap-3 align-middle">
           <a
             href="https://www.facebook.com/tiendaLDN/"
@@ -73,9 +76,29 @@ export const AppSidebar: React.FC = () => {
         </div>
         <SidebarSeparator />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-gradient-to-bl from-amber-200 to-amber-400 dark:from-slate-950 dark:to-slate-900">
+        <GridPattern
+          squares={[
+            [4, 4],
+            [5, 1],
+            [8, 2],
+            [5, 3],
+            [5, 5],
+            [10, 10],
+            [12, 15],
+            [15, 10],
+            [10, 15],
+            [15, 10],
+            [10, 15],
+            [15, 10],
+          ]}
+          className={cn(
+            '[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
+            'inset-x-4 inset-y-[-10%] h-[200%] skew-y-12',
+          )}
+        />
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {tabButtons.map(({ title, icon, path }, index) => (
@@ -97,7 +120,7 @@ export const AppSidebar: React.FC = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="h-[5vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
@@ -106,7 +129,10 @@ export const AppSidebar: React.FC = () => {
                   {session_token && (
                     <div className="flex gap-1">
                       <Avatar>
-                        <AvatarImage src={avatar} alt="User Avatar" />
+                        <TokenImage
+                          url={`${avatar}?width=100&height=100&quality=50&format=webp`}
+                          variant="avatar"
+                        />
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
                       <div className="mb-1">

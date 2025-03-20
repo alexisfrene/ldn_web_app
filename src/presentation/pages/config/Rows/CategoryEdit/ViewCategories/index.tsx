@@ -7,7 +7,6 @@ import {
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
   Badge,
   Button,
   Card,
@@ -18,6 +17,7 @@ import {
   Input,
   Label,
   ScrollArea,
+  TokenImage,
 } from '@components';
 import { FormAddCategory } from './FormAddCategory';
 import { AlertDelete } from './AlertDelete';
@@ -85,7 +85,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   <Icons
                     type="copy_manual"
                     height={25}
-                    className=" cursor-pointer rounded-tr-sm  text-slate-300 hover:text-slate-900"
+                    className="cursor-pointer rounded-tr-sm text-slate-300 hover:text-slate-900"
                     onClick={() => {
                       setSelected(category_id);
                     }}
@@ -102,12 +102,14 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                 </div>
               )}
             </CardHeader>
-
             <CardContent className="flex flex-row flex-wrap gap-5">
               {values.map((e) => (
                 <Badge key={e.id} variant="secondary" className="relative">
                   <Avatar>
-                    <AvatarImage src={e.icon_url} alt="@ldn" />
+                    <TokenImage
+                      url={`${e.icon_url}?width=60&height=60&quality=50&format=webp`}
+                      variant="avatar"
+                    />
                     <AvatarFallback>{e.value[0]}</AvatarFallback>
                   </Avatar>
                   {e.value}

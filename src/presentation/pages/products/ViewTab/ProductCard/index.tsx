@@ -5,9 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-  ImageLoader,
+  TokenImage,
 } from '@components';
-import { useIsMobile } from '@hooks';
 
 interface Props {
   product: Product;
@@ -20,7 +19,6 @@ export const ProductCard: React.FC<Props> = ({
   handleClick,
   removeProduct,
 }) => {
-  const isMobile = useIsMobile();
   return (
     <Card className="col-span-1 text-[10px] lg:text-xs xl:text-base">
       <CardHeader className="flex flex-row items-center justify-between">
@@ -39,14 +37,9 @@ export const ProductCard: React.FC<Props> = ({
       </CardHeader>
       <CardContent onClick={handleClick} className="cursor-pointer">
         <div className="flex justify-center">
-          <ImageLoader
-            url={product.primary_image?.toString()!}
-            className={`h-32 cursor-pointer rounded-sm sm:h-[230px] sm:w-[230px] sm:rounded-md ${
-              false && 'border-2 border-dashed border-amber-900'
-            }`}
-            alt={product.name}
-            height={isMobile ? '32' : '[230px]'}
-            width={isMobile ? '32' : '[230px]'}
+          <TokenImage
+            url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+            variant="default"
           />
         </div>
       </CardContent>

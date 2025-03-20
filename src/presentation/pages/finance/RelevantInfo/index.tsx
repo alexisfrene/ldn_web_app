@@ -24,7 +24,7 @@ const RelevantInfo: React.FC = () => {
   if (movements.error) return 'An error has occurred: ';
 
   return (
-    <Card>
+    <Card className="border-none">
       <CardHeader className="flex flex-row justify-between text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />

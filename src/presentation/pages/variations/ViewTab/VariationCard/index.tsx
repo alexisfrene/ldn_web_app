@@ -4,7 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  ImageLoader,
+  TokenImage,
 } from '@components';
 
 interface Props {
@@ -33,14 +33,9 @@ export const VariationCard: React.FC<Props> = ({
         </CardTitle>
       </CardHeader>
       <CardContent className="flex justify-center" onClick={onCLickImage}>
-        <ImageLoader
-          url={variation.values[0].images[0]}
-          className={`h-[230px] w-[230px] cursor-pointer rounded-sm sm:rounded-md ${
-            false && 'border-2 border-dashed border-amber-900'
-          }`}
-          alt={variation.title}
-          height={'[230px]'}
-          width={'[230px]'}
+        <TokenImage
+          url={`${variation.values[0].images[0]}?width=450&height=450&quality=70&format=webp`}
+          variant="default"
         />
       </CardContent>
     </Card>

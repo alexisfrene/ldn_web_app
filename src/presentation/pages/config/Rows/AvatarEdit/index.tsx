@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Formik } from 'formik';
 import { useSessionStore } from '@global';
 import {
   AlertDialog,
@@ -17,9 +18,9 @@ import {
   Icons,
   ImageLoader,
   ImageUploader,
+  TokenImage,
 } from '@components';
 import { changeAvatar } from '@services';
-import { Formik } from 'formik';
 
 export const AvatarEdit: React.FC = () => {
   const [image, setImage] = useState<ImagesValues[]>([]);
@@ -40,7 +41,10 @@ export const AvatarEdit: React.FC = () => {
                 height={30}
                 className="absolute right-0 bg-slate-200 dark:bg-slate-800"
               />
-              <ImageLoader alt="avatar" url={avatar} height={40} width={40} />
+              <TokenImage
+                url={`${avatar}?width=450&height=450&quality=70&format=webp`}
+                variant="default"
+              />
             </div>
           </AlertDialogTrigger>
           <AlertDialogContent>

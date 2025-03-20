@@ -1,0 +1,10 @@
+node_modules
+.vscode
+.git
+.gitignore
+README.md
+stats.html
+CHANGELOG.md
+.env
+dist
+.devcontainer

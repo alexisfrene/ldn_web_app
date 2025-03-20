@@ -34,7 +34,7 @@ export const loginUser = async (values: loginUserValues) => {
     toast.success('Inicio de sesión exitoso!');
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al iniciar sesión');
+    toast.error('Credenciales incorrectas');
     console.error('ERROR IN loginUser:', error);
   }
 };
@@ -44,6 +44,7 @@ export const getUrlAvatar = async () => {
     const res = await axiosInstance.get('/user/avatar');
     return res.data;
   } catch (error) {
+    console.log(error);
     toast.error('Ocurrió un error al obtener la URL del avatar');
     console.error('ERROR IN getUrlAvatar:', error);
   }

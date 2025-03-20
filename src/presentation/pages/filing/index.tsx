@@ -4,7 +4,6 @@ import { Opulento, Velustro } from 'uvcanvas';
 import { useFormik } from 'formik';
 import { useSessionStore } from '@global';
 import {
-  AuroraText,
   BorderBeam,
   Button,
   Card,

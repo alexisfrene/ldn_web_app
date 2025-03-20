@@ -7,7 +7,6 @@ import {
   CardDescription,
   CardTitle,
   Icons,
-  ImageLoader,
   LoadingIndicator,
   ScrollArea,
   Sheet,
@@ -18,6 +17,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  TokenImage,
 } from '@components';
 import { getAllVariations, linkVariation } from '@services';
 import { cn } from '@utils';
@@ -90,13 +90,10 @@ export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
                           <CardDescription>{e.label}</CardDescription>
                           <CardContent className="grid grid-cols-3 gap-2">
                             {e.images.map((image, i) => (
-                              <ImageLoader
+                              <TokenImage
+                                url={`${image}?width=60&height=60&quality=50&format=webp`}
                                 key={i}
-                                url={image}
-                                alt="variations"
-                                height={20}
-                                width={20}
-                                className="rounded-sm"
+                                variant="default"
                               />
                             ))}
                           </CardContent>

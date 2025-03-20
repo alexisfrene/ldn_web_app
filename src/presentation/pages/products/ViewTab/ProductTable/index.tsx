@@ -14,7 +14,6 @@ import {
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
   Button,
   Table,
   TableBody,

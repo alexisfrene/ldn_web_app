@@ -1,6 +1,5 @@
 import React from 'react';
 import { InfoCard, Skeleton } from '@components';
-import { formattedValue } from '@utils';
 import { useIsMobile } from '@hooks';
 
 interface TotalMonthData {

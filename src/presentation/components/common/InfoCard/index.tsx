@@ -21,7 +21,7 @@ export const InfoCard: React.FC<Props> = ({
   currency = false,
 }) => {
   return (
-    <Card className="relative">
+    <Card className="relative rounded-none">
       <DotPattern
         width={10}
         height={10}

@@ -27,16 +27,26 @@ const Debts: React.FC = () => {
       {debts?.data.length ? (
         debts?.data.map(
           (debt: {
+            total_paid: number;
+            total_unpaid: number;
+            total: number;
             name: string;
             notes: string;
             debt_id: UUID;
+            interest_per_installment: number;
+            total_interest: number;
             installments: [];
           }) => (
             <CardDebt
               debt_id={debt.debt_id}
+              total_interest={debt.total_interest}
               installments={debt.installments}
               name={debt.name}
               notes={debt.notes}
+              total={debt.total}
+              total_paid={debt.total_paid}
+              total_unpaid={debt.total_unpaid}
+              interest_per_installment={debt.interest_per_installment}
               key={debt.debt_id}
             />
           ),

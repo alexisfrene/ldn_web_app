@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icons, Label, Skeleton } from '@components';
+import { Icons, InfoCard, Label, Skeleton } from '@components';
 import { useQuery } from '@tanstack/react-query';
 import { getDebts } from '@services';
 import { FormCreateDebt } from './FormCreateDebt';
@@ -23,9 +23,32 @@ const Debts: React.FC = () => {
 
   return (
     <div>
-      <FormCreateDebt />
-      {debts?.data.length ? (
-        debts?.data.map(
+      <div className="grid grid-cols-3 gap-3">
+        <Label className="col-span-3 text-2xl">Información general</Label>
+        <div className="col-span-3">
+          <FormCreateDebt />
+        </div>
+
+        <InfoCard
+          title="Total de deudas"
+          value={debts?.data.debtsTotal}
+          currency
+        />
+        <InfoCard
+          title="Deudas pagadas"
+          value={debts?.data.debtsTotalPaid}
+          currency
+          valueStyles="text-green-500 dark:text-green-500"
+        />
+        <InfoCard
+          title="Deudas pendientes"
+          value={debts?.data.debtsTotalUnpaid}
+          currency
+          valueStyles="text-red-500 dark:text-red-500"
+        />
+      </div>
+      {debts?.data.debts.length ? (
+        debts?.data.debts.map(
           (debt: {
             total_paid: number;
             total_unpaid: number;

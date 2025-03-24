@@ -33,3 +33,4 @@ export * from './text-animate';
 export * from './aurora-text';
 export * from './number-ticker';
 export * from './grid-pattern';
+export * from './chart';

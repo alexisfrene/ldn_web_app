@@ -30,6 +30,7 @@ export const CardDebt: React.FC<Props> = ({
   installments,
 }) => {
   const isMobile = useIsMobile();
+
   return (
     <Card
       key={debt_id}

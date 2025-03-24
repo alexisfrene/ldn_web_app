@@ -76,7 +76,13 @@ export const CardInstallment: React.FC<Props> = ({
             </div>
             <div className="flex items-center justify-between">
               <Label>Fecha de vencimiento:</Label>
-              <p>{new Date(due_date).toLocaleDateString()}</p>
+              <p>
+                {new Date(
+                  new Date(due_date).toLocaleString('en-US', {
+                    timeZone: 'UTC',
+                  }),
+                ).toLocaleDateString()}
+              </p>
             </div>
           </CardContent>
         </Card>

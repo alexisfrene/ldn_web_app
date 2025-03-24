@@ -1,31 +1,65 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Avatar, AvatarImage } from '@components';
+import { Avatar, AvatarImage, Skeleton } from '@components';
 import { axiosInstance } from '@utils';
 
-export const TokenImage: React.FC<{
-  url: string;
+interface TokenImageProps {
+  url?: string;
   variant: 'default' | 'avatar';
-}> = ({ url, variant }) => {
-  const { data: imageSrc, error } = useQuery({
+  skeletonWidth?: number;
+  skeletonHeight?: number;
+  className?: string;
+}
+
+export const TokenImage: React.FC<TokenImageProps> = ({
+  url,
+  variant = 'default',
+  skeletonWidth = variant === 'avatar' ? 60 : 230,
+  skeletonHeight = variant === 'avatar' ? 60 : 230,
+  className = '',
+}) => {
+  const {
+    data: imageSrc,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ['image', url],
     queryFn: async () => {
+      if (!url) throw new Error('URL no proporcionada');
       const res = await axiosInstance.get(url, { responseType: 'blob' });
       return URL.createObjectURL(res.data);
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
+    enabled: !!url,
   });
 
-  if (error) console.error('Error cargando imagen:', error);
+  if (error) {
+    console.error('Error cargando imagen:', error);
+    return <div>Error al cargar la imagen</div>;
+  }
+
+  if (isLoading) {
+    const skeletonClass = variant === 'avatar' ? 'rounded-full' : '';
+    return (
+      <Skeleton
+        className={`${skeletonClass} ${className}`}
+        style={{ width: skeletonWidth, height: skeletonHeight }}
+      />
+    );
+  }
+
+  if (!imageSrc) {
+    return <div>No se pudo cargar la imagen</div>;
+  }
 
   if (variant === 'avatar') {
     return (
-      <Avatar>
-        <AvatarImage src={imageSrc ?? ''} alt="Avatar" />
+      <Avatar className={className}>
+        <AvatarImage src={imageSrc} alt="Avatar" />
       </Avatar>
     );
   }
 
-  return <img src={imageSrc ?? ''} alt="Imagen" />;
+  return <img src={imageSrc} alt="Imagen" className={className} />;
 };

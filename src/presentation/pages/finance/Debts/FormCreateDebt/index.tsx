@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import {
   Button,
+  CounterButton,
   Dialog,
   DialogClose,
   DialogContent,
@@ -11,6 +12,7 @@ import {
   DialogTrigger,
   DropdownInput,
   Icons,
+  Label,
   LabelInput,
   ScrollArea,
 } from '@components';
@@ -40,7 +42,7 @@ export const FormCreateDebt: React.FC = () => {
           Crear nueva deuda
         </Button>
       </DialogTrigger>
-      <DialogContent className="h-[80vh] max-w-5xl">
+      <DialogContent className="max-h-[80vh] max-w-5xl">
         <DialogHeader>
           <DialogTitle>Crear nueva cuenta financiera :</DialogTitle>
           <DialogDescription>
@@ -67,7 +69,7 @@ export const FormCreateDebt: React.FC = () => {
             }
           }}
         >
-          {({ handleSubmit, isSubmitting, values }) => (
+          {({ handleSubmit, isSubmitting, values, setFieldValue }) => (
             <form onSubmit={handleSubmit}>
               <ScrollArea className="h-96">
                 <div className="grid grid-cols-3 gap-3">
@@ -100,13 +102,20 @@ export const FormCreateDebt: React.FC = () => {
                     min={1}
                     step="0.01"
                   />
-                  <LabelInput
-                    label="Total de cuotas"
-                    name="number_quota"
-                    inputType="number"
-                    min={1}
-                    max={72}
-                  />
+                  <div className="flex flex-col gap-2">
+                    <Label>Total de cuotas: </Label>
+                    <CounterButton
+                      onDecrease={(value) =>
+                        setFieldValue('number_quota', value)
+                      }
+                      onIncrease={(value) =>
+                        setFieldValue('number_quota', value)
+                      }
+                      defaultValue={values.number_quota}
+                      max={72}
+                      min={1}
+                    />
+                  </div>
                   <LabelInput
                     label="Total a pagar "
                     name="total_debt_str"

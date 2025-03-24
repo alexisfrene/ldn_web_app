@@ -17,3 +17,5 @@ export * from './MovementList';
 export * from './WithAuth';
 export * from './ThemeProvider';
 export * from './ImagePrivate';
+export * from './PieChart';
+export * from './CounterButton';

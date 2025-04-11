@@ -1,4 +1,5 @@
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import {
   Icons,
   InfoCard,
@@ -6,7 +7,6 @@ import {
   Skeleton,
   PieChartComponent,
 } from '@components';
-import { useQuery } from '@tanstack/react-query';
 import { getDebts } from '@services';
 import { FormCreateDebt } from './FormCreateDebt';
 import { CardDebt } from './CardDebt';
@@ -34,63 +34,67 @@ const Debts: React.FC = () => {
         <div className="col-span-3">
           <FormCreateDebt />
         </div>
-        <InfoCard
-          title="Total de deudas"
-          value={debts?.data.debtsTotal}
-          currency
-        />
-        <InfoCard
-          title="Deudas pagadas"
-          value={debts?.data.debtsTotalPaid}
-          currency
-          valueStyles="text-green-500 dark:text-green-500"
-        />
-        <InfoCard
-          title="Deudas pendientes"
-          value={debts?.data.debtsTotalUnpaid}
-          currency
-          valueStyles="text-red-500 dark:text-red-500"
-        />
-        <div className="col-span-3">
-          <PieChartComponent
-            title="Deudas Pagadas/Pendientes"
-            description="Se muestra el porcentaje de deudas pagadas y pendientes"
-            footer_title="Porcentaje de deudas pagadas y pendientes"
-            dataKey="total"
-            nameKey="debt_type"
-            footer_description={`Deudas pagadas ${
-              debts?.data
-                ? (
-                    (debts.data.debtsTotalPaid /
-                      (debts.data.debtsTotalPaid +
-                        debts.data.debtsTotalUnpaid)) *
-                    100
-                  ).toFixed(2)
-                : 0
-            }% y pendientes ${
-              debts?.data
-                ? (
-                    (debts.data.debtsTotalUnpaid /
-                      (debts.data.debtsTotalPaid +
-                        debts.data.debtsTotalUnpaid)) *
-                    100
-                  ).toFixed(2)
-                : 0
-            }%`}
-            chartData={[
-              {
-                debt_type: 'Pagado: $',
-                total: debts?.data.debtsTotalPaid,
-                fill: 'green',
-              },
-              {
-                debt_type: 'Pendiente: $',
-                total: debts?.data.debtsTotalUnpaid,
-                fill: 'red',
-              },
-            ]}
-          />
-        </div>
+        {debts?.data.debts.length ? (
+          <>
+            <InfoCard
+              title="Total de deudas"
+              value={debts?.data.debtsTotal}
+              currency
+            />
+            <InfoCard
+              title="Deudas pagadas"
+              value={debts?.data.debtsTotalPaid}
+              currency
+              valueStyles="text-green-500 dark:text-green-500"
+            />
+            <InfoCard
+              title="Deudas pendientes"
+              value={debts?.data.debtsTotalUnpaid}
+              currency
+              valueStyles="text-red-500 dark:text-red-500"
+            />
+            <div className="col-span-3">
+              <PieChartComponent
+                title="Deudas Pagadas/Pendientes"
+                description="Se muestra el porcentaje de deudas pagadas y pendientes"
+                footer_title="Porcentaje de deudas pagadas y pendientes"
+                dataKey="total"
+                nameKey="debt_type"
+                footer_description={`Deudas pagadas ${
+                  debts?.data
+                    ? (
+                        (debts.data.debtsTotalPaid /
+                          (debts.data.debtsTotalPaid +
+                            debts.data.debtsTotalUnpaid)) *
+                        100
+                      ).toFixed(2)
+                    : 0
+                }% y pendientes ${
+                  debts?.data
+                    ? (
+                        (debts.data.debtsTotalUnpaid /
+                          (debts.data.debtsTotalPaid +
+                            debts.data.debtsTotalUnpaid)) *
+                        100
+                      ).toFixed(2)
+                    : 0
+                }%`}
+                chartData={[
+                  {
+                    debt_type: 'Pagado: $',
+                    total: debts?.data.debtsTotalPaid,
+                    fill: 'green',
+                  },
+                  {
+                    debt_type: 'Pendiente: $',
+                    total: debts?.data.debtsTotalUnpaid,
+                    fill: 'red',
+                  },
+                ]}
+              />
+            </div>
+          </>
+        ) : null}
       </div>
       {debts?.data.debts.length ? (
         debts?.data.debts.map(

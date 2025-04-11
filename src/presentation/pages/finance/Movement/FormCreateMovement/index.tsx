@@ -63,7 +63,7 @@ export const FormCreateMovement: React.FC = () => {
       }}
     >
       {({ handleSubmit, isSubmitting, setFieldValue, values }) => (
-        <form onSubmit={handleSubmit} className="ml-3 min-h-[63vh]">
+        <form onSubmit={handleSubmit} className="ml-3 min-h-[63vh] pr-6">
           <div className="grid grid-cols-6 gap-3">
             <Label className="col-span-full mt-6 text-base">
               Crear un nuevo movimiento :

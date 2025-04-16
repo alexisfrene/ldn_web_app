@@ -45,6 +45,5 @@ jobs:
           --name ldn_web_app \
           --restart always \
           -p 3055:3000 \
-           -e VITE_API_NAME=http://api.lodenaty.com/api \
           ghcr.io/alexisfrene/ldn_web_app:latest
           EOF

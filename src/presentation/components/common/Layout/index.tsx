@@ -1,52 +1,38 @@
-import React, { ReactNode, useEffect } from 'react';
-import { useSessionStore } from '@global';
-import { getUrlAvatar } from '@services';
-import { Avatar, AvatarFallback, AvatarImage, ModeToggle } from '@components';
-import logo from '@assets/ldn_icon-70x70.webp';
+import React, { ReactNode, Suspense } from 'react';
+import {
+  ModeToggle,
+  SidebarProvider,
+  SidebarTrigger,
+  Skeleton,
+} from '@components';
+import { AppSidebar } from '../AppSidebar';
+import { useAvatar } from '@hooks';
 
-interface Props {
+interface LayoutProps {
   children: ReactNode;
 }
 
-export const Layout: React.FC<Props> = ({ children }) => {
-  const insertAvatar = useSessionStore((state) => state.insertAvatar);
-  const avatar = useSessionStore((state) => state.avatar);
-  const session_token = useSessionStore((state) => state.session_token);
-  const getAvatarImage = async () => {
-    const res = await getUrlAvatar();
-    insertAvatar(res);
-  };
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const { session_token } = useAvatar();
 
-  useEffect(() => {
-    if (session_token && !avatar) {
-      getAvatarImage();
-    }
-  }, []);
   return (
-    <div className="min-h-screen">
-      <div className="row-span-1 flex h-[10vh] items-center justify-between bg-gradient-to-t from-amber-200 to-amber-400 dark:from-slate-700 dark:to-slate-900 dark:text-slate-200">
-        <a
-          href="https://www.facebook.com/tiendaLDN/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={logo}
-            className="cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:rotate-6 hover:scale-110 lg:ml-6"
-            alt="logo-ldn"
-          />
-        </a>
-        <div className="m-3 flex items-center">
-          <ModeToggle />
+    <SidebarProvider>
+      {session_token && <AppSidebar />}
+      <main className="flex-1 bg-slate-50 dark:bg-slate-950">
+        <header className="flex h-[8vh] items-center justify-between bg-gradient-to-b from-amber-400 to-amber-500 p-3 dark:from-slate-950 dark:to-slate-900 dark:text-slate-200">
           {session_token && (
-            <Avatar className="mx-5 my-2">
-              <AvatarImage src={avatar} alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <>
+              <SidebarTrigger />
+              <div className="flex items-center">
+                <ModeToggle />
+              </div>
+            </>
           )}
-        </div>
-      </div>
-      {children}
-    </div>
+        </header>
+        <Suspense fallback={<Skeleton className="flex-1" />}>
+          {children}
+        </Suspense>
+      </main>
+    </SidebarProvider>
   );
 };

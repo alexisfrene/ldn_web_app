@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { useModal } from '@hooks';
+import { useIsMobile, useModal } from '@hooks';
 import {
   Button,
   CardTitle,
@@ -17,6 +17,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   title,
 }) => {
   const [modalEdit, setModalEdit] = useState(false);
+  const isMobile = useIsMobile();
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
     useModal();
   const formik = useFormik({
@@ -26,7 +27,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnSize = () => (
     <Button
-      className="w-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-700"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
       variant="outline"
       type="button"
       onClick={() =>
@@ -49,7 +50,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnCategory = () => (
     <Button
-      className="w-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-700"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
       variant="outline"
       type="button"
       onClick={() =>
@@ -79,7 +80,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
       <div className="mb-5 flex items-center font-bold sm:text-2xl">
         <Icons
           type={modalEdit ? 'arrow_small_left' : 'copy_manual'}
-          height={30}
+          height={isMobile ? 20 : 30}
           className="cursor-pointer hover:scale-105 hover:text-slate-800"
           onClick={() => setModalEdit(!modalEdit)}
         />
@@ -91,7 +92,9 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
             key={i}
             className="flex items-center justify-between border-b font-semibold sm:text-xl"
           >
-            <label className="px-1 pb-2 font-bold sm:w-56">{label}</label>
+            <label className="px-1 pb-2 text-xs font-bold sm:w-56 sm:text-base">
+              {label}
+            </label>
             {modalEdit ? (
               <>
                 {name === 'size' && btnSize()}
@@ -100,25 +103,23 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
                   <input
                     name={name}
                     placeholder={value}
-                    className="w-52 truncate bg-slate-100 px-1 pb-1 dark:bg-slate-300"
+                    className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs dark:bg-slate-300 sm:text-base"
                     onChange={formik.handleChange}
                     value={formik.values[name]}
                   />
                 )}
               </>
             ) : (
-              <div className="w-52 truncate px-1 pb-1">
+              <div className="w-52 truncate px-1 pb-1 text-xs sm:text-base">
                 {value || 'No cargado'}
               </div>
             )}
           </div>
         ))}
-
         <Modal isOpen={isOpenModal} onRequestClose={hideModal}>
           <CardTitle className="text-center">{modalTitle}</CardTitle>
           {modalContent}
         </Modal>
-
         {modalEdit && (
           <Button type="submit" className="mt-1 w-full px-4 py-2">
             Enviar

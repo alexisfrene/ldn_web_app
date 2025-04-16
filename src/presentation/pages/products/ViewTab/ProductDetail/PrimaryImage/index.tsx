@@ -13,9 +13,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Icons,
-  ImageUploader,
   ImageLoader,
+  ImageUploader,
   LoadingIndicator,
+  TokenImage,
 } from '@components';
 
 interface Props {
@@ -43,7 +44,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
         <AlertDialogTrigger className="relative">
           <Icons
             type="copy_manual"
-            className="absolute left-0 top-0 m-2 h-10 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50"
+            className="absolute left-0 top-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50 sm:h-10"
           />
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -87,11 +88,10 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
           </Formik>
         </AlertDialogContent>
       </AlertDialog>
-      <div className="h-60 w-60">
-        <ImageLoader
-          url={product.primary_image?.toString()!}
-          className="h-60 w-60 rounded-lg"
-          alt={product.name}
+      <div className="sm:h-60 sm:w-60">
+        <TokenImage
+          url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+          variant="default"
         />
       </div>
       <LoadingIndicator isLoading={mutation.isPending} />

@@ -7,8 +7,8 @@ import {
   CardHeader,
   CardTitle,
   Icons,
-  ImageLoader,
   LoadingIndicator,
+  TokenImage,
 } from '@components';
 import { AlertAddImage } from './AlertAddImage';
 import { AlertRemoveImage } from './AlertRemoveImage';
@@ -67,7 +67,7 @@ export const GalleryTab: React.FC<Props> = ({ variation }) => {
               )}
             </div>
             <CardDescription>{value.label}</CardDescription>
-            <div className="my-1 flex flex-row flex-wrap">
+            <div className="my-1 flex flex-row flex-wrap gap-6">
               {value.images.map((image, index) => (
                 <AlertRemoveImage
                   label={value.label}
@@ -77,12 +77,9 @@ export const GalleryTab: React.FC<Props> = ({ variation }) => {
                   url={image}
                   key={value.label + index}
                 >
-                  <ImageLoader
-                    alt={value.label}
-                    url={image}
-                    className="m-0.5 rounded-md"
-                    height={32}
-                    width={32}
+                  <TokenImage
+                    url={`${image}?width=200&height=200&quality=70&format=webp`}
+                    variant="default"
                   />
                 </AlertRemoveImage>
               ))}

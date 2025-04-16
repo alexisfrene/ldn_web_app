@@ -1,4 +1,4 @@
-import { ImageLoader } from '@components';
+import { TokenImage } from '@components';
 import { getVariationById } from '@services';
 import React, { useEffect, useState } from 'react';
 interface GalleryImagesVariantsProps {
@@ -29,11 +29,10 @@ export const Gallery: React.FC<GalleryImagesVariantsProps> = ({
           {imageVariants.values.map((value) => (
             <div key={value.id} className="grid grid-cols-3 gap-5">
               {value.images.map((image, imageIndex) => (
-                <ImageLoader
-                  key={`${imageIndex}-collection-images`}
-                  url={image}
-                  alt={value.label}
-                  className="col-span-1 h-28 w-28 transform rounded object-cover shadow-md transition-all duration-300 hover:scale-105"
+                <TokenImage
+                  url={`${image}?width=60&height=60&quality=50&format=webp`}
+                  variant="default"
+                  key={imageIndex}
                 />
               ))}
             </div>

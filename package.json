@@ -1,12 +1,14 @@
 {
   "name": "image-manager",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev-host": "vite --host",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "release": "standard-version"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.8",
@@ -37,6 +39,7 @@
     "formik": "^2.4.6",
     "lodash": "^4.17.21",
     "lucide-react": "^0.454.0",
+    "motion": "^12.4.7",
     "next-themes": "^0.3.0",
     "nprogress": "^0.2.0",
     "react": "^18.3.1",
@@ -44,10 +47,12 @@
     "react-resizable-panels": "^2.1.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.27.0",
+    "recharts": "^2.15.1",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^10.0.0",
+    "uvcanvas": "^0.2.2",
     "yup": "^1.4.0",
     "zustand": "^4.5.5"
   },
@@ -69,6 +74,7 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "rollup-plugin-visualizer": "^5.12.0",
     "standard": "^17.1.2",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.6.2",
     "vite": "^5.4.5",
@@ -77,6 +83,15 @@
   "eslintConfig": {
     "extends": [
       "standard"
+    ]
+  },
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@swc/core"
     ]
   }
 }

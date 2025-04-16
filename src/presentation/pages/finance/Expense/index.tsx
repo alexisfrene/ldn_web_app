@@ -12,7 +12,19 @@ const Expense: React.FC = () => {
   });
 
   if (expenses.isPending) {
-    return <Skeleton className="h-[65vh] w-[85vw]" />;
+    return (
+      <div>
+        <FormCreateExpense />
+        <div className="grid grid-cols-2 gap-6">
+          <Skeleton className="col-span-1 h-[230px] px-6" />
+          <Skeleton className="col-span-1 h-[230px]" />
+          <Skeleton className="col-span-1 h-[230px]" />
+          <Skeleton className="col-span-1 h-[230px]" />
+          <Skeleton className="col-span-1 h-[230px]" />
+          <Skeleton className="col-span-1 h-[230px]" />
+        </div>
+      </div>
+    );
   }
   if (expenses.error) return 'An error has occurred: ';
 

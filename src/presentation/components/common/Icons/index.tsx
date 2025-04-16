@@ -59,6 +59,7 @@ import {
   ArrowsRightLeftIcon,
   ArrowsUpDownIcon,
   WrenchScrewdriverIcon,
+  Bars3Icon,
 } from '@heroicons/react/24/outline';
 
 interface IconsProps {
@@ -130,6 +131,7 @@ const icons = {
   arrows_right_left: ArrowsRightLeftIcon,
   arrows_up_down: ArrowsUpDownIcon,
   wrench_screwdriver: WrenchScrewdriverIcon,
+  bars3: Bars3Icon,
 };
 export type IconsType = keyof typeof icons;
 export const Icons: React.FC<IconsProps> = ({

@@ -1,0 +1,50 @@
+name: production
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  create-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.LDN_GITHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          docker build -t ldn_web_app .
+          docker tag ldn_web_app ghcr.io/alexisfrene/ldn_web_app:latest
+          docker push ghcr.io/alexisfrene/ldn_web_app:latest
+
+  deploy:
+    needs: create-docker-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+      - name: SSH into server and deploy
+        run: |
+          sshpass -p ${{ secrets.LDN_VPS_PASSWORD }} ssh -o PubkeyAuthentication=no -o PreferredAuthentications=password -o StrictHostKeyChecking=no -p 5367 ${{ vars.LDN_VPS_USER_ACTIONS }}@${{ vars.LDN_VPS_HOST }} <<EOF
+          # Login to GitHub Container Registry
+          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.LDN_GITHUB_TOKEN }}
+          # Pull latest image of your API
+          docker pull ghcr.io/alexisfrene/ldn_web_app:latest      
+          # Stop and remove only the PROXY container if exists
+          docker stop ldn_web_app || true
+          docker rm ldn_web_app || true  
+          # Run Docker - API
+          docker run -d \
+          --name ldn_web_app \
+          --restart always \
+          -p 3055:3000 \
+           -e VITE_API_NAME=http://api.lodenaty.com/api \
+          ghcr.io/alexisfrene/ldn_web_app:latest
+          EOF

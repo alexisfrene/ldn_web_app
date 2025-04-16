@@ -5,7 +5,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-  ImageLoader,
+  TokenImage,
 } from '@components';
 
 interface Props {
@@ -37,14 +37,9 @@ export const ProductCard: React.FC<Props> = ({
       </CardHeader>
       <CardContent onClick={handleClick} className="cursor-pointer">
         <div className="flex justify-center">
-          <ImageLoader
-            url={product.primary_image?.toString()!}
-            className={`h-[230px] w-[230px] cursor-pointer rounded-sm sm:rounded-md ${
-              false && 'border-2 border-dashed border-amber-900'
-            }`}
-            alt={product.name}
-            height={'[230px]'}
-            width={'[230px]'}
+          <TokenImage
+            url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+            variant="default"
           />
         </div>
       </CardContent>

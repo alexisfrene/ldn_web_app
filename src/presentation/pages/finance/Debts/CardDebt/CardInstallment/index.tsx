@@ -76,7 +76,13 @@ export const CardInstallment: React.FC<Props> = ({
             </div>
             <div className="flex items-center justify-between">
               <Label>Fecha de vencimiento:</Label>
-              <p>{new Date(due_date).toLocaleDateString()}</p>
+              <p>
+                {new Date(
+                  new Date(due_date).toLocaleString('en-US', {
+                    timeZone: 'UTC',
+                  }),
+                ).toLocaleDateString()}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -117,7 +123,12 @@ export const CardInstallment: React.FC<Props> = ({
             <form onSubmit={handleSubmit} className="min-h-52">
               <div>Monto : {formattedValue(amount)}</div>
               <div>
-                Fecha de vencimiento : {new Date(due_date).toLocaleDateString()}
+                Fecha de vencimiento :{' '}
+                {new Date(
+                  new Date(due_date).toLocaleString('en-US', {
+                    timeZone: 'UTC',
+                  }),
+                ).toLocaleDateString()}
               </div>
               {status === 'unpaid' && (
                 <div>

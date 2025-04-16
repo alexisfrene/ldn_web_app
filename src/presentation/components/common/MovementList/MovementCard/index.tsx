@@ -70,8 +70,8 @@ export const MovementCard: React.FC<MovementCardProps> = ({
           aria-label={`Tipo de movimiento: ${type}`}
         />
         <div>
-          <p>{label}</p>
-          <div className="flex gap-x-1">
+          <p className="hidden sm:block">{label}</p>
+          <div className="hidden gap-x-1 sm:flex">
             <Badge className={badgeClasses}>
               {isMoneyInflow ? 'Entrada' : 'Salida'}
             </Badge>

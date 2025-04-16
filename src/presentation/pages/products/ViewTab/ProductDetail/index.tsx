@@ -7,7 +7,7 @@ import { StyleData } from './StyleData';
 import { VariationData } from './VariationData';
 import { PrimaryImage } from './PrimaryImage';
 
-const tabs = ['Datos del producto', 'Estilos', 'Imágenes'];
+const tabs = ['Información', 'Estilos', 'Imágenes'];
 
 interface Props {
   product_id: string;
@@ -24,9 +24,9 @@ export const ProductDetail: React.FC<Props> = ({ product_id }) => {
   return (
     <MenuTabs tabs={tabs}>
       {data && (
-        <div className="w-80 sm:w-[46rem]">
+        <div className="sm:w-[46rem]">
           <PrimaryImage product={data} />
-          <ScrollArea className="h-72">
+          <ScrollArea className="sm:h-72">
             <TabsContent value={tabs[0]}>
               <ProductData
                 category={data.category!}

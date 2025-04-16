@@ -1,10 +1,10 @@
-import { TabsComponent } from '@components';
 import React from 'react';
+import { TabsComponent } from '@components';
 
 const FinanceTabs = [
   {
     path: '/app/finance/info',
-    label: 'Información general',
+    label: 'General',
   },
   {
     path: '/app/finance/movement',

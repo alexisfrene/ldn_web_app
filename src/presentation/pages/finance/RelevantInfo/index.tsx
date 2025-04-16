@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { MovementList } from '../../../components/MovementList';
 import { getAllMovements, getMovementTotalMonth } from '@services';
 import {
   Card,
@@ -9,6 +8,7 @@ import {
   CardContent,
   ScrollArea,
   Clock,
+  MovementList,
 } from '@components';
 import { CardsInfo } from './CardsInfo';
 
@@ -22,8 +22,9 @@ const RelevantInfo: React.FC = () => {
     queryFn: () => getAllMovements(),
   });
   if (movements.error) return 'An error has occurred: ';
+
   return (
-    <Card className="col-span-6">
+    <Card className="border-none">
       <CardHeader className="flex flex-row justify-between text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />

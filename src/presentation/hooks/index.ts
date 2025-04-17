@@ -1,4 +1,4 @@
-export * from './useModal';
-export * from './useLoading';
+export * from './use-modal';
+export * from './use-loading';
 export * from './use-mobile';
-export * from './useAvatar';
+export * from './use-avatar';

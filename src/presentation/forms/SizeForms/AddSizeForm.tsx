@@ -7,9 +7,7 @@ import { addValueSize } from '@src/services';
 interface FormAddNewValueProps {
   size_id: string;
 }
-export const FormAddNewValue: React.FC<FormAddNewValueProps> = ({
-  size_id,
-}) => {
+export const AddSizeForm: React.FC<FormAddNewValueProps> = ({ size_id }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: addValueSize,

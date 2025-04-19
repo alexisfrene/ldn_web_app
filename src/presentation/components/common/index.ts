@@ -19,3 +19,4 @@ export * from './ThemeProvider';
 export * from './ImagePrivate';
 export * from './PieChart';
 export * from './CounterButton';
+export * from './AlertModal';

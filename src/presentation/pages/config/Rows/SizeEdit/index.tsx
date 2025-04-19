@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAllSizes } from '@src/services';
 import { LoadingIndicator } from '@components';
-import { NotSizes } from './ViewSizes/NotSizes';
+import { NotSizes } from '@empty-states';
 import { ViewSizes } from './ViewSizes';
 
 interface SizeEditProps {

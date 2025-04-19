@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { AddSizeForm, CreateCollectionSizeForm } from '@forms';
 import {
+  AlertModal,
   Badge,
   Button,
   Card,
@@ -16,8 +18,6 @@ import {
   deleteValueSize,
   modifyTitleCollectionSize,
 } from '@services';
-import { FormAddSize } from './FormAddSize';
-import { AlertDelete } from './AlertDelete';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface Props {
@@ -35,7 +35,18 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
       queryClient.invalidateQueries({ queryKey: ['sizes'] });
     },
   });
-
+  const mutationDeleteCollection = useMutation({
+    mutationFn: deleteCollectionSize,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['sizes'] });
+    },
+  });
+  const mutationDeleteValue = useMutation({
+    mutationFn: deleteValueSize,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['sizes'] });
+    },
+  });
   return (
     <>
       <ScrollArea className="h-[70vh] px-2">
@@ -79,19 +90,22 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                   <Icons
                     type="copy_manual"
                     height={25}
-                    className=" cursor-pointer rounded-tr-sm  text-slate-300 hover:text-slate-900"
+                    className="cursor-pointer rounded-tr-sm text-slate-300 hover:text-slate-900"
                     onClick={() => {
                       setSelected(size_id);
                     }}
                   />
-                  <AlertDelete
-                    title={title}
-                    id={size_id}
-                    deleteFn={deleteCollectionSize}
-                    triggerIconType="trash"
-                    triggerIconHeight={25}
-                    triggerIconClass="cursor-pointer rounded-tr-sm text-slate-300 hover:text-red-600"
-                    queryKey="sizes"
+                  <AlertModal
+                    trigger={
+                      <Icons
+                        type="trash"
+                        height={25}
+                        className="cursor-pointer rounded-tr-sm text-slate-300 hover:text-red-600"
+                      />
+                    }
+                    title="Estas por eliminar una colección de categorías"
+                    description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+                    onConfirm={() => mutationDeleteCollection.mutate(size_id)}
                   />
                 </div>
               )}
@@ -101,16 +115,22 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                 <Badge key={e.id} variant="secondary" className="relative">
                   {e.value}
                   {size_id === selected && (
-                    <AlertDelete
-                      title={title}
-                      id={e.id}
-                      deleteFn={deleteValueSize}
-                      triggerIconType="close"
-                      triggerIconHeight={13}
-                      triggerIconClass="absolute right-0 top-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
-                      queryKey="sizes"
-                      isValue={true}
-                      sizeId={size_id}
+                    <AlertModal
+                      trigger={
+                        <Icons
+                          type="close"
+                          height={13}
+                          className="absolute right-0 top-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
+                        />
+                      }
+                      title="Estas por eliminar una colección de categorías"
+                      description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+                      onConfirm={() =>
+                        mutationDeleteValue.mutate({
+                          size_id: size_id,
+                          size_value: e.id,
+                        })
+                      }
                     />
                   )}
                 </Badge>
@@ -121,7 +141,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                   onClick={() => {
                     return showSheet(
                       'Agregar un numero / talla nueva',
-                      <FormAddSize type="value" size_id={size_id} />,
+                      <AddSizeForm size_id={size_id} />,
                     );
                   }}
                 >
@@ -135,7 +155,10 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
       <Button
         variant="default"
         onClick={() => {
-          return showSheet('Agregar un numero / talla nueva', <FormAddSize />);
+          return showSheet(
+            'Agregar un numero / talla nueva',
+            <CreateCollectionSizeForm />,
+          );
         }}
       >
         Agregar un numero / talla nueva

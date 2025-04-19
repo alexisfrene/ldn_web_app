@@ -1,6 +1,6 @@
-import { Button, Icons } from '@components';
 import React from 'react';
-import { FormAddSize } from '../FormAddSize';
+import { Button, Icons } from '@components';
+import { CreateCollectionSizeForm } from '@forms';
 
 interface Props {
   showSheet: (title: string, content: React.ReactElement) => void;
@@ -17,7 +17,7 @@ export const NotSizes: React.FC<Props> = ({ showSheet }) => {
           onClick={() => {
             return showSheet(
               'Agregar un numero / talla nueva',
-              <FormAddSize />,
+              <CreateCollectionSizeForm />,
             );
           }}
         >

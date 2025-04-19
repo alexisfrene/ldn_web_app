@@ -35,7 +35,7 @@ const CreateProducts: React.FC = () => {
       {({ handleSubmit, setFieldValue, values, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
-          className="grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 xl:grid-cols-4"
+          className="md:grid-row-6 grid-cols-1 gap-3 p-10 md:grid md:grid-cols-2 xl:grid-cols-4"
         >
           <LabelInput
             label="Nombre del producto"

@@ -9,7 +9,7 @@ type ValueProps = {
   id?: string;
   value: string;
 };
-export const FormAddNew: React.FC = () => {
+export const CreateCollectionSizeForm: React.FC = () => {
   const [value, setValue] = useState('');
   const queryClient = useQueryClient();
   const mutation = useMutation({

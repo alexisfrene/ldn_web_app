@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Label,
   Input,
@@ -22,7 +22,7 @@ type ValueProps = {
   icon: IconProps;
   value: string;
 };
-export const FormAddNew: React.FC = () => {
+export const CreateCollectionCategoryForm: React.FC = () => {
   const [value, setValue] = useState('');
   const [imageCount, setImageCount] = useState(0);
   const [image, setImage] = useState<ImagesValues[]>([]);
@@ -108,7 +108,6 @@ export const FormAddNew: React.FC = () => {
                         setFieldValue('values', res);
                       }}
                     />
-
                     <div className="m-1 flex justify-center">
                       <img src={value.icon.url} className="h-[64px] w-[64px]" />
                     </div>
@@ -121,7 +120,6 @@ export const FormAddNew: React.FC = () => {
               },
             )}
           </div>
-
           <Button
             className="w-full"
             type="submit"

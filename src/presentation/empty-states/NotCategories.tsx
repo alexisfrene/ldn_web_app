@@ -1,6 +1,6 @@
 import { Button, Icons } from '@components';
 import React, { ReactElement } from 'react';
-import { FormAddCategory } from '../FormAddCategory';
+import { CreateCollectionCategoryForm } from '@forms';
 
 interface Props {
   showSheet: (title: string, content: ReactElement) => void;
@@ -17,7 +17,7 @@ export const NotCategories: React.FC<Props> = ({ showSheet }) => {
           onClick={() => {
             return showSheet(
               'Agregar una categoría nueva',
-              <FormAddCategory />,
+              <CreateCollectionCategoryForm />,
             );
           }}
         >

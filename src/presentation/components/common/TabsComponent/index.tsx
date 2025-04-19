@@ -42,8 +42,8 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
           {isMobile ? (
             <DropdownMenu>
               <DropdownMenuTrigger className="flex w-full items-center">
-                <Icons type="bars3" height={40} className="ml-3" />
-                <Label className="w-full align-middle text-xl">
+                <Icons type="bars3" height={40} className="pl-3" />
+                <Label className="w-full pr-6 align-middle text-xl">
                   {tabs.map((e) =>
                     location.pathname.includes(e.path) ? e.label : '',
                   )}

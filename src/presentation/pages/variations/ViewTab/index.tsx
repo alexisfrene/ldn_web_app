@@ -29,7 +29,7 @@ const VariantsGrid: React.FC = () => {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <div className="grid min-h-96 grid-cols-2 gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5">
+    <div className="flex min-h-96 flex-col gap-3 sm:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5">
       {data.length ? (
         data.map((variation: Variants) => (
           <VariationCard

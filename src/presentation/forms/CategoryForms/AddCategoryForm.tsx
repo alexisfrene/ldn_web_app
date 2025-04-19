@@ -7,7 +7,7 @@ import { addValueCategory } from '@src/services';
 interface Props {
   category_id: string;
 }
-export const FormAddNewValue: React.FC<Props> = ({ category_id }) => {
+export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
   const [image, setImage] = useState<ImagesValues[]>([]);
   const queryClient = useQueryClient();
   const mutation = useMutation({

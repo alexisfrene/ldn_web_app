@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { AddCategoryForm, CreateCollectionCategoryForm } from '@forms';
 import {
   deleteCollectionCategory,
   deleteValueCategory,
   modifyTitleCollectionCategory,
 } from '@services';
 import {
+  AlertModal,
   Avatar,
   AvatarFallback,
   Badge,
@@ -19,9 +22,6 @@ import {
   ScrollArea,
   TokenImage,
 } from '@components';
-import { FormAddCategory } from './FormAddCategory';
-import { AlertDelete } from './AlertDelete';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface Props {
   data: Category[];
@@ -34,6 +34,18 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: modifyTitleCollectionCategory,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['categories'] });
+    },
+  });
+  const mutationDeleteCollection = useMutation({
+    mutationFn: deleteCollectionCategory,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['categories'] });
+    },
+  });
+  const mutationDeleteValue = useMutation({
+    mutationFn: deleteValueCategory,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
     },
@@ -90,14 +102,19 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                       setSelected(category_id);
                     }}
                   />
-                  <AlertDelete
-                    title={title}
-                    id={category_id}
-                    deleteFn={deleteCollectionCategory}
-                    triggerIconType="trash"
-                    triggerIconHeight={25}
-                    triggerIconClass="cursor-pointer rounded-tr-sm text-slate-300 hover:text-red-600"
-                    queryKey="categories"
+                  <AlertModal
+                    trigger={
+                      <Icons
+                        type="trash"
+                        height={25}
+                        className="cursor-pointer rounded-tr-sm text-slate-300 hover:text-red-600"
+                      />
+                    }
+                    title="Estas por eliminar una colección de categorías"
+                    description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+                    onConfirm={() =>
+                      mutationDeleteCollection.mutate(category_id)
+                    }
                   />
                 </div>
               )}
@@ -114,16 +131,22 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   </Avatar>
                   {e.value}
                   {category_id === selected && (
-                    <AlertDelete
-                      title={e.value}
-                      id={e.id}
-                      deleteFn={deleteValueCategory}
-                      triggerIconType="close"
-                      triggerIconHeight={15}
-                      triggerIconClass="absolute right-0 top-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
-                      queryKey="categories"
-                      isValue={true}
-                      categoryId={category_id}
+                    <AlertModal
+                      trigger={
+                        <Icons
+                          type="close"
+                          height={15}
+                          className="absolute right-0 top-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
+                        />
+                      }
+                      title="Estas por eliminar una categoría"
+                      description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+                      onConfirm={() =>
+                        mutationDeleteValue.mutate({
+                          category_id,
+                          category_value: e.id,
+                        })
+                      }
                     />
                   )}
                 </Badge>
@@ -134,10 +157,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   onClick={() => {
                     return showSheet(
                       'Agregar una categoría nueva',
-                      <FormAddCategory
-                        type="value"
-                        category_id={category_id}
-                      />,
+                      <AddCategoryForm category_id={category_id} />,
                     );
                   }}
                 >
@@ -151,7 +171,10 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
       <Button
         variant="default"
         onClick={() => {
-          return showSheet('Agregar una categoría nueva', <FormAddCategory />);
+          return showSheet(
+            'Agregar una categoría nueva',
+            <CreateCollectionCategoryForm />,
+          );
         }}
       >
         Agregar una categoría nueva

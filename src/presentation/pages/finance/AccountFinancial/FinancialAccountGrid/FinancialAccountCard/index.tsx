@@ -61,7 +61,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   return (
     <Card className="bg-gradient-to-br from-amber-500/30 to-emerald-200 dark:from-teal-700 dark:to-green-600">
       <CardHeader>
-        <CardTitle className="flex justify-between">
+        <CardTitle className="m-1 flex justify-between md:m-0">
           {name}
           <div>
             <EditFinancialAccountDialog

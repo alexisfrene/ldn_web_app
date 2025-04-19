@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardHeader,
   CardTitle,
   Input,
   Label,
@@ -61,8 +62,8 @@ const Filing: React.FC = () => {
   }, [sessionToken, navigate]);
 
   return (
-    <div className="grid grid-cols-12">
-      <div className="relative col-span-5 flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-background">
+    <div className="grid lg:grid-cols-12">
+      <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-background lg:col-span-5">
         <div className="absolute left-1 top-1 mx-3">
           <div className="flex items-center space-x-3">
             <img src="/icon.png" className="rounded-7xl h-16 w-16" />
@@ -83,13 +84,15 @@ const Filing: React.FC = () => {
         />
         <div>
           <Card className="relative w-[350px] overflow-hidden border-2 shadow-2xl">
-            <CardContent>
+            <CardHeader>
               <CardTitle>
-                <div className="text-3xl">Inicio de sesión</div>
+                <div className="text-xl lg:text-3xl">Inicio de sesión</div>
               </CardTitle>
-              <CardDescription className="mb-3 text-base">
+              <CardDescription className="mb-3 lg:text-base">
                 Ingrese sus credenciales para iniciar sesión
               </CardDescription>
+            </CardHeader>
+            <CardContent>
               <form onSubmit={formik.handleSubmit}>
                 <Label>Email/Username</Label>
                 <Input
@@ -129,7 +132,7 @@ const Filing: React.FC = () => {
           </Card>
         </div>
       </div>
-      <div className="col-span-7">
+      <div className="hidden lg:col-span-7 lg:block">
         {theme !== 'dark' ? <Velustro /> : <Opulento />}
       </div>
     </div>

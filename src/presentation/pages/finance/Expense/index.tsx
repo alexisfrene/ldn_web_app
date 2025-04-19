@@ -31,7 +31,7 @@ const Expense: React.FC = () => {
   return (
     <div>
       <FormCreateExpense />
-      <div className="grid grid-cols-2 gap-x-6">
+      <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
         {expenses.data.length ? (
           expenses.data.map(
             (expense: {

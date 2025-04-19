@@ -15,6 +15,7 @@ import {
   Particles,
   useTheme,
   LoadingIndicator,
+  CardHeader,
 } from '@components';
 
 const LoginPage: React.FC = () => {
@@ -52,13 +53,15 @@ const LoginPage: React.FC = () => {
         refresh
       />
       <Card className="relative w-[350px] overflow-hidden border-2 shadow-2xl">
-        <CardContent>
+        <CardHeader>
           <CardTitle>
-            <div className="text-3xl">Inicio de sesión</div>
+            <div className="text-xl lg:text-3xl">Inicio de sesión</div>
           </CardTitle>
           <CardDescription className="mb-3 text-base">
             Ingrese sus credenciales para iniciar sesión
           </CardDescription>
+        </CardHeader>
+        <CardContent>
           <form onSubmit={formik.handleSubmit}>
             <Label>Email/Username</Label>
             <Input

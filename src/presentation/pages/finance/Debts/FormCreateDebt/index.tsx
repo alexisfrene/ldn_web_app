@@ -44,9 +44,9 @@ export const FormCreateDebt: React.FC = () => {
       </DialogTrigger>
       <DialogContent className="max-h-[80vh] max-w-5xl">
         <DialogHeader>
-          <DialogTitle>Crear nueva cuenta financiera :</DialogTitle>
+          <DialogTitle>Crear nueva deuda :</DialogTitle>
           <DialogDescription>
-            Aquí puede crear una nueva cuenta financiera.
+            Aquí puede crear una nueva cuenta deuda.
           </DialogDescription>
         </DialogHeader>
         <Formik
@@ -72,7 +72,7 @@ export const FormCreateDebt: React.FC = () => {
           {({ handleSubmit, isSubmitting, values, setFieldValue }) => (
             <form onSubmit={handleSubmit}>
               <ScrollArea className="h-96">
-                <div className="grid grid-cols-3 gap-3">
+                <div className="gap-3 md:grid md:grid-cols-3">
                   <LabelInput label="Nombre de la cuenta" name="name" />
                   <LabelInput label="Agrega un nota de la deuda" name="notes" />
                   <div className="-mt-1.5">

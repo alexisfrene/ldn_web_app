@@ -81,12 +81,17 @@ export const FormEditExpense: React.FC<Props> = ({
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <div className="mx-1 w-5">
-                      {isSubmitting && (
-                        <Icons type="refresh" className="h-5 animate-spin" />
-                      )}
-                    </div>
-                    Editar
+                    {isSubmitting ? (
+                      <>
+                        <div className="mx-1 w-5">
+                          (
+                          <Icons type="refresh" className="h-5 animate-spin" />)
+                        </div>
+                        Editar
+                      </>
+                    ) : (
+                      <div className="mx-1 w-5">Editar</div>
+                    )}
                   </Button>
                 </DialogClose>
               </DialogFooter>

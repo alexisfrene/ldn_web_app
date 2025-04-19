@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -9,6 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  Button,
   Icons,
 } from '@components';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -45,11 +45,20 @@ export const DeleteExpense: React.FC<Props> = ({ expense_id }) => {
             permanente ...
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction onClick={() => mutation.mutate(expense_id)}>
-            Continuar
-          </AlertDialogAction>
+        <AlertDialogFooter className="m-3 grid grid-cols-3 items-center justify-center gap-3 md:m-0 md:gap-1">
+          <AlertDialogCancel className="col-start-2" asChild>
+            <Button variant="secondary" type="button">
+              Cancelar
+            </Button>
+          </AlertDialogCancel>
+          <AlertDialogCancel
+            onClick={() => mutation.mutate(expense_id)}
+            asChild
+          >
+            <Button variant="default" type="submit">
+              Continuar
+            </Button>
+          </AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

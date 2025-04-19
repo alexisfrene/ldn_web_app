@@ -52,8 +52,13 @@ export const FormCreateExpense: React.FC = () => {
               </DialogHeader>
               <LabelInput label="Nombre" name="name" />
               <LabelInput label="Descripción" name="description" />
-              <DialogFooter>
-                <DialogClose>
+              <DialogFooter className="grid w-full grid-cols-3 gap-2">
+                <DialogClose asChild className="col-start-2">
+                  <Button type="button" variant="secondary">
+                    Cancelar
+                  </Button>
+                </DialogClose>
+                <DialogClose asChild>
                   <Button type="submit">Crear</Button>
                 </DialogClose>
               </DialogFooter>

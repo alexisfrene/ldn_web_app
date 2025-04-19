@@ -132,13 +132,15 @@ export const CardInstallment: React.FC<Props> = ({
               </div>
               {status === 'unpaid' && (
                 <div>
-                  <div className="mt-3 grid grid-cols-2 gap-3">
-                    <Label className="my-auto">
-                      Cuenta donde saldrá el dinero :
-                    </Label>
-                    <SelectFinancialAccount />
-                    <Label className="my-auto">Método de pago :</Label>
-                    <SelectPaymentMethod />
+                  <div className="mt-3 gap-3 md:flex md:flex-col md:justify-between">
+                    <div className="items-center md:flex md:justify-between">
+                      <Label>Cuenta donde saldrá el dinero :</Label>
+                      <SelectFinancialAccount />
+                    </div>
+                    <div className="items-center md:flex md:justify-between">
+                      <Label>Método de pago :</Label>
+                      <SelectPaymentMethod />
+                    </div>
                   </div>
                   {values.total < values.value &&
                     values.financial_accounts_id && (

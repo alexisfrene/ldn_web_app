@@ -17,7 +17,7 @@ export const Clock: React.FC = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="rounded-lg bg-gray-400 p-3 text-white shadow-lg">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-base font-bold md:text-2xl">
           {hours}:{minutes}
         </h1>
       </div>

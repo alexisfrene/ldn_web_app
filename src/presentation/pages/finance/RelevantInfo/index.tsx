@@ -25,7 +25,7 @@ const RelevantInfo: React.FC = () => {
 
   return (
     <Card className="border-none">
-      <CardHeader className="flex flex-row justify-between text-xl">
+      <CardHeader className="flex flex-row justify-between md:text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />
       </CardHeader>

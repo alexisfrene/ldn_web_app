@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
 import { registerUser } from '@services';
 import {
   Button,
@@ -55,7 +55,7 @@ const SingUpPage: React.FC = () => {
   }, [theme]);
 
   return (
-    <Card className="min-h-screen border-none px-96 shadow-none">
+    <Card className="min-h-screen border-none px-3 shadow-none lg:px-10 xl:px-20 2xl:px-40">
       <CardHeader className="text-center text-2xl">Crea una cuenta</CardHeader>
       <CardDescription className="mb-3 text-center">
         ¿Ya tienes cuenta?
@@ -76,7 +76,7 @@ const SingUpPage: React.FC = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className="grid grid-cols-2 gap-x-3 gap-y-5 sm:m-10"
+          className="gap-x-3 gap-y-5 sm:m-10 md:grid md:grid-cols-2"
         >
           <Label htmlFor="username" className="col-span-1">
             Nombre de la cuenta
@@ -162,7 +162,7 @@ const SingUpPage: React.FC = () => {
             <InputWithVerifyPassword onChange={formik.handleChange} />
           </Label>
           <Button
-            className="col-span-2 mt-5"
+            className="col-span-2 mt-5 w-full"
             type="submit"
             disabled={!formik.values.gender}
           >

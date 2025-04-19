@@ -18,11 +18,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  Avatar,
-  AvatarFallback,
   DropdownMenuGroup,
   GridPattern,
   TokenImage,
+  Skeleton,
 } from '@components';
 import { useAvatar } from '@hooks';
 import logo from '@assets/ldn_icon-70x70.webp';
@@ -120,51 +119,51 @@ export const AppSidebar: React.FC = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="h-[5vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="flex justify-between">
-                  {session_token && (
-                    <div className="flex gap-1">
-                      <Avatar>
-                        <TokenImage
-                          url={`${avatar}?width=100&height=100&quality=50&format=webp`}
-                          variant="avatar"
-                        />
-                        <AvatarFallback>CN</AvatarFallback>
-                      </Avatar>
+      {session_token && avatar && username ? (
+        <SidebarFooter className="h-[6vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
+          <SidebarMenu className="flex h-[5vh] items-center justify-center">
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton className="flex justify-between">
+                    <div className="flex gap-x-1">
+                      <TokenImage
+                        url={`${avatar}?width=50&height=50&quality=50&format=webp`}
+                        variant="avatar"
+                        className="mt-1 h-8 w-8 rounded-full"
+                      />
                       <div className="mb-1">
-                        <p>{username}</p>
-                        <p className="text-xs text-slate-400">{email}</p>
+                        <p>{username || '-'}</p>
+                        <p className="text-xs text-slate-400">{email || '-'}</p>
                       </div>
                     </div>
-                  )}
-                  <Icons type="arrow_top" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                className="w-[--radix-popper-anchor-width]"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem
-                    onClick={() => navigate('/app/config')}
-                    className="flex w-full items-center align-middle"
-                    disabled={location.pathname.includes('/app/config')}
-                  >
-                    <Icons type="cog_6_tooth" className={tabsStyles} />
-                    <span className="ml-1 font-medium dark:text-slate-200 lg:block">
-                      Configuración
-                    </span>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+                    <Icons type="arrow_top" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  side="top"
+                  className="w-[--radix-popper-anchor-width]"
+                >
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem
+                      onClick={() => navigate('/app/config')}
+                      className="flex w-full items-center align-middle"
+                      disabled={location.pathname.includes('/app/config')}
+                    >
+                      <Icons type="cog_6_tooth" className={tabsStyles} />
+                      <span className="ml-1 font-medium dark:text-slate-200 lg:block">
+                        Configuración
+                      </span>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
+      ) : (
+        <Skeleton className="h-[6vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900" />
+      )}
     </Sidebar>
   );
 };

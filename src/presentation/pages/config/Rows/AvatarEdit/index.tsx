@@ -13,6 +13,7 @@ import {
   AlertDialogTrigger,
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
   Icons,
@@ -28,11 +29,14 @@ export const AvatarEdit: React.FC = () => {
   const avatar = useSessionStore((state) => state.avatar);
   const insertAvatar = useSessionStore((state) => state.insertAvatar);
   return (
-    <Card>
+    <Card className="w-72 border-none">
       <CardHeader>
         <CardTitle>Editar avatar :</CardTitle>
+        <CardDescription>
+          Cambia tu imagen de perfil, esta imagen se mostrara en la app.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col items-center justify-center">
         <AlertDialog>
           <AlertDialogTrigger>
             <div className="relative">
@@ -42,12 +46,15 @@ export const AvatarEdit: React.FC = () => {
                 className="absolute right-0 bg-slate-200 dark:bg-slate-800"
               />
               <TokenImage
-                url={`${avatar}?width=450&height=450&quality=70&format=webp`}
+                url={`${avatar}?width=150&height=150&quality=50&format=webp`}
                 variant="default"
+                skeletonWidth={150}
+                skeletonHeight={150}
+                className="rounded-3xl"
               />
             </div>
           </AlertDialogTrigger>
-          <AlertDialogContent>
+          <AlertDialogContent className="">
             <AlertDialogHeader>
               <AlertDialogTitle>Sube una imagen :</AlertDialogTitle>
               <AlertDialogDescription>
@@ -81,7 +88,13 @@ export const AvatarEdit: React.FC = () => {
                     }}
                   />
                   {values.avatar_url && (
-                    <ImageLoader url={values.avatar_url} alt="Avatar" />
+                    <div className="flex items-center justify-center">
+                      <ImageLoader
+                        url={values.avatar_url}
+                        alt="Avatar"
+                        className="h-40 w-40 rounded-full object-cover"
+                      />
+                    </div>
                   )}
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>

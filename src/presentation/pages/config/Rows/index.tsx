@@ -51,7 +51,7 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
         showModal('Estas por cambiar la contraseña :', <ChangePassword />),
     },
     {
-      description: 'Editar logo',
+      description: 'Editar imagen de perfil',
       icon: (
         <Icons
           type="copy_manual"

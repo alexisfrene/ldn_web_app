@@ -88,7 +88,9 @@ const LoginPage: React.FC = () => {
               >
                 Register
               </Button>
-              <Button type="submit">Iniciar sesión</Button>
+              <Button type="submit" disabled={formik.isSubmitting}>
+                Iniciar sesión
+              </Button>
             </div>
           </form>
         </CardContent>

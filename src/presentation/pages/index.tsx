@@ -19,8 +19,8 @@ const VariationsPage = lazy(() => import('./variations'));
 const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
 const Debts = lazy(() => import('./finance/Debts'));
-const CreateProducts = lazy(() => import('./products/CreateTab'));
-const CreateVariation = lazy(() => import('./variations/CreateTab'));
+const CreateProducts = lazy(() => import('./products/CreateProductTab'));
+const CreateVariation = lazy(() => import('./variations/CreateVariationTab'));
 
 const FinanceRoutes = [
   {

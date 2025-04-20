@@ -1,44 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { loginUser } from '@services';
-import { useSessionStore } from '@global';
 import {
   BorderBeam,
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardTitle,
-  Input,
-  Label,
   Particles,
   useTheme,
-  LoadingIndicator,
   CardHeader,
 } from '@components';
+import { LoginUserForm } from '@forms';
 
 const LoginPage: React.FC = () => {
   const [color, setColor] = useState('#ffffff');
   const { theme } = useTheme();
-  const navigate = useNavigate();
-  const insertSessionToken = useSessionStore(
-    (state) => state.insertSessionToken,
-  );
-  const formik = useFormik({
-    initialValues: {
-      email_or_user: '',
-      password: '',
-    },
-    onSubmit: async (values) => {
-      const res = await loginUser(values);
 
-      if (res?.data.session_token) {
-        insertSessionToken(res?.data.session_token);
-        return setTimeout(() => navigate('/app/finance'), 200);
-      }
-    },
-  });
   useEffect(() => {
     setColor(theme === 'dark' ? '#ffffff' : '#000000');
   }, [theme]);
@@ -62,37 +38,7 @@ const LoginPage: React.FC = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={formik.handleSubmit}>
-            <Label>Email/Username</Label>
-            <Input
-              id="email_or_user"
-              name="email_or_user"
-              placeholder="Ej : juanperez003"
-              value={formik.values.email_or_user}
-              onChange={formik.handleChange}
-            />
-            <Label>Contraseña</Label>
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              value={formik.values.password}
-              placeholder="********"
-              onChange={formik.handleChange}
-            />
-            <div className="mt-6 flex justify-between">
-              <Button
-                variant="outline"
-                type="button"
-                onClick={() => navigate('/signup')}
-              >
-                Register
-              </Button>
-              <Button type="submit" disabled={formik.isSubmitting}>
-                Iniciar sesión
-              </Button>
-            </div>
-          </form>
+          <LoginUserForm />
         </CardContent>
         <BorderBeam
           duration={8}
@@ -101,7 +47,6 @@ const LoginPage: React.FC = () => {
           colorFrom="#2a2a27"
         />
       </Card>
-      <LoadingIndicator isLoading={formik.isSubmitting} />
     </div>
   );
 };

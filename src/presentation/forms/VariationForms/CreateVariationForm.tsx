@@ -13,7 +13,7 @@ import {
 import { useModal } from '@hooks';
 import { handleSubmit } from './handleSubmit';
 
-const CreateVariation: React.FC = () => {
+export const CreateVariationForm: React.FC = () => {
   const [images, setImages] = useState<ImagesValues[]>([]);
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
     useModal();
@@ -105,5 +105,3 @@ const CreateVariation: React.FC = () => {
     </Formik>
   );
 };
-
-export default CreateVariation;

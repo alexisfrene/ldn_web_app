@@ -3,7 +3,7 @@ import { Icons, Label, Skeleton } from '@components';
 import { getExpenses } from '@services';
 import { useQuery } from '@tanstack/react-query';
 import { CardExpense } from './CardExpense';
-import { FormCreateExpense } from './FormCreateExpense';
+import { CreateExpenseForm } from '@forms';
 
 const Expense: React.FC = () => {
   const expenses = useQuery({
@@ -14,7 +14,7 @@ const Expense: React.FC = () => {
   if (expenses.isPending) {
     return (
       <div>
-        <FormCreateExpense />
+        <CreateExpenseForm />
         <div className="grid grid-cols-2 gap-6">
           <Skeleton className="col-span-1 h-[230px] px-6" />
           <Skeleton className="col-span-1 h-[230px]" />
@@ -30,7 +30,7 @@ const Expense: React.FC = () => {
 
   return (
     <div>
-      <FormCreateExpense />
+      <CreateExpenseForm />
       <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
         {expenses.data.length ? (
           expenses.data.map(

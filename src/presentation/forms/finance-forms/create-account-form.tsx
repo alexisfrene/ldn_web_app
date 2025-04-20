@@ -18,7 +18,7 @@ import {
   CardContent,
 } from '@components';
 import { createFinancialAccount, getAllPaymentMethodForUser } from '@services';
-import { FormCreatePaymentMethod } from './FormCreatePaymentMethod';
+import { FormCreatePaymentMethod } from './';
 import { useLoading } from '@hooks';
 
 export const FormCreateAccount: React.FC = () => {

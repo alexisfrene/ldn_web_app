@@ -17,10 +17,10 @@ import {
   DialogFooter,
   Button,
 } from '@components';
-import { SelectFinancialAccount } from '@presentation/pages/finance/SelectFinancialAccount';
-import { SelectPaymentMethod } from '@presentation/pages/finance/SelectPaymentMethod';
+
 import { markPaidDebt } from '@services';
 import { cn, formattedValue } from '@utils';
+import { SelectFinancialAccount, SelectPaymentMethod } from '@selects';
 interface Props {
   installment_id: number;
   quota_number: number;

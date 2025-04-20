@@ -45,3 +45,8 @@ export const movementSchema = Yup.object().shape({
       'El ID de deuda debe ser un UUID válido.',
     ),
 });
+export const paymentMethodSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('El nombre del método de pago es obligatorio.')
+    .max(100, 'El nombre debe tener como máximo 100 caracteres.'),
+});

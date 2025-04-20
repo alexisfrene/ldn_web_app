@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormCreateAccount } from './FormCreateAccount';
+
 import { FinancialAccountGrid } from './FinancialAccountGrid';
+import { FormCreateAccount } from '@forms';
 
 const AccountFinancial: React.FC = () => {
   return (

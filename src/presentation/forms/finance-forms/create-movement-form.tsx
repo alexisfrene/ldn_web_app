@@ -10,14 +10,16 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from '@components';
-import { SelectFinancialAccount } from '../../SelectFinancialAccount';
-import { SelectPaymentMethod } from '../../SelectPaymentMethod';
-import { SelectTag } from '../../SelectTag';
-import { SelectDebt } from '../../SelectDebt';
 import { initialValues } from './initialValues';
 import { movementSchema } from './validations';
+import {
+  SelectDebt,
+  SelectFinancialAccount,
+  SelectPaymentMethod,
+  SelectTag,
+} from '@selects';
 
-export const FormCreateMovement: React.FC = () => {
+export const CreateMovementForm: React.FC = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: createMovement,

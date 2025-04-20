@@ -15,7 +15,7 @@ import {
   LabelInput,
 } from '@components';
 
-export const FormCreateExpense: React.FC = () => {
+export const CreateExpenseForm: React.FC = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: createExpense,

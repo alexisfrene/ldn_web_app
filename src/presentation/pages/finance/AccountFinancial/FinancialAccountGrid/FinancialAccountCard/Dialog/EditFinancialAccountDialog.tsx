@@ -14,7 +14,7 @@ import {
   ScrollArea,
 } from '@components';
 import { Formik } from 'formik';
-import { FormCreatePaymentMethod } from '../../../FormCreateAccount/FormCreatePaymentMethod';
+import { FormCreatePaymentMethod } from '@forms';
 import { PaymentMethodCheckbox } from './PaymentMethodCheckbox';
 import { LoadingButton } from '../LoadingButton';
 

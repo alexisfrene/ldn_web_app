@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormCreateMovement } from './FormCreateMovement';
 import {
   Card,
   CardContent,
@@ -10,6 +9,7 @@ import {
 import { MovementList } from '../../../components/common/MovementList';
 import { useQuery } from '@tanstack/react-query';
 import { getAllMovements } from '@services';
+import { CreateMovementForm } from '@forms';
 
 const Movement: React.FC = () => {
   const movements = useQuery({
@@ -20,7 +20,7 @@ const Movement: React.FC = () => {
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-full sm:col-span-7">
-        <FormCreateMovement />
+        <CreateMovementForm />
       </div>
       <div className="hidden sm:col-span-5 sm:block">
         <Card>

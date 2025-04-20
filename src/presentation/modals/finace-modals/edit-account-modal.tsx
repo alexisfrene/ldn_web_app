@@ -15,8 +15,8 @@ import {
 } from '@components';
 import { Formik } from 'formik';
 import { FormCreatePaymentMethod } from '@forms';
-import { PaymentMethodCheckbox } from './PaymentMethodCheckbox';
-import { LoadingButton } from '../LoadingButton';
+import { PaymentMethodCheckbox } from '@selects';
+import { LoadingButton } from '@presentation/pages/finance/AccountFinancial/FinancialAccountGrid/LoadingButton';
 
 export const EditFinancialAccountDialog = ({
   name,
@@ -32,10 +32,10 @@ export const EditFinancialAccountDialog = ({
   pays: string[];
 }) => (
   <Dialog>
-    <DialogTrigger className="relative">
+    <DialogTrigger>
       <Icons
         type="copy_manual"
-        className="absolute -top-6 right-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+        className="absolute -top-2 right-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
       />
     </DialogTrigger>
     <DialogContent>

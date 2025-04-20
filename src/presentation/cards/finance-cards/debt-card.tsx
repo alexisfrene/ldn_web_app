@@ -1,16 +1,19 @@
 import React from 'react';
 import {
+  AlertModal,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  Icons,
 } from '@components';
-import { CardInstallment } from './CardInstallment';
-import { FormEditDebt } from './FormEditDebt';
-import { ModalDeleteDebt } from './ModalDeleteDebt';
+import { CardFee } from '@cards';
+import { FormEditDebt } from '@forms';
 import { useIsMobile } from '@hooks';
 import { formattedValue } from '@utils';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteDebt } from '@services';
 
 interface Props {
   debt_id: UUID;
@@ -41,7 +44,15 @@ export const CardDebt: React.FC<Props> = ({
   interest_per_installment,
 }) => {
   const isMobile = useIsMobile();
-
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: deleteDebt,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['debts'],
+      });
+    },
+  });
   return (
     <Card
       key={debt_id}
@@ -54,7 +65,17 @@ export const CardDebt: React.FC<Props> = ({
           </p>
           <div>
             <FormEditDebt debt_id={debt_id} />
-            <ModalDeleteDebt debt_id={debt_id} />
+            <AlertModal
+              trigger={
+                <Icons
+                  type="close"
+                  className="absolute -right-4 -top-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+                />
+              }
+              title="Eliminar deuda"
+              description="Esta acción es permanente, estas seguro ?"
+              onConfirm={() => mutation.mutate(debt_id)}
+            />
           </div>
         </CardTitle>
       </CardHeader>
@@ -110,7 +131,7 @@ export const CardDebt: React.FC<Props> = ({
         </CardDescription>
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-4">
           {installments.map((installment, index) => (
-            <CardInstallment
+            <CardFee
               installment_id={installment.installment_id}
               amount={installment.amount}
               due_date={installment.due_date}

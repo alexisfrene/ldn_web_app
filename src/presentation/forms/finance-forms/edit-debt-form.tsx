@@ -20,7 +20,7 @@ import { editDebt, getDebtById } from '@services';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLoading } from '@hooks';
 import { paymentFrequency } from '@presentation/mocks';
-import { CalculateInterest } from '../../CalculateInterest';
+import { CalculateInterest } from './CalculateInterest';
 
 interface Props {
   debt_id: UUID;

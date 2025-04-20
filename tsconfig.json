@@ -11,6 +11,8 @@
       "@core/*": ["./src/core/*"],
       "@services": ["./src/services"],
       "@utils": ["./src/utils"],
+      "@cards": ["./src/presentation/cards"],
+      "@modals": ["./src/presentation/modals"],
       "@selects": ["./src/presentation/selects"],
       "@empty-states": ["./src/presentation/empty-states"],
       "@forms": ["./src/presentation/forms"],

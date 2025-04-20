@@ -17,7 +17,6 @@ import {
   DialogFooter,
   Button,
 } from '@components';
-
 import { markPaidDebt } from '@services';
 import { cn, formattedValue } from '@utils';
 import { SelectFinancialAccount, SelectPaymentMethod } from '@selects';
@@ -37,7 +36,7 @@ const statusColors = {
     'bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-500 cursor-pointer delay-75',
 };
 
-export const CardInstallment: React.FC<Props> = ({
+export const CardFee: React.FC<Props> = ({
   installment_id,
   quota_number,
   amount,

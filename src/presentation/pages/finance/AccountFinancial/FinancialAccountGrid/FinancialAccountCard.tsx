@@ -1,11 +1,17 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Badge, Card, CardContent, CardHeader, CardTitle } from '@components';
+import {
+  AlertModal,
+  Badge,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Icons,
+} from '@components';
 import { formattedValue } from '@utils';
 import { useLoading } from '@hooks';
-import { EditFinancialAccountDialog } from './Dialog/EditFinancialAccountDialog';
-import { DeleteFinancialAccountDialog } from './Dialog/DeleteFinancialAccountDialog';
-
+import { EditFinancialAccountDialog } from '@modals';
 import {
   deleteFinancialAccount,
   editFinancialAccount,
@@ -63,7 +69,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
       <CardHeader>
         <CardTitle className="m-1 flex justify-between md:m-0">
           {name}
-          <div>
+          <div className="relative flex items-center justify-center">
             <EditFinancialAccountDialog
               name={name}
               financial_accounts_id={financial_accounts_id}
@@ -71,9 +77,16 @@ export const FinancialAccountCard: React.FC<Props> = ({
               paymentMethodQuery={paymentMethod}
               pays={pays}
             />
-            <DeleteFinancialAccountDialog
-              financial_accounts_id={financial_accounts_id}
-              deleteMutation={deleteMutation}
+            <AlertModal
+              trigger={
+                <Icons
+                  type="close"
+                  className="absolute -right-4 -top-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+                />
+              }
+              title="Eliminar esta cuenta financiera?"
+              description="Esta acción es permanente"
+              onConfirm={() => deleteMutation.mutate(financial_accounts_id)}
             />
           </div>
         </CardTitle>

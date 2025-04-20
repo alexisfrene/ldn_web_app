@@ -8,8 +8,8 @@ import {
   PieChartComponent,
 } from '@components';
 import { getDebts } from '@services';
-import { FormCreateDebt } from './FormCreateDebt';
-import { CardDebt } from './CardDebt';
+import { CardDebt } from '@cards';
+import { CreateDebtModal } from '@modals';
 
 const Debts: React.FC = () => {
   const debts = useQuery({
@@ -20,7 +20,7 @@ const Debts: React.FC = () => {
   if (debts.isPending) {
     return (
       <div>
-        <FormCreateDebt />
+        <CreateDebtModal />
         <Skeleton className="h-96 w-full" />
       </div>
     );
@@ -32,7 +32,7 @@ const Debts: React.FC = () => {
       <div className="grid grid-cols-3 gap-3">
         <Label className="col-span-3 text-2xl">Información general</Label>
         <div className="col-span-3">
-          <FormCreateDebt />
+          <CreateDebtModal />
         </div>
         {debts?.data.debts.length ? (
           <>

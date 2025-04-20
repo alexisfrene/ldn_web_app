@@ -1,18 +1,21 @@
 import React from 'react';
 import { formattedValue } from '@utils';
 import {
+  AlertModal,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  Icons,
   Label,
   Separator,
 } from '@components';
 import { FormEditExpense } from './FormEditExpense';
 import { ExpenseDetail } from './ExpenseDetail';
-import { DeleteExpense } from './DeleteExpense';
 import { useIsMobile } from '@hooks';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteExpense } from '@services';
 
 interface Props {
   description: string;
@@ -34,6 +37,15 @@ export const CardExpense: React.FC<Props> = ({
   money_outflow_month,
 }) => {
   const isMobile = useIsMobile();
+  const queryClient = useQueryClient();
+  const deleteMutation = useMutation({
+    mutationFn: deleteExpense,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['expenses'],
+      });
+    },
+  });
   return (
     <Card
       key={expense_id}
@@ -43,13 +55,23 @@ export const CardExpense: React.FC<Props> = ({
         <CardTitle>
           <div className="flex justify-between">
             <p>{name}</p>
-            <div>
+            <div className="relative">
               <FormEditExpense
                 description={description}
                 name={name}
                 expense_id={expense_id}
               />
-              <DeleteExpense expense_id={expense_id} />
+              <AlertModal
+                trigger={
+                  <Icons
+                    type="trash"
+                    className="absolute -top-3 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+                  />
+                }
+                title="Eliminar esta cuenta financiera?"
+                description="Esta acción es permanente"
+                onConfirm={() => deleteMutation.mutate(expense_id)}
+              />
             </div>
           </div>
         </CardTitle>

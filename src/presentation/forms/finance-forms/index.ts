@@ -4,3 +4,4 @@ export * from './create-payment-method-form';
 export * from './create-expense-form';
 export * from './create-debt-form';
 export * from './edit-debt-form';
+export * from './edit-expense-form';

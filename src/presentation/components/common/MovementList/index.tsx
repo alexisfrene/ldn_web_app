@@ -1,5 +1,5 @@
 import React from 'react';
-import { MovementCard } from './MovementCard';
+import { MovementCard } from '@cards';
 import { Card, Skeleton } from '@components';
 
 interface Props {

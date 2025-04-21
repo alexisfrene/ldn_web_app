@@ -1,8 +1,8 @@
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Icons, Label, Skeleton } from '@components';
 import { getExpenses } from '@services';
-import { useQuery } from '@tanstack/react-query';
-import { CardExpense } from './CardExpense';
+import { CardExpense } from '@cards';
 import { CreateExpenseForm } from '@forms';
 
 const Expense: React.FC = () => {

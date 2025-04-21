@@ -1,13 +1,13 @@
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   ScrollArea,
+  MovementList,
 } from '@components';
-import { MovementList } from '../../../components/common/MovementList';
-import { useQuery } from '@tanstack/react-query';
 import { getAllMovements } from '@services';
 import { CreateMovementForm } from '@forms';
 
@@ -17,6 +17,7 @@ const Movement: React.FC = () => {
     queryFn: () => getAllMovements(),
   });
   if (movements.error) return 'An error has occurred: ';
+
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-full sm:col-span-7">

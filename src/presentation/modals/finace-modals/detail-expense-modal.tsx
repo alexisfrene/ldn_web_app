@@ -20,7 +20,7 @@ interface Props {
   expense_id: UUID;
 }
 
-export const ExpenseDetail: React.FC<Props> = ({
+export const ExpenseDetailModal: React.FC<Props> = ({
   children,
   name,
   expense_id,

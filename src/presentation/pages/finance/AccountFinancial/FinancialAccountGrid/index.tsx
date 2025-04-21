@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@components';
 import { getAllFinancialAccount } from '@services';
 import { useLoading } from '@hooks';
-import { FinancialAccountCard } from './FinancialAccountCard';
+import { FinancialAccountCard } from '@cards';
 
 export const FinancialAccountGrid: React.FC = () => {
   const { doneLoading, startLoading } = useLoading();

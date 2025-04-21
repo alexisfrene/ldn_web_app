@@ -1,5 +1,6 @@
 import React from 'react';
-import { InfoCard, Skeleton } from '@components';
+import { InfoCard } from '@cards';
+import { Skeleton } from '@components';
 import { useIsMobile } from '@hooks';
 
 interface TotalMonthData {

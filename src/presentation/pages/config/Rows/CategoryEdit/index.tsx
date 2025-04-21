@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCategories } from '@services';
 import { LoadingIndicator } from '@components';
-import { NotCategories } from '@empty-states';
+import { NotCategories } from '@presentation/components/empty-states';
 import { ViewCategories } from './ViewCategories';
 
 interface CategoryEditProps {

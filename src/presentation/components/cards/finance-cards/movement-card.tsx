@@ -45,10 +45,10 @@ export const MovementCard: React.FC<MovementCardProps> = ({
   const isMoneyInflow = type === 'inflow_of_money';
 
   const containerClasses = cn([
-    'my-1 flex border-spacing-1 justify-between rounded-sm border-2 border-slate-300 p-3',
+    'my-1 flex border-spacing-1 justify-between rounded-sm border-2 border-slate-300 p-3 bg-gradient-to-r',
     isMoneyInflow
-      ? 'bg-gradient-to-r from-emerald-100 to-emerald-300 dark:from-slate-800 dark:to-emerald-900'
-      : 'bg-gradient-to-r from-red-100 to-red-300 dark:from-slate-800 dark:to-red-900',
+      ? 'from-emerald-100 to-emerald-300 dark:from-slate-800 dark:to-emerald-900'
+      : 'from-red-100 to-red-300 dark:from-slate-800 dark:to-red-900',
   ]);
 
   const badgeClasses = cn([

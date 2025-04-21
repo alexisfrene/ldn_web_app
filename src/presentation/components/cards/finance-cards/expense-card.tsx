@@ -11,7 +11,10 @@ import {
   Label,
   Separator,
 } from '@components';
-import { EditExpenseModal, ExpenseDetailModal } from '@modals';
+import {
+  EditExpenseModal,
+  ExpenseDetailModal,
+} from '@presentation/components/modals';
 import { useIsMobile } from '@hooks';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteExpense } from '@services';

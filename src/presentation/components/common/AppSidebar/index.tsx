@@ -77,6 +77,7 @@ export const AppSidebar: React.FC = () => {
       </SidebarHeader>
       <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-gradient-to-bl from-amber-200 to-amber-400 dark:from-slate-950 dark:to-slate-900">
         <GridPattern
+          key="grid-pattern-sidebar"
           squares={[
             [4, 4],
             [5, 1],

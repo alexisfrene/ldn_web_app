@@ -10,7 +10,7 @@ import {
   Separator,
   LoadingIndicator,
 } from '@components';
-import { addCategoryConfig } from '@src/services';
+import { addCategoryConfig } from '@services';
 
 type IconProps = {
   url: string;

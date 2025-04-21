@@ -19,7 +19,10 @@ import {
 } from '@components';
 import { markPaidDebt } from '@services';
 import { cn, formattedValue } from '@utils';
-import { SelectFinancialAccount, SelectPaymentMethod } from '@selects';
+import {
+  SelectFinancialAccount,
+  SelectPaymentMethod,
+} from '@presentation/components/selects';
 interface Props {
   installment_id: number;
   quota_number: number;

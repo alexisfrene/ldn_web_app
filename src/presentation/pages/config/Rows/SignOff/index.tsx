@@ -1,7 +1,7 @@
-import { Button } from '@src/presentation/components';
-import { useSessionStore } from '@src/presentation/global';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@components';
+import { useSessionStore } from '@global';
 
 interface Props {
   hideModal: () => void;

@@ -1,6 +1,6 @@
 import { FormikHelpers } from 'formik';
 import { toast } from 'sonner';
-import { createProducts } from '@src/services';
+import { createProducts } from '@services';
 
 interface InitialValues {
   name: string;

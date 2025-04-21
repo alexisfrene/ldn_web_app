@@ -12,7 +12,7 @@ import {
   ImageUploader,
   LabelInput,
   Separator,
-} from '@src/presentation/components';
+} from '@components';
 import { addNewCollection } from '@services';
 
 interface Props {

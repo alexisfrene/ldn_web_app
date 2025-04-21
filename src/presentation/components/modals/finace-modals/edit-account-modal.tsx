@@ -15,7 +15,7 @@ import {
 } from '@components';
 import { Formik } from 'formik';
 import { FormCreatePaymentMethod } from '@forms';
-import { PaymentMethodCheckbox } from '@selects';
+import { PaymentMethodCheckbox } from '@presentation/components/selects';
 import { LoadingButton } from '@presentation/pages/finance/AccountFinancial/FinancialAccountGrid/LoadingButton';
 
 export const EditFinancialAccountDialog = ({

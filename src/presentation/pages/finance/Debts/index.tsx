@@ -1,15 +1,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import {
-  Icons,
-  InfoCard,
-  Label,
-  Skeleton,
-  PieChartComponent,
-} from '@components';
+import { Icons, Label, Skeleton, PieChartComponent } from '@components';
 import { getDebts } from '@services';
-import { CardDebt } from '@cards';
-import { CreateDebtModal } from '@modals';
+import { CardDebt, InfoCard } from '@cards';
+import { CreateDebtModal } from '@presentation/components/modals';
 
 const Debts: React.FC = () => {
   const debts = useQuery({

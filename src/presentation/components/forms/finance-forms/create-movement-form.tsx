@@ -17,7 +17,7 @@ import {
   SelectFinancialAccount,
   SelectPaymentMethod,
   SelectTag,
-} from '@selects';
+} from '@presentation/components/selects';
 
 export const CreateMovementForm: React.FC = () => {
   const queryClient = useQueryClient();

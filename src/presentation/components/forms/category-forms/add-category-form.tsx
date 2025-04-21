@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Label, Input, ImageUploader, Button } from '@components';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addValueCategory } from '@src/services';
+import { addValueCategory } from '@services';
 
 interface Props {
   category_id: string;

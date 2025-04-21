@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import { Label, Input, Button, Icons, Separator } from '@components';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addSizeCollection } from '@src/services';
+import { addSizeCollection } from '@services';
 
 type ValueProps = {
   id?: string;

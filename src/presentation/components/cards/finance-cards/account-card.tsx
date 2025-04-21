@@ -11,7 +11,7 @@ import {
 } from '@components';
 import { formattedValue } from '@utils';
 import { useLoading } from '@hooks';
-import { EditFinancialAccountDialog } from '@modals';
+import { EditFinancialAccountDialog } from '@presentation/components/modals';
 import {
   deleteFinancialAccount,
   editFinancialAccount,

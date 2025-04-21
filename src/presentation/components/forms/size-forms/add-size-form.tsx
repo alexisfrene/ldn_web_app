@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Label, Input, Button } from '@components';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addValueSize } from '@src/services';
+import { addValueSize } from '@services';
 
 interface FormAddNewValueProps {
   size_id: string;

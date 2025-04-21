@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@components';
-import { EditAvatarModal } from '@modals';
+import { EditAvatarModal } from '@presentation/components/modals';
 
 export const AvatarEdit: React.FC = () => {
   return (

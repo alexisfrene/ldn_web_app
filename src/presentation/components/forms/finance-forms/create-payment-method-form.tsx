@@ -33,7 +33,7 @@ export const FormCreatePaymentMethod: React.FC = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full max-w-sm rounded-lg bg-green-600 px-6 py-3 shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="w-full max-w-sm rounded-lg bg-green-600 px-6 py-3 shadow-md hover:bg-green-700 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">

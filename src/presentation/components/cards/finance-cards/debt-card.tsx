@@ -56,7 +56,7 @@ export const CardDebt: React.FC<Props> = ({
   return (
     <Card
       key={debt_id}
-      className="my-3 bg-gradient-to-br from-amber-400/70 to-pink-300 transition delay-75 duration-300 ease-out hover:from-amber-400/50 hover:to-pink-300 dark:from-slate-900 dark:to-gray-700/60 dark:hover:bg-slate-700"
+      className="my-3 bg-linear-to-br from-amber-400/70 to-pink-300 transition delay-75 duration-300 ease-out hover:from-amber-400/50 hover:to-pink-300 dark:from-slate-900 dark:to-gray-700/60 dark:hover:bg-slate-700"
     >
       <CardHeader>
         <CardTitle className="flex justify-between text-2xl">

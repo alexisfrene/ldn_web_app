@@ -1,4 +1,9 @@
-import React, { CSSProperties, DetailedHTMLProps, HTMLAttributes } from 'react';
+import React, {
+  CSSProperties,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  JSX,
+} from 'react';
 import {
   calculateRgba,
   createAnimation,

@@ -65,7 +65,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   const pays = paymentMethods.map((p) => p.payment_method_id.toString());
 
   return (
-    <Card className="bg-gradient-to-br from-amber-500/30 to-emerald-200 dark:from-teal-700 dark:to-green-600">
+    <Card className="bg-linear-to-br from-amber-500/30 to-emerald-200 dark:from-teal-700 dark:to-green-600">
       <CardHeader>
         <CardTitle className="m-1 flex justify-between md:m-0">
           {name}

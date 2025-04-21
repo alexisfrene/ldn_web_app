@@ -58,7 +58,7 @@ export const AppSidebar: React.FC = () => {
 
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
-      <SidebarHeader className="h-[8vh] bg-gradient-to-b from-amber-400 to-amber-500 dark:from-slate-950 dark:to-slate-900">
+      <SidebarHeader className="h-[8vh] bg-linear-to-b from-amber-400 to-amber-500 dark:from-slate-950 dark:to-slate-900">
         <div className="flex items-center gap-3 align-middle">
           <a
             href="https://www.facebook.com/tiendaLDN/"
@@ -75,7 +75,7 @@ export const AppSidebar: React.FC = () => {
         </div>
         <SidebarSeparator />
       </SidebarHeader>
-      <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-gradient-to-bl from-amber-200 to-amber-400 dark:from-slate-950 dark:to-slate-900">
+      <SidebarContent className="relative flex h-[500px] w-full flex-col items-center overflow-hidden bg-linear-to-bl from-amber-200 to-amber-400 dark:from-slate-950 dark:to-slate-900">
         <GridPattern
           key="grid-pattern-sidebar"
           squares={[
@@ -121,7 +121,7 @@ export const AppSidebar: React.FC = () => {
         </SidebarGroup>
       </SidebarContent>
       {session_token && avatar && username ? (
-        <SidebarFooter className="h-[6vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
+        <SidebarFooter className="h-[6vh] bg-linear-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
           <SidebarMenu className="flex h-[5vh] items-center justify-center">
             <SidebarMenuItem>
               <DropdownMenu>
@@ -143,7 +143,7 @@ export const AppSidebar: React.FC = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   side="top"
-                  className="w-[--radix-popper-anchor-width]"
+                  className="w-(--radix-popper-anchor-width)"
                 >
                   <DropdownMenuGroup>
                     <DropdownMenuItem
@@ -163,7 +163,7 @@ export const AppSidebar: React.FC = () => {
           </SidebarMenu>
         </SidebarFooter>
       ) : (
-        <Skeleton className="h-[6vh] bg-gradient-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900" />
+        <Skeleton className="h-[6vh] bg-linear-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900" />
       )}
     </Sidebar>
   );

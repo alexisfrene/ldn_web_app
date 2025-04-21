@@ -103,7 +103,7 @@ export const EditFinancialAccountDialog = ({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-black"
+                className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:text-black"
               >
                 {isSubmitting ? (
                   <LoadingButton text="Creando cuenta..." />

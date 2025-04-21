@@ -19,7 +19,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     <SidebarProvider>
       {session_token && <AppSidebar />}
       <main className="flex-1 bg-slate-50 dark:bg-slate-950">
-        <header className="flex h-[8vh] items-center justify-between bg-gradient-to-b from-amber-400 to-amber-500 p-3 dark:from-slate-950 dark:to-slate-900 dark:text-slate-200">
+        <header className="flex h-[8vh] items-center justify-between bg-linear-to-b from-amber-400 to-amber-500 p-3 dark:from-slate-950 dark:to-slate-900 dark:text-slate-200">
           {session_token && (
             <>
               <SidebarTrigger />

@@ -69,7 +69,7 @@ const Filing: React.FC = () => {
             <img src="/icon.png" className="rounded-7xl h-16 w-16" />
             <h1 className="flex pb-3 text-4xl font-bold tracking-tighter dark:text-white">
               Lo de
-              <div className="to-error w-fit bg-gradient-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
+              <div className="to-error w-fit bg-linear-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
                 Naty
               </div>
             </h1>

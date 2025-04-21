@@ -106,7 +106,7 @@ export const Installments: React.FC = () => {
           <div className="flex flex-wrap gap-3 p-3">
             {renderInstallments(values.number_quota).map(
               (installment, index) => (
-                <div key={index} className="flex-grow">
+                <div key={index} className="grow">
                   {installment}
                 </div>
               ),

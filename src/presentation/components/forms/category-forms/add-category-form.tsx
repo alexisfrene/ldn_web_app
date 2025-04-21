@@ -64,7 +64,7 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
                 <img
                   src={values.icon_url}
                   alt="Icon"
-                  className="h-36 w-36 rounded-full border-2 border-gray-300 shadow-sm"
+                  className="h-36 w-36 rounded-full border-2 border-gray-300 shadow-xs"
                 />
               </div>
             )}

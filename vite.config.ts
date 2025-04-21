@@ -8,11 +8,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     tsconfigPaths(),
     visualizer({
       open: false,
     }),
-    tailwindcss(),
   ],
   resolve: {
     alias: {

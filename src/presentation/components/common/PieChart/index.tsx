@@ -18,11 +18,11 @@ const chartConfig = {
   },
   debt_paid: {
     label: 'Pagado',
-    color: 'hsl(var(--chart-1))',
+    color: 'var(--chart-1)',
   },
   debt_unpaid: {
     label: 'Pendiente',
-    color: 'hsl(var(--chart-2))',
+    color: 'var(--chart-2)',
   },
 } satisfies ChartConfig;
 
@@ -66,10 +66,10 @@ export const PieChartComponent: React.FC<Props> = ({
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
+        <div className="flex items-center gap-2 leading-none font-medium">
           {footer_title}
         </div>
-        <div className="leading-none text-muted-foreground">
+        <div className="text-muted-foreground leading-none">
           {footer_description}
         </div>
       </CardFooter>

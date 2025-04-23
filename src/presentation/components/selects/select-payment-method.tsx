@@ -2,19 +2,7 @@ import React, { useState } from 'react';
 import { FormikValues, useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import { getAllPaymentMethodForAccount } from '@services';
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Label,
-  ScrollArea,
-} from '@components';
+import { Badge, Label } from '@components';
 
 export const SelectPaymentMethod: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();
@@ -22,9 +10,13 @@ export const SelectPaymentMethod: React.FC = () => {
 
   const { data: paymentMethods, error } = useQuery({
     queryKey: ['finances', 'payment_method', values.financial_accounts_id],
-    queryFn: () => {
+    queryFn: async () => {
       if (values.financial_accounts_id) {
-        return getAllPaymentMethodForAccount(values.financial_accounts_id);
+        const paymentMethods = await getAllPaymentMethodForAccount(
+          values.financial_accounts_id,
+        );
+        handleSelectMethod(paymentMethods[0].payment_method_id);
+        return paymentMethods;
       }
       return [];
     },
@@ -43,55 +35,38 @@ export const SelectPaymentMethod: React.FC = () => {
     setSelectedMethodId(paymentMethodId);
   };
 
+  if (paymentMethods?.length === 1) {
+    if (selectedMethodId !== paymentMethods[0].payment_method_id) {
+      handleSelectMethod(paymentMethods[0].payment_method_id);
+    }
+
+    return <Badge className="my-3">{paymentMethods[0].name}</Badge>;
+  }
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button
-          type="button"
-          variant="outline"
-          disabled={!values.financial_accounts_id}
-        >
-          Selecciona un método de pago
-        </Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Elije un método de pago:</DialogTitle>
-          <DialogDescription>Elegir uno :</DialogDescription>
-        </DialogHeader>
-        <ScrollArea className="h-96">
-          {paymentMethods?.length ? (
-            paymentMethods?.map(
-              (method: { name: string; payment_method_id: number }) => (
-                <div
-                  key={method.payment_method_id}
-                  className={`mb-2 cursor-pointer rounded-md p-2 ${
-                    selectedMethodId === method.payment_method_id
-                      ? 'bg-blue-300 dark:bg-slate-700'
-                      : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800'
-                  }`}
-                  onClick={() => handleSelectMethod(method.payment_method_id)}
-                >
-                  {method.name}
-                </div>
-              ),
-            )
-          ) : (
-            <div>
-              <Label>
-                Es cuenta no tiene ningún método de pago asignado ....
-              </Label>
-            </div>
-          )}
-        </ScrollArea>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <div className="my-3 flex gap-2">
+      {paymentMethods?.length ? (
+        paymentMethods?.map(
+          (method: { name: string; payment_method_id: number }) => (
+            <Badge
+              key={method.payment_method_id}
+              variant={
+                selectedMethodId === method.payment_method_id
+                  ? 'default'
+                  : 'outline'
+              }
+              onClick={() => handleSelectMethod(method.payment_method_id)}
+              className="cursor-pointer"
+            >
+              {method.name}
+            </Badge>
+          ),
+        )
+      ) : (
+        <div>
+          <Label>Es cuenta no tiene ningún método de pago asignado ....</Label>
+        </div>
+      )}
+    </div>
   );
 };

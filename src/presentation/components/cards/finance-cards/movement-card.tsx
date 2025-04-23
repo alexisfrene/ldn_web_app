@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteMovement } from '@services';
 import { cn, formattedValue } from '@utils';
 import {
   AlertDialog,
@@ -14,7 +15,6 @@ import {
   Badge,
   Icons,
 } from '@components';
-import { deleteMovement } from '@services';
 
 interface MovementCardProps {
   label: string;

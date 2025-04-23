@@ -35,21 +35,10 @@ export const FinancialAccountGrid: React.FC = () => {
     <div className="gap-3 md:grid md:grid-cols-3">
       {financialAccount.data.length ? (
         financialAccount.data.map(
-          ({
-            name,
-            paymentMethods,
-            financial_accounts_id,
-            total,
-          }: {
-            name: string;
-            type: string;
-            financial_accounts_id: UUID;
-            total: number;
-            paymentMethods: { name: string; payment_method_id: number }[];
-          }) => (
+          ({ name, paymentMethods, financial_accounts_id, total }) => (
             <FinancialAccountCard
               name={name}
-              financial_accounts_id={financial_accounts_id}
+              financial_accounts_id={financial_accounts_id as UUID}
               total={total}
               key={financial_accounts_id}
               paymentMethods={paymentMethods}

@@ -24,7 +24,7 @@ export const SelectDebt: React.FC = () => {
     number | null
   >(null);
 
-  const { data: debts, error } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ['debts'],
     queryFn: getDebts,
   });
@@ -63,7 +63,7 @@ export const SelectDebt: React.FC = () => {
           <DialogDescription>Deudas cargadas </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-96">
-          {debts?.map(
+          {data?.debts?.map(
             (debt: {
               name: string;
               debt_id: UUID;

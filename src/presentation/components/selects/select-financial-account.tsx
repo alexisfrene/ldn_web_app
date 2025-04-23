@@ -2,18 +2,7 @@ import React, { useState } from 'react';
 import { FormikValues, useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import { getAllFinancialAccount } from '@services';
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  ScrollArea,
-} from '@components';
+import { Badge, Label } from '@components';
 import { formattedValue } from '@utils';
 
 export const SelectFinancialAccount: React.FC = () => {
@@ -46,54 +35,39 @@ export const SelectFinancialAccount: React.FC = () => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button type="button" variant="outline">
-          Selecciona una cuenta financiera
-        </Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Elije una cuenta:</DialogTitle>
-          <DialogDescription>Cuentas cargadas </DialogDescription>
-        </DialogHeader>
-        <ScrollArea className="h-96">
-          {financialAccount?.map(
-            (financialAccount: {
-              name: string;
-              financial_accounts_id: UUID;
-              total: number;
-            }) => (
-              <div
-                key={financialAccount.financial_accounts_id}
-                className={`mb-2 cursor-pointer rounded-md p-2 ${
-                  selectedFinancialAccountId ===
-                  financialAccount.financial_accounts_id
-                    ? 'bg-blue-300 dark:bg-slate-700'
-                    : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800'
-                }`}
-                onClick={() =>
-                  handleSelectFinancialAccount({
-                    financial_accounts_id:
-                      financialAccount.financial_accounts_id,
-                    total: financialAccount.total,
-                  })
-                }
-              >
-                <p>{financialAccount.name}</p>
-                <p>{formattedValue(financialAccount.total)}</p>
-              </div>
-            ),
-          )}
-        </ScrollArea>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <div className="my-3 grid w-full grid-cols-3 gap-3">
+      {financialAccount?.length ? (
+        financialAccount?.map((financialAccount) => (
+          <div
+            key={financialAccount.financial_accounts_id}
+            className={`flex cursor-pointer flex-col items-center gap-2 rounded-md px-2 py-3 ${
+              selectedFinancialAccountId ===
+              financialAccount.financial_accounts_id
+                ? 'bg-blue-300 dark:bg-slate-700'
+                : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800'
+            }`}
+            onClick={() =>
+              handleSelectFinancialAccount({
+                financial_accounts_id:
+                  financialAccount.financial_accounts_id as UUID,
+                total: financialAccount.total,
+              })
+            }
+          >
+            <Label>{financialAccount.name}</Label>
+            <Label>{formattedValue(financialAccount.total)}</Label>
+            <div className="grid grid-cols-2 gap-1">
+              {financialAccount?.paymentMethods.map((paymentMethod) => (
+                <Badge key={paymentMethod.payment_method_id}>
+                  {paymentMethod.name}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        ))
+      ) : (
+        <div> sas </div>
+      )}
+    </div>
   );
 };

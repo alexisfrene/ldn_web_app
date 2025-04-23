@@ -1,5 +1,16 @@
-import { axiosInstance, formatDate } from '@utils';
 import { toast } from 'sonner';
+import { axiosInstance, formatDate } from '@utils';
+type PaymentMethod = {
+  name: string;
+  payment_method_id: number;
+};
+
+type MovementData = {
+  financial_accounts_id: string;
+  total: number;
+  name: string;
+  paymentMethods: PaymentMethod[];
+};
 
 export const createFinancialAccount = async (data: {
   account: string;
@@ -74,14 +85,15 @@ export const createMovement = async ({
   }
 };
 
-export const getAllFinancialAccount = async () => {
+export const getAllFinancialAccount = async (): Promise<MovementData[]> => {
   try {
-    const res = await axiosInstance.get('/financial_accounts');
+    const res = await axiosInstance.get<MovementData[]>('/financial_accounts');
 
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al crear una getAllFinancialAccount');
     console.error('ERROR IN getAllFinancialAccount:', error);
+    return [];
   }
 };
 

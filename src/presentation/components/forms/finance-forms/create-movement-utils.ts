@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { formatDate } from '@utils';
 
 export const initialValues = {
-  label: '',
+  label: 'Entrada de dinero',
   value: 1,
   type: 'inflow_of_money',
   payment_method_id: null,

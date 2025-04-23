@@ -1,33 +1,37 @@
 import React from 'react';
 import { Label, Input } from '@components';
 import { cn } from '@utils';
-import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
+import { FormikValues, useFormikContext } from 'formik';
 import { get } from 'lodash';
 
 type Props = {
-  className?: string;
-  label?: string;
-  id?: string;
-  htmlFor?: string;
-  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  placeholder?: string;
-  name: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  props?: React.InputHTMLAttributes<HTMLInputElement>;
+  label: string;
+  name: string;
+  placeholder?: string;
+  type?: React.HTMLInputTypeAttribute;
+  maxLength?: number;
+  minLength?: number;
+  min?: number;
+  max?: number;
   disabled?: boolean;
+  step?: string;
+  htmlFor?: string;
 };
 
 export const InputWithLabel: React.FC<Props> = ({
-  className,
-  label,
-  id,
-  type,
-  placeholder,
-  name,
   onChange,
-  htmlFor,
-  disabled,
-  props,
+  label,
+  name,
+  type = 'text',
+  maxLength = 255,
+  minLength = 1,
+  min = undefined,
+  max = undefined,
+  placeholder,
+  disabled = false,
+  step,
+  htmlFor = name,
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
@@ -37,30 +41,35 @@ export const InputWithLabel: React.FC<Props> = ({
     ? onChange
     : (e: React.ChangeEvent<HTMLInputElement>) =>
         setFieldValue(name, e.target.value);
+  console.log('errors', errors);
   return (
-    <div className={cn(['grid w-full items-center gap-1.5', className])}>
+    <div className={cn(['grid w-full items-center gap-1.5'])}>
       <Label
         htmlFor={htmlFor}
-        className={get(errors, name) ? 'text-red-600' : ''}
+        className={get(errors, name) ? 'text-red-500' : ''}
       >
         {label}
       </Label>
       <Input
-        type={type}
-        id={id}
-        placeholder={placeholder}
-        name={name}
         onChange={handleChange}
+        type={type}
         value={inputValue}
-        disabled={disabled}
+        placeholder={placeholder}
         className={
           get(errors, name)
-            ? 'focus-visible:ring-ring border-red-600 ring-0 focus-visible:ring-0'
+            ? 'focus-visible:ring-ring border-red-500 ring-0 focus-visible:ring-0'
             : ''
         }
-        {...props}
+        maxLength={maxLength}
+        minLength={minLength}
+        min={min}
+        max={max}
+        disabled={disabled}
+        step={step}
       />
-      <ErrorMessage name={name} className="my-1 h-1 text-xs text-red-600" />
+      <div className="h-2 text-xs font-extralight text-red-500">
+        {typeof errors[name] === 'string' ? errors[name] : null}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormikValues, useFormikContext } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import { getAllFinancialAccount } from '@services';
@@ -6,9 +6,7 @@ import { Badge, Label } from '@components';
 import { formattedValue } from '@utils';
 
 export const SelectFinancialAccount: React.FC = () => {
-  const { setFieldValue } = useFormikContext<FormikValues>();
-  const [selectedFinancialAccountId, setSelectedFinancialAccountId] =
-    useState<UUID | null>(null);
+  const { setFieldValue, values } = useFormikContext<FormikValues>();
 
   const { data: financialAccount, error } = useQuery({
     queryKey: ['finances', 'financial_account'],
@@ -31,7 +29,6 @@ export const SelectFinancialAccount: React.FC = () => {
     setFieldValue('financial_accounts_id', financial_accounts_id);
     setFieldValue('total', total);
     setFieldValue('payment_method_id', null);
-    setSelectedFinancialAccountId(financial_accounts_id);
   };
 
   return (
@@ -41,7 +38,7 @@ export const SelectFinancialAccount: React.FC = () => {
           <div
             key={financialAccount.financial_accounts_id}
             className={`flex cursor-pointer flex-col items-center gap-2 rounded-md px-2 py-3 ${
-              selectedFinancialAccountId ===
+              values.financial_accounts_id ===
               financialAccount.financial_accounts_id
                 ? 'bg-blue-300 dark:bg-slate-700'
                 : 'bg-gray-200 hover:bg-gray-300 dark:bg-slate-900 dark:hover:bg-slate-800'
@@ -66,7 +63,7 @@ export const SelectFinancialAccount: React.FC = () => {
           </div>
         ))
       ) : (
-        <div> sas </div>
+        <div> sas </div> //Poner boton de agregar cuenta financiera
       )}
     </div>
   );

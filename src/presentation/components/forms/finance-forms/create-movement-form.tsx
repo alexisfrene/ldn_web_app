@@ -53,7 +53,7 @@ export const CreateMovementForm: React.FC = () => {
     >
       {({ handleSubmit, isSubmitting, values }) => (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <Label>Crear un nuevo movimiento :</Label>
+          <Label>Crear un nuevo movimiento</Label>
           <InputWithLabel
             label="Descripción"
             name="label"

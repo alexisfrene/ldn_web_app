@@ -20,7 +20,7 @@ const Movement: React.FC = () => {
 
   return (
     <div className="grid grid-cols-12">
-      <div className="col-span-full sm:col-span-7">
+      <div className="col-span-full sm:col-span-7 sm:mr-6">
         <CreateMovementForm />
       </div>
       <div className="hidden sm:col-span-5 sm:block">

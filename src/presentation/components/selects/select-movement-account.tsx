@@ -14,7 +14,7 @@ export const SelectMovementAccount: React.FC = () => {
     <div>
       {values.type === 'inflow_of_money' ? (
         <div className="w-full items-center gap-1.5">
-          <Label>Destino donde ingresara el dinero :</Label>
+          <Label>Destino donde ingresara el dinero</Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
             <>

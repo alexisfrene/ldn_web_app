@@ -3,7 +3,6 @@ import { CardDescription, Icons, Separator } from '@components';
 import { CategoryEdit } from './CategoryEdit';
 import { SizeEdit } from './SizeEdit';
 import { SignOff } from './SignOff';
-import { AvatarEdit } from './AvatarEdit';
 import { ChangePassword } from './ChangePassword';
 
 interface Props {
@@ -50,16 +49,7 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
       onClick: () =>
         showModal('Estas por cambiar la contraseña :', <ChangePassword />),
     },
-    {
-      description: 'Editar imagen de perfil',
-      icon: (
-        <Icons
-          type="copy_manual"
-          className="col-span-1 w-6 cursor-pointer text-slate-500 hover:text-slate-700"
-        />
-      ),
-      onClick: () => showModal('', <AvatarEdit />),
-    },
+
     {
       description: 'Cerrar sesión',
       icon: (
@@ -78,7 +68,7 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
   return config.map((row, i) => (
     <div className="px-1 hover:bg-slate-100 dark:hover:bg-slate-800" key={i}>
       <Separator />
-      <CardDescription className="my-3 flex select-none justify-between">
+      <CardDescription className="my-3 flex justify-between select-none">
         {row.description}
         <span onClick={row.onClick} className="cursor-pointer">
           {row.icon}

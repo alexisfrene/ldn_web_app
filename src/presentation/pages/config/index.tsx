@@ -12,6 +12,7 @@ import {
 } from '@components';
 import { useModal } from '@hooks';
 import { Rows } from './Rows';
+import { EditAvatarModal } from '@modals';
 
 const Config: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
@@ -27,12 +28,15 @@ const Config: React.FC = () => {
   return (
     <Card className="h-full rounded-none border-none shadow-none">
       <CardHeader>Configuración</CardHeader>
-      <CardContent>
-        <Rows
-          hideModal={hideModal}
-          showModal={showModal}
-          showSheet={showSheet}
-        />
+      <CardContent className="grid grid-cols-12 gap-6">
+        <EditAvatarModal />
+        <div className="col-span-11">
+          <Rows
+            hideModal={hideModal}
+            showModal={showModal}
+            showSheet={showSheet}
+          />
+        </div>
       </CardContent>
       <Modal
         isOpen={isOpenModal}

@@ -67,7 +67,7 @@ export const AppSidebar: React.FC = () => {
           >
             <img
               src={logo}
-              className="relative h-12 cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:rotate-6 hover:scale-110"
+              className="relative h-12 cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6"
               alt="logo-ldn"
             />
           </a>
@@ -109,7 +109,7 @@ export const AppSidebar: React.FC = () => {
                   >
                     <NavLink key={index} to={path}>
                       <div>{icon}</div>
-                      <span className="text-sm font-medium dark:text-slate-200 lg:block">
+                      <span className="text-sm font-medium lg:block dark:text-slate-200">
                         {title}
                       </span>
                     </NavLink>
@@ -122,45 +122,24 @@ export const AppSidebar: React.FC = () => {
       </SidebarContent>
       {session_token && avatar && username ? (
         <SidebarFooter className="h-[6vh] bg-linear-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
-          <SidebarMenu className="flex h-[5vh] items-center justify-center">
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton className="flex justify-between">
-                    <div className="flex gap-x-1">
-                      <TokenImage
-                        url={`${avatar}?width=50&height=50&quality=50&format=webp`}
-                        variant="avatar"
-                        className="mt-1 h-8 w-8 rounded-full"
-                      />
-                      <div className="mb-1">
-                        <p>{username || '-'}</p>
-                        <p className="text-xs text-slate-400">{email || '-'}</p>
-                      </div>
-                    </div>
-                    <Icons type="arrow_top" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="top"
-                  className="w-(--radix-popper-anchor-width)"
-                >
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem
-                      onClick={() => navigate('/app/config')}
-                      className="flex w-full items-center align-middle"
-                      disabled={location.pathname.includes('/app/config')}
-                    >
-                      <Icons type="cog_6_tooth" className={tabsStyles} />
-                      <span className="ml-1 font-medium dark:text-slate-200 lg:block">
-                        Configuración
-                      </span>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
+          <div className="space-y-6" onClick={() => navigate('/app/config')}>
+            <div className="flex items-center gap-x-2">
+              <TokenImage
+                url={`${avatar}?width=50&height=50&quality=50&format=webp`}
+                variant="avatar"
+                className="h-8 w-8 rounded-lg object-cover"
+              />
+              <div>
+                <h1 className="text-base font-semibold text-gray-700 capitalize dark:text-white">
+                  {username}
+                </h1>
+
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {email}
+                </p>
+              </div>
+            </div>
+          </div>
         </SidebarFooter>
       ) : (
         <Skeleton className="h-[6vh] bg-linear-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900" />

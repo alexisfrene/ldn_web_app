@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   AlertModal,
   Badge,
@@ -10,13 +10,8 @@ import {
   Icons,
 } from '@components';
 import { formattedValue } from '@utils';
-import { useLoading } from '@hooks';
-import { EditFinancialAccountDialog } from '@presentation/components/modals';
-import {
-  deleteFinancialAccount,
-  editFinancialAccount,
-  getAllPaymentMethodForUser,
-} from '@services';
+import { EditFinancialAccountDialog } from '@modals';
+import { deleteFinancialAccount } from '@services';
 
 interface Props {
   financial_accounts_id: UUID;
@@ -40,29 +35,8 @@ export const FinancialAccountCard: React.FC<Props> = ({
       });
     },
   });
-  const { doneLoading, startLoading } = useLoading();
-  const editMutation = useMutation({
-    mutationFn: editFinancialAccount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['financial_accounts'],
-      });
-    },
-  });
-  const paymentMethod = useQuery({
-    queryKey: ['payment_method'],
-    queryFn: () => getAllPaymentMethodForUser(),
-  });
 
-  if (paymentMethod.isPending) {
-    startLoading();
-  }
-  if (paymentMethod.isSuccess) {
-    doneLoading();
-  }
-  if (paymentMethod.error) return 'An error has occurred: ';
-
-  const pays = paymentMethods.map((p) => p.payment_method_id.toString());
+  const pays = paymentMethods.map((p) => p.payment_method_id);
 
   return (
     <Card className="bg-linear-to-br from-amber-500/30 to-emerald-200 dark:from-teal-700 dark:to-green-600">
@@ -73,15 +47,13 @@ export const FinancialAccountCard: React.FC<Props> = ({
             <EditFinancialAccountDialog
               name={name}
               financial_accounts_id={financial_accounts_id}
-              editMutation={editMutation}
-              paymentMethodQuery={paymentMethod}
               pays={pays}
             />
             <AlertModal
               trigger={
                 <Icons
                   type="close"
-                  className="absolute -right-4 -top-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+                  className="absolute -top-2 -right-4 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
                 />
               }
               title="Eliminar esta cuenta financiera?"
@@ -95,7 +67,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
         <p className="mb-2 text-xl font-semibold">
           {formattedValue(total || 0)}
         </p>
-        <div className="flex flex-wrap justify-between gap-1">
+        <div className="flex flex-wrap gap-1">
           {paymentMethods.map((paymentMethod) => (
             <Badge
               key={paymentMethod.payment_method_id}

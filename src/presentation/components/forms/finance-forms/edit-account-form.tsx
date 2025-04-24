@@ -1,53 +1,59 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
-import { createFinancialAccount } from '@services';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { PaymentMethodCheckbox } from '@selects';
+import { editFinancialAccount } from '@services';
 import {
   Button,
-  Icons,
-  InputWithLabel,
   DialogClose,
   DialogFooter,
+  Icons,
+  InputWithLabel,
+  Label,
 } from '@components';
-import { PaymentMethodCheckbox } from '@selects';
+type Props = {
+  name: string;
+  financial_accounts_id: UUID;
+  pays: number[];
+};
 
-export const FormCreateAccount: React.FC = () => {
+export const EditAccountForm: React.FC<Props> = ({
+  name,
+  pays,
+  financial_accounts_id,
+}) => {
   const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createFinancialAccount,
+  const editMutation = useMutation({
+    mutationFn: editFinancialAccount,
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['financial_accounts'],
       });
     },
   });
-
   return (
     <Formik
       initialValues={{
-        account: '',
-        payment_method: [] as number[],
+        account: name,
+        payment_method: pays || [],
       }}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
+      onSubmit={async (values, { setSubmitting }) => {
         try {
-          mutation.mutate({
-            account: values.account,
-            payment_method: values.payment_method,
+          editMutation.mutate({
+            financial_account_id: financial_accounts_id,
+            name: values.account || '',
+            payments_methods: values.payment_method.map((e) => Number(e)),
           });
         } finally {
           setSubmitting(false);
-          resetForm();
         }
       }}
     >
       {({ handleSubmit, isSubmitting, values }) => (
         <form onSubmit={handleSubmit}>
           <div>
-            <InputWithLabel
-              label="Nombre de la cuenta"
-              name="account"
-              placeholder='Ej: "Cuenta de ahorros"'
-            />
+            <InputWithLabel label="Nombre de la cuenta" name="account" />
+            <Label className="font-semibold">Métodos de pago asociados:</Label>
           </div>
           <PaymentMethodCheckbox />
           <DialogFooter>
@@ -68,10 +74,10 @@ export const FormCreateAccount: React.FC = () => {
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">
                     <Icons type="refresh" className="h-5 w-5 animate-spin" />
-                    <span>Creando cuenta...</span>
+                    <span>Editando cuenta...</span>
                   </div>
                 ) : (
-                  'Crear cuenta'
+                  'Editar cuenta'
                 )}
               </Button>
             </DialogClose>

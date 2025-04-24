@@ -41,7 +41,7 @@ export const InputWithLabel: React.FC<Props> = ({
     ? onChange
     : (e: React.ChangeEvent<HTMLInputElement>) =>
         setFieldValue(name, e.target.value);
-  console.log('errors', errors);
+
   return (
     <div className={cn(['grid w-full items-center gap-1.5'])}>
       <Label

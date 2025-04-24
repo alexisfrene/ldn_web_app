@@ -1,21 +1,61 @@
-import { Field } from 'formik';
+import { getAllPaymentMethodForUser } from '@services';
+import { useQuery } from '@tanstack/react-query';
+import { Field, FormikValues, useFormikContext } from 'formik';
+import { useId } from 'react';
+import { Checkbox, Label } from '@components';
+import { CreatePaymentMethodModal } from '@modals';
 
-export const PaymentMethodCheckbox = ({
-  account,
-}: {
-  account: { name: string; payment_method_id: number };
-}) => (
-  <div className="w-32 rounded-md bg-amber-200 p-4 text-center shadow-md dark:bg-slate-700">
-    <label className="flex flex-col items-center space-y-2">
-      <Field
-        type="checkbox"
-        name="payment_method"
-        value={account.payment_method_id.toString()}
-        className="h-5 w-5 cursor-pointer rounded-md text-blue-600 focus:ring-2 focus:ring-blue-500"
-      />
-      <span className="text-sm font-medium text-slate-800 dark:text-white">
-        {account.name}
-      </span>
-    </label>
-  </div>
-);
+export const PaymentMethodCheckbox = () => {
+  const id = useId();
+  const { values, setFieldValue } = useFormikContext<FormikValues>();
+  const paymentMethod = useQuery({
+    queryKey: ['payment_method'],
+    queryFn: () => getAllPaymentMethodForUser(),
+  });
+
+  if (paymentMethod.error) return 'An error has occurred: ';
+  return (
+    <div className="my-3 grid grid-cols-4 gap-y-6">
+      {paymentMethod.data &&
+        paymentMethod.data.map(
+          (
+            account: {
+              name: string;
+              payment_method_id: number;
+            },
+            index: number,
+          ) => (
+            <div className="flex items-center gap-2" key={index}>
+              <Checkbox
+                id={`${id}-a-${account.payment_method_id}`}
+                value={account.payment_method_id}
+                name="payment_method"
+                checked={values.payment_method.includes(
+                  account.payment_method_id,
+                )}
+                onCheckedChange={(check) => {
+                  if (check) {
+                    setFieldValue('payment_method', [
+                      ...values.payment_method,
+                      account.payment_method_id,
+                    ]);
+                  } else {
+                    setFieldValue(
+                      'payment_method',
+                      values.payment_method.filter(
+                        (item: number) => item !== account.payment_method_id,
+                      ),
+                    );
+                  }
+                }}
+              />
+              <Label htmlFor={`${id}-a-${account.payment_method_id}`}>
+                {account.name}
+              </Label>
+            </div>
+          ),
+        )}
+      <CreatePaymentMethodModal />
+    </div>
+  );
+};

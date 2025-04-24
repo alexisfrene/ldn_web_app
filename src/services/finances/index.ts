@@ -370,11 +370,11 @@ export const markPaidDebt = async ({
       debt_id,
       installment_id,
     });
-    console.log(res);
-    toast.success('markPaidDebt con éxito!');
+
+    toast.success('Deuda pagada con éxito!');
     return res;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una markPaidDebt');
+    toast.error('Ocurrió un error al pagar la deuda');
     console.error('ERROR IN markPaidDebt:', error);
   }
 };
@@ -393,10 +393,10 @@ export const editFinancialAccount = async ({
       `/financial_accounts/${financial_account_id}`,
       { name, payments_methods: payments_methods || [] },
     );
-    toast.success('editFinancialAccount eliminado con éxito!');
+    toast.success('Cuenta editada con éxito!');
     return res;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una editFinancialAccount');
+    toast.error('Ocurrió un error al editar una cuenta');
     console.error('ERROR IN editFinancialAccount:', error);
   }
 };

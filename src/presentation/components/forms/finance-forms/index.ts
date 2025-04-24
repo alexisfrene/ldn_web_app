@@ -5,3 +5,5 @@ export * from './create-expense-form';
 export * from './create-debt-form';
 export * from './edit-debt-form';
 export * from './edit-expense-form';
+export * from './create-account-form';
+export * from './edit-account-form';

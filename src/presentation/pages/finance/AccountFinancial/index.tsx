@@ -1,12 +1,11 @@
 import React from 'react';
-
 import { FinancialAccountGrid } from './FinancialAccountGrid';
-import { FormCreateAccount } from '@forms';
+import { CreateAccountModal } from '@modals';
 
 const AccountFinancial: React.FC = () => {
   return (
     <div className="min-h-[70vh] border-none">
-      <FormCreateAccount />
+      <CreateAccountModal />
       <FinancialAccountGrid />
     </div>
   );

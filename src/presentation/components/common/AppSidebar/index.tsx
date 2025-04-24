@@ -96,13 +96,13 @@ export const AppSidebar: React.FC = () => {
           <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {tabButtons.map(({ title, icon, path }, index) => (
+              {tabButtons.map(({ title, icon, path }) => (
                 <SidebarMenuItem key={title}>
                   <SidebarMenuButton
                     asChild
                     isActive={location.pathname.includes(path)}
                   >
-                    <NavLink key={index} to={path}>
+                    <NavLink key={path} to={path}>
                       <div>{icon}</div>
                       <span className="text-sm font-medium lg:block dark:text-slate-200">
                         {title}

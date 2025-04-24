@@ -34,7 +34,7 @@ export const InfoCard: React.FC<Props> = ({
       />
       <CardHeader className="min-h-10 text-xs sm:text-base">{title}</CardHeader>
       <CardContent>
-        <p className={cn(['sm:text-2xl', valueStyles])}>
+        <div className={cn(['sm:text-2xl', valueStyles])}>
           {currency ? (
             <div>
               <span>$</span>
@@ -47,7 +47,7 @@ export const InfoCard: React.FC<Props> = ({
           ) : (
             value || 0
           )}
-        </p>
+        </div>
       </CardContent>
     </Card>
   );

@@ -31,14 +31,14 @@ const RelevantInfo: React.FC = () => {
       </CardHeader>
       <CardContent>
         <CardsInfo totalMonth={totalMonth} />
-        <div className="grid grid-cols-1 gap-3">
-          <ScrollArea className="h-96">
+        <ScrollArea className="h-96">
+          <span className="grid grid-cols-1 gap-3">
             <MovementList
               movements={movements.data}
               isPending={movements.isPending}
             />
-          </ScrollArea>
-        </div>
+          </span>
+        </ScrollArea>
       </CardContent>
     </Card>
   );

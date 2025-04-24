@@ -18,7 +18,7 @@ export const MovementList: React.FC<Props> = ({ movements, isPending }) => {
   const skeletonItems = Array(8).fill(null);
 
   return (
-    <Card className="border-none sm:min-h-96">
+    <div className="border-none sm:min-h-96">
       {isPending ? (
         <>
           {skeletonItems.map((_, index) => (
@@ -57,6 +57,6 @@ export const MovementList: React.FC<Props> = ({ movements, isPending }) => {
           )}
         </>
       )}
-    </Card>
+    </div>
   );
 };

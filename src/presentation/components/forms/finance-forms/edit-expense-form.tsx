@@ -6,7 +6,7 @@ import {
   DialogClose,
   DialogFooter,
   Icons,
-  LabelInput,
+  InputWithLabel,
   LoadingIndicator,
 } from '@components';
 import { editExpense } from '@services';
@@ -46,8 +46,8 @@ export const EditExpenseForm: React.FC<Props> = ({
     >
       {({ isSubmitting }) => (
         <Form>
-          <LabelInput label="Nombre  " placeholder={name} name="name" />
-          <LabelInput
+          <InputWithLabel label="Nombre  " placeholder={name} name="name" />
+          <InputWithLabel
             label="Descripción  "
             placeholder={description}
             name="description"

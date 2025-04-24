@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormikValues, useFormikContext } from 'formik';
 import {
   SelectFinancialAccount,
   SelectPaymentMethod,
@@ -6,10 +7,10 @@ import {
   SelectTag,
 } from '@selects';
 import { Label } from '@components';
-import { FormikValues, useFormikContext } from 'formik';
 
 export const SelectMovementAccount: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();
+
   return (
     <div>
       {values.type === 'inflow_of_money' ? (

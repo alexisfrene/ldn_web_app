@@ -1,4 +1,4 @@
-import { Button, DialogClose, Icons, LabelInput } from '@components';
+import { Button, DialogClose, Icons, InputWithLabel } from '@components';
 import { createPaymentMethod } from '@services';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
@@ -27,13 +27,13 @@ export const FormCreatePaymentMethod: React.FC = () => {
     >
       {({ handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
-          <LabelInput label="Nombre del método de pago" name="name" />
+          <InputWithLabel label="Nombre del método de pago" name="name" />
           <div className="col-span-full mt-6 flex justify-center">
             <DialogClose asChild>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full max-w-sm rounded-lg bg-green-600 px-6 py-3 shadow-md hover:bg-green-700 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="focus:ring-opacity-50 w-full max-w-sm rounded-lg bg-green-600 px-6 py-3 shadow-md hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:outline-hidden"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">

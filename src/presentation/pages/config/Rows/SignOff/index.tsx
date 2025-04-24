@@ -14,7 +14,7 @@ export const SignOff: React.FC<Props> = ({ hideModal }) => {
   );
   const insertAvatar = useSessionStore((state) => state.insertAvatar);
   return (
-    <div className="flex justify-evenly">
+    <div className="flex items-center justify-end gap-2">
       <Button variant="secondary" onClick={hideModal}>
         Cancelar
       </Button>

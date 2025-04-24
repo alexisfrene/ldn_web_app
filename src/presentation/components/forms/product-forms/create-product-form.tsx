@@ -7,7 +7,7 @@ import {
   Icons,
   ImageUploader,
   ImageLoader,
-  LabelInput,
+  InputWithLabel,
   Modal,
   ModalCategory,
   ModalSize,
@@ -37,16 +37,16 @@ export const CreateProductForm: React.FC = () => {
           onSubmit={handleSubmit}
           className="md:grid-row-6 grid-cols-1 gap-3 p-10 md:grid md:grid-cols-2 xl:grid-cols-4"
         >
-          <LabelInput
+          <InputWithLabel
             label="Nombre del producto"
             name="name"
             maxLength={50}
             minLength={3}
           />
-          <LabelInput
+          <InputWithLabel
             label="Precio"
             name="price"
-            inputType="number"
+            type="number"
             min={1}
             max={5000000000}
           />
@@ -72,16 +72,20 @@ export const CreateProductForm: React.FC = () => {
 
             <ImageUploader name="images" images={image} setImages={setImage} />
           </div>
-          <LabelInput label="Descripción" name="description" maxLength={100} />
-          <LabelInput label="Marca" name="detail[brand]" maxLength={50} />
-          <LabelInput label="Estilo" name="detail[style]" maxLength={50} />
-          <LabelInput label="Color" name="detail[color]" maxLength={50} />
-          <LabelInput label="Edad" name="detail[age]" maxLength={15} />
-          <LabelInput label="Genero" name="detail[gender]" maxLength={50} />
-          <LabelInput
+          <InputWithLabel
+            label="Descripción"
+            name="description"
+            maxLength={100}
+          />
+          <InputWithLabel label="Marca" name="detail[brand]" maxLength={50} />
+          <InputWithLabel label="Estilo" name="detail[style]" maxLength={50} />
+          <InputWithLabel label="Color" name="detail[color]" maxLength={50} />
+          <InputWithLabel label="Edad" name="detail[age]" maxLength={15} />
+          <InputWithLabel label="Genero" name="detail[gender]" maxLength={50} />
+          <InputWithLabel
             label="Unidades"
             name="stock"
-            inputType="number"
+            type="number"
             max={10000}
             min={1}
           />

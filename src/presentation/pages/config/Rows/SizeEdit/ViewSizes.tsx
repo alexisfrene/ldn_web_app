@@ -49,7 +49,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
   });
   return (
     <>
-      <ScrollArea className="h-[70vh] px-2">
+      <ScrollArea>
         {data.map(({ values, title, size_id }) => (
           <Card key={size_id}>
             <CardHeader className="relative">
@@ -82,11 +82,11 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                 <Icons
                   type="close"
                   height={20}
-                  className="absolute right-0 top-0 mx-1 cursor-pointer text-slate-500 hover:text-slate-600"
+                  className="absolute top-0 right-0 mx-1 cursor-pointer text-slate-500 hover:text-slate-600"
                   onClick={() => setSelected('')}
                 />
               ) : (
-                <div className="absolute right-0 top-0 flex flex-row">
+                <div className="absolute top-0 right-0 flex flex-row">
                   <Icons
                     type="copy_manual"
                     height={25}
@@ -120,7 +120,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                         <Icons
                           type="close"
                           height={13}
-                          className="absolute right-0 top-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
+                          className="absolute top-0 right-0 cursor-pointer rounded-tr-sm bg-red-500 hover:bg-red-400"
                         />
                       }
                       title="Estas por eliminar una colección de categorías"

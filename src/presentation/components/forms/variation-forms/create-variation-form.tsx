@@ -6,7 +6,7 @@ import {
   Icons,
   ImageUploader,
   Separator,
-  LabelInput,
+  InputWithLabel,
   Modal,
   ModalCategory,
 } from '@components';
@@ -33,11 +33,11 @@ export const CreateVariationForm: React.FC = () => {
     >
       {({ values, handleSubmit, isSubmitting, setFieldValue }) => (
         <form onSubmit={handleSubmit} className="flex flex-col px-10 pt-3">
-          <LabelInput label="Titulo" name="title" inputType="text" />
-          <LabelInput
+          <InputWithLabel label="Titulo" name="title" type="text" />
+          <InputWithLabel
             label="Nombre de la colección"
             name="label"
-            inputType="text"
+            type="text"
           />
           <ImageUploader name="images" images={images} setImages={setImages} />
           <div className="my-3 grid grid-cols-2 gap-3">

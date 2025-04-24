@@ -4,6 +4,7 @@ import {
   CardContent,
   CardHeader,
   Modal,
+  Separator,
   Sheet,
   SheetContent,
   SheetDescription,
@@ -33,11 +34,13 @@ const Config: React.FC = () => {
         <div className="flex gap-2">
           <EditAvatarModal />
           <div className="flex flex-col">
-            <span className="text-sm font-semibold">{username}</span>
-            <span className="text-xs text-gray-500">{email}</span>
+            <span>{`Nombre de usuario: ${username}`}</span>
+            <Separator />
+
+            <span>{`Correo: ${email}`}</span>
           </div>
         </div>
-        <div>
+        <div className="mt-3">
           <Rows
             hideModal={hideModal}
             showModal={showModal}

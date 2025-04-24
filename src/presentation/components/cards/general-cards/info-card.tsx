@@ -32,7 +32,7 @@ export const InfoCard: React.FC<Props> = ({
           '[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]',
         )}
       />
-      <CardHeader className="text-xs sm:text-base">{title}</CardHeader>
+      <CardHeader className="min-h-10 text-xs sm:text-base">{title}</CardHeader>
       <CardContent>
         <p className={cn(['sm:text-2xl', valueStyles])}>
           {currency ? (

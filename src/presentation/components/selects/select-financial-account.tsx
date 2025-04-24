@@ -32,7 +32,7 @@ export const SelectFinancialAccount: React.FC = () => {
   };
 
   return (
-    <div className="my-3 grid w-full grid-cols-3 gap-3">
+    <div className="my-3 grid w-full grid-cols-2 gap-3 md:grid-cols-3">
       {financialAccount?.length ? (
         financialAccount?.map((financialAccount) => (
           <div

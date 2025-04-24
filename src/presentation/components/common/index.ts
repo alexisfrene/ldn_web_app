@@ -4,7 +4,6 @@ export * from './Modal';
 export * from './Layout';
 export * from './ImageLoader';
 export * from './Icons';
-export * from './LabelInput';
 export * from './ImageUploader';
 export * from './DataTable';
 export * from './MenuTabs';

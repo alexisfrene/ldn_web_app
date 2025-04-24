@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Button, LabelInput } from '@components';
+import { Button, InputWithLabel } from '@components';
 export const ChangePasswordForm: React.FC = () => {
   return (
     <Formik
@@ -13,20 +13,20 @@ export const ChangePasswordForm: React.FC = () => {
     >
       {() => (
         <div className="flex flex-col">
-          <LabelInput
+          <InputWithLabel
             label="Contraseña actual"
             name="last_password"
-            inputType="password"
+            type="password"
           />
-          <LabelInput
+          <InputWithLabel
             label="Contraseña nueva"
             name="new_password"
-            inputType="password"
+            type="password"
           />
-          <LabelInput
+          <InputWithLabel
             label="Confirmar contraseña"
             name="confirm_password"
-            inputType="password"
+            type="password"
           />
           <Button>Guardar</Button>
         </div>

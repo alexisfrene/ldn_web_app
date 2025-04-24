@@ -4,10 +4,11 @@ import {
   Button,
   CounterButton,
   DialogClose,
+  DialogFooter,
   DropdownInput,
   Icons,
+  InputWithLabel,
   Label,
-  LabelInput,
   ScrollArea,
 } from '@components';
 import { Installments } from './Installments';
@@ -53,33 +54,31 @@ export const CreateDebtForm: React.FC = () => {
       {({ handleSubmit, isSubmitting, values, setFieldValue }) => (
         <form onSubmit={handleSubmit}>
           <ScrollArea className="h-96">
-            <div className="gap-3 md:grid md:grid-cols-3">
-              <LabelInput label="Nombre de la cuenta" name="name" />
-              <LabelInput label="Agrega un nota de la deuda" name="notes" />
-              <div className="-mt-1.5">
-                <DropdownInput
-                  title="Elegir una frecuencia de pago"
-                  options={paymentFrequency}
-                  name="payment_frequency"
-                />
-              </div>
-              <LabelInput
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+              <InputWithLabel label="Nombre de la cuenta" name="name" />
+              <InputWithLabel label="Agrega un nota de la deuda" name="notes" />
+              <DropdownInput
+                title="Elegir una frecuencia de pago"
+                options={paymentFrequency}
+                name="payment_frequency"
+              />
+              <InputWithLabel
                 label="Monto a recibir"
                 name="money_to_receive"
-                inputType="number"
+                type="number"
                 min={1}
                 step="0.01"
               />
-              <LabelInput
+              <InputWithLabel
                 label="Que cuota vas ?"
                 name="current_quota"
-                inputType="number"
+                type="number"
                 min={1}
               />
-              <LabelInput
+              <InputWithLabel
                 label="Pago mínimo"
                 name="minimum_payment"
-                inputType="number"
+                type="number"
                 min={1}
                 step="0.01"
               />
@@ -93,10 +92,9 @@ export const CreateDebtForm: React.FC = () => {
                   min={1}
                 />
               </div>
-              <LabelInput
+              <InputWithLabel
                 label="Total a pagar "
                 name="total_debt_str"
-                inputType="text"
                 min={1}
                 disabled
                 step="0.01"
@@ -109,21 +107,13 @@ export const CreateDebtForm: React.FC = () => {
             </div>
             <Installments />
           </ScrollArea>
-          <div className="col-span-full mt-6 flex justify-center gap-3">
+          <DialogFooter>
             <DialogClose asChild>
-              <Button
-                type="button"
-                variant="secondary"
-                className="w-full max-w-sm rounded-lg px-6 py-3 shadow-md focus:outline-hidden focus:ring-2 focus:ring-opacity-50"
-              >
+              <Button type="button" variant="secondary">
                 Cancelar
               </Button>
             </DialogClose>
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full max-w-sm rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 dark:text-black"
-            >
+            <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <div className="flex items-center justify-center space-x-2">
                   <Icons type="refresh" className="h-5 w-5 animate-spin" />
@@ -133,7 +123,7 @@ export const CreateDebtForm: React.FC = () => {
                 'Crear cuenta'
               )}
             </Button>
-          </div>
+          </DialogFooter>
         </form>
       )}
     </Formik>

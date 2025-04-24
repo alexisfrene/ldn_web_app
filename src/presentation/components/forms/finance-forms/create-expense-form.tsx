@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  LabelInput,
+  InputWithLabel,
 } from '@components';
 
 export const CreateExpenseForm: React.FC = () => {
@@ -50,8 +50,8 @@ export const CreateExpenseForm: React.FC = () => {
                   gastos , por ejemplos Gastos Varios , Gastos del Auto , etc...
                 </DialogDescription>
               </DialogHeader>
-              <LabelInput label="Nombre" name="name" />
-              <LabelInput label="Descripción" name="description" />
+              <InputWithLabel label="Nombre" name="name" />
+              <InputWithLabel label="Descripción" name="description" />
               <DialogFooter className="grid w-full grid-cols-3 gap-2">
                 <DialogClose asChild className="col-start-2">
                   <Button type="button" variant="secondary">

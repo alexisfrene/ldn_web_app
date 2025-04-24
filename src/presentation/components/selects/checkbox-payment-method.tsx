@@ -1,11 +1,11 @@
+import React, { useId } from 'react';
 import { getAllPaymentMethodForUser } from '@services';
 import { useQuery } from '@tanstack/react-query';
-import { Field, FormikValues, useFormikContext } from 'formik';
-import { useId } from 'react';
+import { FormikValues, useFormikContext } from 'formik';
 import { Checkbox, Label } from '@components';
 import { CreatePaymentMethodModal } from '@modals';
 
-export const PaymentMethodCheckbox = () => {
+export const PaymentMethodCheckbox: React.FC = () => {
   const id = useId();
   const { values, setFieldValue } = useFormikContext<FormikValues>();
   const paymentMethod = useQuery({
@@ -14,8 +14,9 @@ export const PaymentMethodCheckbox = () => {
   });
 
   if (paymentMethod.error) return 'An error has occurred: ';
+
   return (
-    <div className="my-3 grid grid-cols-4 gap-y-6">
+    <div className="my-3 grid grid-cols-3 gap-y-6 md:grid-cols-4">
       {paymentMethod.data &&
         paymentMethod.data.map(
           (
@@ -55,7 +56,9 @@ export const PaymentMethodCheckbox = () => {
             </div>
           ),
         )}
-      <CreatePaymentMethodModal />
+      <div className="flex flex-grow justify-center rounded-md bg-green-600 p-1 dark:bg-green-900">
+        <CreatePaymentMethodModal />
+      </div>
     </div>
   );
 };

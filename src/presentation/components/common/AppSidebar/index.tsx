@@ -14,11 +14,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarHeader,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuGroup,
   GridPattern,
   TokenImage,
   Skeleton,
@@ -133,7 +128,6 @@ export const AppSidebar: React.FC = () => {
                 <h1 className="text-base font-semibold text-gray-700 capitalize dark:text-white">
                   {username}
                 </h1>
-
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   {email}
                 </p>

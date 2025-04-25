@@ -1,6 +1,4 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteMovement } from '@services';
 import { cn, formattedValue } from '@utils';
 import {
   AlertDialog,
@@ -15,6 +13,7 @@ import {
   Badge,
   Icons,
 } from '@components';
+import { useDeleteMovement } from '@hooks';
 
 interface MovementCardProps {
   label: string;
@@ -33,14 +32,7 @@ export const MovementCard: React.FC<MovementCardProps> = ({
   amount,
   movementId,
 }) => {
-  const queryClient = useQueryClient();
-  const deleteMutation = useMutation({
-    mutationFn: deleteMovement,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['movements'] });
-      queryClient.invalidateQueries({ queryKey: ['expenses'] });
-    },
-  });
+  const mutation = useDeleteMovement();
 
   const isMoneyInflow = type === 'inflow_of_money';
 
@@ -102,7 +94,7 @@ export const MovementCard: React.FC<MovementCardProps> = ({
               <AlertDialogCancel>Cancelar</AlertDialogCancel>
               <AlertDialogAction
                 type="button"
-                onClick={() => deleteMutation.mutate(movementId)}
+                onClick={() => mutation.mutate(movementId)}
               >
                 Borrar
               </AlertDialogAction>

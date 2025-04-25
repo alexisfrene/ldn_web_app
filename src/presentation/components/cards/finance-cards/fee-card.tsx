@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Card,
   CardContent,
@@ -17,12 +16,9 @@ import {
   DialogFooter,
   Button,
 } from '@components';
-import { markPaidDebt } from '@services';
 import { cn, formattedValue } from '@utils';
-import {
-  SelectFinancialAccount,
-  SelectPaymentMethod,
-} from '@presentation/components/selects';
+import { SelectFinancialAccount, SelectPaymentMethod } from '@selects';
+import { useMarkDebtPaid } from '@hooks';
 interface Props {
   installment_id: number;
   quota_number: number;
@@ -49,18 +45,7 @@ export const CardFee: React.FC<Props> = ({
   debt_name,
 }) => {
   const cardStatus = status === 'paid' ? 'paid' : 'pending';
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: markPaidDebt,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['debts', debt_id],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ['debts'],
-      });
-    },
-  });
+  const mutation = useMarkDebtPaid();
   return (
     <Dialog>
       <DialogTrigger asChild>

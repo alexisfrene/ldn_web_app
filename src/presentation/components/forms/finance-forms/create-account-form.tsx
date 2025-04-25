@@ -1,7 +1,5 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
-import { createFinancialAccount } from '@services';
 import {
   Button,
   Icons,
@@ -10,18 +8,10 @@ import {
   DialogFooter,
 } from '@components';
 import { PaymentMethodCheckbox } from '@selects';
+import { useCreateAccount } from '@hooks';
 
 export const FormCreateAccount: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createFinancialAccount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['financial_accounts'],
-      });
-    },
-  });
-
+  const mutation = useCreateAccount();
   return (
     <Formik
       initialValues={{

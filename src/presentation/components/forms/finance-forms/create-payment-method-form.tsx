@@ -1,20 +1,11 @@
 import { Button, DialogClose, Icons, InputWithLabel } from '@components';
-import { createPaymentMethod } from '@services';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Formik } from 'formik';
 import React from 'react';
 import { paymentMethodSchema } from './validations';
+import { useCreatePaymentMethod } from '@hooks';
 
 export const FormCreatePaymentMethod: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createPaymentMethod,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['payment_method'],
-      });
-    },
-  });
+  const mutation = useCreatePaymentMethod();
 
   return (
     <Formik

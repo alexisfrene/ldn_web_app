@@ -1,8 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PaymentMethodCheckbox } from '@selects';
-import { editFinancialAccount } from '@services';
 import {
   Button,
   DialogClose,
@@ -11,6 +9,7 @@ import {
   InputWithLabel,
   Label,
 } from '@components';
+import { useEditAccount } from '@hooks';
 type Props = {
   name: string;
   financial_accounts_id: UUID;
@@ -22,15 +21,7 @@ export const EditAccountForm: React.FC<Props> = ({
   pays,
   financial_accounts_id,
 }) => {
-  const queryClient = useQueryClient();
-  const editMutation = useMutation({
-    mutationFn: editFinancialAccount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['financial_accounts'],
-      });
-    },
-  });
+  const mutation = useEditAccount();
   return (
     <Formik
       initialValues={{
@@ -39,7 +30,7 @@ export const EditAccountForm: React.FC<Props> = ({
       }}
       onSubmit={async (values, { setSubmitting }) => {
         try {
-          editMutation.mutate({
+          mutation.mutate({
             financial_account_id: financial_accounts_id,
             name: values.account || '',
             payments_methods: values.payment_method.map((e) => Number(e)),

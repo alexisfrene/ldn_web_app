@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Label,
   Input,
@@ -10,7 +9,7 @@ import {
   Separator,
   LoadingIndicator,
 } from '@components';
-import { addCategoryConfig } from '@services';
+import { useCreateCategoryCollection } from '@hooks';
 
 type IconProps = {
   url: string;
@@ -26,13 +25,7 @@ export const CreateCollectionCategoryForm: React.FC = () => {
   const [value, setValue] = useState('');
   const [imageCount, setImageCount] = useState(0);
   const [image, setImage] = useState<ImagesValues[]>([]);
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: addCategoryConfig,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['categories'] });
-    },
-  });
+  const mutation = useCreateCategoryCollection();
 
   return (
     <Formik

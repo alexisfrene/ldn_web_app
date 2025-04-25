@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Button,
   CounterButton,
@@ -14,20 +13,12 @@ import {
   CalculateInterest,
   GenerateInstallments,
 } from '@components';
-import { createDebt } from '@services';
 import { paymentFrequency } from '@presentation/mocks';
 import { initialValuesDebt, debtSchema } from './create-debt-utils';
+import { useCreateDebt } from '@hooks';
 
 export const CreateDebtForm: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createDebt,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['debts'],
-      });
-    },
-  });
+  const mutation = useCreateDebt();
 
   return (
     <Formik

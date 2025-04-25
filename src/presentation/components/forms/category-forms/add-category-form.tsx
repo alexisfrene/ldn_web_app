@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Label, Input, ImageUploader, Button } from '@components';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addValueCategory } from '@services';
+import { useAddCategoryValue } from '@hooks';
 
 interface Props {
   category_id: string;
 }
 export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
   const [image, setImage] = useState<ImagesValues[]>([]);
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: addValueCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['categories'] });
-    },
-  });
+  const mutation = useAddCategoryValue();
 
   return (
     <Formik
@@ -56,7 +49,7 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
           />
           <div className="flex flex-col items-center rounded-lg bg-white p-4 shadow-md">
             <p className="mb-2 text-lg font-semibold text-gray-700">Valor:</p>
-            <p className="text-md italic text-gray-500">
+            <p className="text-md text-gray-500 italic">
               {values.value || 'Ej: Zapatillas deportivas'}
             </p>
             {values.icon && (

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   AlertModal,
   Badge,
@@ -11,7 +10,7 @@ import {
 } from '@components';
 import { formattedValue } from '@utils';
 import { EditFinancialAccountDialog } from '@modals';
-import { deleteFinancialAccount } from '@services';
+import { useDeleteAccount } from '@presentation/hooks/finance-hooks/use-delete-account';
 
 interface Props {
   financial_accounts_id: UUID;
@@ -26,16 +25,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
   total,
   paymentMethods,
 }) => {
-  const queryClient = useQueryClient();
-  const deleteMutation = useMutation({
-    mutationFn: deleteFinancialAccount,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['financial_accounts'],
-      });
-    },
-  });
-
+  const mutation = useDeleteAccount();
   const pays = paymentMethods.map((p) => p.payment_method_id);
 
   return (
@@ -58,7 +48,7 @@ export const FinancialAccountCard: React.FC<Props> = ({
               }
               title="Eliminar esta cuenta financiera?"
               description="Esta acción es permanente"
-              onConfirm={() => deleteMutation.mutate(financial_accounts_id)}
+              onConfirm={() => mutation.mutate(financial_accounts_id)}
             />
           </div>
         </CardTitle>

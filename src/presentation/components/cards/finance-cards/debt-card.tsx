@@ -8,12 +8,10 @@ import {
   CardTitle,
   Icons,
 } from '@components';
-import { CardFee } from '@presentation/components/cards';
+import { CardFee } from '@cards';
 import { FormEditDebt } from '@forms';
-import { useIsMobile } from '@hooks';
+import { useDeleteDebt, useIsMobile } from '@hooks';
 import { formattedValue } from '@utils';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteDebt } from '@services';
 
 interface Props {
   debt_id: UUID;
@@ -44,15 +42,7 @@ export const CardDebt: React.FC<Props> = ({
   interest_per_installment,
 }) => {
   const isMobile = useIsMobile();
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: deleteDebt,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['debts'],
-      });
-    },
-  });
+  const mutation = useDeleteDebt();
   return (
     <Card
       key={debt_id}
@@ -69,7 +59,7 @@ export const CardDebt: React.FC<Props> = ({
               trigger={
                 <Icons
                   type="close"
-                  className="absolute -right-4 -top-2 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
+                  className="absolute -top-2 -right-4 h-4 cursor-pointer opacity-70 transition-opacity hover:scale-105 hover:opacity-100"
                 />
               }
               title="Eliminar deuda"

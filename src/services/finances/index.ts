@@ -88,7 +88,7 @@ export const createMovement = async ({
 export const getAllFinancialAccount = async (): Promise<MovementData[]> => {
   try {
     const res = await axiosInstance.get<MovementData[]>('/financial_accounts');
-
+    console.log('res.data', res.data);
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al crear una getAllFinancialAccount');
@@ -235,7 +235,7 @@ export const createDebt = async ({
 export const getDebts = async () => {
   try {
     const res = await axiosInstance.get('/debt');
-
+    console.log('res.data', res.data);
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al getDebts');

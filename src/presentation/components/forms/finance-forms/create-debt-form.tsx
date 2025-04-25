@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Button,
   CounterButton,
@@ -10,14 +11,12 @@ import {
   InputWithLabel,
   Label,
   ScrollArea,
+  CalculateInterest,
+  GenerateInstallments,
 } from '@components';
-import { Installments } from './Installments';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createDebt } from '@services';
 import { paymentFrequency } from '@presentation/mocks';
-import { initialValuesDebt } from './initialValues';
-import { debtSchema } from './validations';
-import { CalculateInterest } from './CalculateInterest';
+import { initialValuesDebt, debtSchema } from './create-debt-utils';
 
 export const CreateDebtForm: React.FC = () => {
   const queryClient = useQueryClient();
@@ -105,7 +104,7 @@ export const CreateDebtForm: React.FC = () => {
                 numberOfInstallments={values.number_quota}
               />
             </div>
-            <Installments />
+            <GenerateInstallments />
           </ScrollArea>
           <DialogFooter>
             <DialogClose asChild>

@@ -11,13 +11,8 @@ import {
   Label,
   Separator,
 } from '@components';
-import {
-  EditExpenseModal,
-  ExpenseDetailModal,
-} from '@presentation/components/modals';
-import { useIsMobile } from '@hooks';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteExpense } from '@services';
+import { EditExpenseModal, ExpenseDetailModal } from '@modals';
+import { useDeleteExpense, useIsMobile } from '@hooks';
 
 interface Props {
   description: string;
@@ -39,15 +34,7 @@ export const CardExpense: React.FC<Props> = ({
   money_outflow_month,
 }) => {
   const isMobile = useIsMobile();
-  const queryClient = useQueryClient();
-  const deleteMutation = useMutation({
-    mutationFn: deleteExpense,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['expenses'],
-      });
-    },
-  });
+  const mutation = useDeleteExpense();
   return (
     <Card
       key={expense_id}
@@ -67,7 +54,7 @@ export const CardExpense: React.FC<Props> = ({
                 }
                 title="Eliminar esta cuenta financiera?"
                 description="Esta acción es permanente"
-                onConfirm={() => deleteMutation.mutate(expense_id)}
+                onConfirm={() => mutation.mutate(expense_id)}
               />
               <EditExpenseModal
                 description={description}

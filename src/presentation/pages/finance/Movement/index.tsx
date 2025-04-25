@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import {
   Card,
   CardContent,
@@ -8,16 +7,9 @@ import {
   ScrollArea,
   MovementList,
 } from '@components';
-import { getAllMovements } from '@services';
 import { CreateMovementForm } from '@forms';
 
 const Movement: React.FC = () => {
-  const movements = useQuery({
-    queryKey: ['movements'],
-    queryFn: () => getAllMovements(),
-  });
-  if (movements.error) return 'An error has occurred: ';
-
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-full sm:col-span-7 sm:mr-6">
@@ -30,10 +22,7 @@ const Movement: React.FC = () => {
           </CardHeader>
           <CardContent>
             <ScrollArea className="col-span-7 h-[62vh] pr-3">
-              <MovementList
-                movements={movements.data}
-                isPending={movements.isPending}
-              />
+              <MovementList />
             </ScrollArea>
           </CardContent>
         </Card>

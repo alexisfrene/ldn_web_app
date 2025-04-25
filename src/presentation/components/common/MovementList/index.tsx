@@ -1,23 +1,19 @@
 import React from 'react';
-import { MovementCard } from '@presentation/components/cards';
+import { MovementCard } from '@cards';
 import { Skeleton } from '@components';
+import { useGetMovements } from '@hooks';
+import { Movement } from 'src/types/finance';
 
-interface Props {
-  movements: {
-    label: string;
-    type: string;
-    value: number;
-    payment_method: string;
-    account: string;
-    id: string;
-  }[];
-  isPending: boolean;
-}
+type Props = {
+  expenseMovements?: { movements: Movement[]; isLoading: boolean };
+};
 
-export const MovementList: React.FC<Props> = ({ movements, isPending }) => {
+export const MovementList: React.FC<Props> = ({ expenseMovements }) => {
+  const { movements, isLoading } = expenseMovements ?? useGetMovements();
+
   return (
     <div className="border-none sm:min-h-96">
-      {isPending ? (
+      {isLoading ? (
         <div className="grid grid-cols-1 gap-3">
           {Array(8)
             .fill(null)

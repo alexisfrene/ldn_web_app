@@ -19,3 +19,5 @@ export * from './PieChart';
 export * from './CounterButton';
 export * from './AlertModal';
 export * from './InputWithLabel';
+export * from './CalculateInterest';
+export * from './GenerateInstallments';

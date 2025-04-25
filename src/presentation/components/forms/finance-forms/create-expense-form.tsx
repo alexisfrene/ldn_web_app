@@ -1,7 +1,5 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createExpense } from '@services';
 import {
   Button,
   Dialog,
@@ -15,17 +13,10 @@ import {
   InputWithLabel,
   LoadingButton,
 } from '@components';
+import { useCreateExpense } from '@hooks';
 
 export const CreateExpenseForm: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createExpense,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['expenses'],
-      });
-    },
-  });
+  const mutation = useCreateExpense();
 
   return (
     <Dialog>

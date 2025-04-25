@@ -1,17 +1,13 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Icons, Label, Skeleton } from '@components';
-import { getExpenses } from '@services';
 import { CardExpense } from '@presentation/components/cards';
 import { CreateExpenseForm } from '@forms';
+import { useGetExpenses } from '@hooks';
 
 const Expense: React.FC = () => {
-  const expenses = useQuery({
-    queryKey: ['expenses'],
-    queryFn: getExpenses,
-  });
+  const { expenses, isLoading } = useGetExpenses();
 
-  if (expenses.isPending) {
+  if (isLoading) {
     return (
       <div>
         <CreateExpenseForm />
@@ -26,35 +22,24 @@ const Expense: React.FC = () => {
       </div>
     );
   }
-  if (expenses.error) return 'An error has occurred: ';
 
   return (
     <div>
       <CreateExpenseForm />
       <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
-        {expenses.data.length ? (
-          expenses.data.map(
-            (expense: {
-              description: string;
-              expense_id: UUID;
-              name: string;
-              money_outflow: number;
-              count_movements: number;
-              money_outflow_month: number;
-              count_movements_month: number;
-            }) => (
-              <CardExpense
-                count_movements={expense.count_movements}
-                count_movements_month={expense.count_movements_month}
-                description={expense.description}
-                expense_id={expense.expense_id}
-                money_outflow={expense.money_outflow}
-                money_outflow_month={expense.money_outflow_month}
-                name={expense.name}
-                key={expense.expense_id}
-              />
-            ),
-          )
+        {expenses.length ? (
+          expenses.map((expense) => (
+            <CardExpense
+              count_movements={expense.count_movements}
+              count_movements_month={expense.count_movements_month}
+              description={expense.description}
+              expense_id={expense.expense_id}
+              money_outflow={expense.money_outflow}
+              money_outflow_month={expense.money_outflow_month}
+              name={expense.name}
+              key={expense.expense_id}
+            />
+          ))
         ) : (
           <div className="col-span-2 mx-auto mt-20">
             <Icons

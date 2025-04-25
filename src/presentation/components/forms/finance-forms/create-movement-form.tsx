@@ -1,27 +1,12 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createMovement } from '@services';
 import { Button, Icons, InputWithLabel, Label } from '@components';
 import { SelectMovementAccount, SelectMovementType } from '@selects';
 import { initialValues, movementSchema } from './create-movement-utils';
+import { useCreateMovement } from '@hooks';
 
 export const CreateMovementForm: React.FC = () => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createMovement,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['movements'],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ['finances'],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ['financial_account'],
-      });
-    },
-  });
+  const mutation = useCreateMovement();
 
   return (
     <Formik

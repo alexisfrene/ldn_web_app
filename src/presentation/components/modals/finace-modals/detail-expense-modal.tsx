@@ -54,8 +54,10 @@ export const ExpenseDetailModal: React.FC<Props> = ({
             <Label>Descripción : {expenses.data.description}</Label>
             <ScrollArea className="h-96 px-3">
               <MovementList
-                isPending={expenses.isPending}
-                movements={expenses.data.movements}
+                expenseMovements={{
+                  movements: expenses.data.movements,
+                  isLoading: expenses.isLoading,
+                }}
               />
             </ScrollArea>
           </>

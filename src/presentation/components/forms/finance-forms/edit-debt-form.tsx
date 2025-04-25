@@ -1,6 +1,7 @@
 import React from 'react';
+import { Form, Formik } from 'formik';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -11,16 +12,14 @@ import {
   DropdownInput,
   Icons,
   InputWithLabel,
-  LoadingIndicator,
   ScrollArea,
   Skeleton,
+  CalculateInterest,
+  LoadingButton,
 } from '@components';
-import { Form, Formik } from 'formik';
 import { editDebt, getDebtById } from '@services';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLoading } from '@hooks';
 import { paymentFrequency } from '@presentation/mocks';
-import { CalculateInterest } from './CalculateInterest';
 
 interface Props {
   debt_id: UUID;
@@ -179,20 +178,14 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
                   />
                 </div>
                 <DialogFooter>
-                  <Button
+                  <LoadingButton
                     className="mt-6 w-full"
                     type="submit"
-                    disabled={isSubmitting}
+                    loading={isSubmitting}
                   >
-                    <div className="mx-1 w-5">
-                      {isSubmitting && (
-                        <Icons type="refresh" className="h-5 animate-spin" />
-                      )}
-                    </div>
                     Editar
-                  </Button>
+                  </LoadingButton>
                 </DialogFooter>
-                <LoadingIndicator isLoading={isSubmitting} />
               </ScrollArea>
             </Form>
           )}

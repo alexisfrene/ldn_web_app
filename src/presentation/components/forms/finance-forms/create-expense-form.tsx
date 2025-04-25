@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
   InputWithLabel,
+  LoadingButton,
 } from '@components';
 
 export const CreateExpenseForm: React.FC = () => {
@@ -58,9 +59,9 @@ export const CreateExpenseForm: React.FC = () => {
                     Cancelar
                   </Button>
                 </DialogClose>
-                <DialogClose asChild>
-                  <Button type="submit">Crear</Button>
-                </DialogClose>
+                <LoadingButton type="submit" loading={mutation.isPending}>
+                  Crear
+                </LoadingButton>
               </DialogFooter>
             </form>
           )}

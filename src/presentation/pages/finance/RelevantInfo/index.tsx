@@ -12,7 +12,7 @@ import { CardsInfo } from './CardsInfo';
 
 const RelevantInfo: React.FC = () => {
   return (
-    <Card className="border-none">
+    <Card className="m-0 border-none p-0">
       <CardHeader className="flex flex-row justify-between md:text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />
@@ -20,7 +20,7 @@ const RelevantInfo: React.FC = () => {
       <CardContent>
         <CardsInfo />
         <ScrollArea className="h-96">
-          <span className="grid grid-cols-1 gap-3">
+          <span className="flex flex-col">
             <MovementList />
           </span>
         </ScrollArea>

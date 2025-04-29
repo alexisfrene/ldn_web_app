@@ -14,7 +14,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements }) => {
   return (
     <div className="border-none sm:min-h-96">
       {isLoading ? (
-        <div className="grid grid-cols-1 gap-3">
+        <div>
           {Array(8)
             .fill(null)
             .map((_, index) => (
@@ -25,7 +25,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements }) => {
             ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-3">
+        <div>
           {movements.length ? (
             movements.map((movement) => (
               <MovementCard

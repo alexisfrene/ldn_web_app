@@ -1,28 +1,24 @@
 import * as React from 'react';
 
 import { cn } from '@utils';
-import { Label } from './label';
 import { CheckIcon, EyeIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Label } from './label';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={cn(
-          'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
-          className,
-        )}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-Input.displayName = 'Input';
+function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
+  return (
+    <input
+      type={type}
+      data-slot="input"
+      className={cn(
+        'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+        'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+        'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 const InputWithVerifyPassword: React.FC<{
   label?: string;
@@ -72,7 +68,7 @@ const InputWithVerifyPassword: React.FC<{
 
   return (
     <div>
-      <div className="*:not-first:mt-2">
+      <div className="not-first:*:mt-2">
         <Label htmlFor={id}>{label}</Label>
         <div className="relative">
           <Input
@@ -89,7 +85,7 @@ const InputWithVerifyPassword: React.FC<{
             aria-describedby={`${id}-description`}
           />
           <button
-            className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md text-muted-foreground/80 outline-none transition-[color,box-shadow] hover:text-foreground focus:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+            className="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md outline-hidden transition-[color,box-shadow] focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
             type="button"
             onClick={toggleVisibility}
             aria-label={isVisible ? 'Hide password' : 'Show password'}
@@ -105,7 +101,7 @@ const InputWithVerifyPassword: React.FC<{
         </div>
       </div>
       <div
-        className="mb-4 mt-3 h-1 w-full overflow-hidden rounded-full bg-border"
+        className="bg-border mt-3 mb-4 h-1 w-full overflow-hidden rounded-full"
         role="progressbar"
         aria-valuenow={strengthScore}
         aria-valuemin={0}
@@ -119,7 +115,7 @@ const InputWithVerifyPassword: React.FC<{
       </div>
       <p
         id={`${id}-description`}
-        className="mb-2 text-sm font-medium text-foreground"
+        className="text-foreground mb-2 text-sm font-medium"
       >
         {getStrengthText(strengthScore)}. Debe contener:
       </p>

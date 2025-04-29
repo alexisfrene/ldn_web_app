@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import { WithAuth } from '@components';
 import Expense from './finance/Expense';
 import RelevantInfo from './finance/RelevantInfo';
@@ -19,8 +19,8 @@ const VariationsPage = lazy(() => import('./variations'));
 const Movement = lazy(() => import('./finance/Movement'));
 const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
 const Debts = lazy(() => import('./finance/Debts'));
-const CreateProducts = lazy(() => import('./products/CreateTab'));
-const CreateVariation = lazy(() => import('./variations/CreateTab'));
+const CreateProducts = lazy(() => import('./products/CreateProductTab'));
+const CreateVariation = lazy(() => import('./variations/CreateVariationTab'));
 
 const FinanceRoutes = [
   {
@@ -77,7 +77,7 @@ const VariationsRoutes = [
   },
 ];
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: '/',
     element: <FilingPage />,
@@ -130,6 +130,8 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <SignUpPage />,
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export default router;

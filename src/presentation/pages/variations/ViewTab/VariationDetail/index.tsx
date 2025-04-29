@@ -6,7 +6,7 @@ import {
 } from '@components';
 import { GalleryTab } from './GalleryTab';
 import { CollectionTab } from './CollectionTab';
-import { getVariationById } from '@src/services';
+import { getVariationById } from '@services';
 import { useQuery } from '@tanstack/react-query';
 
 const tabs = ['Ver imágenes', 'Agregar una colección'];

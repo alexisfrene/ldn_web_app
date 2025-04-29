@@ -28,23 +28,25 @@ export const DropdownInput: React.FC<Props> = ({ title, options, name }) => {
   };
 
   return (
-    <Select
-      {...field}
-      onValueChange={handleOptionChange}
-      defaultValue={options[0].type}
-    >
-      <Label>{title}</Label>
-      <SelectTrigger>
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        {options.map((option) => (
-          <SelectItem value={option.type} key={option.type}>
-            {capitalizeFirstLetter(option.title)}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div>
+      <Label className="mb-2">{title}</Label>
+      <Select
+        {...field}
+        onValueChange={handleOptionChange}
+        defaultValue={options[0].type}
+      >
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem value={option.type} key={option.type}>
+              {capitalizeFirstLetter(option.title)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 };
 

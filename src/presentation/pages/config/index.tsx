@@ -4,16 +4,19 @@ import {
   CardContent,
   CardHeader,
   Modal,
+  Separator,
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
 } from '@components';
-import { useModal } from '@hooks';
+import { useAvatar, useModal } from '@hooks';
 import { Rows } from './Rows';
+import { EditAvatarModal } from '@modals';
 
 const Config: React.FC = () => {
+  const { username, email } = useAvatar();
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
     useModal();
   const {
@@ -28,11 +31,22 @@ const Config: React.FC = () => {
     <Card className="h-full rounded-none border-none shadow-none">
       <CardHeader>Configuración</CardHeader>
       <CardContent>
-        <Rows
-          hideModal={hideModal}
-          showModal={showModal}
-          showSheet={showSheet}
-        />
+        <div className="flex gap-2">
+          <EditAvatarModal />
+          <div className="flex flex-col">
+            <span>{`Nombre de usuario: ${username}`}</span>
+            <Separator />
+
+            <span>{`Correo: ${email}`}</span>
+          </div>
+        </div>
+        <div className="mt-3">
+          <Rows
+            hideModal={hideModal}
+            showModal={showModal}
+            showSheet={showSheet}
+          />
+        </div>
       </CardContent>
       <Modal
         isOpen={isOpenModal}

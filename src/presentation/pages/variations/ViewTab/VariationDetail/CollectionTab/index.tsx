@@ -10,9 +10,9 @@ import {
   Icons,
   ImageLoader,
   ImageUploader,
-  LabelInput,
+  InputWithLabel,
   Separator,
-} from '@src/presentation/components';
+} from '@components';
 import { addNewCollection } from '@services';
 
 interface Props {
@@ -51,7 +51,7 @@ export const CollectionTab: React.FC<Props> = ({ variationId }) => {
         >
           {({ values, setFieldValue, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <LabelInput label="Nombre" name="label" />
+              <InputWithLabel label="Nombre" name="label" />
               <ImageUploader
                 name="images"
                 images={images}

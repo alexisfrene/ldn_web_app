@@ -60,7 +60,9 @@ import {
   ArrowsUpDownIcon,
   WrenchScrewdriverIcon,
   Bars3Icon,
+  BanknotesIcon,
 } from '@heroicons/react/24/outline';
+import { BanknoteArrowDown, BanknoteArrowUp, BanknoteX } from 'lucide-react';
 
 interface IconsProps {
   type: IconsType;
@@ -72,6 +74,10 @@ interface IconsProps {
 }
 
 const icons = {
+  banknote_x: BanknoteX,
+  banknote_arrow_down: BanknoteArrowDown,
+  banknote_arrow_up: BanknoteArrowUp,
+  banknotes: BanknotesIcon,
   alert: ExclamationCircleIcon,
   arrow_back: ChevronLeftIcon,
   arrow_down: ChevronDownIcon,

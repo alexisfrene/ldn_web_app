@@ -24,13 +24,13 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
     <>
       <ScrollArea className="h-96">
         {items.length ? (
-          items.map((item, index) => (
-            <Card key={index}>
+          items.map((item) => (
+            <Card key={item.title}>
               <CardTitle className="my-3">{item.title}</CardTitle>
               <CardContent className="grid grid-cols-3 gap-3">
-                {item.values.map((data: any, index: number) => (
+                {item.values.map((data: { id: string; value: string }) => (
                   <Button
-                    key={data.id + index}
+                    key={data.id + item.title}
                     variant="link"
                     className={`col-span-1 ${
                       currentSelection[selectedKey] === item[selectedKey] &&

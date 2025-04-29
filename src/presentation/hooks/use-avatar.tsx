@@ -22,17 +22,29 @@ export const useAvatar = () => {
   }));
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchAvatar = async () => {
-      if (session_token && !avatar) {
+      if (!session_token || avatar) return;
+
+      try {
         const { avatar_url, username, email } = await getUrlAvatar();
+        if (!isMounted) return;
+
         insertAvatar(avatar_url);
         insertEmail(email);
         insertUsername(username);
+      } catch (error) {
+        console.error('Error fetching avatar data:', error);
       }
     };
 
     fetchAvatar();
-  }, [session_token, avatar, insertAvatar]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [session_token, avatar, insertAvatar, insertEmail, insertUsername]);
 
   return { avatar, session_token, email, username };
 };

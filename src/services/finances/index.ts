@@ -1,5 +1,16 @@
-import { axiosInstance, formatDate } from '@utils';
 import { toast } from 'sonner';
+import { axiosInstance, formatDate } from '@utils';
+type PaymentMethod = {
+  name: string;
+  payment_method_id: number;
+};
+
+type MovementData = {
+  financial_accounts_id: string;
+  total: number;
+  name: string;
+  paymentMethods: PaymentMethod[];
+};
 
 export const createFinancialAccount = async (data: {
   account: string;
@@ -74,14 +85,15 @@ export const createMovement = async ({
   }
 };
 
-export const getAllFinancialAccount = async () => {
+export const getAllFinancialAccount = async (): Promise<MovementData[]> => {
   try {
-    const res = await axiosInstance.get('/financial_accounts');
-
+    const res = await axiosInstance.get<MovementData[]>('/financial_accounts');
+    console.log('res.data', res.data);
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al crear una getAllFinancialAccount');
     console.error('ERROR IN getAllFinancialAccount:', error);
+    return [];
   }
 };
 
@@ -223,7 +235,7 @@ export const createDebt = async ({
 export const getDebts = async () => {
   try {
     const res = await axiosInstance.get('/debt');
-
+    console.log('res.data', res.data);
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al getDebts');
@@ -358,11 +370,11 @@ export const markPaidDebt = async ({
       debt_id,
       installment_id,
     });
-    console.log(res);
-    toast.success('markPaidDebt con éxito!');
+
+    toast.success('Deuda pagada con éxito!');
     return res;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una markPaidDebt');
+    toast.error('Ocurrió un error al pagar la deuda');
     console.error('ERROR IN markPaidDebt:', error);
   }
 };
@@ -381,10 +393,10 @@ export const editFinancialAccount = async ({
       `/financial_accounts/${financial_account_id}`,
       { name, payments_methods: payments_methods || [] },
     );
-    toast.success('editFinancialAccount eliminado con éxito!');
+    toast.success('Cuenta editada con éxito!');
     return res;
   } catch (error) {
-    toast.error('Ocurrió un error al crear una editFinancialAccount');
+    toast.error('Ocurrió un error al editar una cuenta');
     console.error('ERROR IN editFinancialAccount:', error);
   }
 };

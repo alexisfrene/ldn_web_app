@@ -1,20 +1,13 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@components';
-import { getAllFinancialAccount } from '@services';
-import { FinancialAccountCard } from './FinancialAccountCard';
-import { useLoading } from '@hooks';
+import { useGetAccounts } from '@hooks';
+import { FinancialAccountCard } from '@cards';
 
 export const FinancialAccountGrid: React.FC = () => {
-  const { doneLoading, startLoading } = useLoading();
-  const financialAccount = useQuery({
-    queryKey: ['financial_accounts'],
-    queryFn: getAllFinancialAccount,
-  });
+  const { accounts, isLoading } = useGetAccounts();
 
   const skeletonItems = Array(9).fill(null);
-  if (financialAccount.isPending) {
-    startLoading();
+  if (isLoading) {
     return (
       <>
         {skeletonItems.map((_, index) => (
@@ -26,30 +19,15 @@ export const FinancialAccountGrid: React.FC = () => {
       </>
     );
   }
-  if (financialAccount.isSuccess) {
-    doneLoading();
-  }
-  if (financialAccount.error) return 'An error has occurred: ';
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-      {financialAccount.data.length ? (
-        financialAccount.data.map(
-          ({
-            name,
-            paymentMethods,
-            financial_accounts_id,
-            total,
-          }: {
-            name: string;
-            type: string;
-            financial_accounts_id: UUID;
-            total: number;
-            paymentMethods: { name: string; payment_method_id: number }[];
-          }) => (
+    <div className="grid gap-3 md:grid-cols-3">
+      {accounts.length ? (
+        accounts.map(
+          ({ name, paymentMethods, financial_accounts_id, total }) => (
             <FinancialAccountCard
               name={name}
-              financial_accounts_id={financial_accounts_id}
+              financial_accounts_id={financial_accounts_id as UUID}
               total={total}
               key={financial_accounts_id}
               paymentMethods={paymentMethods}

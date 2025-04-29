@@ -11,12 +11,16 @@
       "@core/*": ["./src/core/*"],
       "@services": ["./src/services"],
       "@utils": ["./src/utils"],
+      "@cards": ["./src/presentation/components/cards"],
+      "@modals": ["./src/presentation/components/modals"],
+      "@selects": ["./src/presentation/components/selects"],
+      "@empty-states": ["./src/presentation/components/empty-states"],
+      "@forms": ["./src/presentation/components/forms"],
       "@global": ["./src/presentation/global"],
       "@assets/*": ["./src/presentation/assets/*"],
       "@hooks": ["./src/presentation/hooks"],
       "@components": ["./src/presentation/components"],
-      "@presentation/*": ["./src/presentation/*"],
-      "@src/*": ["./src/*"]
+      "@presentation/*": ["./src/presentation/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

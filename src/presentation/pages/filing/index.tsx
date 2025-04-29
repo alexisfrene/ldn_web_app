@@ -13,6 +13,7 @@ import {
   CardTitle,
   Input,
   Label,
+  LoadingButton,
   Particles,
   useTheme,
 } from '@components';
@@ -63,13 +64,13 @@ const Filing: React.FC = () => {
 
   return (
     <div className="grid lg:grid-cols-12">
-      <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-background lg:col-span-5">
-        <div className="absolute left-1 top-1 mx-3">
+      <div className="dark:bg-background relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-white lg:col-span-5">
+        <div className="absolute top-1 left-1 mx-3">
           <div className="flex items-center space-x-3">
             <img src="/icon.png" className="rounded-7xl h-16 w-16" />
             <h1 className="flex pb-3 text-4xl font-bold tracking-tighter dark:text-white">
               Lo de
-              <div className="to-error w-fit bg-gradient-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
+              <div className="to-error w-fit bg-linear-to-r from-amber-400 via-red-500 to-fuchsia-600 bg-clip-text px-2 pb-6 text-4xl font-black text-transparent dark:from-slate-500 dark:via-slate-400 dark:to-slate-200">
                 Naty
               </div>
             </h1>
@@ -119,7 +120,9 @@ const Filing: React.FC = () => {
                   >
                     Register
                   </Button>
-                  <Button type="submit">Iniciar sesión</Button>
+                  <LoadingButton type="submit" loading={formik.isSubmitting}>
+                    Iniciar sesión
+                  </LoadingButton>
                 </div>
               </form>
             </CardContent>

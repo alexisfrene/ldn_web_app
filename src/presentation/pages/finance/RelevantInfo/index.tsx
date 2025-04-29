@@ -1,6 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getAllMovements, getMovementTotalMonth } from '@services';
 import {
   Card,
   CardHeader,
@@ -13,32 +11,19 @@ import {
 import { CardsInfo } from './CardsInfo';
 
 const RelevantInfo: React.FC = () => {
-  const totalMonth = useQuery({
-    queryKey: ['movements', 'total_month'],
-    queryFn: () => getMovementTotalMonth(),
-  });
-  const movements = useQuery({
-    queryKey: ['movements'],
-    queryFn: () => getAllMovements(),
-  });
-  if (movements.error) return 'An error has occurred: ';
-
   return (
-    <Card className="border-none">
+    <Card className="m-0 border-none p-0">
       <CardHeader className="flex flex-row justify-between md:text-xl">
         <CardTitle>Resumen</CardTitle>
         <Clock />
       </CardHeader>
       <CardContent>
-        <CardsInfo totalMonth={totalMonth} />
-        <div className="grid grid-cols-1 gap-3">
-          <ScrollArea className="h-96">
-            <MovementList
-              movements={movements.data}
-              isPending={movements.isPending}
-            />
-          </ScrollArea>
-        </div>
+        <CardsInfo />
+        <ScrollArea className="h-96">
+          <span className="flex flex-col">
+            <MovementList />
+          </span>
+        </ScrollArea>
       </CardContent>
     </Card>
   );

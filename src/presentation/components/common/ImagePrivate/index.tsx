@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Avatar, AvatarImage, Skeleton } from '@components';
+import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@components';
 import { axiosInstance } from '@utils';
 
 interface TokenImageProps {
@@ -57,6 +57,7 @@ export const TokenImage: React.FC<TokenImageProps> = ({
     return (
       <Avatar className={className}>
         <AvatarImage src={imageSrc} alt="Avatar" />
+        <AvatarFallback className={className}>CN</AvatarFallback>
       </Avatar>
     );
   }

@@ -42,8 +42,8 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
           {isMobile ? (
             <DropdownMenu>
               <DropdownMenuTrigger className="flex w-full items-center">
-                <Icons type="bars3" height={40} className="ml-3" />
-                <Label className="w-full align-middle text-xl">
+                <Icons type="bars3" height={40} className="pl-3" />
+                <Label className="w-full pr-6 align-middle text-xl">
                   {tabs.map((e) =>
                     location.pathname.includes(e.path) ? e.label : '',
                   )}
@@ -79,14 +79,14 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
             </DropdownMenu>
           ) : (
             tabs.map((tab, index) => (
-              <div key={index} className="flex-grow basis-96">
+              <div key={index} className="grow basis-96">
                 <NavLink
                   to={tab.path}
                   className={(data) =>
                     cn([
                       'mx-3 flex justify-center rounded-lg p-3 transition-all duration-300 ease-in-out',
                       data.isActive
-                        ? 'bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 hover:bg-amber-600 dark:bg-slate-600 dark:text-white dark:ring-slate-800/70 hover:dark:bg-slate-500 hover:dark:ring-slate-500/80'
+                        ? 'bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 hover:bg-amber-600 dark:bg-slate-600 dark:text-white dark:ring-slate-800/70 dark:hover:bg-slate-500 dark:hover:ring-slate-500/80'
                         : 'bg-amber-400 text-black ring-1 ring-amber-400/70 hover:bg-amber-500/80 dark:bg-slate-700 dark:text-slate-300 dark:ring-slate-500/70 dark:hover:bg-slate-600 dark:hover:ring-slate-500',
                     ])
                   }

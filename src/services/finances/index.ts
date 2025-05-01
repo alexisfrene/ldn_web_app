@@ -117,9 +117,17 @@ export const getAllPaymentMethodForUser = async () => {
   }
 };
 
-export const getAllMovements = async () => {
+export const getAllMovements = async ({
+  page,
+  limit,
+}: {
+  page?: number;
+  limit?: number;
+}) => {
   try {
-    const res = await axiosInstance.get('/movement');
+    const res = await axiosInstance.get(
+      `/movement?page=${page ?? 1}&limit=${limit ?? 10}`,
+    );
 
     return res.data;
   } catch (error) {
@@ -136,6 +144,7 @@ export const getMovementTotalMonth = async () => {
   } catch (error) {
     toast.error('Ocurrió un error al crear una getMovementTotalMonth');
     console.error('ERROR IN getMovementTotalMonth:', error);
+    return {};
   }
 };
 

@@ -25,6 +25,7 @@ export type MovementPerMonth = {
   count_movements: number;
   inflow_of_money: number;
   money_outflow: number;
+  different: number;
 };
 
 export type Expense = {

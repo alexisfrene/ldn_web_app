@@ -6,7 +6,7 @@ export const useGetMovementsPerMonth = (
   options?: UseQueryOptions<MovementPerMonth, Error>,
 ) => {
   const query = useQuery({
-    queryKey: ['movements', 'total_month'],
+    queryKey: ['total_month'],
     queryFn: () => getMovementTotalMonth(),
     ...options,
   });

@@ -1,18 +1,27 @@
 import { getAllMovements } from '@services';
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Movement } from 'src/types/finance';
 
-export const useGetMovements = (
-  options?: UseQueryOptions<Movement[], Error>,
-) => {
-  const query = useQuery<Movement[], Error>({
-    queryKey: ['movements'],
-    queryFn: getAllMovements,
-    ...options,
+interface MovementsResponse {
+  movements: Movement[];
+  totalPages: number;
+  currentPage: number;
+  totalItems: number;
+  limit: number;
+}
+
+export const useGetMovements = (page?: number, limit?: number) => {
+  const query = useQuery<MovementsResponse, Error>({
+    queryKey: ['movements', page],
+    queryFn: async () => getAllMovements({ page, limit }),
   });
 
   return {
-    movements: query.data || [],
+    movements: query.data?.movements || [],
+    totalPages: query.data?.totalPages || 0,
+    currentPage: query.data?.currentPage || 0,
+    totalItems: query.data?.totalItems || 0,
+    limit: query.data?.limit || 0,
     isLoading: query.isLoading,
     isError: query.isError,
   };

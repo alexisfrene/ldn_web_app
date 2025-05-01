@@ -12,6 +12,7 @@ import {
 } from '@components';
 import { useGetMovements } from '@hooks';
 import { Movement } from 'src/types/finance';
+import { cn } from '@utils';
 
 type Props = {
   expenseMovements?: {
@@ -20,9 +21,10 @@ type Props = {
     totalPages: number;
     currentPage: number;
   };
+  height?: string;
 };
 
-export const MovementList: React.FC<Props> = ({ expenseMovements }) => {
+export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
   const [page, setPage] = React.useState(1);
 
   const { movements, isLoading, totalPages, currentPage } =
@@ -42,7 +44,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements }) => {
             ))}
         </div>
       ) : (
-        <ScrollArea className="mb-3 h-96">
+        <ScrollArea className={cn(height ?? 'h-96')}>
           {movements.length ? (
             movements.map((movement) => (
               <MovementCard

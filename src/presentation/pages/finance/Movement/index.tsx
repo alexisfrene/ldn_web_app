@@ -22,7 +22,7 @@ const Movement: React.FC = () => {
           </CardHeader>
           <CardContent>
             <ScrollArea className="col-span-7 h-[62vh] pr-3">
-              <MovementList />
+              <MovementList height="h-[55vh]" />
             </ScrollArea>
           </CardContent>
         </Card>

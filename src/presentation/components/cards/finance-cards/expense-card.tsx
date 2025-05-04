@@ -35,6 +35,7 @@ export const CardExpense: React.FC<Props> = ({
 }) => {
   const isMobile = useIsMobile();
   const mutation = useDeleteExpense();
+
   return (
     <Card
       key={expense_id}

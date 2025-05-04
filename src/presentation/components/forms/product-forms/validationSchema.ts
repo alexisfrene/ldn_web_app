@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
     size_id: Yup.string().required('La numero/talla es obligatoria '),
     size_value_id: Yup.string().required('La numero/talla es obligatoria '),
   }),
-  images: Yup.array().required().min(1),
+  files: Yup.array().required().min(1),
 });
 
 export default validationSchema;

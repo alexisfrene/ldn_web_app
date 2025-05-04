@@ -1,10 +1,11 @@
 import { FormikHelpers } from 'formik';
 import { toast } from 'sonner';
 import { createProducts } from '@services';
+import { FileWithPreview } from '@hooks';
 
 interface InitialValues {
   name: string;
-  images: ImagesValues[];
+  files: FileWithPreview[];
   price: number;
   description: string;
   detail: {
@@ -40,7 +41,7 @@ const handleSubmit = async (
       stock: values.stock,
       name: values.name,
       price: values.price,
-      primary_image: values.images[0].file,
+      primary_image: values.files[0].file as File,
     };
 
     const res = await createProducts(product);

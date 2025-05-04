@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { markPaidDebt } from '@services';
+import { financeKeys, markPaidDebt } from '@services';
 
 export const useMarkDebtPaid = () => {
   const queryClient = useQueryClient();
@@ -7,10 +7,10 @@ export const useMarkDebtPaid = () => {
     mutationFn: markPaidDebt,
     onSuccess: ({ debt_id }) => {
       queryClient.invalidateQueries({
-        queryKey: ['debts', debt_id],
+        queryKey: financeKeys.debt.detail(debt_id),
       });
       queryClient.invalidateQueries({
-        queryKey: ['debts'],
+        queryKey: financeKeys.debt.all,
       });
     },
   });

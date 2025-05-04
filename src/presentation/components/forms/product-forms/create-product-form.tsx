@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ErrorMessage, Formik } from 'formik';
-import defaultImage from '@assets/default.png';
 import {
   Button,
   CardTitle,
-  Icons,
-  ImageUploader,
-  ImageLoader,
   InputWithLabel,
   Modal,
   ModalCategory,
   ModalSize,
-  LoadingIndicator,
+  FileUpload,
+  LoadingButton,
 } from '@components';
 import { useModal } from '@hooks';
 import handleSubmit from './handleSubmit';
@@ -19,7 +16,6 @@ import initialValues from './initialValues';
 import validationSchema from './validationSchema';
 
 export const CreateProductForm: React.FC = () => {
-  const [image, setImage] = useState<ImagesValues[]>([]);
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
     useModal();
 
@@ -28,14 +24,13 @@ export const CreateProductForm: React.FC = () => {
       initialValues={initialValues}
       onSubmit={(values, formikHelpers) => {
         handleSubmit(values, formikHelpers);
-        setImage([]);
       }}
       validationSchema={validationSchema}
     >
       {({ handleSubmit, setFieldValue, values, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
-          className="md:grid-row-6 grid-cols-1 gap-3 p-10 md:grid md:grid-cols-2 xl:grid-cols-4"
+          className="md:grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 xl:grid-cols-4"
         >
           <InputWithLabel
             label="Nombre del producto"
@@ -50,27 +45,8 @@ export const CreateProductForm: React.FC = () => {
             min={1}
             max={5000000000}
           />
-          <div className="col-span-2 row-span-4">
-            <div className="mb-3 flex justify-center rounded-md bg-slate-600/50 p-7">
-              {values.images[0]?.url ? (
-                <ImageLoader
-                  url={image[0]?.url}
-                  className={`h-[230px] w-[230px] rounded-sm sm:rounded-md ${
-                    false && 'border-2 border-dashed border-amber-900'
-                  }`}
-                  alt="pre-image-product"
-                  height={'[230px]'}
-                  width={'[230px]'}
-                />
-              ) : (
-                <img
-                  src={defaultImage}
-                  className="h-[230px] w-[230px] rounded-sm"
-                />
-              )}
-            </div>
-
-            <ImageUploader name="images" images={image} setImages={setImage} />
+          <div className="hidden md:block">
+            <FileUpload maxSizeMB={10} accept="image/*" />
           </div>
           <InputWithLabel
             label="Descripción"
@@ -89,7 +65,9 @@ export const CreateProductForm: React.FC = () => {
             max={10000}
             min={1}
           />
-
+          <div className="md:hidden">
+            <FileUpload maxSizeMB={10} accept="image/*" />
+          </div>
           <Button
             className="col-span-full"
             variant="outline"
@@ -137,24 +115,18 @@ export const CreateProductForm: React.FC = () => {
             <CardTitle className="text-center">{modalTitle}</CardTitle>
             {modalContent}
           </Modal>
-          <Button
+          <LoadingButton
             className="col-span-full"
             type="submit"
             disabled={
               isSubmitting ||
-              !image ||
               !values.category.category_id ||
               !values.size.size_id
             }
+            loading={isSubmitting}
           >
-            <div className="mx-1 w-5">
-              {isSubmitting && (
-                <Icons type="refresh" className="h-5 animate-spin" />
-              )}
-            </div>
             Crear producto
-          </Button>
-          <LoadingIndicator isLoading={isSubmitting} />
+          </LoadingButton>
         </form>
       )}
     </Formik>

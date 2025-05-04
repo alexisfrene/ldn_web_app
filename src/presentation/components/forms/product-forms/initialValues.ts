@@ -1,6 +1,8 @@
+import { FileWithPreview } from '@hooks';
+
 const initialValues = {
   name: '',
-  images: [] as ImagesValues[],
+  files: {} as FileWithPreview[],
   price: 1,
   description: '',
   detail: { age: '', brand: '', color: '', gender: '', style: '' },

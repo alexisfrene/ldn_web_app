@@ -7,6 +7,7 @@ import { cn } from '@utils';
 export const CardsInfo: React.FC = () => {
   const isMobile = useIsMobile();
   const { movement_per_month, isLoading } = useGetMovementsPerMonth();
+
   return (
     <div className="mb-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
       {isLoading ? (

@@ -1,4 +1,4 @@
-import { getMovementTotalMonth } from '@services';
+import { financeKeys, getMovementTotalMonth } from '@services';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { MovementPerMonth } from 'src/types/finance';
 
@@ -6,7 +6,7 @@ export const useGetMovementsPerMonth = (
   options?: UseQueryOptions<MovementPerMonth, Error>,
 ) => {
   const query = useQuery({
-    queryKey: ['total_month'],
+    queryKey: financeKeys.statistics.all,
     queryFn: () => getMovementTotalMonth(),
     ...options,
   });

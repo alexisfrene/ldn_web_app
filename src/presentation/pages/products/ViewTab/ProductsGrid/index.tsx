@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { ProductDetail } from '../ProductDetail';
 import { Button } from '@components';
 import { removeProduct } from '@services';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '@cards';
 
 interface Props {
   data: Product[];

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createPaymentMethod } from '@services';
+import { createPaymentMethod, financeKeys } from '@services';
 
 export const useCreatePaymentMethod = () => {
   const queryClient = useQueryClient();
@@ -7,7 +7,7 @@ export const useCreatePaymentMethod = () => {
     mutationFn: createPaymentMethod,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['payment_method'],
+        queryKey: financeKeys.payment_method.all,
       });
     },
   });

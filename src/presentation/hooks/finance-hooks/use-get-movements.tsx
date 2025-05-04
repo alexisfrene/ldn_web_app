@@ -1,4 +1,4 @@
-import { getAllMovements } from '@services';
+import { financeKeys, getAllMovements } from '@services';
 import { useQuery } from '@tanstack/react-query';
 import { Movement } from 'src/types/finance';
 
@@ -12,7 +12,7 @@ interface MovementsResponse {
 
 export const useGetMovements = (page?: number, limit?: number) => {
   const query = useQuery<MovementsResponse, Error>({
-    queryKey: ['movements', page],
+    queryKey: financeKeys.movement.pages(page, limit),
     queryFn: async () => getAllMovements({ page, limit }),
   });
 

@@ -10,7 +10,7 @@ import {
 } from '@components';
 import { formattedValue } from '@utils';
 import { EditFinancialAccountDialog } from '@modals';
-import { useDeleteAccount } from '@presentation/hooks/finance-hooks/use-delete-account';
+import { useDeleteAccount } from '@hooks';
 
 interface Props {
   financial_accounts_id: UUID;

@@ -35,3 +35,4 @@ export * from './number-ticker';
 export * from './grid-pattern';
 export * from './chart';
 export * from './loading-button';
+export * from './file-upload';

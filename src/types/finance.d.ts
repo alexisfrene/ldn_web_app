@@ -25,6 +25,7 @@ export type MovementPerMonth = {
   count_movements: number;
   inflow_of_money: number;
   money_outflow: number;
+  different: number;
 };
 
 export type Expense = {
@@ -73,3 +74,8 @@ export interface Installment {
   due_date: string;
   status: string;
 }
+
+type Brand = {
+  brand_id: number;
+  title: string;
+};

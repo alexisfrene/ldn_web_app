@@ -1,0 +1,50 @@
+import React from 'react';
+import { Formik } from 'formik';
+import {
+  Button,
+  DialogClose,
+  DialogFooter,
+  InputWithLabel,
+  LoadingButton,
+} from '@components';
+import { useCreateBrand } from '@hooks';
+
+export const CreateBrandForm: React.FC = () => {
+  const mutation = useCreateBrand();
+
+  return (
+    <Formik
+      initialValues={{
+        title: '',
+      }}
+      onSubmit={async (values, formikHelpers) => {
+        mutation.mutate(values);
+        setTimeout(() => {
+          formikHelpers.resetForm();
+        }, 500);
+      }}
+    >
+      {({ handleSubmit, isSubmitting }) => (
+        <div>
+          <InputWithLabel label="Título" name="title" />
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button type="button" variant="secondary">
+                Cancelar
+              </Button>
+            </DialogClose>
+            <DialogClose asChild>
+              <LoadingButton
+                type="submit"
+                onClick={() => handleSubmit()}
+                loading={isSubmitting}
+              >
+                Crear
+              </LoadingButton>
+            </DialogClose>
+          </DialogFooter>
+        </div>
+      )}
+    </Formik>
+  );
+};

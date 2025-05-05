@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createMovement } from '@services';
+import { createMovement, financeKeys } from '@services';
 
 export const useCreateMovement = () => {
   const queryClient = useQueryClient();
@@ -7,13 +7,13 @@ export const useCreateMovement = () => {
     mutationFn: createMovement,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['movements'],
+        queryKey: financeKeys.movement.all,
       });
       queryClient.invalidateQueries({
-        queryKey: ['finances'],
+        queryKey: financeKeys.expense.all,
       });
       queryClient.invalidateQueries({
-        queryKey: ['financial_account'],
+        queryKey: financeKeys.debt.all,
       });
     },
   });

@@ -4,3 +4,4 @@ export * from './user-forms';
 export * from './variation-forms';
 export * from './product-forms';
 export * from './finance-forms';
+export * from './brand-forms';

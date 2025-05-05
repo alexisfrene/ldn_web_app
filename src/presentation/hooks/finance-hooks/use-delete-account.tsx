@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteFinancialAccount } from '@services';
+import { deleteFinancialAccount, financeKeys } from '@services';
 
 export const useDeleteAccount = () => {
   const queryClient = useQueryClient();
@@ -7,7 +7,7 @@ export const useDeleteAccount = () => {
     mutationFn: deleteFinancialAccount,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['financial_accounts'],
+        queryKey: financeKeys.financial_account.all,
       });
     },
   });

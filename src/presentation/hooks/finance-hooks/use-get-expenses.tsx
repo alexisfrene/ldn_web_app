@@ -1,10 +1,10 @@
-import { getExpenses } from '@services';
+import { financeKeys, getExpenses } from '@services';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { Expense } from 'src/types/finance';
 
 export const useGetExpenses = (options?: UseQueryOptions<Expense[], Error>) => {
   const query = useQuery({
-    queryKey: ['expenses'],
+    queryKey: financeKeys.expense.all,
     queryFn: getExpenses,
     ...options,
   });

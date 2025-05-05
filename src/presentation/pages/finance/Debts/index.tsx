@@ -101,9 +101,6 @@ const Debts: React.FC = () => {
       ) : (
         <div className="mx-auto mt-20 flex w-full flex-col justify-center">
           <Icons type="wrench_screwdriver" height={250} className="m-3 p-10" />
-          <Label className="text-center text-2xl">
-            No hay deudas que mostrar ...
-          </Label>
         </div>
       )}
     </div>

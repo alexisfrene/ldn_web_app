@@ -44,7 +44,6 @@ export const getUrlAvatar = async () => {
     const res = await axiosInstance.get('/user/avatar');
     return res.data;
   } catch (error) {
-    console.log(error);
     toast.error('Ocurrió un error al obtener la URL del avatar');
     console.error('ERROR IN getUrlAvatar:', error);
   }

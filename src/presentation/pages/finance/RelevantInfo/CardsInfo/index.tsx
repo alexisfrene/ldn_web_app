@@ -2,12 +2,14 @@ import React from 'react';
 import { InfoCard } from '@cards';
 import { Skeleton } from '@components';
 import { useGetMovementsPerMonth, useIsMobile } from '@hooks';
+import { cn } from '@utils';
 
 export const CardsInfo: React.FC = () => {
   const isMobile = useIsMobile();
   const { movement_per_month, isLoading } = useGetMovementsPerMonth();
+
   return (
-    <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div className="mb-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
       {isLoading ? (
         <>
           <Skeleton className="col-span-1" />
@@ -31,11 +33,13 @@ export const CardsInfo: React.FC = () => {
           />
           <InfoCard
             title={isMobile ? 'Ganancias' : 'Ganancias del mes'}
-            value={
-              (movement_per_month?.inflow_of_money || 0) -
-              (movement_per_month?.money_outflow || 0)
-            }
-            currency={true}
+            value={movement_per_month?.different || 0}
+            currency
+            valueStyles={cn([
+              movement_per_month?.different && movement_per_month?.different > 0
+                ? 'text-green-500 dark:text-green-500'
+                : 'text-red-500 dark:text-red-500',
+            ])}
           />
           <InfoCard
             title={isMobile ? 'Movimientos' : 'Total de movimientos en el mes'}

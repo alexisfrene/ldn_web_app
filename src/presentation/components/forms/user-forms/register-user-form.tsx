@@ -1,10 +1,10 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik } from 'formik';
 import { toast } from 'sonner';
 import { registerUser } from '@services';
 import {
   Button,
-  Input,
+  InputWithLabel,
   InputWithVerifyPassword,
   Label,
   Select,
@@ -28,114 +28,96 @@ export const RegisterUserForm: React.FC = () => {
     username: '',
   };
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit: async ({ passwordConfirm, ...values }, formikHelpers) => {
-      const res = await registerUser(values);
-      if (res?.status === 201) {
-        toast('Usuario creado exitosamente!');
-        return formikHelpers.resetForm();
-      } else {
-        toast.error('Error al crear el usuario');
-      }
-    },
-  });
-
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className="gap-x-3 gap-y-5 sm:m-10 md:grid md:grid-cols-2"
+    <Formik
+      initialValues={initialValues}
+      onSubmit={async ({ passwordConfirm, ...values }, formikHelpers) => {
+        const res = await registerUser(values);
+        if (res?.status === 201) {
+          toast('Usuario creado exitosamente!');
+          return formikHelpers.resetForm();
+        } else {
+          toast.error('Error al crear el usuario');
+        }
+      }}
     >
-      <Label htmlFor="username" className="col-span-1">
-        Nombre de la cuenta
-        <Input
-          name="username"
-          id="username"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-          placeholder="Ej : juanperez30"
-          minLength={3}
-          maxLength={15}
-        />
-      </Label>
-      <Label htmlFor="first_name" className="col-span-1">
-        Nombre
-        <Input
-          name="first_name"
-          id="first_name"
-          onChange={formik.handleChange}
-          value={formik.values.first_name}
-          placeholder="Ej : Juan"
-          minLength={3}
-          maxLength={15}
-        />
-      </Label>
-      <Label htmlFor="last_name" className="col-span-1">
-        Apellido
-        <Input
-          name="last_name"
-          id="last_name"
-          onChange={formik.handleChange}
-          value={formik.values.last_name}
-          placeholder="Ej : Perez"
-          minLength={3}
-          maxLength={15}
-        />
-      </Label>
-      <Label htmlFor="email" className="col-span-1">
-        Email
-        <Input
-          name="email"
-          id="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          placeholder="Ej : juanperez@gmail.com"
-          type="email"
-          minLength={3}
-          maxLength={50}
-        />
-      </Label>
-      <Label htmlFor="gender" className="col-span-1">
-        Genero
-        <Select
-          name="gender"
-          onValueChange={(value) => formik.setFieldValue('gender', value)}
-          value={formik.values.gender}
+      {({ values, handleChange, handleSubmit, setFieldValue }) => (
+        <form
+          onSubmit={handleSubmit}
+          className="gap-x-3 gap-y-5 sm:m-10 md:grid md:grid-cols-2"
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Seleccionar" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Géneros</SelectLabel>
-              <SelectItem value="male">Hombre</SelectItem>
-              <SelectItem value="female">Mujer</SelectItem>
-              <SelectItem value="unspecified">No especificar</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </Label>
-      <Label htmlFor="date" className="col-span-1">
-        Fecha de nacimiento
-        <Input
-          name="birthday_date"
-          id="birthday_date"
-          onChange={formik.handleChange}
-          value={formik.values.birthday_date}
-          type="date"
-        />
-      </Label>
-      <Label className="col-span-1" htmlFor="password">
-        Contraseña
-        <InputWithVerifyPassword onChange={formik.handleChange} />
-      </Label>
-      <Button
-        className="col-span-2 mt-5 w-full"
-        type="submit"
-        disabled={!formik.values.gender}
-      >
-        Registrar
-      </Button>
-    </form>
+          <InputWithLabel
+            label="Nombre de usuario"
+            name="username"
+            placeholder="Ej : juanperez30"
+            max={15}
+            min={3}
+          />
+          <InputWithLabel
+            label="Nombre"
+            name="first_name"
+            placeholder="Ej : Juan"
+            max={15}
+            min={3}
+          />
+          <InputWithLabel
+            label="Apellido"
+            name="last_name"
+            placeholder="Ej : Perez"
+            max={15}
+            min={3}
+          />
+          <InputWithLabel
+            label="Email"
+            name="email"
+            placeholder="Ej : juanperez@gmail.com"
+            type="email"
+            max={50}
+            min={3}
+          />
+          <div className="mb-3 flex flex-col">
+            <Label htmlFor="gender" className="mb-1.5">
+              Genero
+            </Label>
+            <Select
+              name="gender"
+              onValueChange={(value) => setFieldValue('gender', value)}
+              value={values.gender}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Seleccionar" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Géneros</SelectLabel>
+                  <SelectItem value="male">Hombre</SelectItem>
+                  <SelectItem value="female">Mujer</SelectItem>
+                  <SelectItem value="unspecified">No especificar</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <InputWithLabel
+            label="Fecha de nacimiento"
+            name="birthday_date"
+            type="date"
+            placeholder="Ej : 2000-01-01"
+          />
+          <div>
+            <Label className="col-span-1 my-1.5" htmlFor="password">
+              Contraseña
+            </Label>
+            <InputWithVerifyPassword onChange={handleChange} />
+          </div>
+          <Button
+            className="col-span-2 mt-5 w-full"
+            type="submit"
+            disabled={!values.gender}
+          >
+            Registrar
+          </Button>
+        </form>
+      )}
+    </Formik>
   );
 };

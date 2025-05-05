@@ -13,3 +13,4 @@ export * from './use-create-account';
 export * from './use-create-debt';
 export * from './use-create-payment-method';
 export * from './use-edit-account';
+export * from './use-delete-account';

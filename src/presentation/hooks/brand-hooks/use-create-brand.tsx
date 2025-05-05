@@ -1,15 +1,16 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteExpense, financeKeys } from '@services';
+import { brandKeys, createBrand } from '@services';
 
-export const useDeleteExpense = () => {
+export const useCreateBrand = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: deleteExpense,
+    mutationFn: createBrand,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: financeKeys.expense.all,
+        queryKey: brandKeys.all,
       });
     },
   });
+
   return mutation;
 };

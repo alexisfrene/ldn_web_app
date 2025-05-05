@@ -14,6 +14,7 @@ import { useModal } from '@hooks';
 import handleSubmit from './handleSubmit';
 import initialValues from './initialValues';
 import validationSchema from './validationSchema';
+import { SelectBrand } from '@selects';
 
 export const CreateProductForm: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
@@ -53,7 +54,12 @@ export const CreateProductForm: React.FC = () => {
             name="description"
             maxLength={100}
           />
-          <InputWithLabel label="Marca" name="detail[brand]" maxLength={50} />
+          <SelectBrand
+            label="Marca"
+            name="detail[brand]"
+            placeholder="Seleccione una marca"
+          />
+          {/* <InputWithLabel label="Marca" name="detail[brand]" maxLength={50} /> */}
           <InputWithLabel label="Estilo" name="detail[style]" maxLength={50} />
           <InputWithLabel label="Color" name="detail[color]" maxLength={50} />
           <InputWithLabel label="Edad" name="detail[age]" maxLength={15} />

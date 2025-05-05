@@ -10,6 +10,12 @@ export const categoryKeys = {
   detail: (id: string) => [...categoryKeys.all, 'detail', id],
 };
 
+export const brandKeys = {
+  all: ['brands'] as const,
+  list: () => [...brandKeys.all, 'list'],
+  detail: (id: string) => [...brandKeys.all, 'detail', id],
+};
+
 export const financeKeys = {
   expense: {
     all: ['expenses'] as const,

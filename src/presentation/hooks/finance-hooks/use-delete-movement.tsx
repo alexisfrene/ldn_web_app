@@ -8,6 +8,7 @@ export const useDeleteMovement = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: financeKeys.movement.all });
       queryClient.invalidateQueries({ queryKey: financeKeys.expense.all });
+      queryClient.invalidateQueries({ queryKey: financeKeys.statistics.all });
     },
   });
   return mutation;

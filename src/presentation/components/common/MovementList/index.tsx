@@ -62,37 +62,39 @@ export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
           )}
         </ScrollArea>
       )}
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={() => {
-                if (totalPages === 1) return;
-                setPage(currentPage - 1);
-              }}
-            />
-          </PaginationItem>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <PaginationItem key={index}>
-              <PaginationLink
-                onClick={() => setPage(index + 1)}
-                isActive={index + 1 === currentPage}
-              >
-                {index + 1}
-              </PaginationLink>
+      {movements.length ? (
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => {
+                  if (totalPages === 1) return;
+                  setPage(currentPage - 1);
+                }}
+              />
             </PaginationItem>
-          ))}
+            {Array.from({ length: totalPages }, (_, index) => (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  onClick={() => setPage(index + 1)}
+                  isActive={index + 1 === currentPage}
+                >
+                  {index + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
 
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => {
-                if (totalPages === currentPage) return;
-                setPage(currentPage + 1);
-              }}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => {
+                  if (totalPages === currentPage) return;
+                  setPage(currentPage + 1);
+                }}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      ) : null}
     </div>
   );
 };

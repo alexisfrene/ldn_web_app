@@ -74,3 +74,8 @@ export interface Installment {
   due_date: string;
   status: string;
 }
+
+type Brand = {
+  brand_id: number;
+  title: string;
+};

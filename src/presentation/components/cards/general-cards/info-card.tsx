@@ -38,7 +38,11 @@ export const InfoCard: React.FC<Props> = ({
           {currency ? (
             <div>
               <span>$</span>
-              <NumberTicker value={value || 0} className={valueStyles} />
+              {value === 0 ? (
+                <span>0</span>
+              ) : (
+                <NumberTicker value={value || 0} className={valueStyles} />
+              )}
             </div>
           ) : (
             value || 0

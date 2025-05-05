@@ -57,6 +57,8 @@ export const ExpenseDetailModal: React.FC<Props> = ({
                 expenseMovements={{
                   movements: expenses.data.movements,
                   isLoading: expenses.isLoading,
+                  totalPages: 10,
+                  currentPage: 1,
                 }}
               />
             </ScrollArea>

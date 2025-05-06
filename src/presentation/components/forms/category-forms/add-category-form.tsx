@@ -4,7 +4,7 @@ import { Label, Input, ImageUploader, Button } from '@components';
 import { useAddCategoryValue } from '@hooks';
 
 interface Props {
-  category_id: string;
+  category_id: number;
 }
 export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
   const [image, setImage] = useState<ImagesValues[]>([]);

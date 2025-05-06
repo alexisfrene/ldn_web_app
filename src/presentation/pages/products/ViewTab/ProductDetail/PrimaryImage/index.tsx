@@ -44,7 +44,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
         <AlertDialogTrigger className="relative">
           <Icons
             type="copy_manual"
-            className="absolute left-0 top-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50 sm:h-10"
+            className="absolute top-0 left-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 sm:h-10 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50"
           />
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -92,6 +92,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
         <TokenImage
           url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
           variant="default"
+          className="w-full rounded-md object-cover"
         />
       </div>
       <LoadingIndicator isLoading={mutation.isPending} />

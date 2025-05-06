@@ -14,11 +14,10 @@ import {
   ScrollArea,
 } from '@components';
 import {
-  deleteCollectionSize,
-  deleteValueSize,
-  modifyTitleCollectionSize,
-} from '@services';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+  useChangeDeleteValueSize,
+  useChangeTitleCollectionSize,
+  useDeleteCollectionSize,
+} from '@hooks';
 
 interface Props {
   data: Size[];
@@ -28,25 +27,9 @@ interface Props {
 export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
   const [selected, setSelected] = useState<string>();
   const [collectionTitle, setCollectionTitle] = useState<string>('');
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: modifyTitleCollectionSize,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sizes'] });
-    },
-  });
-  const mutationDeleteCollection = useMutation({
-    mutationFn: deleteCollectionSize,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sizes'] });
-    },
-  });
-  const mutationDeleteValue = useMutation({
-    mutationFn: deleteValueSize,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sizes'] });
-    },
-  });
+  const mutation = useChangeTitleCollectionSize();
+  const mutationDeleteCollection = useDeleteCollectionSize();
+  const mutationDeleteValue = useChangeDeleteValueSize();
   return (
     <>
       <ScrollArea>
@@ -112,7 +95,10 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
             </CardHeader>
             <CardContent className="flex flex-row flex-wrap gap-5">
               {values.map((e) => (
-                <Badge key={e.id} variant="secondary" className="relative">
+                <div
+                  key={e.id}
+                  className="relative flex flex-row gap-1 rounded-md bg-slate-200 px-2 py-2 dark:bg-slate-700"
+                >
                   {e.value}
                   {size_id === selected && (
                     <AlertModal
@@ -133,7 +119,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                       }
                     />
                   )}
-                </Badge>
+                </div>
               ))}
               {size_id === selected && (
                 <Badge

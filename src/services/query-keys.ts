@@ -10,6 +10,12 @@ export const categoryKeys = {
   detail: (id: string) => [...categoryKeys.all, 'detail', id],
 };
 
+export const sizeKeys = {
+  all: ['sizes'] as const,
+  list: () => [...sizeKeys.all, 'list'],
+  detail: (id: string) => [...sizeKeys.all, 'detail', id],
+};
+
 export const brandKeys = {
   all: ['brands'] as const,
   list: () => [...brandKeys.all, 'list'],

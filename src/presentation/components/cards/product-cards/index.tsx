@@ -1,12 +1,4 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  TokenImage,
-} from '@components';
+import { AlertModal, Icons, TokenImage } from '@components';
 
 interface Props {
   product: Product;
@@ -20,33 +12,39 @@ export const ProductCard: React.FC<Props> = ({
   removeProduct,
 }) => {
   return (
-    <Card className="col-span-1 text-[10px] lg:text-xs xl:text-base">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="h-3 truncate lg:h-6">
+    <div className="max-w-xs overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800">
+      <div className="px-4 py-2">
+        <h1 className="flex justify-between text-xl font-bold text-gray-800 uppercase dark:text-white">
           <p className={`${product.state ? 'text-green-500' : 'text-red-600'}`}>
-            {`${product.name}(${product.state ? 'D' : 'A'})`}
+            {`${product.name}(${product.state ? 'D' : 'A'})`}{' '}
           </p>
-        </CardTitle>
-        <Button
-          variant="destructive"
-          onClick={removeProduct}
-          className="h-4 w-4 text-[10px] lg:ml-3 lg:h-6 lg:w-6 lg:text-xs 2xl:h-8 2xl:text-base"
-        >
-          X
-        </Button>
-      </CardHeader>
-      <CardContent onClick={handleClick} className="cursor-pointer">
-        <div className="flex justify-center">
-          <TokenImage
-            url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
-            variant="default"
+          <AlertModal
+            trigger={
+              <Icons
+                type="close"
+                height={20}
+                className="cursor-pointer rounded-md bg-red-500 hover:bg-red-400"
+              />
+            }
+            title="Estas por eliminar una colección de categorías"
+            description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+            onConfirm={removeProduct}
           />
+        </h1>
+      </div>
+      <div onClick={handleClick}>
+        <TokenImage
+          url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+          variant="default"
+          className="mt-2 h-48 w-full object-cover"
+        />
+        <div className="flex items-center justify-between bg-gray-900 px-4 py-2">
+          <h1 className="text-lg font-bold text-white">${product.price}</h1>
+          <button className="transform rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+            {product.size === 'Sin talla/numero' ? 'N/A' : product.size}
+          </button>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between lg:mt-1 2xl:mt-3">
-        <p>{product.size === 'Sin talla/numero' ? 'N/A' : product.size}</p>
-        <p>$ {product.price}</p>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };

@@ -1,13 +1,14 @@
 import { axiosInstance } from '@utils';
 import { toast } from 'sonner';
 
-export const getAllSizes = async () => {
+export const getAllSizes = async (): Promise<Size[]> => {
   try {
     const res = await axiosInstance.get('/size');
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al obtener los Números/Tallas');
     console.error('ERROR IN getAllSizes:', error);
+    return [];
   }
 };
 

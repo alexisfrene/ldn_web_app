@@ -1,16 +1,14 @@
-interface Category {
-  category_id: string;
-  title: string;
-  values: Value[];
-  user_id: string;
-}
-
-interface Value {
-  id: string;
+type CategoryValue = {
+  icon_url: string;
   value: string;
-  icon_url?: string;
-  icon: {
-    url: String;
-    file: File;
-  };
-}
+  id: string;
+};
+
+type Category = {
+  title: string;
+  values: CategoryValue[];
+  category_id: number;
+};
+
+// Si es una lista:
+type CategoryList = Category[];

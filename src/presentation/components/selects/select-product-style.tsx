@@ -10,7 +10,6 @@ import {
   Label,
 } from '@components';
 import { cn } from '@utils';
-import { CreateBrandModal } from '@modals';
 import { productStyles } from '@presentation/mocks';
 
 type Props = {

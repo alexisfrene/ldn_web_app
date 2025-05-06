@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AddCategoryForm, CreateCollectionCategoryForm } from '@forms';
-import {
-  deleteCollectionCategory,
-  deleteValueCategory,
-  modifyTitleCollectionCategory,
-} from '@services';
 import {
   AlertModal,
   Avatar,
@@ -22,6 +16,11 @@ import {
   ScrollArea,
   TokenImage,
 } from '@components';
+import {
+  useChangeTitleCollectionCategory,
+  useDeleteCollectionCategory,
+  useDeleteValueCategory,
+} from '@hooks';
 
 interface Props {
   data: Category[];
@@ -29,27 +28,11 @@ interface Props {
 }
 
 export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
-  const [selected, setSelected] = useState<string>();
+  const [selected, setSelected] = useState<number>();
   const [collectionTitle, setCollectionTitle] = useState<string>('');
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: modifyTitleCollectionCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['categories'] });
-    },
-  });
-  const mutationDeleteCollection = useMutation({
-    mutationFn: deleteCollectionCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['categories'] });
-    },
-  });
-  const mutationDeleteValue = useMutation({
-    mutationFn: deleteValueCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['categories'] });
-    },
-  });
+  const mutation = useChangeTitleCollectionCategory();
+  const mutationDeleteCollection = useDeleteCollectionCategory();
+  const mutationDeleteValue = useDeleteValueCategory();
 
   return (
     <>
@@ -90,7 +73,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   type="close"
                   height={20}
                   className="absolute top-0 right-0 mx-1 cursor-pointer text-slate-500 hover:text-slate-600"
-                  onClick={() => setSelected('')}
+                  onClick={() => setSelected(undefined)}
                 />
               ) : (
                 <div className="absolute top-0 right-0 flex flex-row">
@@ -121,7 +104,10 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
             </CardHeader>
             <CardContent className="flex flex-row flex-wrap gap-5">
               {values.map((e) => (
-                <Badge key={e.id} variant="secondary" className="relative">
+                <div
+                  key={e.id}
+                  className="relative flex flex-row gap-1 rounded-md bg-slate-200 px-2 py-2 dark:bg-slate-700"
+                >
                   <Avatar>
                     <TokenImage
                       url={`${e.icon_url}?width=60&height=60&quality=50&format=webp`}
@@ -149,7 +135,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                       }
                     />
                   )}
-                </Badge>
+                </div>
               ))}
               {category_id === selected && (
                 <Badge

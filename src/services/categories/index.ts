@@ -1,17 +1,19 @@
 import { toast } from 'sonner';
 import { axiosInstance, axiosInstanceFormData } from '@utils';
 
-export const getAllCategories = async () => {
+export const getAllCategories = async (): Promise<CategoryList | []> => {
   try {
     const res = await axiosInstance.get('/categories');
+    console.log('categorias', res.data);
     return res.data;
   } catch (error) {
     toast.error('Ocurrió un error al obtener las categorías');
     console.error('ERROR IN getAllCategories:', error);
+    return [];
   }
 };
 
-export const addCategoryConfig = async (data: Category) => {
+export const addCategoryConfig = async (data: any) => {
   try {
     const formData = new FormData();
     formData.append('title', data.title);
@@ -33,7 +35,7 @@ export const addValueCategory = async ({
   category_id,
 }: {
   values: { value: string; icon: File | null };
-  category_id: string;
+  category_id: number;
 }) => {
   try {
     const formData = new FormData();
@@ -56,7 +58,7 @@ export const modifyTitleCollectionCategory = async ({
   title,
 }: {
   title: string;
-  category_id: string;
+  category_id: number;
 }) => {
   try {
     const formData = new FormData();
@@ -78,7 +80,7 @@ export const deleteValueCategory = async ({
   category_value,
 }: {
   category_value: string;
-  category_id: string;
+  category_id: number;
 }) => {
   try {
     const res = await axiosInstance.delete(
@@ -92,7 +94,7 @@ export const deleteValueCategory = async ({
   }
 };
 
-export const deleteCollectionCategory = async (category_id: string) => {
+export const deleteCollectionCategory = async (category_id: number) => {
   try {
     const res = await axiosInstance.delete(
       `/categories/${category_id}?type=collection`,

@@ -1,7 +1,7 @@
 import { FileWithPreview } from '@hooks';
 
 const initialValues = {
-  name: '',
+  name: 'Nuevo producto',
   files: {} as FileWithPreview[],
   price: 1,
   description: '',

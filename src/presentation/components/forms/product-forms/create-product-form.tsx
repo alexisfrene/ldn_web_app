@@ -11,10 +11,15 @@ import {
   LoadingButton,
 } from '@components';
 import { useModal } from '@hooks';
+import {
+  SelectBrand,
+  SelectProductAge,
+  SelectProductGender,
+  SelectProductStyle,
+} from '@selects';
 import handleSubmit from './handleSubmit';
 import initialValues from './initialValues';
 import validationSchema from './validationSchema';
-import { SelectBrand } from '@selects';
 
 export const CreateProductForm: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
@@ -31,7 +36,7 @@ export const CreateProductForm: React.FC = () => {
       {({ handleSubmit, setFieldValue, values, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
-          className="md:grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 xl:grid-cols-4"
+          className="md:grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 md:grid-rows-4 xl:grid-cols-4"
         >
           <InputWithLabel
             label="Nombre del producto"
@@ -46,24 +51,42 @@ export const CreateProductForm: React.FC = () => {
             min={1}
             max={5000000000}
           />
-          <div className="hidden md:block">
+          <div className="hidden md:col-span-2 md:row-span-2 md:block">
             <FileUpload maxSizeMB={10} accept="image/*" />
           </div>
           <InputWithLabel
             label="Descripción"
             name="description"
+            textarea
             maxLength={100}
+            className="md:col-span-2"
           />
           <SelectBrand
             label="Marca"
             name="detail[brand]"
             placeholder="Seleccione una marca"
           />
-          {/* <InputWithLabel label="Marca" name="detail[brand]" maxLength={50} /> */}
-          <InputWithLabel label="Estilo" name="detail[style]" maxLength={50} />
-          <InputWithLabel label="Color" name="detail[color]" maxLength={50} />
-          <InputWithLabel label="Edad" name="detail[age]" maxLength={15} />
-          <InputWithLabel label="Genero" name="detail[gender]" maxLength={50} />
+          <SelectProductStyle
+            label="Estilo"
+            name="detail[style]"
+            placeholder="Seleccione un estilo"
+          />
+          <InputWithLabel
+            label="Color"
+            name="detail[color]"
+            maxLength={50}
+            type="color"
+          />
+          <SelectProductAge
+            label="Edad"
+            name="detail[age]"
+            placeholder="Seleccione una edad"
+          />
+          <SelectProductGender
+            label="Genero"
+            name="detail[gender]"
+            placeholder="Seleccione un genero"
+          />
           <InputWithLabel
             label="Unidades"
             name="stock"

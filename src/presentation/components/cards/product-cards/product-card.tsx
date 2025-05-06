@@ -12,29 +12,29 @@ export const ProductCard: React.FC<Props> = ({
   removeProduct,
 }) => {
   return (
-    <div className="max-w-xs overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800">
+    <div className="relative max-w-xs overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800">
+      <AlertModal
+        trigger={
+          <Icons
+            type="close"
+            height={20}
+            className="absolute top-0 right-0 m-0.5 cursor-pointer rounded-lg bg-red-500 hover:bg-red-400"
+          />
+        }
+        title="Estas por eliminar una colección de categorías"
+        description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
+        onConfirm={removeProduct}
+      />
       <div className="px-4 py-2">
         <h1 className="flex justify-between text-xl font-bold text-gray-800 uppercase dark:text-white">
           <p className={`${product.state ? 'text-green-500' : 'text-red-600'}`}>
             {`${product.name}(${product.state ? 'D' : 'A'})`}{' '}
           </p>
-          <AlertModal
-            trigger={
-              <Icons
-                type="close"
-                height={20}
-                className="cursor-pointer rounded-md bg-red-500 hover:bg-red-400"
-              />
-            }
-            title="Estas por eliminar una colección de categorías"
-            description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
-            onConfirm={removeProduct}
-          />
         </h1>
       </div>
       <div onClick={handleClick}>
         <TokenImage
-          url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+          url={`${product.primary_image?.toString()}?width=450&height=450&quality=20&format=webp`}
           variant="default"
           className="mt-2 h-48 w-full object-cover"
         />

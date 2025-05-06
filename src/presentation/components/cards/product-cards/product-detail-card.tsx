@@ -2,17 +2,17 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getByIdProduct } from '@services';
 import { ScrollArea, TabsContent, MenuTabs } from '@components';
-import { ProductData } from './ProductData';
-import { StyleData } from './StyleData';
-import { VariationData } from './VariationData';
-import { PrimaryImage } from './PrimaryImage';
+import { PrimaryImage } from './ProductDetail/PrimaryImage';
+import { ProductData } from './ProductDetail/ProductData';
+import { StyleData } from './ProductDetail/StyleData';
+import { VariationData } from './ProductDetail/VariationData';
 
 const tabs = ['Información', 'Estilos', 'Imágenes'];
 
 interface Props {
   product_id: string;
 }
-export const ProductDetail: React.FC<Props> = ({ product_id }) => {
+export const ProductDetailCard: React.FC<Props> = ({ product_id }) => {
   const { isPending, error, data } = useQuery({
     queryKey: ['product_details', product_id],
     queryFn: () => getByIdProduct(product_id),
@@ -26,8 +26,8 @@ export const ProductDetail: React.FC<Props> = ({ product_id }) => {
       {data && (
         <div className="sm:w-[46rem]">
           <PrimaryImage product={data} />
-          <ScrollArea className="sm:h-72">
-            <TabsContent value={tabs[0]}>
+          <TabsContent value={tabs[0]}>
+            <ScrollArea className="h-52">
               <ProductData
                 category={data.category!}
                 description={data.description!}
@@ -36,8 +36,10 @@ export const ProductDetail: React.FC<Props> = ({ product_id }) => {
                 product_id={product_id}
                 size={data.size!}
               />
-            </TabsContent>
-            <TabsContent value={tabs[1]}>
+            </ScrollArea>
+          </TabsContent>
+          <TabsContent value={tabs[1]}>
+            <ScrollArea className="h-52">
               <StyleData
                 age={data.detail?.age!}
                 brand={data.detail?.brand!}
@@ -46,14 +48,16 @@ export const ProductDetail: React.FC<Props> = ({ product_id }) => {
                 product_id={data.product_id!}
                 style={data.detail?.style!}
               />
-            </TabsContent>
-            <TabsContent value={tabs[2]}>
+            </ScrollArea>
+          </TabsContent>
+          <TabsContent value={tabs[2]}>
+            <ScrollArea className="h-52">
               <VariationData
                 variation={data.variation}
                 product_id={data.product_id}
               />
-            </TabsContent>
-          </ScrollArea>
+            </ScrollArea>
+          </TabsContent>
         </div>
       )}
     </MenuTabs>

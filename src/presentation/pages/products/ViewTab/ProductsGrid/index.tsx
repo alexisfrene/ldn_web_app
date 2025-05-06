@@ -1,10 +1,9 @@
 import React from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { ProductDetail } from '../ProductDetail';
 import { Button } from '@components';
 import { removeProduct } from '@services';
-import { ProductCard } from '@cards';
+import { ProductCard, ProductDetailCard } from '@cards';
 
 interface Props {
   data: Product[];
@@ -37,7 +36,7 @@ export const ProductsGrid: React.FC<Props> = ({
               handleClick={() => {
                 showModal(
                   '',
-                  <ProductDetail product_id={product.product_id!} />,
+                  <ProductDetailCard product_id={product.product_id!} />,
                 );
               }}
               removeProduct={() => {

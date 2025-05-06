@@ -24,9 +24,12 @@ export default defineConfig({
     manifest: 'terser',
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom'],
-          lodash: ['lodash'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('lodash')) return 'lodash';
+            if (id.includes('recharts')) return 'recharts';
+            if (id.includes('framer-motion')) return 'motion';
+          }
         },
       },
     },

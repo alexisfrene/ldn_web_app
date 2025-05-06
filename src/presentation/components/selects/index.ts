@@ -6,3 +6,6 @@ export * from './checkbox-payment-method';
 export * from './select-movement-type';
 export * from './select-movement-account';
 export * from './select-brand';
+export * from './select-product-style';
+export * from './select-product-age';
+export * from './select-product-gender';

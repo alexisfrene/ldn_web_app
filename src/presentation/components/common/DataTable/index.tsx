@@ -27,7 +27,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnSize = () => (
     <Button
-      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 sm:h-full sm:text-base dark:bg-slate-700"
       variant="outline"
       type="button"
       onClick={() =>
@@ -50,7 +50,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
 
   const btnCategory = () => (
     <Button
-      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 dark:bg-slate-700 sm:h-full sm:text-base"
+      className="h-7 w-full max-w-52 bg-slate-300 text-xs hover:bg-slate-400 sm:h-full sm:text-base dark:bg-slate-700"
       variant="outline"
       type="button"
       onClick={() =>
@@ -103,7 +103,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
                   <input
                     name={name}
                     placeholder={value}
-                    className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs dark:bg-slate-300 sm:text-base"
+                    className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs sm:text-base dark:bg-slate-300"
                     onChange={formik.handleChange}
                     value={formik.values[name]}
                   />
@@ -111,7 +111,23 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
               </>
             ) : (
               <div className="w-52 truncate px-1 pb-1 text-xs sm:text-base">
-                {value || 'No cargado'}
+                {value ? (
+                  value[0] === '#' ? (
+                    <span
+                      style={{
+                        backgroundColor: value,
+                        height: '20px',
+                        width: '20px',
+                        display: 'inline-block',
+                        borderRadius: '30%',
+                      }}
+                    />
+                  ) : (
+                    value
+                  )
+                ) : (
+                  'No cargado'
+                )}
               </div>
             )}
           </div>

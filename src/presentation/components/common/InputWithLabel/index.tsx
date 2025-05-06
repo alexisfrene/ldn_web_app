@@ -2,7 +2,7 @@ import React from 'react';
 import { Label, Input, Textarea } from '@components';
 import { cn } from '@utils';
 import { FormikValues, useFormikContext } from 'formik';
-import { get } from 'lodash';
+import get from 'lodash/get';
 
 type Props = {
   onChange?: (

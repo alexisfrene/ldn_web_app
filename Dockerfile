@@ -7,7 +7,7 @@ RUN corepack enable && pnpm install
 
 COPY . .
 
-ENV VITE_API_NAME=http://api.lodenaty.com/api
+ENV VITE_API_NAME=https://api.lodenaty.com/api
 
 RUN pnpm build
 

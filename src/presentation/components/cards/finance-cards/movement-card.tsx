@@ -47,7 +47,7 @@ export const MovementCard: React.FC<MovementCardProps> = ({
     isMoneyInflow
       ? 'bg-green-500 hover:bg-green-400'
       : 'bg-red-600 hover:bg-red-500',
-    'flex w-20 justify-center truncate',
+    'flex justify-center truncate',
   ]);
 
   return (

@@ -37,3 +37,4 @@ export * from './chart';
 export * from './loading-button';
 export * from './file-upload';
 export * from './textarea';
+export * from './tooltip';

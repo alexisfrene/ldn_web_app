@@ -6,12 +6,14 @@ import {
   InputWithLabel,
   DialogClose,
   DialogFooter,
+  CheckAvailable,
 } from '@components';
 import { PaymentMethodCheckbox } from '@selects';
 import { useCreateAccount } from '@hooks';
 
 export const FormCreateAccount: React.FC = () => {
   const mutation = useCreateAccount();
+
   return (
     <Formik
       initialValues={{
@@ -30,14 +32,15 @@ export const FormCreateAccount: React.FC = () => {
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, values }) => (
+      {({ handleSubmit, isSubmitting, values, errors }) => (
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="flex items-center">
             <InputWithLabel
               label="Nombre de la cuenta"
               name="account"
               placeholder='Ej: "Cuenta de ahorros"'
             />
+            <CheckAvailable />
           </div>
           <PaymentMethodCheckbox />
           <DialogFooter>
@@ -52,7 +55,8 @@ export const FormCreateAccount: React.FC = () => {
                 disabled={
                   isSubmitting ||
                   values.account === '' ||
-                  values.payment_method.length === 0
+                  values.payment_method.length === 0 ||
+                  !!errors.account
                 }
               >
                 {isSubmitting ? (

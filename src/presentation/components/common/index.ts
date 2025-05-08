@@ -21,3 +21,4 @@ export * from './AlertModal';
 export * from './InputWithLabel';
 export * from './CalculateInterest';
 export * from './GenerateInstallments';
+export * from './CheckAvailable';

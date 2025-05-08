@@ -409,3 +409,20 @@ export const editFinancialAccount = async ({
     console.error('ERROR IN editFinancialAccount:', error);
   }
 };
+
+export const checkFinancialAccountName = async ({
+  name,
+}: {
+  name: string;
+}): Promise<boolean> => {
+  try {
+    const res = await axiosInstance.get(
+      `/financial_accounts/check-name?name=${name}`,
+    );
+
+    return res.data.isValidAccountName;
+  } catch (error) {
+    console.error('ERROR IN checkFinancialAccountName:', error);
+    return false;
+  }
+};

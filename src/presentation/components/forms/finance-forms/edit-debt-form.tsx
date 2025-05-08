@@ -90,7 +90,6 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
             debt_id,
             name: debt.name,
             notes: debt.notes,
-            current_quota: debt.current_quota,
             minimum_payment: debt.minimum_payment,
             money_to_receive: debt.money_to_receive,
             payment_frequency: debt.payment_frequency,
@@ -102,7 +101,6 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
               debt_id,
               name,
               notes,
-              current_quota,
               minimum_payment,
               money_to_receive,
               payment_frequency,
@@ -114,7 +112,6 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
               debt_id,
               name,
               notes,
-              current_quota,
               minimum_payment,
               money_to_receive,
               payment_frequency,
@@ -162,12 +159,6 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
                     type="number"
                     min={1}
                     max={72}
-                  />
-                  <InputWithLabel
-                    label="Que cuota vas ?"
-                    name="current_quota"
-                    type="number"
-                    min={1}
                   />
                   <InputWithLabel
                     label="Pago mínimo"

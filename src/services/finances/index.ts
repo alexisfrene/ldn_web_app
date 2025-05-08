@@ -201,7 +201,6 @@ export const getExpenses = async () => {
 export const createDebt = async ({
   notes,
   name,
-  current_quota,
   minimum_payment: minimum_payment,
   payment_frequency,
   installments,
@@ -209,7 +208,6 @@ export const createDebt = async ({
 }: {
   notes: string;
   name: string;
-  current_quota: number;
   minimum_payment: number;
   payment_frequency: string;
   installments: { amount: number; due_date: string; status: string }[];
@@ -227,7 +225,6 @@ export const createDebt = async ({
     const res = await axiosInstance.post('/debt', {
       notes,
       name,
-      current_quota,
       minimum_payment: Number(minimum_payment),
       payment_frequency,
       installments: formatterInstallments,
@@ -299,7 +296,6 @@ export const editDebt = async ({
   debt_id,
   name,
   notes,
-  current_quota,
   minimum_payment,
   money_to_receive,
   payment_frequency,
@@ -308,7 +304,6 @@ export const editDebt = async ({
   debt_id: UUID;
   name: string;
   notes: string;
-  current_quota: number;
   minimum_payment: number;
   money_to_receive: number;
   payment_frequency: string;
@@ -318,7 +313,6 @@ export const editDebt = async ({
     const res = await axiosInstance.patch(`/debt/${debt_id}`, {
       name,
       notes,
-      current_quota,
       minimum_payment,
       money_to_receive,
       payment_frequency,

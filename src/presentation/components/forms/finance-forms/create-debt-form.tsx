@@ -30,7 +30,6 @@ export const CreateDebtForm: React.FC = () => {
             minimum_payment: values.minimum_payment,
             name: values.name,
             payment_frequency: values.payment_frequency,
-            current_quota: values.current_quota,
             installments: values.installments,
             notes: values.notes,
             money_to_receive: values.money_to_receive,
@@ -46,7 +45,12 @@ export const CreateDebtForm: React.FC = () => {
           <ScrollArea className="h-96">
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
               <InputWithLabel label="Nombre de la cuenta" name="name" />
-              <InputWithLabel label="Agrega un nota de la deuda" name="notes" />
+              <InputWithLabel
+                label="Nota"
+                name="notes"
+                textarea
+                className="col-span-full"
+              />
               <DropdownInput
                 title="Elegir una frecuencia de pago"
                 options={paymentFrequency}
@@ -58,12 +62,6 @@ export const CreateDebtForm: React.FC = () => {
                 type="number"
                 min={1}
                 step="0.01"
-              />
-              <InputWithLabel
-                label="Que cuota vas ?"
-                name="current_quota"
-                type="number"
-                min={1}
               />
               <InputWithLabel
                 label="Pago mínimo"

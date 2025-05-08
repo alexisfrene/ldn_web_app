@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 export const initialValuesDebt = {
   name: 'Nueva deuda',
   payment_frequency: 'monthly',
-  current_quota: 1,
   number_quota: 1,
   minimum_payment: 1,
   notes: '',
@@ -30,10 +29,6 @@ export const debtSchema = Yup.object().shape({
   total_debt: Yup.number()
     .min(0, 'La deuda total debe ser un número mayor o igual a 0.')
     .required('La deuda total es obligatoria.'),
-  current_quota: Yup.number()
-    .integer('La cuota actual debe ser un número entero.')
-    .min(1, 'La cuota actual debe ser un número entero mayor o igual a 1.')
-    .required('La cuota actual es obligatoria.'),
   installments: Yup.array()
     .of(
       Yup.object().shape({

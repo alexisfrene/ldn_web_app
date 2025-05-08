@@ -34,37 +34,38 @@ export const InstallmentCard: React.FC<Props> = ({
         <CardTitle>Cuota número {index + 1}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-2">
-          <InputWithLabel
-            label="Monto"
-            name={`installments[${index}][amount]`}
-            type="number"
-          />
-          <InputWithLabel
-            label="Fecha de pago"
-            name={`installments[${index}][due_date]`}
-            type="date"
-          />
+        <div className="flex gap-10">
+          <div>
+            <InputWithLabel
+              label="Monto"
+              name={`installments[${index}][amount]`}
+              type="number"
+            />
+            <InputWithLabel
+              label="Fecha de pago"
+              name={`installments[${index}][due_date]`}
+              type="date"
+            />
+          </div>
+          <RadioGroup
+            defaultValue="unpaid"
+            onValueChange={(value) =>
+              setFieldValue(`installments[${index}].status`, value)
+            }
+            value={values.installments[`${index}`]?.status}
+            className="mb-3"
+          >
+            <p className="font-semibold">Estado :</p>
+            <div className="flex items-center space-x-4">
+              <RadioGroupItem value="unpaid" id="inflow" />
+              <Label htmlFor="unpaid">No pagado</Label>
+            </div>
+            <div className="mt-2 flex items-center space-x-4">
+              <RadioGroupItem value="paid" id="paid" />
+              <Label htmlFor="paid">Ya pagado</Label>
+            </div>
+          </RadioGroup>
         </div>
-
-        <RadioGroup
-          defaultValue="unpaid"
-          onValueChange={(value) =>
-            setFieldValue(`installments[${index}].status`, value)
-          }
-          value={values.installments[`${index}`]?.status}
-          className="mb-3"
-        >
-          <p className="font-semibold">Estado :</p>
-          <div className="flex items-center space-x-4">
-            <RadioGroupItem value="unpaid" id="inflow" />
-            <Label htmlFor="unpaid">No pagado</Label>
-          </div>
-          <div className="mt-2 flex items-center space-x-4">
-            <RadioGroupItem value="paid" id="paid" />
-            <Label htmlFor="paid">Ya pagado</Label>
-          </div>
-        </RadioGroup>
       </CardContent>
     </Card>
   );

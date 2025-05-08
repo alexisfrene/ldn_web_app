@@ -44,7 +44,11 @@ export const CreateDebtForm: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <ScrollArea className="h-96">
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-              <InputWithLabel label="Nombre de la cuenta" name="name" />
+              <InputWithLabel
+                label="Nombre de la cuenta"
+                name="name"
+                className="col-span-full"
+              />
               <InputWithLabel
                 label="Nota"
                 name="notes"
@@ -52,7 +56,7 @@ export const CreateDebtForm: React.FC = () => {
                 className="col-span-full"
               />
               <DropdownInput
-                title="Elegir una frecuencia de pago"
+                title="Frecuencia de pago"
                 options={paymentFrequency}
                 name="payment_frequency"
               />
@@ -70,7 +74,7 @@ export const CreateDebtForm: React.FC = () => {
                 min={1}
                 step="0.01"
               />
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-4">
                 <Label>Total de cuotas: </Label>
                 <CounterButton
                   onDecrease={(value) => setFieldValue('number_quota', value)}

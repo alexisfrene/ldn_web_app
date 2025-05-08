@@ -1,24 +1,18 @@
 import React, { useId } from 'react';
-import { getAllPaymentMethodForUser } from '@services';
-import { useQuery } from '@tanstack/react-query';
 import { FormikValues, useFormikContext } from 'formik';
 import { Checkbox, Label } from '@components';
 import { CreatePaymentMethodModal } from '@modals';
+import { useGetPaymentMethods } from '@hooks';
 
 export const PaymentMethodCheckbox: React.FC = () => {
   const id = useId();
   const { values, setFieldValue } = useFormikContext<FormikValues>();
-  const paymentMethod = useQuery({
-    queryKey: ['payment_method'],
-    queryFn: () => getAllPaymentMethodForUser(),
-  });
-
-  if (paymentMethod.error) return 'An error has occurred: ';
+  const { payment_methods } = useGetPaymentMethods();
 
   return (
     <div className="my-3 grid grid-cols-3 gap-y-6 md:grid-cols-4">
-      {paymentMethod.data &&
-        paymentMethod.data.map(
+      {payment_methods &&
+        payment_methods.map(
           (
             account: {
               name: string;

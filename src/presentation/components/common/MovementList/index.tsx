@@ -1,16 +1,6 @@
 import React from 'react';
 import { MovementCard } from '@cards';
-import {
-  Skeleton,
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-  ScrollArea,
-  AnimatedPagination,
-} from '@components';
+import { Skeleton, ScrollArea, AnimatedPagination } from '@components';
 import { useGetMovements } from '@hooks';
 import { Movement } from 'src/types/finance';
 import { cn } from '@utils';

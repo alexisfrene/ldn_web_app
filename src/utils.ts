@@ -17,6 +17,7 @@ const axiosInstanceCreate = (contentType: string) => {
     headers: {
       'Content-Type': contentType,
     },
+    timeout: 2000,
   });
 
   instance.interceptors.request.use(

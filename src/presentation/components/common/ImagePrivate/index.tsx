@@ -26,7 +26,10 @@ export const TokenImage: React.FC<TokenImageProps> = ({
     queryKey: ['image', url],
     queryFn: async () => {
       if (!url) throw new Error('URL no proporcionada');
-      const res = await axiosInstance.get(url, { responseType: 'blob' });
+      const res = await axiosInstance.get(url, {
+        responseType: 'blob',
+        timeout: 2000,
+      });
       return URL.createObjectURL(res.data);
     },
     staleTime: 5 * 60 * 1000,

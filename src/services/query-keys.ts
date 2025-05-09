@@ -4,6 +4,12 @@ export const usersKeys = {
   detail: (id: string) => [...usersKeys.all, 'detail', id],
 };
 
+export const productKeys = {
+  all: ['products'] as const,
+  list: () => [...productKeys.all, 'list'],
+  detail: (id: string) => [...productKeys.all, 'detail', id],
+};
+
 export const categoryKeys = {
   all: ['categories'] as const,
   list: () => [...categoryKeys.all, 'list'],

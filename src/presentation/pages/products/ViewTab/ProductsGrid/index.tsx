@@ -1,7 +1,6 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { removeProduct } from '@services';
 import { ProductCard, ProductDetailCard } from '@cards';
+import { useDeleteProduct } from '@hooks';
 
 interface Props {
   data: Product[];
@@ -9,15 +8,7 @@ interface Props {
 }
 
 export const ProductsGrid: React.FC<Props> = ({ data, showModal }) => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: removeProduct,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['products'],
-      });
-    },
-  });
+  const mutation = useDeleteProduct();
 
   return (
     <div className="flex flex-col gap-3 sm:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5">

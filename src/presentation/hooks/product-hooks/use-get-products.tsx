@@ -1,9 +1,9 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { categoryKeys, getAllProducts } from '@services';
+import { getAllProducts, productKeys } from '@services';
 
 export const useGetProducts = (options?: UseQueryOptions<Product[], Error>) => {
   const query = useQuery({
-    queryKey: categoryKeys.all,
+    queryKey: productKeys.all,
     queryFn: getAllProducts,
     ...options,
   });

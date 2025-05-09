@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@components';
-import { axiosInstance } from '@utils';
+import { axiosInstance, cn } from '@utils';
 
 interface TokenImageProps {
   url?: string;
@@ -36,14 +36,14 @@ export const TokenImage: React.FC<TokenImageProps> = ({
 
   if (error) {
     console.error('Error cargando imagen:', error);
-    return <div>Error al cargar la imagen</div>;
+    return <img src="/default.png" alt="Imagen" className={className} />;
   }
 
   if (isLoading) {
     const skeletonClass = variant === 'avatar' ? 'rounded-full' : '';
     return (
       <Skeleton
-        className={`${skeletonClass} ${className}`}
+        className={cn([skeletonClass, className])}
         style={{ width: skeletonWidth, height: skeletonHeight }}
       />
     );

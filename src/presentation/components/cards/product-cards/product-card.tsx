@@ -21,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({
             className="absolute top-0 right-0 m-0.5 cursor-pointer rounded-lg bg-red-500 hover:bg-red-400"
           />
         }
-        title="Estas por eliminar una colección de categorías"
+        title="Estas un producto"
         description="Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?"
         onConfirm={removeProduct}
       />
@@ -37,6 +37,8 @@ export const ProductCard: React.FC<Props> = ({
           url={`${product.primary_image?.toString()}?width=450&height=450&quality=20&format=webp`}
           variant="default"
           className="mt-2 h-48 w-full object-cover"
+          skeletonWidth={450}
+          skeletonHeight={192}
         />
         <div className="flex items-center justify-between bg-gray-900 px-4 py-2">
           <h1 className="text-lg font-bold text-white">${product.price}</h1>

@@ -2,11 +2,9 @@ import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   changePreferenceProductView,
-  getAllProducts,
   getPreferenceProductView,
 } from '@services';
 import {
-  LoadingIndicator,
   Modal,
   Menubar,
   MenubarContent,
@@ -16,7 +14,7 @@ import {
   MenubarCheckboxItem,
   Switch,
 } from '@components';
-import { useIsMobile, useModal } from '@hooks';
+import { useGetProducts, useIsMobile, useModal } from '@hooks';
 import { ProductsGrid } from './ProductsGrid';
 import { ProductsTable } from './ProductTable';
 
@@ -36,17 +34,11 @@ const ProductGrid: React.FC = () => {
       });
     },
   });
-  const { isPending, error, data } = useQuery<Product[]>({
-    queryKey: ['products'],
-    queryFn: () => getAllProducts(),
-  });
+  const { products } = useGetProducts();
   const preferments = useQuery({
     queryKey: ['preference_product_view'],
     queryFn: getPreferenceProductView,
   });
-
-  if (isPending) return <LoadingIndicator isLoading />;
-  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div>
@@ -69,10 +61,10 @@ const ProductGrid: React.FC = () => {
         </MenubarMenu>
       </Menubar>
       {preferments.data || isMobile ? (
-        <ProductsGrid data={data} hideModal={hideModal} showModal={showModal} />
+        <ProductsGrid data={products} showModal={showModal} />
       ) : (
         <ProductsTable
-          data={data}
+          data={products}
           hideModal={hideModal}
           showModal={showModal}
         />

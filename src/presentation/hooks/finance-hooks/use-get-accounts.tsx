@@ -15,5 +15,6 @@ export const useGetAccounts = (
     accounts: query.data || [],
     isLoading: query.isLoading,
     isError: query.isError,
+    isFetching: query.isFetching,
   };
 };

@@ -4,7 +4,7 @@ import { useGetAccounts } from '@hooks';
 import { FinancialAccountCard } from '@cards';
 
 export const FinancialAccountGrid: React.FC = () => {
-  const { accounts, isLoading } = useGetAccounts();
+  const { accounts, isLoading, isFetching } = useGetAccounts();
 
   const skeletonItems = Array(9).fill(null);
   if (isLoading) {
@@ -37,6 +37,7 @@ export const FinancialAccountGrid: React.FC = () => {
       ) : (
         <div>No hay cuenta financieras cargadas ...</div>
       )}
+      {isFetching && <Skeleton className="col-span-1 rounded-xl" />}
     </div>
   );
 };

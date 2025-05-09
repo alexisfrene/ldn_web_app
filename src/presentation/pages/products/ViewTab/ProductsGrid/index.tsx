@@ -1,21 +1,14 @@
 import React from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
-import { Button } from '@components';
 import { removeProduct } from '@services';
 import { ProductCard, ProductDetailCard } from '@cards';
 
 interface Props {
   data: Product[];
   showModal: (title: string, content: React.ReactElement) => void;
-  hideModal: () => void;
 }
 
-export const ProductsGrid: React.FC<Props> = ({
-  data,
-  showModal,
-  hideModal,
-}) => {
+export const ProductsGrid: React.FC<Props> = ({ data, showModal }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: removeProduct,
@@ -40,25 +33,7 @@ export const ProductsGrid: React.FC<Props> = ({
                 );
               }}
               removeProduct={() => {
-                showModal(
-                  'Estas por eliminar este producto ',
-                  <div className="flex justify-evenly">
-                    <Button variant="outline" type="button" onClick={hideModal}>
-                      Cancel
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="destructive"
-                      onClick={() => {
-                        mutation.mutate(product.product_id!);
-                        hideModal();
-                        toast('Producto eliminado');
-                      }}
-                    >
-                      Eliminar
-                    </Button>
-                  </div>,
-                );
+                mutation.mutate(product.product_id!);
               }}
               product={product}
             />

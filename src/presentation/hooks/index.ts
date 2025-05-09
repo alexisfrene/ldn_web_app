@@ -7,3 +7,4 @@ export * from './category-hooks';
 export * from './use-file-upload';
 export * from './brand-hooks';
 export * from './size-hooks';
+export * from './product-hooks';

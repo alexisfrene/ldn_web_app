@@ -11,5 +11,5 @@ type initialValues = {
   };
   title: string;
   label: string;
-  images: ImagesValues[];
+  images: FileWithPreview[];
 };

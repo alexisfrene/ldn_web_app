@@ -22,7 +22,7 @@ export function useModal(): ModalHook {
     (modalTitle?: string, modalContent?: React.ReactNode) => {
       setContent(modalContent);
       setIsOpen(true);
-      modalTitle && setTitle(modalTitle);
+      if (modalTitle) setTitle(modalTitle);
     },
     [setIsOpen, setTitle],
   );

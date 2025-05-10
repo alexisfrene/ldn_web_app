@@ -73,10 +73,11 @@ export const AlertAddImage: React.FC<Props> = ({
         <AlertDialogFooter>
           <AlertDialogAction
             onClick={async () => {
+              if (!image?.file) return;
               onClick(
                 {
                   collectionId,
-                  image: image?.file!,
+                  image: image.file,
                 },
                 setImage,
               );

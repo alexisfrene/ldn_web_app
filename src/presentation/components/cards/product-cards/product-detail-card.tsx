@@ -29,24 +29,24 @@ export const ProductDetailCard: React.FC<Props> = ({ product_id }) => {
           <TabsContent value={tabs[0]}>
             <ScrollArea className="h-52">
               <ProductData
-                category={data.category!}
-                description={data.description!}
+                category={data.category ?? "Sin categoría"}
+                description={data.description ?? "Sin descripción"}
                 name={data.name}
-                price={data.price.toString()}
+                price={data.price?.toString() ?? "0"}
                 product_id={product_id}
-                size={data.size!}
+                size={data.size ?? []}
               />
             </ScrollArea>
           </TabsContent>
           <TabsContent value={tabs[1]}>
             <ScrollArea className="h-52">
               <StyleData
-                age={data.detail?.age!}
-                brand={data.detail?.brand!}
-                color={data.detail?.color!}
-                gender={data.detail?.gender!}
-                product_id={data.product_id!}
-                style={data.detail?.style!}
+                age={data.detail?.age ?? "Desconocida"}
+                brand={data.detail?.brand ?? "Desconocida"}
+                color={data.detail?.color ?? "Desconocido"}
+                gender={data.detail?.gender ?? "Desconocido"}
+                product_id={data.product_id}
+                style={data.detail?.style ?? "Desconocido"}
               />
             </ScrollArea>
           </TabsContent>

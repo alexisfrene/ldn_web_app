@@ -4,7 +4,7 @@ import { axiosInstance, axiosInstanceFormData } from "@utils";
 export const getAllCategories = async (): Promise<CategoryList | []> => {
   try {
     const res = await axiosInstance.get("/categories");
-    console.log("categorias", res.data);
+
     return res.data;
   } catch (error) {
     toast.error("Ocurrió un error al obtener las categorías");
@@ -13,12 +13,15 @@ export const getAllCategories = async (): Promise<CategoryList | []> => {
   }
 };
 
-export const addCategoryConfig = async (data: any) => {
+export const addCategoryConfig = async (data: {
+  title: string;
+  values: { value: string; icon: { file: File } }[];
+}) => {
   try {
     const formData = new FormData();
     formData.append("title", data.title);
     for (let index = 0; index < data.values.length; index++) {
-      formData.append("files", data.values[index].icon.file);
+      formData.append("files", data.values[index]?.icon.file || "");
       formData.append(`values[${index}]`, data.values[index].value);
     }
     const res = await axiosInstanceFormData.post("/categories", formData);

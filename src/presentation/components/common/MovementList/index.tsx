@@ -17,9 +17,10 @@ type Props = {
 
 export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
   const [page, setPage] = React.useState(1);
+  const fallback = useGetMovements(page);
 
   const { movements, isLoading, totalPages, currentPage } =
-    expenseMovements ?? useGetMovements(page);
+    expenseMovements ?? fallback;
 
   return (
     <div className="border-none sm:min-h-96">

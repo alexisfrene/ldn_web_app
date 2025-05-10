@@ -33,7 +33,7 @@ type Props = {
   footer_description?: string;
   dataKey: string;
   nameKey: string;
-  chartData: any[];
+  chartData: { name: string; value: number }[];
 };
 
 export const PieChartComponent: React.FC<Props> = ({

@@ -22,7 +22,6 @@ export const RegisterUserForm: React.FC = () => {
     last_name: "",
     email: "",
     password: "",
-    passwordConfirm: "",
     gender: "",
     birthday_date: "",
     username: "",
@@ -31,7 +30,7 @@ export const RegisterUserForm: React.FC = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={async ({ passwordConfirm, ...values }, formikHelpers) => {
+      onSubmit={async (values, formikHelpers) => {
         const res = await registerUser(values);
         if (res?.status === 201) {
           toast("Usuario creado exitosamente!");

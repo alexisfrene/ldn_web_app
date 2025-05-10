@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Button, Card, CardContent, CardTitle, ScrollArea } from "@components";
 
+interface Item {
+  title: string;
+  values: { id: string; value: string }[];
+}
+
 interface ModalGenericProps {
-  items: any[];
-  selected: any;
+  items: Item[];
+  selected: Record<string, string>;
   onRequestClose: () => void;
-  handleChange: (selected: any) => void;
+  handleChange: (selected: Record<string, string>) => void;
   selectedKey: string;
   selectedValueKey: string;
 }
@@ -18,7 +23,8 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
   selectedKey,
   selectedValueKey,
 }) => {
-  const [currentSelection, setCurrentSelection] = useState(selected);
+  const [currentSelection, setCurrentSelection] =
+    useState<Record<string, string>>(selected);
 
   return (
     <>
@@ -28,20 +34,21 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
             <Card key={item.title}>
               <CardTitle className="my-3">{item.title}</CardTitle>
               <CardContent className="grid grid-cols-3 gap-3">
-                {item.values.map((data: { id: string; value: string }) => (
+                {item.values.map((data) => (
                   <Button
                     key={data.id + item.title}
                     variant="link"
                     className={`col-span-1 ${
-                      currentSelection[selectedKey] === item[selectedKey] &&
+                      currentSelection[selectedKey] ===
+                        item[selectedKey as keyof Item] &&
                       currentSelection[selectedValueKey] === data.id
                         ? "bg-amber-300 dark:bg-slate-600"
                         : "bg-slate-200 dark:bg-slate-800"
                     }`}
                     onClick={() =>
                       setCurrentSelection({
-                        [selectedKey]: item[selectedKey],
-                        [selectedValueKey]: data.id,
+                        [selectedKey]: String(item[selectedKey as keyof Item]),
+                        [selectedValueKey]: String(data.id),
                       })
                     }
                   >

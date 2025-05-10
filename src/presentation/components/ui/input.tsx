@@ -79,7 +79,9 @@ const InputWithVerifyPassword: React.FC<{
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
-              onChange && onChange(e);
+              if (onChange) {
+                onChange(e);
+              }
             }}
             aria-describedby={`${id}-description`}
           />

@@ -21,7 +21,14 @@ const LoadingButton: React.FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <Button disabled={loading || disabled} {...props}>
+    <Button
+      className={className}
+      variant={variant}
+      size={size}
+      asChild={asChild}
+      disabled={loading || disabled}
+      {...props}
+    >
       {loading && (
         <Icons type="refresh" className="mr-2 h-5 w-5 animate-spin" />
       )}

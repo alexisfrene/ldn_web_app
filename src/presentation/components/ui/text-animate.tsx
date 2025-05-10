@@ -18,49 +18,13 @@ type AnimationVariant =
   | "scaleDown";
 
 interface TextAnimateProps extends MotionProps {
-  /**
-   * The text content to animate
-   */
   children: string;
-  /**
-   * The class name to be applied to the component
-   */
   className?: string;
-  /**
-   * The class name to be applied to each segment
-   */
   segmentClassName?: string;
-  /**
-   * The delay before the animation starts
-   */
-  delay?: number;
-  /**
-   * The duration of the animation
-   */
-  duration?: number;
-  /**
-   * Custom motion variants for the animation
-   */
-  variants?: Variants;
-  /**
-   * The element type to render
-   */
   as?: ElementType;
-  /**
-   * How to split the text ("text", "word", "character")
-   */
   by?: AnimationType;
-  /**
-   * Whether to start animation when component enters viewport
-   */
   startOnView?: boolean;
-  /**
-   * Whether to animate only once
-   */
   once?: boolean;
-  /**
-   * The animation preset to use
-   */
   animation?: AnimationVariant;
 }
 
@@ -302,9 +266,6 @@ const defaultItemAnimationVariants: Record<
 
 export function TextAnimate({
   children,
-  delay = 0,
-  duration = 0.3,
-  variants,
   className,
   segmentClassName,
   as: Component = "p",
@@ -316,7 +277,6 @@ export function TextAnimate({
 }: TextAnimateProps) {
   const MotionComponent = motion.create(Component);
 
-  // Use provided variants or default variants based on animation type
   const finalVariants = animation
     ? {
         container: {

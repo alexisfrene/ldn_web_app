@@ -105,16 +105,16 @@ export const updateProductData = async ({
   newDetails,
   product_id,
 }: {
-  newDetails: any;
+  newDetails: Details;
   product_id: string;
 }) => {
   try {
-    const res = await axiosInstance.patch(
+    const { data } = await axiosInstance.patch(
       `/products/${product_id}?type=data`,
       newDetails,
     );
     toast.success("Datos del producto actualizados con éxito!");
-    return res.data;
+    return data;
   } catch (error) {
     toast.error("Ocurrió un error al actualizar los datos del producto");
     console.error("ERROR IN updateProductData:", error);

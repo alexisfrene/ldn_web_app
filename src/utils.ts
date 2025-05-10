@@ -48,17 +48,10 @@ export const fetchImage = async (url: string) => {
   return URL.createObjectURL(response.data);
 };
 
-export const formatDate = (date: {
-  getFullYear: () => any;
-  getMonth: () => number;
-  getDate: () => any;
-}) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-};
+export const formatDate = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+    date.getDate(),
+  ).padStart(2, "0")}`;
 
 export const formattedValue = (value: number) =>
   new Intl.NumberFormat("es-AR", {

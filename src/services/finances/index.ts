@@ -104,6 +104,7 @@ export const getAllPaymentMethodForAccount = async (id: string) => {
 
     return res.data;
   } catch (error) {
+    console.error("ERROR IN getAllPaymentMethodForAccount:", error);
     return [];
   }
 };
@@ -114,6 +115,7 @@ export const getAllPaymentMethodForUser = async () => {
 
     return res.data;
   } catch (error) {
+    console.error("ERROR IN getAllPaymentMethodForUser:", error);
     return [];
   }
 };
@@ -132,7 +134,6 @@ export const getAllMovements = async ({
 
     return res.data;
   } catch (error) {
-    toast.error("Ocurrió un error al crear una getAllMovements");
     console.error("ERROR IN getAllMovements:", error);
   }
 };

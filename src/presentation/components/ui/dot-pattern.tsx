@@ -99,14 +99,13 @@ export function DotPattern({
       const col = i % Math.ceil(dimensions.width / width);
       const row = Math.floor(i / Math.ceil(dimensions.width / width));
       return {
-        x: col * width + cx,
-        y: row * height + cy,
+        x: col * width + cx + x,
+        y: row * height + cy + y,
         delay: Math.random() * 5,
         duration: Math.random() * 3 + 2,
       };
     },
   );
-
   return (
     <svg
       ref={containerRef}

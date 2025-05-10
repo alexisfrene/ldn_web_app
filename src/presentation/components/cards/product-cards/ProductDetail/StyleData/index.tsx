@@ -1,7 +1,7 @@
-import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ProductDataTable } from '@components';
-import { handleSubmit } from './handleSubmit';
+import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ProductDataTable } from "@common/DataTable";
+import { handleSubmit } from "./handleSubmit";
 
 export interface StyleDataProps {
   style: string;
@@ -25,43 +25,43 @@ export const StyleData: React.FC<StyleDataProps> = ({
     mutationFn: handleSubmit,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product_details', product_id],
+        queryKey: ["product_details", product_id],
       });
     },
   });
   const dataVist = [
     {
-      label: 'Estilo :',
+      label: "Estilo :",
       value: style,
-      name: 'style',
+      name: "style",
     },
     {
-      label: 'Marca :',
+      label: "Marca :",
       value: brand,
-      name: 'brand',
+      name: "brand",
     },
     {
-      label: 'Edad :',
+      label: "Edad :",
       value: age,
-      name: 'age',
+      name: "age",
     },
     {
-      label: 'Color :',
+      label: "Color :",
       value: color,
-      name: 'color',
+      name: "color",
     },
     {
-      label: 'Genero :',
+      label: "Genero :",
       value: gender,
-      name: 'gender',
+      name: "gender",
     },
   ];
   const initialValues = {
-    brand: '',
-    age: '',
-    color: '',
-    gender: '',
-    styles: '',
+    brand: "",
+    age: "",
+    color: "",
+    gender: "",
+    styles: "",
     product_id: product_id,
   };
 

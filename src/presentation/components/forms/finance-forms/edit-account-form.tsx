@@ -1,15 +1,13 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { PaymentMethodCheckbox } from '@selects';
-import {
-  Button,
-  DialogClose,
-  DialogFooter,
-  Icons,
-  InputWithLabel,
-  Label,
-} from '@components';
-import { useEditAccount } from '@hooks';
+import React from "react";
+import { Formik } from "formik";
+import { PaymentMethodCheckbox } from "@selects";
+import { useEditAccount } from "@hooks";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
+import { Label } from "@ui/label";
+
 type Props = {
   name: string;
   financial_accounts_id: UUID;
@@ -32,7 +30,7 @@ export const EditAccountForm: React.FC<Props> = ({
         try {
           mutation.mutate({
             financial_account_id: financial_accounts_id,
-            name: values.account || '',
+            name: values.account || "",
             payments_methods: values.payment_method.map((e) => Number(e)),
           });
         } finally {
@@ -58,7 +56,7 @@ export const EditAccountForm: React.FC<Props> = ({
                 type="submit"
                 disabled={
                   isSubmitting ||
-                  values.account === '' ||
+                  values.account === "" ||
                   values.payment_method.length === 0
                 }
               >
@@ -68,7 +66,7 @@ export const EditAccountForm: React.FC<Props> = ({
                     <span>Editando cuenta...</span>
                   </div>
                 ) : (
-                  'Editar cuenta'
+                  "Editar cuenta"
                 )}
               </Button>
             </DialogClose>

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useFormikContext } from 'formik';
-import { formattedValue } from '@utils';
-import { InstallmentCard } from '@cards';
+import React, { useEffect } from "react";
+import { useFormikContext } from "formik";
+import { formattedValue } from "@utils";
+import { InstallmentCard } from "@cards";
 
 export const GenerateInstallments: React.FC = () => {
   const { values, setFieldValue } = useFormikContext<{
@@ -26,16 +26,16 @@ export const GenerateInstallments: React.FC = () => {
           dueDate.setMonth(today.getMonth() + i);
           newInstallments.push({
             amount: 1,
-            due_date: dueDate.toISOString().split('T')[0],
-            status: 'unpaid',
+            due_date: dueDate.toISOString().split("T")[0],
+            status: "unpaid",
           });
         }
-        setFieldValue('installments', newInstallments);
+        setFieldValue("installments", newInstallments);
       }
 
       if (values.number_quota < values.installments.length) {
         setFieldValue(
-          'installments',
+          "installments",
           newInstallments.slice(0, values.number_quota),
         );
       }
@@ -47,8 +47,8 @@ export const GenerateInstallments: React.FC = () => {
       (sum, installment) => sum + Number(installment.amount),
       0,
     );
-    setFieldValue('total_debt', totalInstallmentsAmount);
-    setFieldValue('total_debt_str', formattedValue(totalInstallmentsAmount));
+    setFieldValue("total_debt", totalInstallmentsAmount);
+    setFieldValue("total_debt_str", formattedValue(totalInstallmentsAmount));
   }, [values.installments, values.total_debt]);
 
   const renderInstallments = (installmentsCount: number) => {

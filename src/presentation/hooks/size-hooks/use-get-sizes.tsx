@@ -1,5 +1,5 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { getAllSizes, sizeKeys } from '@services';
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { getAllSizes, sizeKeys } from "@services";
 
 export const useGetSizes = (options?: UseQueryOptions<Size[], Error>) => {
   const query = useQuery({

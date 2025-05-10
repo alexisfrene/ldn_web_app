@@ -1,15 +1,13 @@
-import {
-  ScrollArea,
-  TabsContent,
-  MenuTabs,
-  LoadingIndicator,
-} from '@components';
-import { GalleryTab } from './GalleryTab';
-import { CollectionTab } from './CollectionTab';
-import { getVariationById } from '@services';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
+import { getVariationById } from "@services";
+import { LoadingIndicator } from "@common/Loading";
+import { MenuTabs } from "@common/MenuTabs";
+import { ScrollArea } from "@ui/scroll-area";
+import { TabsContent } from "@ui/tabs";
+import { CollectionTab } from "./CollectionTab";
+import { GalleryTab } from "./GalleryTab";
 
-const tabs = ['Ver imágenes', 'Agregar una colección'];
+const tabs = ["Ver imágenes", "Agregar una colección"];
 
 interface Props {
   variationId: string;
@@ -17,13 +15,13 @@ interface Props {
 
 export const VariationDetail: React.FC<Props> = ({ variationId }) => {
   const { isPending, error, data } = useQuery({
-    queryKey: ['variation_details', variationId],
+    queryKey: ["variation_details", variationId],
     queryFn: () => getVariationById(variationId),
   });
   if (isPending) {
     return <LoadingIndicator isLoading />;
   }
-  if (error) return 'An error has occurred: ' + error.message;
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <MenuTabs tabs={tabs} tabStyle="sm:text-sm" containerStyle="p-0">

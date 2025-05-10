@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { FormikValues, useFormikContext } from 'formik';
+import React, { useEffect } from "react";
+import { FormikValues, useFormikContext } from "formik";
 import {
   AlertCircleIcon,
   FileArchiveIcon,
@@ -12,9 +12,9 @@ import {
   UploadIcon,
   VideoIcon,
   XIcon,
-} from 'lucide-react';
-import { formatBytes, useFileUpload } from '@hooks';
-import { Button } from '@components';
+} from "lucide-react";
+import { formatBytes, useFileUpload } from "@hooks";
+import { Button } from "@ui/button";
 
 const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
   const fileType = file.file instanceof File ? file.file.type : file.file.type;
@@ -24,38 +24,38 @@ const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
     pdf: {
       icon: FileTextIcon,
       conditions: (type: string, name: string) =>
-        type.includes('pdf') ||
-        name.endsWith('.pdf') ||
-        type.includes('word') ||
-        name.endsWith('.doc') ||
-        name.endsWith('.docx'),
+        type.includes("pdf") ||
+        name.endsWith(".pdf") ||
+        type.includes("word") ||
+        name.endsWith(".doc") ||
+        name.endsWith(".docx"),
     },
     archive: {
       icon: FileArchiveIcon,
       conditions: (type: string, name: string) =>
-        type.includes('zip') ||
-        type.includes('archive') ||
-        name.endsWith('.zip') ||
-        name.endsWith('.rar'),
+        type.includes("zip") ||
+        type.includes("archive") ||
+        name.endsWith(".zip") ||
+        name.endsWith(".rar"),
     },
     excel: {
       icon: FileSpreadsheetIcon,
       conditions: (type: string, name: string) =>
-        type.includes('excel') ||
-        name.endsWith('.xls') ||
-        name.endsWith('.xlsx'),
+        type.includes("excel") ||
+        name.endsWith(".xls") ||
+        name.endsWith(".xlsx"),
     },
     video: {
       icon: VideoIcon,
-      conditions: (type: string) => type.includes('video/'),
+      conditions: (type: string) => type.includes("video/"),
     },
     audio: {
       icon: HeadphonesIcon,
-      conditions: (type: string) => type.includes('audio/'),
+      conditions: (type: string) => type.includes("audio/"),
     },
     image: {
       icon: ImageIcon,
-      conditions: (type: string) => type.startsWith('image/'),
+      conditions: (type: string) => type.startsWith("image/"),
     },
   };
 
@@ -84,7 +84,7 @@ const getFilePreview = (file: {
 
   return (
     <div className="bg-accent flex aspect-square items-center justify-center overflow-hidden rounded-t-[inherit]">
-      {fileType.startsWith('image/') ? (
+      {fileType.startsWith("image/") ? (
         file.file instanceof File ? (
           (() => {
             const previewUrl = URL.createObjectURL(file.file);
@@ -134,10 +134,10 @@ export const FileUpload: React.FC<Props> = ({
     multiple: (maxFiles ?? 1) > 1,
     maxFiles: maxFiles ?? 1,
     maxSize,
-    accept: accept ?? '',
+    accept: accept ?? "",
   });
   useEffect(() => {
-    setFieldValue(name ?? 'files', files);
+    setFieldValue(name ?? "files", files);
   }, [files, name, setFieldValue]);
 
   if ((maxFiles ?? 1) === 1) {
@@ -163,7 +163,7 @@ export const FileUpload: React.FC<Props> = ({
               <div className="absolute inset-0 flex items-center justify-center p-4">
                 <img
                   src={previewUrl}
-                  alt={files[0]?.file?.name || 'Uploaded image'}
+                  alt={files[0]?.file?.name || "Uploaded image"}
                   className="mx-auto max-h-full rounded object-contain"
                 />
               </div>
@@ -179,7 +179,7 @@ export const FileUpload: React.FC<Props> = ({
                   Suelta tu imagen aquí
                 </p>
                 <p className="text-muted-foreground text-xs">
-                  {` ${accept ? `(${accept === 'image/*' ? 'PNG, JPEG, WEBP' : 'File'})` : ''} (max. ${maxSizeMB}MB)`}
+                  {` ${accept ? `(${accept === "image/*" ? "PNG, JPEG, WEBP" : "File"})` : ""} (max. ${maxSizeMB}MB)`}
                 </p>
                 <Button
                   variant="outline"
@@ -335,20 +335,6 @@ export const FileUpload: React.FC<Props> = ({
           <span>{errors[0]}</span>
         </div>
       )}
-
-      <p
-        aria-live="polite"
-        role="region"
-        className="text-muted-foreground mt-2 text-center text-xs"
-      >
-        Mixed content w/ card ∙{' '}
-        <a
-          href="https://github.com/origin-space/originui/tree/main/docs/use-file-upload.md"
-          className="hover:text-foreground underline"
-        >
-          API
-        </a>
-      </p>
     </div>
   );
 };

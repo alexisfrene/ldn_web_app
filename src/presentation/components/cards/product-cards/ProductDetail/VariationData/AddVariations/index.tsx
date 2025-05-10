@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import React, { useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getAllVariations, linkVariation } from "@services";
+import { cn } from "@utils";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { LoadingIndicator } from "@common/Loading";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardDescription, CardTitle } from "@ui/card";
+import { ScrollArea } from "@ui/scroll-area";
 import {
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-  Icons,
-  LoadingIndicator,
-  ScrollArea,
   Sheet,
   SheetClose,
   SheetContent,
@@ -17,34 +17,31 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  TokenImage,
-} from '@components';
-import { getAllVariations, linkVariation } from '@services';
-import { cn } from '@utils';
+} from "@ui/sheet";
 
 interface AddVariationsProps {
-  product_id: Product['product_id'];
+  product_id: Product["product_id"];
 }
 
 export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<string>("");
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
-    queryKey: ['variations'],
+    queryKey: ["variations"],
     queryFn: () => getAllVariations(),
   });
   const mutation = useMutation({
     mutationFn: linkVariation,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product_details', product_id],
+        queryKey: ["product_details", product_id],
       });
     },
   });
   if (isPending) {
     return <LoadingIndicator isLoading />;
   }
-  if (error) return 'An error has occurred: ' + error.message;
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -77,8 +74,8 @@ export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
                 }) => (
                   <Card
                     className={cn([
-                      'cursor-pointer select-none p-3',
-                      selected === e.variation_id && 'bg-slate-300',
+                      "cursor-pointer select-none p-3",
+                      selected === e.variation_id && "bg-slate-300",
                     ])}
                     onClick={() => setSelected(e.variation_id)}
                     key={e.variation_id}
@@ -119,7 +116,7 @@ export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
                   onClick={() =>
                     mutation.mutate({
                       variation_id: selected,
-                      product_id: product_id || '',
+                      product_id: product_id || "",
                     })
                   }
                 >

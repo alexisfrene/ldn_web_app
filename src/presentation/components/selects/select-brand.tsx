@@ -1,17 +1,17 @@
-import React from 'react';
-import get from 'lodash/get';
-import { FormikValues, useFormikContext } from 'formik';
+import React from "react";
+import { FormikValues, useFormikContext } from "formik";
+import get from "lodash/get";
+import { cn } from "@utils";
+import { CreateBrandModal } from "@modals";
+import { useGetBrands } from "@hooks";
+import { Label } from "@ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  Label,
-} from '@components';
-import { cn } from '@utils';
-import { CreateBrandModal } from '@modals';
-import { useGetBrands } from '@hooks';
+} from "@ui/select";
 
 type Props = {
   label: string;
@@ -29,13 +29,13 @@ export const SelectBrand: React.FC<Props> = ({
   const { brands } = useGetBrands();
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
-  const inputValue = get(values, name, '');
+  const inputValue = get(values, name, "");
 
   return (
-    <div className={cn(['grid w-full items-center gap-1.5'])}>
+    <div className={cn(["grid w-full items-center gap-1.5"])}>
       <Label
         htmlFor={htmlFor}
-        className={get(errors, name) ? 'text-red-500' : ''}
+        className={get(errors, name) ? "text-red-500" : ""}
       >
         {label}
       </Label>
@@ -53,7 +53,7 @@ export const SelectBrand: React.FC<Props> = ({
         </SelectContent>
       </Select>
       <div className="h-2 text-xs font-extralight text-red-500">
-        {typeof errors[name] === 'string' ? errors[name] : null}
+        {typeof errors[name] === "string" ? errors[name] : null}
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useNavigation } from 'react-router-dom';
-import NProgress from 'nprogress';
+import { useEffect } from "react";
+import NProgress from "nprogress";
+import { useNavigation } from "react-router-dom";
 
 export const useLoading = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if (navigation.state === 'loading') {
+    if (navigation.state === "loading") {
       NProgress.start();
     } else {
       NProgress.done();

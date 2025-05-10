@@ -1,10 +1,10 @@
-import React from 'react';
-import { AddVariations } from './AddVariations';
-import { TokenImage } from '@components';
+import React from "react";
+import { TokenImage } from "@common/ImagePrivate";
+import { AddVariations } from "./AddVariations";
 
 interface ImagesVariantsProps {
-  variation: Product['variation'];
-  product_id: Product['product_id'];
+  variation: Product["variation"];
+  product_id: Product["product_id"];
 }
 
 export const VariationData: React.FC<ImagesVariantsProps> = ({

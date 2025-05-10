@@ -1,12 +1,9 @@
-import React, { ReactNode, Suspense } from 'react';
-import {
-  ModeToggle,
-  SidebarProvider,
-  SidebarTrigger,
-  Skeleton,
-} from '@components';
-import { AppSidebar } from '../AppSidebar';
-import { useAvatar } from '@hooks';
+import React, { ReactNode, Suspense } from "react";
+import { useAvatar } from "@hooks";
+import { ModeToggle } from "@common/ModeToggle";
+import { SidebarProvider, SidebarTrigger } from "@ui/sidebar";
+import { Skeleton } from "@ui/skeleton";
+import { AppSidebar } from "../AppSidebar";
 
 interface LayoutProps {
   children: ReactNode;

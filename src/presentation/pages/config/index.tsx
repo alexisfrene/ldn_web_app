@@ -1,19 +1,17 @@
-import React from 'react';
+import React from "react";
+import { EditAvatarModal } from "@modals";
+import { useAvatar, useModal } from "@hooks";
+import { Modal } from "@common/Modal";
+import { Card, CardContent, CardHeader } from "@ui/card";
+import { Separator } from "@ui/separator";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Modal,
-  Separator,
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '@components';
-import { useAvatar, useModal } from '@hooks';
-import { Rows } from './Rows';
-import { EditAvatarModal } from '@modals';
+} from "@ui/sheet";
+import { Rows } from "./Rows";
 
 const Config: React.FC = () => {
   const { username, email } = useAvatar();

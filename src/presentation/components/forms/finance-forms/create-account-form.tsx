@@ -1,21 +1,20 @@
-import React from 'react';
-import { Formik } from 'formik';
-import {
-  Button,
-  Icons,
-  InputWithLabel,
-  DialogClose,
-  DialogFooter,
-} from '@components';
-import { PaymentMethodCheckbox } from '@selects';
-import { useCreateAccount } from '@hooks';
+import React from "react";
+import { Formik } from "formik";
+import { PaymentMethodCheckbox } from "@selects";
+import { useCreateAccount } from "@hooks";
+import { CheckAvailable } from "@common/CheckAvailable";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
 
 export const FormCreateAccount: React.FC = () => {
   const mutation = useCreateAccount();
+
   return (
     <Formik
       initialValues={{
-        account: '',
+        account: "",
         payment_method: [] as number[],
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
@@ -30,14 +29,15 @@ export const FormCreateAccount: React.FC = () => {
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, values }) => (
+      {({ handleSubmit, isSubmitting, values, errors }) => (
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="flex items-center">
             <InputWithLabel
               label="Nombre de la cuenta"
               name="account"
               placeholder='Ej: "Cuenta de ahorros"'
             />
+            <CheckAvailable />
           </div>
           <PaymentMethodCheckbox />
           <DialogFooter>
@@ -51,8 +51,9 @@ export const FormCreateAccount: React.FC = () => {
                 type="submit"
                 disabled={
                   isSubmitting ||
-                  values.account === '' ||
-                  values.payment_method.length === 0
+                  values.account === "" ||
+                  values.payment_method.length === 0 ||
+                  !!errors.account
                 }
               >
                 {isSubmitting ? (
@@ -61,7 +62,7 @@ export const FormCreateAccount: React.FC = () => {
                     <span>Creando cuenta...</span>
                   </div>
                 ) : (
-                  'Crear cuenta'
+                  "Crear cuenta"
                 )}
               </Button>
             </DialogClose>

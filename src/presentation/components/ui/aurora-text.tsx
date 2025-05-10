@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@utils';
-import { motion, MotionProps } from 'motion/react';
-import React from 'react';
+import React from "react";
+import { motion, MotionProps } from "motion/react";
+import { cn } from "@utils";
 
 interface AuroraTextProps
   extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
@@ -14,14 +14,14 @@ interface AuroraTextProps
 export function AuroraText({
   className,
   children,
-  as: Component = 'span',
+  as: Component = "span",
   ...props
 }: AuroraTextProps) {
   const MotionComponent = motion.create(Component);
 
   return (
     <MotionComponent
-      className={cn('relative inline-flex overflow-hidden', className)}
+      className={cn("relative inline-flex overflow-hidden", className)}
       {...props}
     >
       {children}

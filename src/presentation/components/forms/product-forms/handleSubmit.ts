@@ -1,7 +1,7 @@
-import { FormikHelpers } from 'formik';
-import { toast } from 'sonner';
-import { createProducts } from '@services';
-import { FileWithPreview } from '@hooks';
+import { FormikHelpers } from "formik";
+import { toast } from "sonner";
+import { createProducts } from "@services";
+import { FileWithPreview } from "@hooks";
 
 interface InitialValues {
   name: string;
@@ -47,12 +47,12 @@ const handleSubmit = async (
     const res = await createProducts(product);
     if (res) {
       formikHelpers.resetForm();
-      formikHelpers.setFieldValue('detail[brand]', '');
-      toast('Producto creado con éxito !');
+      formikHelpers.setFieldValue("detail[brand]", "");
+      toast("Producto creado con éxito !");
     }
   } catch (error) {
-    toast.error('Error al crear producto');
-    console.error('Error al crear producto --> ', error);
+    toast.error("Error al crear producto");
+    console.error("Error al crear producto --> ", error);
   }
 };
 export default handleSubmit;

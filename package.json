@@ -7,9 +7,11 @@
     "dev": "vite",
     "dev-host": "vite --host",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "release": "standard-version",
-    "check:ts": "tsc --noEmit"
+    "check:ts": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
+    "change-imports": "tsc replace-imports.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
@@ -69,6 +71,8 @@
     "recharts": "^2.15.3",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.2.0",
+    "ts-morph": "^25.0.1",
+    "use-debounce": "^10.0.4",
     "uuid": "^11.1.0",
     "uvcanvas": "^0.3.0",
     "vaul": "^1.1.2",
@@ -79,6 +83,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.4",
     "@tanstack/eslint-plugin-query": "^5.73.3",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash": "^4.17.16",
     "@types/node": "^22.14.1",
     "@types/nprogress": "^0.2.3",
@@ -89,6 +94,9 @@
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
     "@vitejs/plugin-react-swc": "^3.9.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -106,7 +114,7 @@
       "standard"
     ]
   },
-  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "esbuild"

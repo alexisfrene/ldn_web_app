@@ -1,9 +1,10 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { loginUser } from '@services';
-import { useSessionStore } from '@global';
-import { Button, InputWithLabel } from '@components';
+import React from "react";
+import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "@services";
+import { useSessionStore } from "@global";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
 
 export const LoginUserForm: React.FC = () => {
   const navigate = useNavigate();
@@ -14,15 +15,15 @@ export const LoginUserForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        email_or_user: '',
-        password: '',
+        email_or_user: "",
+        password: "",
       }}
       onSubmit={async (values) => {
         const res = await loginUser(values);
 
         if (res?.data.session_token) {
           insertSessionToken(res?.data.session_token);
-          return setTimeout(() => navigate('/app/finance'), 200);
+          return setTimeout(() => navigate("/app/finance"), 200);
         }
       }}
     >
@@ -43,7 +44,7 @@ export const LoginUserForm: React.FC = () => {
             <Button
               variant="outline"
               type="button"
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate("/signup")}
             >
               Register
             </Button>

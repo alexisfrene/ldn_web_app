@@ -1,66 +1,30 @@
-'use client';
+"use client";
 
-import { cn } from '@utils';
-import { AnimatePresence, motion, MotionProps, Variants } from 'motion/react';
-import { ElementType } from 'react';
+import { ElementType } from "react";
+import { AnimatePresence, motion, MotionProps, Variants } from "motion/react";
+import { cn } from "@utils";
 
-type AnimationType = 'text' | 'word' | 'character' | 'line';
+type AnimationType = "text" | "word" | "character" | "line";
 type AnimationVariant =
-  | 'fadeIn'
-  | 'blurIn'
-  | 'blurInUp'
-  | 'blurInDown'
-  | 'slideUp'
-  | 'slideDown'
-  | 'slideLeft'
-  | 'slideRight'
-  | 'scaleUp'
-  | 'scaleDown';
+  | "fadeIn"
+  | "blurIn"
+  | "blurInUp"
+  | "blurInDown"
+  | "slideUp"
+  | "slideDown"
+  | "slideLeft"
+  | "slideRight"
+  | "scaleUp"
+  | "scaleDown";
 
 interface TextAnimateProps extends MotionProps {
-  /**
-   * The text content to animate
-   */
   children: string;
-  /**
-   * The class name to be applied to the component
-   */
   className?: string;
-  /**
-   * The class name to be applied to each segment
-   */
   segmentClassName?: string;
-  /**
-   * The delay before the animation starts
-   */
-  delay?: number;
-  /**
-   * The duration of the animation
-   */
-  duration?: number;
-  /**
-   * Custom motion variants for the animation
-   */
-  variants?: Variants;
-  /**
-   * The element type to render
-   */
   as?: ElementType;
-  /**
-   * How to split the text ("text", "word", "character")
-   */
   by?: AnimationType;
-  /**
-   * Whether to start animation when component enters viewport
-   */
   startOnView?: boolean;
-  /**
-   * Whether to animate only once
-   */
   once?: boolean;
-  /**
-   * The animation preset to use
-   */
   animation?: AnimationVariant;
 }
 
@@ -124,10 +88,10 @@ const defaultItemAnimationVariants: Record<
   blurIn: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: 'blur(10px)' },
+      hidden: { opacity: 0, filter: "blur(10px)" },
       show: (i: number) => ({
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: "blur(0px)",
         transition: {
           delay: i * 0.1,
           duration: 0.3,
@@ -135,7 +99,7 @@ const defaultItemAnimationVariants: Record<
       }),
       exit: {
         opacity: 0,
-        filter: 'blur(10px)',
+        filter: "blur(10px)",
         transition: { duration: 0.3 },
       },
     },
@@ -143,10 +107,10 @@ const defaultItemAnimationVariants: Record<
   blurInUp: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: 'blur(10px)', y: 20 },
+      hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
       show: () => ({
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: "blur(0px)",
         y: 0,
         transition: {
           y: { duration: 0.3 },
@@ -156,7 +120,7 @@ const defaultItemAnimationVariants: Record<
       }),
       exit: {
         opacity: 0,
-        filter: 'blur(10px)',
+        filter: "blur(10px)",
         y: 20,
         transition: {
           y: { duration: 0.3 },
@@ -169,10 +133,10 @@ const defaultItemAnimationVariants: Record<
   blurInDown: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: 'blur(10px)', y: -20 },
+      hidden: { opacity: 0, filter: "blur(10px)", y: -20 },
       show: () => ({
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: "blur(0px)",
         y: 0,
         transition: {
           y: { duration: 0.3 },
@@ -261,7 +225,7 @@ const defaultItemAnimationVariants: Record<
         transition: {
           duration: 0.3,
           scale: {
-            type: 'spring',
+            type: "spring",
             damping: 15,
             stiffness: 300,
           },
@@ -285,7 +249,7 @@ const defaultItemAnimationVariants: Record<
           delay,
           duration: 0.3,
           scale: {
-            type: 'spring',
+            type: "spring",
             damping: 15,
             stiffness: 300,
           },
@@ -302,21 +266,17 @@ const defaultItemAnimationVariants: Record<
 
 export function TextAnimate({
   children,
-  delay = 0,
-  duration = 0.3,
-  variants,
   className,
   segmentClassName,
-  as: Component = 'p',
+  as: Component = "p",
   startOnView = true,
   once = false,
-  by = 'word',
-  animation = 'fadeIn',
+  by = "word",
+  animation = "fadeIn",
   ...props
 }: TextAnimateProps) {
   const MotionComponent = motion.create(Component);
 
-  // Use provided variants or default variants based on animation type
   const finalVariants = animation
     ? {
         container: {
@@ -341,16 +301,16 @@ export function TextAnimate({
 
   let segments: string[] = [];
   switch (by) {
-    case 'word':
+    case "word":
       segments = children.split(/(\s+)/);
       break;
-    case 'character':
-      segments = children.split('');
+    case "character":
+      segments = children.split("");
       break;
-    case 'line':
-      segments = children.split('\n');
+    case "line":
+      segments = children.split("\n");
       break;
-    case 'text':
+    case "text":
     default:
       segments = [children];
       break;
@@ -361,10 +321,10 @@ export function TextAnimate({
       <MotionComponent
         variants={finalVariants.container}
         initial="hidden"
-        whileInView={startOnView ? 'show' : undefined}
-        animate={startOnView ? undefined : 'show'}
+        whileInView={startOnView ? "show" : undefined}
+        animate={startOnView ? undefined : "show"}
         exit="exit"
-        className={cn('whitespace-pre-wrap', className)}
+        className={cn("whitespace-pre-wrap", className)}
         viewport={{ once }}
         {...props}
       >
@@ -374,7 +334,7 @@ export function TextAnimate({
             variants={finalVariants.item}
             custom={i * staggerTimings[by]}
             className={cn(
-              by === 'line' ? 'block' : 'inline-block whitespace-pre',
+              by === "line" ? "block" : "inline-block whitespace-pre",
               segmentClassName,
             )}
           >

@@ -1,8 +1,8 @@
-import React from 'react';
-import { InfoCard } from '@cards';
-import { Skeleton } from '@components';
-import { useGetMovementsPerMonth, useIsMobile } from '@hooks';
-import { cn } from '@utils';
+import React from "react";
+import { cn } from "@utils";
+import { InfoCard } from "@cards";
+import { useGetMovementsPerMonth, useIsMobile } from "@hooks";
+import { Skeleton } from "@ui/skeleton";
 
 export const CardsInfo: React.FC = () => {
   const isMobile = useIsMobile();
@@ -20,29 +20,29 @@ export const CardsInfo: React.FC = () => {
       ) : (
         <>
           <InfoCard
-            title={isMobile ? 'Entrada del mes' : 'Total entradas en el mes'}
+            title={isMobile ? "Entrada del mes" : "Total entradas en el mes"}
             value={movement_per_month?.inflow_of_money || 0}
             currency={true}
             valueStyles="text-green-500 dark:text-green-500"
           />
           <InfoCard
-            title={isMobile ? 'Salida del mes' : 'Total de salidas del mes'}
+            title={isMobile ? "Salida del mes" : "Total de salidas del mes"}
             value={movement_per_month?.money_outflow || 0}
             currency={true}
             valueStyles="text-red-500 dark:text-red-500"
           />
           <InfoCard
-            title={isMobile ? 'Ganancias' : 'Ganancias del mes'}
+            title={isMobile ? "Ganancias" : "Ganancias del mes"}
             value={movement_per_month?.different || 0}
             currency
             valueStyles={cn([
               movement_per_month?.different && movement_per_month?.different > 0
-                ? 'text-green-500 dark:text-green-500'
-                : 'text-red-500 dark:text-red-500',
+                ? "text-green-500 dark:text-green-500"
+                : "text-red-500 dark:text-red-500",
             ])}
           />
           <InfoCard
-            title={isMobile ? 'Movimientos' : 'Total de movimientos en el mes'}
+            title={isMobile ? "Movimientos" : "Total de movimientos en el mes"}
             value={movement_per_month?.count_movements || 0}
           />
         </>

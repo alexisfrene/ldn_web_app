@@ -1,19 +1,19 @@
-import React from 'react';
-import { FormikValues, useFormikContext } from 'formik';
+import React from "react";
+import { FormikValues, useFormikContext } from "formik";
 import {
+  SelectDebt,
   SelectFinancialAccount,
   SelectPaymentMethod,
-  SelectDebt,
   SelectTag,
-} from '@selects';
-import { Label } from '@components';
+} from "@selects";
+import { Label } from "@ui/label";
 
 export const SelectMovementAccount: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();
 
   return (
     <div>
-      {values.type === 'inflow_of_money' ? (
+      {values.type === "inflow_of_money" ? (
         <div className="w-full items-center gap-1.5">
           <Label>Destino donde ingresara el dinero</Label>
           <SelectFinancialAccount />
@@ -24,7 +24,7 @@ export const SelectMovementAccount: React.FC = () => {
             </>
           )}
         </div>
-      ) : values.type === 'money_outflow' ? (
+      ) : values.type === "money_outflow" ? (
         <div className="w-full items-center gap-1.5">
           <Label>Cuenta donde saldrá el dinero :</Label>
           <SelectFinancialAccount />

@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
+import { FormCreateAccount } from "@forms";
+import { Button } from "@ui/button";
 import {
-  Button,
   Dialog,
-  DialogTrigger,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
-} from '@components';
-import { FormCreateAccount } from '@forms';
+  DialogTrigger,
+} from "@ui/dialog";
+
 export const CreateAccountModal: React.FC = () => {
   return (
     <Dialog>

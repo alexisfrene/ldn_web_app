@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createExpense, financeKeys } from '@services';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createExpense, financeKeys } from "@services";
 
 export const useCreateExpense = () => {
   const queryClient = useQueryClient();

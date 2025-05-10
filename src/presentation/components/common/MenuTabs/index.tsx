@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
-import { cn } from '@utils';
-import { TabsList, Tabs, TabsTrigger, Label } from '@components';
+import React, { ReactNode } from "react";
+import { cn } from "@utils";
+import { Label } from "@ui/label";
+import { Tabs, TabsList, TabsTrigger } from "@ui/tabs";
 
 interface Props {
   tabs: string[];
@@ -16,7 +17,7 @@ export const MenuTabs: React.FC<Props> = ({
   tabStyle,
 }) => {
   const tabasStyles = cn([
-    'mb-3 grid sm:min-h-14',
+    "mb-3 grid sm:min-h-14",
     `grid-cols-${tabs.length}`,
     containerStyle,
   ]);
@@ -27,7 +28,7 @@ export const MenuTabs: React.FC<Props> = ({
           return (
             <TabsTrigger key={title} value={title}>
               <Label
-                className={cn(['cursor-pointer text-xs sm:text-xl', tabStyle])}
+                className={cn(["cursor-pointer text-xs sm:text-xl", tabStyle])}
               >
                 {title}
               </Label>

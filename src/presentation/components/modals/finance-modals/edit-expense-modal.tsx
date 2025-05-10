@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import { EditExpenseForm } from "@forms";
+import { Icons } from "@common/Icons";
 import {
   Dialog,
   DialogContent,
@@ -6,9 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Icons,
-} from '@components';
-import { EditExpenseForm } from '@forms';
+} from "@ui/dialog";
 
 interface Props {
   name: string;

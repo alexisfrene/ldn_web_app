@@ -1,9 +1,11 @@
-import React from 'react';
-import { CardDescription, Icons, Separator } from '@components';
-import { CategoryEdit } from './CategoryEdit';
-import { SizeEdit } from './SizeEdit';
-import { SignOff } from './SignOff';
-import { ChangePassword } from './ChangePassword';
+import React from "react";
+import { Icons } from "@common/Icons";
+import { CardDescription } from "@ui/card";
+import { Separator } from "@ui/separator";
+import { CategoryEdit } from "./CategoryEdit";
+import { ChangePassword } from "./ChangePassword";
+import { SignOff } from "./SignOff";
+import { SizeEdit } from "./SizeEdit";
 
 interface Props {
   showModal: (title: string, content: React.ReactNode) => void;
@@ -14,7 +16,7 @@ interface Props {
 export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
   const config = [
     {
-      description: 'Ajustes en categorías',
+      description: "Ajustes en categorías",
       icon: (
         <Icons
           type="copy_manual"
@@ -23,12 +25,12 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
       ),
       onClick: () =>
         showModal(
-          'Editando categorías',
+          "Editando categorías",
           <CategoryEdit showSheet={showSheet} />,
         ),
     },
     {
-      description: 'Ajustes en talles/números',
+      description: "Ajustes en talles/números",
       icon: (
         <Icons
           type="copy_manual"
@@ -36,10 +38,10 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
         />
       ),
       onClick: () =>
-        showModal('Editar talles/números', <SizeEdit showSheet={showSheet} />),
+        showModal("Editar talles/números", <SizeEdit showSheet={showSheet} />),
     },
     {
-      description: 'Cambiar contraseña',
+      description: "Cambiar contraseña",
       icon: (
         <Icons
           type="copy_manual"
@@ -47,11 +49,11 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
         />
       ),
       onClick: () =>
-        showModal('Estas por cambiar la contraseña :', <ChangePassword />),
+        showModal("Estas por cambiar la contraseña :", <ChangePassword />),
     },
 
     {
-      description: 'Cerrar sesión',
+      description: "Cerrar sesión",
       icon: (
         <Icons
           type="arrow_left_start_on_rectangle"
@@ -60,7 +62,7 @@ export const Rows: React.FC<Props> = ({ showModal, showSheet, hideModal }) => {
       ),
       onClick: () =>
         showModal(
-          'Estas seguro de cerrar sesión ?',
+          "Estas seguro de cerrar sesión ?",
           <SignOff hideModal={hideModal} />,
         ),
     },

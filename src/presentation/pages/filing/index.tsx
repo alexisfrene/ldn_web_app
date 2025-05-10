@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Opulento, Velustro } from 'uvcanvas';
-import { useSessionStore } from '@global';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Opulento, Velustro } from "uvcanvas";
+import { LoginUserForm } from "@forms";
+import { useSessionStore } from "@global";
+import { useTheme } from "@common/ThemeProvider";
+import { BorderBeam } from "@ui/border-beam";
 import {
-  BorderBeam,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Particles,
-  useTheme,
-} from '@components';
-import { LoginUserForm } from '@forms';
+} from "@ui/card";
+import { Particles } from "@ui/particles";
 
 const Filing: React.FC = () => {
   const navigate = useNavigate();
   const sessionToken = useSessionStore((state) => state.session_token);
   const { theme } = useTheme();
-  const [color, setColor] = useState('#ffffff');
+  const [color, setColor] = useState("#ffffff");
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
@@ -27,12 +27,12 @@ const Filing: React.FC = () => {
     }
   }, [hasAnimated]);
   useEffect(() => {
-    setColor(theme === 'dark' ? '#ffffff' : '#000000');
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
   useEffect(() => {
     if (sessionToken) {
-      navigate('/app/finance');
+      navigate("/app/finance");
     }
   }, [sessionToken, navigate]);
 
@@ -80,7 +80,7 @@ const Filing: React.FC = () => {
         </div>
       </div>
       <div className="hidden lg:col-span-7 lg:block">
-        {theme !== 'dark' ? <Velustro /> : <Opulento />}
+        {theme !== "dark" ? <Velustro /> : <Opulento />}
       </div>
     </div>
   );

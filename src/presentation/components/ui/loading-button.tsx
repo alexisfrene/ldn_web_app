@@ -1,7 +1,8 @@
-import * as React from 'react';
-import { Slottable } from '@radix-ui/react-slot';
-import { type VariantProps } from 'class-variance-authority';
-import { Button, buttonVariants, Icons } from '@components';
+import * as React from "react";
+import { Slottable } from "@radix-ui/react-slot";
+import { type VariantProps } from "class-variance-authority";
+import { Icons } from "@common/Icons";
+import { Button, buttonVariants } from "@ui/button";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -21,7 +22,14 @@ const LoadingButton: React.FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <Button disabled={loading || disabled} {...props}>
+    <Button
+      className={className}
+      variant={variant}
+      size={size}
+      asChild={asChild}
+      disabled={loading || disabled}
+      {...props}
+    >
       {loading && (
         <Icons type="refresh" className="mr-2 h-5 w-5 animate-spin" />
       )}

@@ -1,9 +1,12 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { Button, Icons, InputWithLabel, Label } from '@components';
-import { SelectMovementAccount, SelectMovementType } from '@selects';
-import { initialValues, movementSchema } from './create-movement-utils';
-import { useCreateMovement } from '@hooks';
+import React from "react";
+import { Formik } from "formik";
+import { SelectMovementAccount, SelectMovementType } from "@selects";
+import { useCreateMovement } from "@hooks";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { Label } from "@ui/label";
+import { initialValues, movementSchema } from "./create-movement-utils";
 
 export const CreateMovementForm: React.FC = () => {
   const mutation = useCreateMovement();
@@ -13,18 +16,18 @@ export const CreateMovementForm: React.FC = () => {
       initialValues={initialValues}
       validationSchema={movementSchema}
       onSubmit={(values, formikHelpers) => {
-        if (values.type !== 'inflow_of_money') {
+        if (values.type !== "inflow_of_money") {
           if (values.total < values.value) {
             formikHelpers.setSubmitting(false);
             return formikHelpers.setFieldError(
-              'value',
+              "value",
               `La cuenta no tiene el saldo suficiente , solo cuenta con $ ${values.total}`,
             );
           }
         }
         mutation.mutate({
           financial_accounts_id: values.financial_accounts_id,
-          label: values.label || 'Sin nombre',
+          label: values.label || "Sin nombre",
           payment_method_id: values.payment_method_id,
           type: values.type,
           value: values.value,
@@ -50,7 +53,7 @@ export const CreateMovementForm: React.FC = () => {
               label="Monto"
               name="value"
               type="number"
-              disabled={values.type === 'debt'}
+              disabled={values.type === "debt"}
             />
           </div>
           <SelectMovementType />

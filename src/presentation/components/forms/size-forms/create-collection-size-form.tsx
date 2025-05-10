@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
-import { v4 as uuidv4 } from 'uuid';
-import { Label, Input, Button, Icons, Separator } from '@components';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addSizeCollection } from '@services';
+import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Formik } from "formik";
+import { v4 as uuidv4 } from "uuid";
+import { addSizeCollection } from "@services";
+import { Icons } from "@common/Icons";
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { Separator } from "@ui/separator";
 
 type ValueProps = {
   id?: string;
   value: string;
 };
 export const CreateCollectionSizeForm: React.FC = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: addSizeCollection,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sizes'] });
+      queryClient.invalidateQueries({ queryKey: ["sizes"] });
     },
   });
 
   return (
     <Formik
       initialValues={{
-        title: '',
+        title: "",
         values: [] as ValueProps[],
       }}
       onSubmit={async (values, formikHelpers) => {
@@ -38,8 +42,8 @@ export const CreateCollectionSizeForm: React.FC = () => {
           <Input
             name="title"
             type="text"
-            value={values['title']}
-            onChange={(e) => setFieldValue('title', e.target.value)}
+            value={values["title"]}
+            onChange={(e) => setFieldValue("title", e.target.value)}
           />
           <Label>Valores :</Label>
           <Input
@@ -53,11 +57,11 @@ export const CreateCollectionSizeForm: React.FC = () => {
             type="button"
             variant="secondary"
             onClick={() => {
-              setFieldValue('values', [
+              setFieldValue("values", [
                 ...values.values,
                 { value, id: uuidv4() },
               ]);
-              setValue('');
+              setValue("");
             }}
           >
             Agregar
@@ -73,7 +77,7 @@ export const CreateCollectionSizeForm: React.FC = () => {
                       const res = values.values.filter(
                         (e) => e.id !== value.id,
                       );
-                      setFieldValue('values', res);
+                      setFieldValue("values", res);
                     }}
                   />
                   <div className="m-1 flex justify-center">

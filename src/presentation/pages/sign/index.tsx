@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  Particles,
-  useTheme,
-} from '@components';
-import { RegisterUserForm } from '@forms';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterUserForm } from "@forms";
+import { useTheme } from "@common/ThemeProvider";
+import { Card, CardContent, CardDescription, CardHeader } from "@ui/card";
+import { Particles } from "@ui/particles";
 
 const SingUpPage: React.FC = () => {
-  const [color, setColor] = useState('#ffffff');
+  const [color, setColor] = useState("#ffffff");
   const { theme } = useTheme();
   const navigate = useNavigate();
   useEffect(() => {
-    setColor(theme === 'dark' ? '#ffffff' : '#000000');
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
   return (
@@ -25,7 +20,7 @@ const SingUpPage: React.FC = () => {
         ¿Ya tienes cuenta?
         <b
           className="mx-3 cursor-pointer text-blue-600 hover:text-blue-500"
-          onClick={() => navigate('/login')}
+          onClick={() => navigate("/login")}
         >
           Ingresa desde aquí.
         </b>

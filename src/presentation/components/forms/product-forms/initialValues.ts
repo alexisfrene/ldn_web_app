@@ -1,19 +1,19 @@
-import { FileWithPreview } from '@hooks';
+import { FileWithPreview } from "@hooks";
 
 const initialValues = {
-  name: 'Nuevo producto',
+  name: "Nuevo producto",
   files: {} as FileWithPreview[],
   price: 1,
-  description: '',
-  detail: { age: '', brand: '', color: '', gender: '', style: '' },
+  description: "",
+  detail: { age: "", brand: "", color: "", gender: "", style: "" },
   stock: 1,
   category: {
-    category_id: '',
-    category_value_id: '',
+    category_id: "",
+    category_value_id: "",
   },
   size: {
-    size_id: '',
-    size_value_id: '',
+    size_id: "",
+    size_value_id: "",
   },
 };
 

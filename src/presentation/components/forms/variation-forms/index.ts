@@ -1,1 +1,1 @@
-export * from './create-variation-form';
+export * from "./create-variation-form";

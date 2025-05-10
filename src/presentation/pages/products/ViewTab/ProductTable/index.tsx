@@ -1,26 +1,23 @@
-import React from 'react';
+import React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
-  SortingState,
-  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  SortingState,
   useReactTable,
-} from '@tanstack/react-table';
+  VisibilityState,
+} from "@tanstack/react-table";
+import { ProductDetailCard } from "@cards";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { Avatar, AvatarFallback } from "@ui/avatar";
+import { Button } from "@ui/button";
+import { Checkbox } from "@ui/checkbox";
 import {
-  Avatar,
-  AvatarFallback,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -28,12 +25,16 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  Input,
-  Checkbox,
-  Icons,
-  TokenImage,
-} from '@components';
-import { ProductDetailCard } from '@cards';
+} from "@ui/dropdown-menu";
+import { Input } from "@ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@ui/table";
 
 interface Props {
   data: Product[];
@@ -51,12 +52,12 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
   const [rowSelection, setRowSelection] = React.useState({});
   const columns: ColumnDef<Product>[] = [
     {
-      id: 'select',
+      id: "select",
       header: ({ table }) => (
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && 'indeterminate')
+            (table.getIsSomePageRowsSelected() && "indeterminate")
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
@@ -73,12 +74,12 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
       enableHiding: false,
     },
     {
-      accessorKey: 'primary_image',
-      header: 'Imagen',
+      accessorKey: "primary_image",
+      header: "Imagen",
       cell: ({ row }) => (
         <Avatar>
           <TokenImage
-            url={`${row.getValue('primary_image')}?width=60&height=60&quality=50&format=webp`}
+            url={`${row.getValue("primary_image")}?width=60&height=60&quality=50&format=webp`}
             variant="avatar"
           />
           <AvatarFallback>CN</AvatarFallback>
@@ -86,50 +87,50 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
       ),
     },
     {
-      accessorKey: 'name',
-      header: 'Nombre',
+      accessorKey: "name",
+      header: "Nombre",
       cell: ({ row }) => (
-        <div className="capitalize">{row.getValue('name')}</div>
+        <div className="capitalize">{row.getValue("name")}</div>
       ),
     },
     {
-      accessorKey: 'size',
+      accessorKey: "size",
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Talla/Numero
           </Button>
         );
       },
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue('size')}</div>
+        <div className="lowercase">{row.getValue("size")}</div>
       ),
     },
     {
-      accessorKey: 'state',
-      header: 'Disponible',
+      accessorKey: "state",
+      header: "Disponible",
       cell: ({ row }) => (
-        <div className="capitalize">{row.getValue('state') ? 'Si' : 'No'}</div>
+        <div className="capitalize">{row.getValue("state") ? "Si" : "No"}</div>
       ),
     },
     {
-      accessorKey: 'price',
+      accessorKey: "price",
       header: () => <div className="text-right">Precio</div>,
       cell: ({ row }) => {
-        const amount = parseFloat(row.getValue('price'));
-        const formatted = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
+        const amount = parseFloat(row.getValue("price"));
+        const formatted = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
         }).format(amount);
 
         return <div className="text-right font-medium">{formatted}</div>;
       },
     },
     {
-      id: 'actions',
+      id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
         const product = row.original;
@@ -146,7 +147,7 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() =>
-                  navigator.clipboard.writeText(product.product_id || '')
+                  navigator.clipboard.writeText(product.product_id || "")
                 }
               >
                 Copiar ID del producto
@@ -155,7 +156,7 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
               <DropdownMenuItem
                 onClick={() => {
                   showModal(
-                    '',
+                    "",
                     <ProductDetailCard product_id={product.product_id!} />,
                   );
                 }}
@@ -193,9 +194,9 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter por nombre..."
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn('name')?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -251,7 +252,7 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
+                  data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -278,7 +279,7 @@ export const ProductsTable: React.FC<Props> = ({ data, showModal }) => {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of{' '}
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
         <div className="space-x-2">

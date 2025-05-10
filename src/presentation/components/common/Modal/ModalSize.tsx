@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getAllSizes } from '@services';
-import { ModalGeneric } from './ModalGeneric';
+import React, { useEffect, useState } from "react";
+import { getAllSizes } from "@services";
+import { ModalGeneric } from "./ModalGeneric";
 
 interface SizeIds {
   size_id: string;
@@ -31,9 +31,9 @@ export const ModalSize: React.FC<ModalSizeProps> = ({
   return (
     <ModalGeneric
       items={sizes}
-      selected={values}
+      selected={values as any}
       onRequestClose={onRequestClose}
-      handleChange={handleChange}
+      handleChange={handleChange as any}
       selectedKey="size_id"
       selectedValueKey="size_value_id"
     />

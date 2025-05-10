@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useSessionStore } from '@global';
-import { getUrlAvatar } from '@services';
+import { useEffect } from "react";
+import { getUrlAvatar } from "@services";
+import { useSessionStore } from "@global";
 
 export const useAvatar = () => {
   const {
@@ -35,7 +35,7 @@ export const useAvatar = () => {
         insertEmail(email);
         insertUsername(username);
       } catch (error) {
-        console.error('Error fetching avatar data:', error);
+        console.error("Error fetching avatar data:", error);
       }
     };
 

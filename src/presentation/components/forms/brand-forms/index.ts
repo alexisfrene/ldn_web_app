@@ -1,1 +1,1 @@
-export * from './create-brand-form';
+export * from "./create-brand-form";

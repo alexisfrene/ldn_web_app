@@ -1,5 +1,7 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getExpenseById } from "@services";
+import { MovementList } from "@common/MovementList";
 import {
   Dialog,
   DialogContent,
@@ -7,12 +9,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Label,
-  MovementList,
-  ScrollArea,
-  Skeleton,
-} from '@components';
-import { getExpenseById } from '@services';
+} from "@ui/dialog";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
+import { Skeleton } from "@ui/skeleton";
 
 interface Props {
   children: React.ReactNode;
@@ -26,11 +26,11 @@ export const ExpenseDetailModal: React.FC<Props> = ({
   expense_id,
 }) => {
   const expenses = useQuery({
-    queryKey: ['expenses', expense_id],
+    queryKey: ["expenses", expense_id],
     queryFn: () => getExpenseById({ expense_id }),
   });
 
-  if (expenses.error) return 'An error has occurred: ';
+  if (expenses.error) return "An error has occurred: ";
   return (
     <Dialog>
       <DialogTrigger className="w-full cursor-pointer">

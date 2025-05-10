@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import { AddSizeForm, CreateCollectionSizeForm } from '@forms';
-import {
-  AlertModal,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Icons,
-  Input,
-  Label,
-  ScrollArea,
-} from '@components';
+import React, { useState } from "react";
+import { AddSizeForm, CreateCollectionSizeForm } from "@forms";
 import {
   useChangeDeleteValueSize,
   useChangeTitleCollectionSize,
   useDeleteCollectionSize,
-} from '@hooks';
+} from "@hooks";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
 
 interface Props {
   data: Size[];
@@ -26,7 +21,7 @@ interface Props {
 
 export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
   const [selected, setSelected] = useState<string>();
-  const [collectionTitle, setCollectionTitle] = useState<string>('');
+  const [collectionTitle, setCollectionTitle] = useState<string>("");
   const mutation = useChangeTitleCollectionSize();
   const mutationDeleteCollection = useDeleteCollectionSize();
   const mutationDeleteValue = useChangeDeleteValueSize();
@@ -66,7 +61,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                   type="close"
                   height={20}
                   className="absolute top-0 right-0 mx-1 cursor-pointer text-slate-500 hover:text-slate-600"
-                  onClick={() => setSelected('')}
+                  onClick={() => setSelected("")}
                 />
               ) : (
                 <div className="absolute top-0 right-0 flex flex-row">
@@ -126,7 +121,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
                   className="cursor-pointer bg-green-400 hover:bg-green-500"
                   onClick={() => {
                     return showSheet(
-                      'Agregar un numero / talla nueva',
+                      "Agregar un numero / talla nueva",
                       <AddSizeForm size_id={size_id} />,
                     );
                   }}
@@ -142,7 +137,7 @@ export const ViewSizes: React.FC<Props> = ({ data, showSheet }) => {
         variant="default"
         onClick={() => {
           return showSheet(
-            'Agregar un numero / talla nueva',
+            "Agregar un numero / talla nueva",
             <CreateCollectionSizeForm />,
           );
         }}

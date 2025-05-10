@@ -1,21 +1,18 @@
-import React from 'react';
-import { Formik } from 'formik';
-import {
-  Button,
-  CounterButton,
-  DialogClose,
-  DialogFooter,
-  DropdownInput,
-  Icons,
-  InputWithLabel,
-  Label,
-  ScrollArea,
-  CalculateInterest,
-  GenerateInstallments,
-} from '@components';
-import { paymentFrequency } from '@presentation/mocks';
-import { initialValuesDebt, debtSchema } from './create-debt-utils';
-import { useCreateDebt } from '@hooks';
+import React from "react";
+import { Formik } from "formik";
+import { useCreateDebt } from "@hooks";
+import { CalculateInterest } from "@common/CalculateInterest";
+import { CounterButton } from "@common/CounterButton";
+import { DropdownInput } from "@common/DropDown";
+import { GenerateInstallments } from "@common/GenerateInstallments";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
+import { paymentFrequency } from "@presentation/mocks";
+import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 
 export const CreateDebtForm: React.FC = () => {
   const mutation = useCreateDebt();
@@ -30,7 +27,6 @@ export const CreateDebtForm: React.FC = () => {
             minimum_payment: values.minimum_payment,
             name: values.name,
             payment_frequency: values.payment_frequency,
-            current_quota: values.current_quota,
             installments: values.installments,
             notes: values.notes,
             money_to_receive: values.money_to_receive,
@@ -45,10 +41,19 @@ export const CreateDebtForm: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <ScrollArea className="h-96">
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-              <InputWithLabel label="Nombre de la cuenta" name="name" />
-              <InputWithLabel label="Agrega un nota de la deuda" name="notes" />
+              <InputWithLabel
+                label="Nombre de la cuenta"
+                name="name"
+                className="col-span-full"
+              />
+              <InputWithLabel
+                label="Nota"
+                name="notes"
+                textarea
+                className="col-span-full"
+              />
               <DropdownInput
-                title="Elegir una frecuencia de pago"
+                title="Frecuencia de pago"
                 options={paymentFrequency}
                 name="payment_frequency"
               />
@@ -60,23 +65,17 @@ export const CreateDebtForm: React.FC = () => {
                 step="0.01"
               />
               <InputWithLabel
-                label="Que cuota vas ?"
-                name="current_quota"
-                type="number"
-                min={1}
-              />
-              <InputWithLabel
                 label="Pago mínimo"
                 name="minimum_payment"
                 type="number"
                 min={1}
                 step="0.01"
               />
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-4">
                 <Label>Total de cuotas: </Label>
                 <CounterButton
-                  onDecrease={(value) => setFieldValue('number_quota', value)}
-                  onIncrease={(value) => setFieldValue('number_quota', value)}
+                  onDecrease={(value) => setFieldValue("number_quota", value)}
+                  onIncrease={(value) => setFieldValue("number_quota", value)}
                   defaultValue={values.number_quota}
                   max={72}
                   min={1}
@@ -110,7 +109,7 @@ export const CreateDebtForm: React.FC = () => {
                   <span>Creando cuenta...</span>
                 </div>
               ) : (
-                'Crear cuenta'
+                "Crear cuenta"
               )}
             </Button>
           </DialogFooter>

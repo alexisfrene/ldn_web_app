@@ -1,6 +1,7 @@
-import React from 'react';
-import { Button, Icons } from '@components';
-import { useTheme } from '../ThemeProvider';
+import React from "react";
+import { Icons } from "@common/Icons";
+import { Button } from "@ui/button";
+import { useTheme } from "../ThemeProvider";
 
 export const ModeToggle: React.FC = () => {
   const { setTheme, theme } = useTheme();
@@ -9,7 +10,7 @@ export const ModeToggle: React.FC = () => {
     <Button
       variant="outline"
       size="icon"
-      onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
+      onClick={() => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
     >
       <Icons
         type="sun"

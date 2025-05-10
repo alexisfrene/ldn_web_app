@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Formik } from 'formik';
-import { updatePrimaryImage } from '@services';
+import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Formik } from "formik";
+import { updatePrimaryImage } from "@services";
+import { Icons } from "@common/Icons";
+import { ImageLoader } from "@common/ImageLoader";
+import { TokenImage } from "@common/ImagePrivate";
+import { ImageUploader } from "@common/ImageUploader";
+import { LoadingIndicator } from "@common/Loading";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,12 +17,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  Icons,
-  ImageLoader,
-  ImageUploader,
-  LoadingIndicator,
-  TokenImage,
-} from '@components';
+} from "@ui/alert-dialog";
 
 interface Props {
   product: Product;
@@ -30,10 +30,10 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
     mutationFn: updatePrimaryImage,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product_details', product.product_id],
+        queryKey: ["product_details", product.product_id],
       });
       queryClient.invalidateQueries({
-        queryKey: ['products'],
+        queryKey: ["products"],
       });
     },
   });

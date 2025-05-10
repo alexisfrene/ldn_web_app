@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addImageCollection } from "@services";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { LoadingIndicator } from "@common/Loading";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Icons,
-  LoadingIndicator,
-  TokenImage,
-} from '@components';
-import { AlertAddImage } from './AlertAddImage';
-import { AlertRemoveImage } from './AlertRemoveImage';
-import { addImageCollection } from '@services';
+} from "@ui/card";
+import { AlertAddImage } from "./AlertAddImage";
+import { AlertRemoveImage } from "./AlertRemoveImage";
 
 interface Props {
   variation: Variants;
 }
 
 export const GalleryTab: React.FC<Props> = ({ variation }) => {
-  const [edit, setEdit] = useState('');
+  const [edit, setEdit] = useState("");
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: addImageCollection,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['variation_details', variation.variation_id],
+        queryKey: ["variation_details", variation.variation_id],
       });
     },
   });
@@ -39,7 +39,7 @@ export const GalleryTab: React.FC<Props> = ({ variation }) => {
       file: data.image,
     });
     setImage(undefined);
-    setEdit('');
+    setEdit("");
   };
   return (
     <Card>
@@ -55,7 +55,7 @@ export const GalleryTab: React.FC<Props> = ({ variation }) => {
                   type="close"
                   height={20}
                   className="cursor-pointer hover:text-slate-500"
-                  onClick={() => setEdit('')}
+                  onClick={() => setEdit("")}
                 />
               ) : (
                 <Icons

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getAllCategories } from '@services';
-import { ModalGeneric } from './ModalGeneric';
+import React, { useEffect, useState } from "react";
+import { getAllCategories } from "@services";
+import { ModalGeneric } from "./ModalGeneric";
 
 export interface CategoryIds {
   category_id: string;
@@ -31,9 +31,9 @@ export const ModalCategory: React.FC<ModalCategoryProps> = ({
   return (
     <ModalGeneric
       items={categories}
-      selected={values}
+      selected={values as any}
       onRequestClose={onRequestClose}
-      handleChange={handleChange}
+      handleChange={handleChange as any}
       selectedKey="category_id"
       selectedValueKey="category_value_id"
     />

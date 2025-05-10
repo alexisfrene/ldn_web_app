@@ -1,6 +1,6 @@
-import { financeKeys, getAllMovements } from '@services';
-import { useQuery } from '@tanstack/react-query';
-import { Movement } from 'src/types/finance';
+import { useQuery } from "@tanstack/react-query";
+import { Movement } from "src/types/finance";
+import { financeKeys, getAllMovements } from "@services";
 
 interface MovementsResponse {
   movements: Movement[];

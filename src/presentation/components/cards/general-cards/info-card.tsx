@@ -1,12 +1,8 @@
-import React from 'react';
-import { cn } from '@utils';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  DotPattern,
-  NumberTicker,
-} from '@components';
+import React from "react";
+import { cn } from "@utils";
+import { Card, CardContent, CardHeader } from "@ui/card";
+import { DotPattern } from "@ui/dot-pattern";
+import { NumberTicker } from "@ui/number-ticker";
 
 interface Props {
   title: string;
@@ -17,7 +13,7 @@ interface Props {
 export const InfoCard: React.FC<Props> = ({
   title,
   value,
-  valueStyles = '',
+  valueStyles = "",
   currency = false,
 }) => {
   return (
@@ -29,12 +25,12 @@ export const InfoCard: React.FC<Props> = ({
         cy={1}
         cr={1}
         className={cn(
-          '[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]',
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
         )}
       />
       <CardHeader className="min-h-10 text-xs sm:text-base">{title}</CardHeader>
       <CardContent>
-        <div className={cn(['sm:text-2xl', valueStyles])}>
+        <div className={cn(["sm:text-2xl", valueStyles])}>
           {currency ? (
             <div>
               <span>$</span>

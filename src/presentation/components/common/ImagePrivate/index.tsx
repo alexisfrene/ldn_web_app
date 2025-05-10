@@ -1,11 +1,12 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@components';
-import { axiosInstance } from '@utils';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { axiosInstance, cn } from "@utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@ui/avatar";
+import { Skeleton } from "@ui/skeleton";
 
 interface TokenImageProps {
   url?: string;
-  variant: 'default' | 'avatar';
+  variant: "default" | "avatar";
   skeletonWidth?: number;
   skeletonHeight?: number;
   className?: string;
@@ -13,20 +14,23 @@ interface TokenImageProps {
 
 export const TokenImage: React.FC<TokenImageProps> = ({
   url,
-  variant = 'default',
-  skeletonWidth = variant === 'avatar' ? 60 : 230,
-  skeletonHeight = variant === 'avatar' ? 60 : 230,
-  className = '',
+  variant = "default",
+  skeletonWidth = variant === "avatar" ? 60 : 230,
+  skeletonHeight = variant === "avatar" ? 60 : 230,
+  className = "",
 }) => {
   const {
     data: imageSrc,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ['image', url],
+    queryKey: ["image", url],
     queryFn: async () => {
-      if (!url) throw new Error('URL no proporcionada');
-      const res = await axiosInstance.get(url, { responseType: 'blob' });
+      if (!url) throw new Error("URL no proporcionada");
+      const res = await axiosInstance.get(url, {
+        responseType: "blob",
+        timeout: 2000,
+      });
       return URL.createObjectURL(res.data);
     },
     staleTime: 5 * 60 * 1000,
@@ -35,15 +39,15 @@ export const TokenImage: React.FC<TokenImageProps> = ({
   });
 
   if (error) {
-    console.error('Error cargando imagen:', error);
-    return <div>Error al cargar la imagen</div>;
+    console.error("Error cargando imagen:", error);
+    return <img src="/default.png" alt="Imagen" className={className} />;
   }
 
   if (isLoading) {
-    const skeletonClass = variant === 'avatar' ? 'rounded-full' : '';
+    const skeletonClass = variant === "avatar" ? "rounded-full" : "";
     return (
       <Skeleton
-        className={`${skeletonClass} ${className}`}
+        className={cn([skeletonClass, className])}
         style={{ width: skeletonWidth, height: skeletonHeight }}
       />
     );
@@ -53,7 +57,7 @@ export const TokenImage: React.FC<TokenImageProps> = ({
     return <div>No se pudo cargar la imagen</div>;
   }
 
-  if (variant === 'avatar') {
+  if (variant === "avatar") {
     return (
       <Avatar className={className}>
         <AvatarImage src={imageSrc} alt="Avatar" />

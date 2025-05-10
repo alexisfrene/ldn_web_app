@@ -1,7 +1,9 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React from "react";
+import { Formik } from "formik";
+import { useCreateExpense } from "@hooks";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
 import {
-  Button,
   Dialog,
   DialogClose,
   DialogContent,
@@ -10,10 +12,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  InputWithLabel,
-  LoadingButton,
-} from '@components';
-import { useCreateExpense } from '@hooks';
+} from "@ui/dialog";
+import { LoadingButton } from "@ui/loading-button";
 
 export const CreateExpenseForm: React.FC = () => {
   const mutation = useCreateExpense();
@@ -27,7 +27,7 @@ export const CreateExpenseForm: React.FC = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Formik
-          initialValues={{ name: '', description: '' }}
+          initialValues={{ name: "", description: "" }}
           onSubmit={(values, formikHelpers) => {
             mutation.mutate(values);
             formikHelpers.resetForm();

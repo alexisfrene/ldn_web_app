@@ -1,4 +1,4 @@
-import { Pie, PieChart } from 'recharts';
+import { Pie, PieChart } from "recharts";
 import {
   Card,
   CardContent,
@@ -6,23 +6,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+} from "@ui/card";
+import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@components';
+} from "@ui/chart";
 
 const chartConfig = {
   total: {
-    label: 'total',
+    label: "total",
   },
   debt_paid: {
-    label: 'Pagado',
-    color: 'var(--chart-1)',
+    label: "Pagado",
+    color: "var(--chart-1)",
   },
   debt_unpaid: {
-    label: 'Pendiente',
-    color: 'var(--chart-2)',
+    label: "Pendiente",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig;
 

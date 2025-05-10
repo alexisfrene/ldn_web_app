@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
 export const Clock: React.FC = () => {
   const [time, setTime] = useState(new Date());
@@ -11,8 +11,8 @@ export const Clock: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const hours = time.getHours().toString().padStart(2, '0');
-  const minutes = time.getMinutes().toString().padStart(2, '0');
+  const hours = time.getHours().toString().padStart(2, "0");
+  const minutes = time.getMinutes().toString().padStart(2, "0");
 
   return (
     <div className="flex items-center justify-center">

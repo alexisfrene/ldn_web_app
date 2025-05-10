@@ -1,2 +1,2 @@
-export * from './NotCategories';
-export * from './NotSizes';
+export * from "./NotCategories";
+export * from "./NotSizes";

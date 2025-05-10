@@ -1,25 +1,21 @@
-import React from 'react';
-import { ErrorMessage, Formik } from 'formik';
-import {
-  Button,
-  CardTitle,
-  InputWithLabel,
-  Modal,
-  ModalCategory,
-  ModalSize,
-  FileUpload,
-  LoadingButton,
-} from '@components';
-import { useModal } from '@hooks';
+import React from "react";
+import { ErrorMessage, Formik } from "formik";
 import {
   SelectBrand,
   SelectProductAge,
   SelectProductGender,
   SelectProductStyle,
-} from '@selects';
-import handleSubmit from './handleSubmit';
-import initialValues from './initialValues';
-import validationSchema from './validationSchema';
+} from "@selects";
+import { useModal } from "@hooks";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Modal, ModalCategory, ModalSize } from "@common/Modal";
+import { Button } from "@ui/button";
+import { CardTitle } from "@ui/card";
+import { FileUpload } from "@ui/file-upload";
+import { LoadingButton } from "@ui/loading-button";
+import handleSubmit from "./handleSubmit";
+import initialValues from "./initialValues";
+import validationSchema from "./validationSchema";
 
 export const CreateProductForm: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
@@ -103,11 +99,11 @@ export const CreateProductForm: React.FC = () => {
             type="button"
             onClick={() =>
               showModal(
-                'Selecciona una categoría :',
+                "Selecciona una categoría :",
                 <ModalCategory
                   onRequestClose={hideModal}
                   handleChange={(value) => {
-                    setFieldValue('category', value);
+                    setFieldValue("category", value);
                     hideModal();
                   }}
                   values={values.category}
@@ -125,11 +121,11 @@ export const CreateProductForm: React.FC = () => {
             type="button"
             onClick={() =>
               showModal(
-                'Selecciona un talle/numero :',
+                "Selecciona un talle/numero :",
                 <ModalSize
                   onRequestClose={hideModal}
                   handleChange={(value) => {
-                    setFieldValue('size', value);
+                    setFieldValue("size", value);
                     hideModal();
                   }}
                   values={values.size}

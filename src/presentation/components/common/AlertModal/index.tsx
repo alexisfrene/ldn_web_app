@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,7 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@components';
+} from "@ui/alert-dialog";
 
 interface Props {
   title?: string;
@@ -21,11 +21,11 @@ interface Props {
 }
 
 export const AlertModal: React.FC<Props> = ({
-  title = '¿Estás seguro?',
-  description = 'Esta acción no se puede deshacer.',
+  title = "¿Estás seguro?",
+  description = "Esta acción no se puede deshacer.",
   trigger,
-  confirmText = 'Confirmar',
-  cancelText = 'Cancelar',
+  confirmText = "Confirmar",
+  cancelText = "Cancelar",
   onConfirm,
 }) => {
   return (

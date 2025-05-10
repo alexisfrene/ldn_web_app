@@ -1,11 +1,6 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  TokenImage,
-} from '@components';
+import { TokenImage } from "@common/ImagePrivate";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 
 interface Props {
   variation: Variants;

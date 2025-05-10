@@ -1,4 +1,4 @@
-import { calculateInterest } from '@utils';
+import { calculateInterest } from "@utils";
 
 type InterestProps = {
   totalAmountToPay: number;

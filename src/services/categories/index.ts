@@ -1,32 +1,35 @@
-import { toast } from 'sonner';
-import { axiosInstance, axiosInstanceFormData } from '@utils';
+import { toast } from "sonner";
+import { axiosInstance, axiosInstanceFormData } from "@utils";
 
 export const getAllCategories = async (): Promise<CategoryList | []> => {
   try {
-    const res = await axiosInstance.get('/categories');
-    console.log('categorias', res.data);
+    const res = await axiosInstance.get("/categories");
+
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al obtener las categorías');
-    console.error('ERROR IN getAllCategories:', error);
+    toast.error("Ocurrió un error al obtener las categorías");
+    console.error("ERROR IN getAllCategories:", error);
     return [];
   }
 };
 
-export const addCategoryConfig = async (data: any) => {
+export const addCategoryConfig = async (data: {
+  title: string;
+  values: { value: string; icon: { file: File } }[];
+}) => {
   try {
     const formData = new FormData();
-    formData.append('title', data.title);
+    formData.append("title", data.title);
     for (let index = 0; index < data.values.length; index++) {
-      formData.append('files', data.values[index].icon.file);
+      formData.append("files", data.values[index]?.icon.file || "");
       formData.append(`values[${index}]`, data.values[index].value);
     }
-    const res = await axiosInstanceFormData.post('/categories', formData);
-    toast.success('Categoría agregada con éxito!');
+    const res = await axiosInstanceFormData.post("/categories");
+    toast.success("Categoría agregada con éxito!");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al agregar la categoría');
-    console.error('ERROR IN addCategoryConfig:', error);
+    toast.error("Ocurrió un error al agregar la categoría");
+    console.error("ERROR IN addCategoryConfig:", error);
   }
 };
 
@@ -39,17 +42,17 @@ export const addValueCategory = async ({
 }) => {
   try {
     const formData = new FormData();
-    formData.append('value', values.value);
-    formData.append('files', values.icon!);
+    formData.append("value", values.value);
+    formData.append("files", values.icon!);
     const res = await axiosInstanceFormData.patch(
       `/categories/${category_id}?type=add`,
       formData,
     );
-    toast.success('Valor agregado con éxito!');
+    toast.success("Valor agregado con éxito!");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al agregar el valor a la categoría');
-    console.error('ERROR IN addValueCategory:', error);
+    toast.error("Ocurrió un error al agregar el valor a la categoría");
+    console.error("ERROR IN addValueCategory:", error);
   }
 };
 
@@ -62,16 +65,16 @@ export const modifyTitleCollectionCategory = async ({
 }) => {
   try {
     const formData = new FormData();
-    formData.append('title', title);
+    formData.append("title", title);
     const res = await axiosInstanceFormData.patch(
       `/categories/${category_id}?type=title`,
       formData,
     );
-    toast.success('Título editado con éxito!');
+    toast.success("Título editado con éxito!");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al editar el título de la categoría');
-    console.error('ERROR IN modifyTitleCollectionCategory:', error);
+    toast.error("Ocurrió un error al editar el título de la categoría");
+    console.error("ERROR IN modifyTitleCollectionCategory:", error);
   }
 };
 
@@ -86,11 +89,11 @@ export const deleteValueCategory = async ({
     const res = await axiosInstance.delete(
       `/categories/${category_id}?type=value&value_id=${category_value}`,
     );
-    toast.success('Valor eliminado con éxito!');
+    toast.success("Valor eliminado con éxito!");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al eliminar el valor de la categoría');
-    console.error('ERROR IN deleteValueCategory:', error);
+    toast.error("Ocurrió un error al eliminar el valor de la categoría");
+    console.error("ERROR IN deleteValueCategory:", error);
   }
 };
 
@@ -99,10 +102,10 @@ export const deleteCollectionCategory = async (category_id: number) => {
     const res = await axiosInstance.delete(
       `/categories/${category_id}?type=collection`,
     );
-    toast.success('Colección eliminada con éxito!');
+    toast.success("Colección eliminada con éxito!");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al eliminar la colección de la categoría');
-    console.error('ERROR IN deleteCollectionCategory:', error);
+    toast.error("Ocurrió un error al eliminar la colección de la categoría");
+    console.error("ERROR IN deleteCollectionCategory:", error);
   }
 };

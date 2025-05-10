@@ -1,24 +1,22 @@
-import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import React from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   changePreferenceProductView,
-  getAllProducts,
   getPreferenceProductView,
-} from '@services';
+} from "@services";
+import { useGetProducts, useIsMobile, useModal } from "@hooks";
+import { Modal } from "@common/Modal";
 import {
-  LoadingIndicator,
-  Modal,
   Menubar,
+  MenubarCheckboxItem,
   MenubarContent,
   MenubarMenu,
   MenubarSeparator,
   MenubarTrigger,
-  MenubarCheckboxItem,
-  Switch,
-} from '@components';
-import { useIsMobile, useModal } from '@hooks';
-import { ProductsGrid } from './ProductsGrid';
-import { ProductsTable } from './ProductTable';
+} from "@ui/menubar";
+import { Switch } from "@ui/switch";
+import { ProductsGrid } from "./ProductsGrid";
+import { ProductsTable } from "./ProductTable";
 
 const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
@@ -29,24 +27,18 @@ const ProductGrid: React.FC = () => {
     mutationFn: changePreferenceProductView,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['preference_product_view'],
+        queryKey: ["preference_product_view"],
       });
       queryClient.invalidateQueries({
-        queryKey: ['products'],
+        queryKey: ["products"],
       });
     },
   });
-  const { isPending, error, data } = useQuery<Product[]>({
-    queryKey: ['products'],
-    queryFn: () => getAllProducts(),
-  });
+  const { products } = useGetProducts();
   const preferments = useQuery({
-    queryKey: ['preference_product_view'],
+    queryKey: ["preference_product_view"],
     queryFn: getPreferenceProductView,
   });
-
-  if (isPending) return <LoadingIndicator isLoading />;
-  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div>
@@ -69,10 +61,10 @@ const ProductGrid: React.FC = () => {
         </MenubarMenu>
       </Menubar>
       {preferments.data || isMobile ? (
-        <ProductsGrid data={data} hideModal={hideModal} showModal={showModal} />
+        <ProductsGrid data={products} showModal={showModal} />
       ) : (
         <ProductsTable
-          data={data}
+          data={products}
           hideModal={hideModal}
           showModal={showModal}
         />

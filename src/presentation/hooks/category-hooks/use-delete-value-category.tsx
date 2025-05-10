@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { categoryKeys, deleteValueCategory } from '@services';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { categoryKeys, deleteValueCategory } from "@services";
 
 export const useDeleteValueCategory = () => {
   const queryClient = useQueryClient();

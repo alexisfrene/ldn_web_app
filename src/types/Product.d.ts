@@ -1,4 +1,4 @@
-type GenderProduct = 'male' | 'female' | 'unspecified';
+type GenderProduct = "male" | "female" | "unspecified";
 type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
 type values = {

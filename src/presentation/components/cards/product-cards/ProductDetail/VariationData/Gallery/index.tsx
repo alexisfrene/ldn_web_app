@@ -1,6 +1,7 @@
-import { TokenImage } from '@components';
-import { getVariationById } from '@services';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
+import { getVariationById } from "@services";
+import { TokenImage } from "@common/ImagePrivate";
+
 interface GalleryImagesVariantsProps {
   ImageVariantsId: string | null;
 }
@@ -10,16 +11,16 @@ export const Gallery: React.FC<GalleryImagesVariantsProps> = ({
 }) => {
   const [imageVariants, setImageVariants] = useState<Variants | null>(null);
 
-  const handleFetchImages = async () => {
+  const handleFetchImages = useCallback(async () => {
     if (ImageVariantsId) {
       const imageSelected = await getVariationById(ImageVariantsId);
       setImageVariants(imageSelected);
     }
-  };
+  }, [ImageVariantsId]);
 
   useEffect(() => {
     handleFetchImages();
-  }, []);
+  }, [handleFetchImages]);
 
   return (
     <div>

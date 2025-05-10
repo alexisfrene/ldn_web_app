@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Icons } from "@common/Icons";
+import { ImageLoader } from "@common/ImageLoader";
 import {
-  Icons,
-  AlertDialogHeader,
-  AlertDialogFooter,
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
   AlertDialogAction,
   AlertDialogCancel,
-  Input,
-  ImageLoader,
-} from '@components';
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@ui/alert-dialog";
+import { Input } from "@ui/input";
 
 interface Props {
   label: string;
@@ -73,10 +73,11 @@ export const AlertAddImage: React.FC<Props> = ({
         <AlertDialogFooter>
           <AlertDialogAction
             onClick={async () => {
+              if (!image?.file) return;
               onClick(
                 {
                   collectionId,
-                  image: image?.file!,
+                  image: image.file,
                 },
                 setImage,
               );

@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@components';
+} from "@ui/dialog";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -32,8 +32,8 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <DialogContent className={className}>
         <DialogHeader className="px-3">
-          <DialogTitle>{title || ''}</DialogTitle>
-          <DialogDescription>{description || ''}</DialogDescription>
+          <DialogTitle>{title || ""}</DialogTitle>
+          <DialogDescription>{description || ""}</DialogDescription>
         </DialogHeader>
         {children}
       </DialogContent>

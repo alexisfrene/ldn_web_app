@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
-import { AddCategoryForm, CreateCollectionCategoryForm } from '@forms';
-import {
-  AlertModal,
-  Avatar,
-  AvatarFallback,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Icons,
-  Input,
-  Label,
-  ScrollArea,
-  TokenImage,
-} from '@components';
+import React, { useState } from "react";
+import { AddCategoryForm, CreateCollectionCategoryForm } from "@forms";
 import {
   useChangeTitleCollectionCategory,
   useDeleteCollectionCategory,
   useDeleteValueCategory,
-} from '@hooks';
+} from "@hooks";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { Avatar, AvatarFallback } from "@ui/avatar";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
 
 interface Props {
   data: Category[];
@@ -29,7 +23,7 @@ interface Props {
 
 export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
   const [selected, setSelected] = useState<number>();
-  const [collectionTitle, setCollectionTitle] = useState<string>('');
+  const [collectionTitle, setCollectionTitle] = useState<string>("");
   const mutation = useChangeTitleCollectionCategory();
   const mutationDeleteCollection = useDeleteCollectionCategory();
   const mutationDeleteValue = useDeleteValueCategory();
@@ -142,7 +136,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   className="cursor-pointer bg-green-400 hover:bg-green-500"
                   onClick={() => {
                     return showSheet(
-                      'Agregar una categoría nueva',
+                      "Agregar una categoría nueva",
                       <AddCategoryForm category_id={category_id} />,
                     );
                   }}
@@ -158,7 +152,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
         variant="default"
         onClick={() => {
           return showSheet(
-            'Agregar una categoría nueva',
+            "Agregar una categoría nueva",
             <CreateCollectionCategoryForm />,
           );
         }}

@@ -1,5 +1,5 @@
-import { ChangePasswordForm } from '@forms';
-import React from 'react';
+import React from "react";
+import { ChangePasswordForm } from "@forms";
 
 export const ChangePassword: React.FC = () => {
   return <ChangePasswordForm />;

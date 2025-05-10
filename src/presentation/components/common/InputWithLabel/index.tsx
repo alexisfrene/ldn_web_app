@@ -1,8 +1,10 @@
-import React from 'react';
-import { Label, Input, Textarea } from '@components';
-import { cn } from '@utils';
-import { FormikValues, useFormikContext } from 'formik';
-import get from 'lodash/get';
+import React from "react";
+import { FormikValues, useFormikContext } from "formik";
+import get from "lodash/get";
+import { cn } from "@utils";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { Textarea } from "@ui/textarea";
 
 type Props = {
   onChange?: (
@@ -27,7 +29,7 @@ export const InputWithLabel: React.FC<Props> = ({
   onChange,
   label,
   name,
-  type = 'text',
+  type = "text",
   maxLength = 255,
   minLength = 1,
   min = undefined,
@@ -37,11 +39,11 @@ export const InputWithLabel: React.FC<Props> = ({
   step,
   htmlFor = name,
   textarea = false,
-  className = '',
+  className = "",
 }) => {
   const { setFieldValue, values, errors } = useFormikContext<FormikValues>();
 
-  const inputValue = get(values, name, '');
+  const inputValue = get(values, name, "");
 
   const handleChange = onChange
     ? onChange
@@ -49,10 +51,10 @@ export const InputWithLabel: React.FC<Props> = ({
         setFieldValue(name, e.target.value);
 
   return (
-    <div className={cn(['grid w-full items-center gap-1.5', className])}>
+    <div className={cn(["grid w-full items-center gap-1.5", className])}>
       <Label
         htmlFor={htmlFor}
-        className={get(errors, name) ? 'text-red-500' : ''}
+        className={get(errors, name) ? "text-red-500" : ""}
       >
         {label}
       </Label>
@@ -63,8 +65,8 @@ export const InputWithLabel: React.FC<Props> = ({
           placeholder={placeholder}
           className={
             get(errors, name)
-              ? 'focus-visible:ring-ring border-red-500 ring-0 focus-visible:ring-0'
-              : ''
+              ? "focus-visible:ring-ring border-red-500 ring-0 focus-visible:ring-0"
+              : ""
           }
           maxLength={maxLength}
           minLength={minLength}
@@ -78,8 +80,8 @@ export const InputWithLabel: React.FC<Props> = ({
           placeholder={placeholder}
           className={
             get(errors, name)
-              ? 'focus-visible:ring-ring border-red-500 ring-0 focus-visible:ring-0'
-              : ''
+              ? "focus-visible:ring-ring border-red-500 ring-0 focus-visible:ring-0"
+              : ""
           }
           maxLength={maxLength}
           minLength={minLength}
@@ -91,7 +93,7 @@ export const InputWithLabel: React.FC<Props> = ({
       )}
 
       <div className="h-2 text-xs font-extralight text-red-500">
-        {typeof errors[name] === 'string' ? errors[name] : null}
+        {typeof errors[name] === "string" ? errors[name] : null}
       </div>
     </div>
   );

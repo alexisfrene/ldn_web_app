@@ -1,0 +1,202 @@
+import { Project } from "ts-morph";
+
+const project = new Project({
+  tsConfigFilePath: "./tsconfig.json",
+});
+
+const componentMap = {
+  // 🧩 common
+  AlertModal: "@common/AlertModal",
+  AnimatedPagination: "@common/AnimatedPagination",
+  AppSidebar: "@common/AppSidebar",
+  CalculateInterest: "@common/CalculateInterest",
+  CheckAvailable: "@common/CheckAvailable",
+  Clock: "@common/Clock",
+  CounterButton: "@common/CounterButton",
+  DataTable: "@common/DataTable",
+  DropDown: "@common/DropDown",
+  GenerateInstallments: "@common/GenerateInstallments",
+  Icons: "@common/Icons",
+  ImageLoader: "@common/ImageLoader",
+  ImagePrivate: "@common/ImagePrivate",
+  ImageUploader: "@common/ImageUploader",
+  InputWithLabel: "@common/InputWithLabel",
+  Layout: "@common/Layout",
+  Loading: "@common/Loading",
+  MenuTabs: "@common/MenuTabs",
+  Modal: "@common/Modal",
+  ModeToggle: "@common/ModeToggle",
+  MovementList: "@common/MovementList",
+  PieChart: "@common/PieChart",
+  TabsComponent: "@common/TabsComponent",
+  ThemeProvider: "@common/ThemeProvider",
+  WithAuth: "@common/WithAuth",
+  LoadingIndicator: "@common/Loading",
+  TokenImage: "@common/ImagePrivate",
+  useTheme: "@common/ThemeProvider",
+  PieChartComponent: "@common/PieChart",
+  InputWithVerifyPassword: "@ui/input",
+  ProductDataTable: "@common/DataTable",
+  DropdownInput: "@common/DropDown",
+  ProductDataTable: "@common/DataTable",
+  // 🎨 ui
+  TabsContent: "@ui/tabs",
+  Toaster: "@ui/toaster",
+  Dialog: "@ui/dialog",
+  DialogContent: "@ui/dialog",
+  DialogDescription: "@ui/dialog",
+  DialogFooter: "@ui/dialog",
+  DialogHeader: "@ui/dialog",
+  DialogTitle: "@ui/dialog",
+  DialogTrigger: "@ui/dialog",
+  DialogClose: "@ui/dialog",
+  AlertDialogAction: "@ui/alert-dialog",
+  AlertDialogCancel: "@ui/alert-dialog",
+  AlertDialogContent: "@ui/alert-dialog",
+  AlertDialogFooter: "@ui/alert-dialog",
+  AlertDialogHeader: "@ui/alert-dialog",
+  AlertDialogTitle: "@ui/alert-dialog",
+  AlertDialogTrigger: "@ui/alert-dialog",
+  AlertDialog: "@ui/alert-dialog",
+  AlertDialogDescription: "@ui/alert-dialog",
+  AspectRatio: "@ui/aspect-ratio",
+  AuroraText: "@ui/aurora-text",
+  Avatar: "@ui/avatar",
+  AvatarFallback: "@ui/avatar",
+  AvatarImage: "@ui/avatar",
+  Badge: "@ui/badge",
+  BorderBeam: "@ui/border-beam",
+  Button: "@ui/button",
+  buttonVariants: "@ui/button",
+  Card: "@ui/card",
+  CardContent: "@ui/card",
+  CardDescription: "@ui/card",
+  CardFooter: "@ui/card",
+  CardHeader: "@ui/card",
+  CardTitle: "@ui/card",
+  Chart: "@ui/chart",
+  ChartContainer: "@ui/chart",
+  ChartTooltip: "@ui/chart",
+  ChartTooltipContent: "@ui/chart",
+  ChartConfig: "@ui/chart",
+  Checkbox: "@ui/checkbox",
+  DotPattern: "@ui/dot-pattern",
+  DropdownMenu: "@ui/dropdown-menu",
+  DropdownMenuContent: "@ui/dropdown-menu",
+  DropdownMenuItem: "@ui/dropdown-menu",
+  DropdownMenuLabel: "@ui/dropdown-menu",
+  DropdownMenuSeparator: "@ui/dropdown-menu",
+  DropdownMenuTrigger: "@ui/dropdown-menu",
+  DropdownMenuCheckboxItem: "@ui/dropdown-menu",
+  FileUpload: "@ui/file-upload",
+  GridPattern: "@ui/grid-pattern",
+  Input: "@ui/input",
+  Label: "@ui/label",
+  LoadingButton: "@ui/loading-button",
+  Menubar: "@ui/menubar",
+  MenubarContent: "@ui/menubar",
+  MenubarItem: "@ui/menubar",
+  MenubarMenu: "@ui/menubar",
+  MenubarSeparator: "@ui/menubar",
+  MenubarShortcut: "@ui/menubar",
+  MenubarTrigger: "@ui/menubar",
+  MenubarCheckboxItem: "@ui/menubar",
+  NumberTicker: "@ui/number-ticker",
+  Pagination: "@ui/pagination",
+  PaginationContent: "@ui/pagination",
+  PaginationEllipsis: "@ui/pagination",
+  PaginationItem: "@ui/pagination",
+  PaginationLink: "@ui/pagination",
+  PaginationNext: "@ui/pagination",
+  PaginationPrevious: "@ui/pagination",
+  Particles: "@ui/particles",
+  RadioGroup: "@ui/radio-group",
+  RadioGroupItem: "@ui/radio-group",
+  Resizable: "@ui/resizable",
+  ScrollArea: "@ui/scroll-area",
+  Select: "@ui/select",
+  SelectContent: "@ui/select",
+  SelectItem: "@ui/select",
+  SelectTrigger: "@ui/select",
+  SelectValue: "@ui/select",
+  SelectGroup: "@ui/select",
+  SelectLabel: "@ui/select",
+  Separator: "@ui/separator",
+  Sheet: "@ui/sheet",
+  SheetContent: "@ui/sheet",
+  SheetDescription: "@ui/sheet",
+  SheetHeader: "@ui/sheet",
+  SheetTitle: "@ui/sheet",
+  SheetTrigger: "@ui/sheet",
+  SheetFooter: "@ui/sheet",
+  SheetClose: "@ui/sheet",
+  Sidebar: "@ui/sidebar",
+  SidebarProvider: "@ui/sidebar",
+  SidebarTrigger: "@ui/sidebar",
+  SidebarContent: "@ui/sidebar",
+  SidebarFooter: "@ui/sidebar",
+  SidebarGroup: "@ui/sidebar",
+  SidebarHeader: "@ui/sidebar",
+  SidebarGroupContent: "@ui/sidebar",
+  SidebarMenu: "@ui/sidebar",
+  SidebarMenuItem: "@ui/sidebar",
+  SidebarMenuButton: "@ui/sidebar",
+  SidebarGroupLabel: "@ui/sidebar",
+  SidebarSeparator: "@ui/sidebar",
+  Skeleton: "@ui/skeleton",
+  Sonner: "@ui/sonner",
+  Switch: "@ui/switch",
+  Table: "@ui/table",
+  TableBody: "@ui/table",
+  TableCaption: "@ui/table",
+  TableCell: "@ui/table",
+  TableHead: "@ui/table",
+  TableHeader: "@ui/table",
+  TableRow: "@ui/table",
+  Tabs: "@ui/tabs",
+  TabsContent: "@ui/tabs",
+  TabsList: "@ui/tabs",
+  TabsTrigger: "@ui/tabs",
+  TextAnimate: "@ui/text-animate",
+  Textarea: "@ui/textarea",
+  Toggle: "@ui/toggle",
+  ToggleGroup: "@ui/toggle-group",
+  ToggleGroupItem: "@ui/toggle-group",
+  ToggleVariants: "@ui/toggleVariants",
+  Tooltip: "@ui/tooltip",
+  TooltipContent: "@ui/tooltip",
+  TooltipProvider: "@ui/tooltip",
+  TooltipTrigger: "@ui/tooltip",
+};
+
+project.getSourceFiles("src/**/*.tsx").forEach((sourceFile) => {
+  const importDeclarations = sourceFile.getImportDeclarations();
+
+  importDeclarations.forEach((importDecl) => {
+    if (importDecl.getModuleSpecifierValue() === "@components") {
+      const namedImports = importDecl.getNamedImports();
+
+      const newImports = {};
+
+      namedImports.forEach((namedImport) => {
+        const name = namedImport.getName();
+        const newPath = componentMap[name];
+        if (newPath) {
+          if (!newImports[newPath]) newImports[newPath] = [];
+          newImports[newPath].push(name);
+        }
+      });
+
+      Object.entries(newImports).forEach(([modulePath, identifiers]) => {
+        sourceFile.addImportDeclaration({
+          moduleSpecifier: modulePath,
+          namedImports: identifiers,
+        });
+      });
+
+      importDecl.remove();
+    }
+  });
+
+  sourceFile.saveSync();
+});

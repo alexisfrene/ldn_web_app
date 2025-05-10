@@ -2,20 +2,11 @@ import React, { Suspense } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { cn } from "@utils";
 import { useIsMobile } from "@hooks";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Icons,
-  Label,
-  LoadingIndicator,
-} from "@components";
+import { Card, CardContent, CardHeader } from "@ui/card";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@ui/dropdown-menu";
+import { Icons } from "@common/Icons";
+import { Label } from "@ui/label";
+import { LoadingIndicator } from "@common/Loading";
 
 interface TabsProps {
   tabs: {

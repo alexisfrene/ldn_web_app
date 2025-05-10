@@ -3,22 +3,10 @@ import { Formik } from "formik";
 import { cn, formattedValue } from "@utils";
 import { SelectFinancialAccount, SelectPaymentMethod } from "@selects";
 import { useMarkDebtPaid } from "@hooks";
-import {
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Label,
-} from "@components";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import { Label } from "@ui/label";
 
 interface Props {
   installment_id: number;

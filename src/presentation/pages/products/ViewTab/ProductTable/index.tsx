@@ -12,28 +12,14 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 import { ProductDetailCard } from "@cards";
-import {
-  Avatar,
-  AvatarFallback,
-  Button,
-  Checkbox,
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Icons,
-  Input,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  TokenImage,
-} from "@components";
+import { Avatar, AvatarFallback } from "@ui/avatar";
+import { Button } from "@ui/button";
+import { Checkbox } from "@ui/checkbox";
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@ui/dropdown-menu";
+import { Icons } from "@common/Icons";
+import { Input } from "@ui/input";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/table";
+import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   data: Product[];

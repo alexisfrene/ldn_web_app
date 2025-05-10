@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@utils";
 import { InfoCard } from "@cards";
 import { useGetMovementsPerMonth, useIsMobile } from "@hooks";
-import { Skeleton } from "@components";
+import { Skeleton } from "@ui/skeleton";
 
 export const CardsInfo: React.FC = () => {
   const isMobile = useIsMobile();

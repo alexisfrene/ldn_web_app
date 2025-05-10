@@ -2,22 +2,12 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { updatePrimaryImage } from "@services";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Icons,
-  ImageLoader,
-  ImageUploader,
-  LoadingIndicator,
-  TokenImage,
-} from "@components";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@ui/alert-dialog";
+import { Icons } from "@common/Icons";
+import { ImageLoader } from "@common/ImageLoader";
+import { ImageUploader } from "@common/ImageUploader";
+import { LoadingIndicator } from "@common/Loading";
+import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   product: Product;

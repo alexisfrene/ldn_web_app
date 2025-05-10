@@ -1,4 +1,3 @@
-import { Pie, PieChart } from "recharts";
 import {
   Card,
   CardContent,
@@ -6,11 +5,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+} from "@ui/card";
+import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@components";
+} from "@ui/chart";
+import { Pie, PieChart } from "recharts";
 
 const chartConfig = {
   total: {
@@ -33,7 +35,7 @@ type Props = {
   footer_description?: string;
   dataKey: string;
   nameKey: string;
-  chartData: { name: string; value: number }[];
+  chartData: any[];
 };
 
 export const PieChartComponent: React.FC<Props> = ({

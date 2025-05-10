@@ -1,12 +1,8 @@
 import React from "react";
 import { cn } from "@utils";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  DotPattern,
-  NumberTicker,
-} from "@components";
+import { Card, CardContent, CardHeader } from "@ui/card";
+import { DotPattern } from "@ui/dot-pattern";
+import { NumberTicker } from "@ui/number-ticker";
 
 interface Props {
   title: string;

@@ -3,20 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useFormikContext } from "formik";
 import { getDebts } from "@services";
 import { cn, formattedValue } from "@utils";
-import {
-  Badge,
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Label,
-  ScrollArea,
-} from "@components";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
 
 export const SelectDebt: React.FC = () => {
   const { setFieldValue } = useFormikContext();

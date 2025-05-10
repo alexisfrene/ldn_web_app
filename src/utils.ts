@@ -1,6 +1,7 @@
 import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { API_NAME } from "@config/environment";
 
 const getToken = () => {
   const localStorageUserData = localStorage.getItem("user-storage");
@@ -13,7 +14,7 @@ const getToken = () => {
 
 const axiosInstanceCreate = (contentType: string) => {
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_NAME,
+    baseURL: API_NAME,
     headers: {
       "Content-Type": contentType,
     },

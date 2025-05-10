@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { cn } from "@utils";
-import { Label, Tabs, TabsList, TabsTrigger } from "@components";
+import { Label } from "@ui/label";
+import { Tabs, TabsList, TabsTrigger } from "@ui/tabs";
 
 interface Props {
   tabs: string[];

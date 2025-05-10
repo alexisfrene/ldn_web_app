@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Button, Card, CardContent, CardTitle, ScrollArea } from "@components";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardTitle } from "@ui/card";
+import { ScrollArea } from "@ui/scroll-area";
 
 interface Item {
   title: string;

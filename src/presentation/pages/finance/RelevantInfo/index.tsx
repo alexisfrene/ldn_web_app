@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Clock,
-  MovementList,
-} from "@components";
 import { CardsInfo } from "./CardsInfo";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Clock } from "@common/Clock";
+import { MovementList } from "@common/MovementList";
 
 const RelevantInfo: React.FC = () => {
   return (

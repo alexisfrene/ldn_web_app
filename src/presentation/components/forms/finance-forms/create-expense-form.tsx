@@ -1,19 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
 import { useCreateExpense } from "@hooks";
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  InputWithLabel,
-  LoadingButton,
-} from "@components";
+import { Button } from "@ui/button";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { LoadingButton } from "@ui/loading-button";
 
 export const CreateExpenseForm: React.FC = () => {
   const mutation = useCreateExpense();

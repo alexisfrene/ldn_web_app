@@ -1,14 +1,12 @@
 import axios from "axios";
 import { toast } from "sonner";
+import { API_NAME } from "@config/environment";
 import { axiosInstance, axiosInstanceFormData } from "@utils";
 
 export const registerUser = async (values: registerUserValues) => {
   try {
     values.birthday_date = new Date(values.birthday_date);
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_NAME}/register`,
-      values,
-    );
+    const res = await axios.post(`${API_NAME}/register`, values);
 
     toast.success("Usuario registrado con éxito!");
     return res;
@@ -22,7 +20,7 @@ export const loginUser = async (values: loginUserValues) => {
   try {
     const { password, email_or_user } = values;
     const res = await axios.post(
-      `${import.meta.env.VITE_API_NAME}/login`,
+      `${API_NAME}/login`,
       { password, email_or_user },
       {
         headers: {

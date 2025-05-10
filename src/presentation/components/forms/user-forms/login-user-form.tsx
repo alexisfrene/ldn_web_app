@@ -3,7 +3,8 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "@services";
 import { useSessionStore } from "@global";
-import { Button, InputWithLabel } from "@components";
+import { Button } from "@ui/button";
+import { InputWithLabel } from "@common/InputWithLabel";
 
 export const LoginUserForm: React.FC = () => {
   const navigate = useNavigate();

@@ -1,8 +1,10 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
 import { ChoiceCategoryModal } from "@modals";
-import { FileUpload, InputWithLabel, LoadingButton } from "@components";
 import { handleSubmit } from "./handleSubmit";
+import { FileUpload } from "@ui/file-upload";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { LoadingButton } from "@ui/loading-button";
 
 export const CreateVariationForm: React.FC = () => {
   return (

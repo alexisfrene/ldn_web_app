@@ -2,14 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import { PaymentMethodCheckbox } from "@selects";
 import { useEditAccount } from "@hooks";
-import {
-  Button,
-  DialogClose,
-  DialogFooter,
-  Icons,
-  InputWithLabel,
-  Label,
-} from "@components";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Label } from "@ui/label";
 
 type Props = {
   name: string;

@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegisterUserForm } from "@forms";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  Particles,
-  useTheme,
-} from "@components";
+import { Card, CardContent, CardDescription, CardHeader } from "@ui/card";
+import { Particles } from "@ui/particles";
+import { useTheme } from "@common/ThemeProvider";
 
 const SingUpPage: React.FC = () => {
   const [color, setColor] = useState("#ffffff");

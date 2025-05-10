@@ -1,11 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getByIdProduct } from "@services";
-import { MenuTabs, ScrollArea, TabsContent } from "@components";
 import { PrimaryImage } from "./ProductDetail/PrimaryImage";
 import { ProductData } from "./ProductDetail/ProductData";
 import { StyleData } from "./ProductDetail/StyleData";
 import { VariationData } from "./ProductDetail/VariationData";
+import { MenuTabs } from "@common/MenuTabs";
+import { ScrollArea } from "@ui/scroll-area";
+import { TabsContent } from "@ui/tabs";
 
 const tabs = ["Información", "Estilos", "Imágenes"];
 

@@ -5,19 +5,14 @@ import {
   useChangeTitleCollectionSize,
   useDeleteCollectionSize,
 } from "@hooks";
-import {
-  AlertModal,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Icons,
-  Input,
-  Label,
-  ScrollArea,
-} from "@components";
+import { AlertModal } from "@common/AlertModal";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Icons } from "@common/Icons";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
 
 interface Props {
   data: Size[];

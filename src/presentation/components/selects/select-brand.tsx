@@ -4,14 +4,8 @@ import get from "lodash/get";
 import { cn } from "@utils";
 import { CreateBrandModal } from "@modals";
 import { useGetBrands } from "@hooks";
-import {
-  Label,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@components";
+import { Label } from "@ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/select";
 
 type Props = {
   label: string;

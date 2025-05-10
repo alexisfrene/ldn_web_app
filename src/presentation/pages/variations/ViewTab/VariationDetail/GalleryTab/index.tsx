@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addImageCollection } from "@services";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Icons,
-  LoadingIndicator,
-  TokenImage,
-} from "@components";
 import { AlertAddImage } from "./AlertAddImage";
 import { AlertRemoveImage } from "./AlertRemoveImage";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
+import { Icons } from "@common/Icons";
+import { LoadingIndicator } from "@common/Loading";
+import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   variation: Variants;

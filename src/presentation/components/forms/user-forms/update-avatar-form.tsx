@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import { changeAvatar } from "@services";
 import { useSessionStore } from "@global";
-import {
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogFooter,
-  ImageLoader,
-  ImageUploader,
-} from "@components";
+import { AlertDialogAction, AlertDialogCancel, AlertDialogFooter } from "@ui/alert-dialog";
+import { ImageLoader } from "@common/ImageLoader";
+import { ImageUploader } from "@common/ImageUploader";
 
 export const UpdateAvatarForm: React.FC = () => {
   const insertAvatar = useSessionStore((state) => state.insertAvatar);

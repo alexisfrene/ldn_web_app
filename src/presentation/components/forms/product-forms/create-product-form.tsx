@@ -1,4 +1,10 @@
 import React from "react";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Modal, ModalCategory, ModalSize } from "@common/Modal";
+import { Button } from "@ui/button";
+import { CardTitle } from "@ui/card";
+import { FileUpload } from "@ui/file-upload";
+import { LoadingButton } from "@ui/loading-button";
 import { ErrorMessage, Formik } from "formik";
 import {
   SelectBrand,
@@ -7,16 +13,6 @@ import {
   SelectProductStyle,
 } from "@selects";
 import { useModal } from "@hooks";
-import {
-  Button,
-  CardTitle,
-  FileUpload,
-  InputWithLabel,
-  LoadingButton,
-  Modal,
-  ModalCategory,
-  ModalSize,
-} from "@components";
 import handleSubmit from "./handleSubmit";
 import initialValues from "./initialValues";
 import validationSchema from "./validationSchema";

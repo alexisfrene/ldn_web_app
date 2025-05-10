@@ -1,16 +1,9 @@
 import React from "react";
 import { UpdateAvatarForm } from "@forms";
 import { useSessionStore } from "@global";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Icons,
-  TokenImage,
-} from "@components";
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@ui/alert-dialog";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
 
 export const EditAvatarModal: React.FC = () => {
   const avatar = useSessionStore((state) => state.avatar);

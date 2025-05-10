@@ -1,8 +1,8 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ProductDataTable } from "@components";
 import { handleSubmit } from "./handleSubmit";
 import { useForm } from "./useForm";
+import { ProductDataTable } from "@common/DataTable";
 
 export interface Props {
   price: string;

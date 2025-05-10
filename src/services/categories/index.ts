@@ -24,7 +24,7 @@ export const addCategoryConfig = async (data: {
       formData.append("files", data.values[index]?.icon.file || "");
       formData.append(`values[${index}]`, data.values[index].value);
     }
-    const res = await axiosInstanceFormData.post("/categories", formData);
+    const res = await axiosInstanceFormData.post("/categories");
     toast.success("Categoría agregada con éxito!");
     return res.data;
   } catch (error) {

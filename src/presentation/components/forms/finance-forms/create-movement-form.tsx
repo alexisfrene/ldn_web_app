@@ -2,8 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import { SelectMovementAccount, SelectMovementType } from "@selects";
 import { useCreateMovement } from "@hooks";
-import { Button, Icons, InputWithLabel, Label } from "@components";
 import { initialValues, movementSchema } from "./create-movement-utils";
+import { Button } from "@ui/button";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Label } from "@ui/label";
 
 export const CreateMovementForm: React.FC = () => {
   const mutation = useCreateMovement();

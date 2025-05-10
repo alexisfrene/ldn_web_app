@@ -1,5 +1,5 @@
 import React from "react";
-import { TabsComponent } from "@components";
+import { TabsComponent } from "@common/TabsComponent";
 
 const VariationsTabs = [
   {

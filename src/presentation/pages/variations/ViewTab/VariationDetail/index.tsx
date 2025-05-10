@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getVariationById } from "@services";
-import {
-  LoadingIndicator,
-  MenuTabs,
-  ScrollArea,
-  TabsContent,
-} from "@components";
 import { CollectionTab } from "./CollectionTab";
 import { GalleryTab } from "./GalleryTab";
+import { LoadingIndicator } from "@common/Loading";
+import { MenuTabs } from "@common/MenuTabs";
+import { ScrollArea } from "@ui/scroll-area";
+import { TabsContent } from "@ui/tabs";
 
 const tabs = ["Ver imágenes", "Agregar una colección"];
 

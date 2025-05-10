@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { ErrorMessage, FormikValues, useFormikContext } from "formik";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
-import { Button, Input } from "@components";
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
 
 interface Props {
   name: string;

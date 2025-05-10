@@ -3,24 +3,12 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@utils";
 import logo from "@assets/ldn_icon-70x70.webp";
 import { useAvatar } from "@hooks";
-import {
-  GridPattern,
-  Icons,
-  Label,
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarSeparator,
-  Skeleton,
-  TokenImage,
-} from "@components";
+import { GridPattern } from "@ui/grid-pattern";
+import { Icons } from "@common/Icons";
+import { Label } from "@ui/label";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from "@ui/sidebar";
+import { Skeleton } from "@ui/skeleton";
+import { TokenImage } from "@common/ImagePrivate";
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();

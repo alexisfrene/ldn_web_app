@@ -17,7 +17,7 @@ export const handleSubmit = async ({
       category_value: values?.category?.category_value_id || "",
       size_id: values?.size?.size_id || "",
       size_value: values?.size?.size_value_id || "",
-    };
+    } as Details;
     await updateProductData({
       newDetails: data,
       product_id: values.product_id,

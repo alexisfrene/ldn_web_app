@@ -1,15 +1,9 @@
 import React from "react";
 import { useFormikContext } from "formik";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  InputWithLabel,
-  Label,
-  RadioGroup,
-  RadioGroupItem,
-} from "@components";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { Label } from "@ui/label";
+import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
 
 type Props = {
   installment_number: number;

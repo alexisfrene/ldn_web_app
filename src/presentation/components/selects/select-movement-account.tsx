@@ -6,7 +6,7 @@ import {
   SelectPaymentMethod,
   SelectTag,
 } from "@selects";
-import { Label } from "@components";
+import { Label } from "@ui/label";
 
 export const SelectMovementAccount: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();

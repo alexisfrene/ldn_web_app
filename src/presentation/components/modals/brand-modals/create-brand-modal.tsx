@@ -1,15 +1,8 @@
 import React from "react";
 import { CreateBrandForm } from "@forms";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Icons,
-} from "@components";
+import { Button } from "@ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import { Icons } from "@common/Icons";
 
 export const CreateBrandModal: React.FC = () => {
   return (

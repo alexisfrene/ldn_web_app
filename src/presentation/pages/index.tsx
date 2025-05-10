@@ -1,10 +1,10 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
-import { WithAuth } from "@components";
 import Expense from "./finance/Expense";
 import RelevantInfo from "./finance/RelevantInfo";
 import ProductGrid from "./products/ViewTab";
 import VariantsGrid from "./variations/ViewTab";
+import { WithAuth } from "@common/WithAuth";
 
 const FilingPage = lazy(() => import("./filing"));
 const SignUpPage = lazy(() => import("./sign"));

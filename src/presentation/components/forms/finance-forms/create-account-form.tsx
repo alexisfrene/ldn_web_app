@@ -2,14 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import { PaymentMethodCheckbox } from "@selects";
 import { useCreateAccount } from "@hooks";
-import {
-  Button,
-  CheckAvailable,
-  DialogClose,
-  DialogFooter,
-  Icons,
-  InputWithLabel,
-} from "@components";
+import { Button } from "@ui/button";
+import { CheckAvailable } from "@common/CheckAvailable";
+import { DialogClose, DialogFooter } from "@ui/dialog";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
 
 export const FormCreateAccount: React.FC = () => {
   const mutation = useCreateAccount();

@@ -19,7 +19,9 @@
       "@global": ["./src/presentation/global"],
       "@assets/*": ["./src/presentation/assets/*"],
       "@hooks": ["./src/presentation/hooks"],
-      "@components": ["./src/presentation/components"],
+      "@ui/*": ["./src/presentation/components/ui/*"],
+      "@common/*": ["./src/presentation/components/common/*"],
+      "@components/*": ["./src/presentation/components/*"],
       "@presentation/*": ["./src/presentation/*"]
     },
     /* Bundler mode */
@@ -37,5 +39,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
+  "exclude": ["node_modules", "replace-imports.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

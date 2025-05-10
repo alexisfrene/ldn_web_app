@@ -1,8 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
 import { useCreatePaymentMethod } from "@hooks";
-import { Button, DialogClose, Icons, InputWithLabel } from "@components";
 import { paymentMethodSchema } from "./validations";
+import { Button } from "@ui/button";
+import { DialogClose } from "@ui/dialog";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
 
 export const FormCreatePaymentMethod: React.FC = () => {
   const mutation = useCreatePaymentMethod();

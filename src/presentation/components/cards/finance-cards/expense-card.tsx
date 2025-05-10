@@ -2,17 +2,11 @@ import React from "react";
 import { formattedValue } from "@utils";
 import { EditExpenseModal, ExpenseDetailModal } from "@modals";
 import { useDeleteExpense, useIsMobile } from "@hooks";
-import {
-  AlertModal,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Icons,
-  Label,
-  Separator,
-} from "@components";
+import { AlertModal } from "@common/AlertModal";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
+import { Icons } from "@common/Icons";
+import { Label } from "@ui/label";
+import { Separator } from "@ui/separator";
 
 interface Props {
   description: string;

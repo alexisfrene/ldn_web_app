@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { getAllPaymentMethodForAccount } from "@services";
-import { Badge, Label } from "@components";
+import { Badge } from "@ui/badge";
+import { Label } from "@ui/label";
 
 export const SelectPaymentMethod: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { Button } from "@components";
+import { Button } from "@ui/button";
 
 type Props = {
   onIncrease: (number: number) => void;

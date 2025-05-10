@@ -1,13 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
 import { useCreateBrand } from "@hooks";
-import {
-  Button,
-  DialogClose,
-  DialogFooter,
-  InputWithLabel,
-  LoadingButton,
-} from "@components";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { LoadingButton } from "@ui/loading-button";
 
 export const CreateBrandForm: React.FC = () => {
   const mutation = useCreateBrand();

@@ -1,16 +1,7 @@
 import React from "react";
 import { SelectCategory } from "@selects";
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@components";
+import { Button } from "@ui/button";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
 
 export const ChoiceCategoryModal: React.FC = () => {
   return (

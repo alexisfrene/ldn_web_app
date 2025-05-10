@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import { Icons } from "@common/Icons";
+import { ImageUploader } from "@common/ImageUploader";
+import { LoadingIndicator } from "@common/Loading";
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { Separator } from "@ui/separator";
 import { Formik } from "formik";
 import { useCreateCategoryCollection } from "@hooks";
-import {
-  Button,
-  Icons,
-  ImageUploader,
-  Input,
-  Label,
-  LoadingIndicator,
-  Separator,
-} from "@components";
 
 type IconProps = {
   url: string;
@@ -37,8 +35,6 @@ export const CreateCollectionCategoryForm: React.FC = () => {
         mutation.mutate({
           title: values.title,
           values: values.values,
-          category_id: "",
-          user_id: "",
         });
         setTimeout(() => {
           setValue("");

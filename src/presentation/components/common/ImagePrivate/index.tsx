@@ -1,7 +1,8 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance, cn } from "@utils";
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from "@components";
+import { Avatar, AvatarFallback, AvatarImage } from "@ui/avatar";
+import { Skeleton } from "@ui/skeleton";
 
 interface TokenImageProps {
   url?: string;

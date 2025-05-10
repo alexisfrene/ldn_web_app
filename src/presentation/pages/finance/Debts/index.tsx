@@ -1,8 +1,11 @@
 import React from "react";
 import { CardDebt, InfoCard } from "@cards";
 import { useGetDebts } from "@hooks";
-import { Icons, Label, PieChartComponent, Skeleton } from "@components";
 import { CreateDebtModal } from "@presentation/components/modals";
+import { Icons } from "@common/Icons";
+import { Label } from "@ui/label";
+import { PieChartComponent } from "@common/PieChart";
+import { Skeleton } from "@ui/skeleton";
 
 const Debts: React.FC = () => {
   const { debts, isLoading } = useGetDebts();

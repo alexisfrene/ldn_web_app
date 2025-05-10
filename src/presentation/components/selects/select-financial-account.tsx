@@ -3,7 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { getAllFinancialAccount } from "@services";
 import { formattedValue } from "@utils";
-import { Badge, Label } from "@components";
+import { Badge } from "@ui/badge";
+import { Label } from "@ui/label";
 
 export const SelectFinancialAccount: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();

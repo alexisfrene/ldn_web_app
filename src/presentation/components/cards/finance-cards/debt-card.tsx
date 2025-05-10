@@ -3,15 +3,9 @@ import { formattedValue } from "@utils";
 import { CardFee } from "@cards";
 import { FormEditDebt } from "@forms";
 import { useDeleteDebt, useIsMobile } from "@hooks";
-import {
-  AlertModal,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Icons,
-} from "@components";
+import { AlertModal } from "@common/AlertModal";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
+import { Icons } from "@common/Icons";
 
 interface Props {
   debt_id: UUID;

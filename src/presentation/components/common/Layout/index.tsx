@@ -1,12 +1,12 @@
-import React, { ReactNode, Suspense } from 'react';
+import React, { ReactNode, Suspense } from "react";
+import { useAvatar } from "@hooks";
 import {
   ModeToggle,
   SidebarProvider,
   SidebarTrigger,
   Skeleton,
-} from '@components';
-import { AppSidebar } from '../AppSidebar';
-import { useAvatar } from '@hooks';
+} from "@components";
+import { AppSidebar } from "../AppSidebar";
 
 interface LayoutProps {
   children: ReactNode;

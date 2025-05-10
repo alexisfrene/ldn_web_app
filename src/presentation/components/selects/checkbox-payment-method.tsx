@@ -1,8 +1,8 @@
-import React, { useId } from 'react';
-import { FormikValues, useFormikContext } from 'formik';
-import { Checkbox, Label } from '@components';
-import { CreatePaymentMethodModal } from '@modals';
-import { useGetPaymentMethods } from '@hooks';
+import React, { useId } from "react";
+import { FormikValues, useFormikContext } from "formik";
+import { CreatePaymentMethodModal } from "@modals";
+import { useGetPaymentMethods } from "@hooks";
+import { Checkbox, Label } from "@components";
 
 export const PaymentMethodCheckbox: React.FC = () => {
   const id = useId();
@@ -30,13 +30,13 @@ export const PaymentMethodCheckbox: React.FC = () => {
                 )}
                 onCheckedChange={(check) => {
                   if (check) {
-                    setFieldValue('payment_method', [
+                    setFieldValue("payment_method", [
                       ...values.payment_method,
                       account.payment_method_id,
                     ]);
                   } else {
                     setFieldValue(
-                      'payment_method',
+                      "payment_method",
                       values.payment_method.filter(
                         (item: number) => item !== account.payment_method_id,
                       ),

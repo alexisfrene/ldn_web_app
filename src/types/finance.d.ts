@@ -1,4 +1,4 @@
-import { UUID } from '.';
+import { UUID } from ".";
 
 type AddMovementProps = {
   id?: UUID;

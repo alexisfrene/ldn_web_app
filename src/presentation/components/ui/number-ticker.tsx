@@ -1,13 +1,12 @@
-'use client';
+"use client";
 
-import { useInView, useMotionValue, useSpring } from 'motion/react';
-import { ComponentPropsWithoutRef, useEffect, useRef } from 'react';
+import { ComponentPropsWithoutRef, useEffect, useRef } from "react";
+import { useInView, useMotionValue, useSpring } from "motion/react";
+import { cn } from "@utils";
 
-import { cn } from '@utils';
-
-interface NumberTickerProps extends ComponentPropsWithoutRef<'span'> {
+interface NumberTickerProps extends ComponentPropsWithoutRef<"span"> {
   value: number;
-  direction?: 'up' | 'down';
+  direction?: "up" | "down";
   delay?: number; // delay in s
   decimalPlaces?: number;
   damping?: number;
@@ -16,7 +15,7 @@ interface NumberTickerProps extends ComponentPropsWithoutRef<'span'> {
 
 export function NumberTicker({
   value,
-  direction = 'up',
+  direction = "up",
   delay = 0,
   className,
   decimalPlaces = 0,
@@ -25,25 +24,25 @@ export function NumberTicker({
   ...props
 }: NumberTickerProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(direction === 'down' ? value : 0);
+  const motionValue = useMotionValue(direction === "down" ? value : 0);
   const springValue = useSpring(motionValue, {
     damping,
     stiffness,
   });
-  const isInView = useInView(ref, { once: true, margin: '0px' });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
     isInView &&
       setTimeout(() => {
-        motionValue.set(direction === 'down' ? 0 : value);
+        motionValue.set(direction === "down" ? 0 : value);
       }, delay * 1000);
   }, [motionValue, isInView, delay, value, direction]);
 
   useEffect(
     () =>
-      springValue.on('change', (latest) => {
+      springValue.on("change", (latest) => {
         if (ref.current) {
-          ref.current.textContent = Intl.NumberFormat('en-US', {
+          ref.current.textContent = Intl.NumberFormat("en-US", {
             minimumFractionDigits: decimalPlaces,
             maximumFractionDigits: decimalPlaces,
           }).format(Number(latest.toFixed(decimalPlaces)));
@@ -56,7 +55,7 @@ export function NumberTicker({
     <span
       ref={ref}
       className={cn(
-        'inline-block tabular-nums tracking-wider text-black dark:text-white',
+        "inline-block tabular-nums tracking-wider text-black dark:text-white",
         className,
       )}
       {...props}

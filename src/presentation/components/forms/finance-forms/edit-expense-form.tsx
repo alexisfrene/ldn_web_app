@@ -1,6 +1,7 @@
-import React from 'react';
-import { Form, Formik } from 'formik';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import { editExpense } from "@services";
 import {
   Button,
   DialogClose,
@@ -8,8 +9,7 @@ import {
   Icons,
   InputWithLabel,
   LoadingIndicator,
-} from '@components';
-import { editExpense } from '@services';
+} from "@components";
 
 interface Props {
   name: string;
@@ -27,7 +27,7 @@ export const EditExpenseForm: React.FC<Props> = ({
     mutationFn: editExpense,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['expenses'],
+        queryKey: ["expenses"],
       });
     },
   });

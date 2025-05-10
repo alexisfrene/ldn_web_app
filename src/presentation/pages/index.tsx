@@ -1,26 +1,26 @@
-import { lazy } from 'react';
-import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
-import { WithAuth } from '@components';
-import Expense from './finance/Expense';
-import RelevantInfo from './finance/RelevantInfo';
-import ProductGrid from './products/ViewTab';
-import VariantsGrid from './variations/ViewTab';
+import { lazy } from "react";
+import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
+import { WithAuth } from "@components";
+import Expense from "./finance/Expense";
+import RelevantInfo from "./finance/RelevantInfo";
+import ProductGrid from "./products/ViewTab";
+import VariantsGrid from "./variations/ViewTab";
 
-const FilingPage = lazy(() => import('./filing'));
-const SignUpPage = lazy(() => import('./sign'));
-const HomePage = lazy(() => import('./home'));
-const LoginPage = lazy(() => import('./login'));
-const ErrorPage = lazy(() => import('./error'));
-const ConfigPage = lazy(() => import('./config'));
-const FinancePage = lazy(() => import('./finance'));
-const ProductsPage = lazy(() => import('./products'));
-const VariationsPage = lazy(() => import('./variations'));
+const FilingPage = lazy(() => import("./filing"));
+const SignUpPage = lazy(() => import("./sign"));
+const HomePage = lazy(() => import("./home"));
+const LoginPage = lazy(() => import("./login"));
+const ErrorPage = lazy(() => import("./error"));
+const ConfigPage = lazy(() => import("./config"));
+const FinancePage = lazy(() => import("./finance"));
+const ProductsPage = lazy(() => import("./products"));
+const VariationsPage = lazy(() => import("./variations"));
 
-const Movement = lazy(() => import('./finance/Movement'));
-const AccountFinancial = lazy(() => import('./finance/AccountFinancial'));
-const Debts = lazy(() => import('./finance/Debts'));
-const CreateProducts = lazy(() => import('./products/CreateProductTab'));
-const CreateVariation = lazy(() => import('./variations/CreateVariationTab'));
+const Movement = lazy(() => import("./finance/Movement"));
+const AccountFinancial = lazy(() => import("./finance/AccountFinancial"));
+const Debts = lazy(() => import("./finance/Debts"));
+const CreateProducts = lazy(() => import("./products/CreateProductTab"));
+const CreateVariation = lazy(() => import("./variations/CreateVariationTab"));
 
 const FinanceRoutes = [
   {
@@ -28,23 +28,23 @@ const FinanceRoutes = [
     element: <Navigate to="/app/finance/info" replace />,
   },
   {
-    path: 'info',
+    path: "info",
     element: <RelevantInfo />,
   },
   {
-    path: 'movement',
+    path: "movement",
     element: <Movement />,
   },
   {
-    path: 'financial-account',
+    path: "financial-account",
     element: <AccountFinancial />,
   },
   {
-    path: 'debts',
+    path: "debts",
     element: <Debts />,
   },
   {
-    path: 'expenses',
+    path: "expenses",
     element: <Expense />,
   },
 ];
@@ -54,11 +54,11 @@ const ProductsRoutes = [
     element: <Navigate to="/app/products/view" replace />,
   },
   {
-    path: 'view',
+    path: "view",
     element: <ProductGrid />,
   },
   {
-    path: 'create-products',
+    path: "create-products",
     element: <CreateProducts />,
   },
 ];
@@ -68,23 +68,23 @@ const VariationsRoutes = [
     element: <Navigate to="/app/variations/view" replace />,
   },
   {
-    path: 'view',
+    path: "view",
     element: <VariantsGrid />,
   },
   {
-    path: 'create-variations',
+    path: "create-variations",
     element: <CreateVariation />,
   },
 ];
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: <FilingPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/app',
+    path: "/app",
     element: (
       <WithAuth>
         <HomePage />
@@ -98,36 +98,36 @@ const routes: RouteObject[] = [
         element: <Navigate to="/app/finance" replace />,
       },
       {
-        path: 'finance',
+        path: "finance",
         element: <FinancePage />,
         children: FinanceRoutes,
       },
       {
-        path: 'schedule',
+        path: "schedule",
         element: <div className="mt-96 text-center">Próximamente ...</div>,
       },
       {
-        path: 'products',
+        path: "products",
         element: <ProductsPage />,
         children: ProductsRoutes,
       },
       {
-        path: 'variations',
+        path: "variations",
         element: <VariationsPage />,
         children: VariationsRoutes,
       },
       {
-        path: 'config',
+        path: "config",
         element: <ConfigPage />,
       },
     ],
   },
   {
-    path: '/login',
+    path: "/login",
     element: <LoginPage />,
   },
   {
-    path: '/signup',
+    path: "/signup",
     element: <SignUpPage />,
   },
 ];

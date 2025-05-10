@@ -1,7 +1,10 @@
-import React from 'react';
-import { Form, Formik } from 'formik';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import React from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import { editDebt, getDebtById } from "@services";
+import { useLoading } from "@hooks";
 import {
+  CalculateInterest,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -12,14 +15,11 @@ import {
   DropdownInput,
   Icons,
   InputWithLabel,
+  LoadingButton,
   ScrollArea,
   Skeleton,
-  CalculateInterest,
-  LoadingButton,
-} from '@components';
-import { editDebt, getDebtById } from '@services';
-import { useLoading } from '@hooks';
-import { paymentFrequency } from '@presentation/mocks';
+} from "@components";
+import { paymentFrequency } from "@presentation/mocks";
 
 interface Props {
   debt_id: UUID;
@@ -31,10 +31,10 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
     mutationFn: editDebt,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['debts', debt_id],
+        queryKey: ["debts", debt_id],
       });
       queryClient.invalidateQueries({
-        queryKey: ['debts'],
+        queryKey: ["debts"],
       });
     },
   });
@@ -45,7 +45,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
     isSuccess,
     error,
   } = useQuery({
-    queryKey: ['debts', debt_id],
+    queryKey: ["debts", debt_id],
     queryFn: () => getDebtById({ debt_id }),
   });
 
@@ -66,7 +66,7 @@ export const FormEditDebt: React.FC<Props> = ({ debt_id }) => {
   if (isSuccess) {
     doneLoading();
   }
-  if (error) return 'An error has occurred: ';
+  if (error) return "An error has occurred: ";
 
   return (
     <Dialog>

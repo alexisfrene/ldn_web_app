@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 interface ModalState {
   isOpenModal: boolean;
@@ -15,7 +15,7 @@ type ModalHook = ModalState & ModalActions;
 
 export function useModal(): ModalHook {
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState<React.ReactNode | null>(null);
 
   const showModalFn = useCallback(
@@ -29,7 +29,7 @@ export function useModal(): ModalHook {
 
   const hideModal = useCallback(() => {
     setIsOpen(false);
-    setTitle('');
+    setTitle("");
     setContent(null);
   }, [setIsOpen]);
 

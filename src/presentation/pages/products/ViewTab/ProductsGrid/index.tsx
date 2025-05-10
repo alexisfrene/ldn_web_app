@@ -1,6 +1,6 @@
-import React from 'react';
-import { ProductCard, ProductDetailCard } from '@cards';
-import { useDeleteProduct } from '@hooks';
+import React from "react";
+import { ProductCard, ProductDetailCard } from "@cards";
+import { useDeleteProduct } from "@hooks";
 
 interface Props {
   data: Product[];
@@ -19,7 +19,7 @@ export const ProductsGrid: React.FC<Props> = ({ data, showModal }) => {
               key={index}
               handleClick={() => {
                 showModal(
-                  '',
+                  "",
                   <ProductDetailCard product_id={product.product_id!} />,
                 );
               }}

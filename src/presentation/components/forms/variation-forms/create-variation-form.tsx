@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { ErrorMessage, Formik } from 'formik';
+import React, { useState } from "react";
+import { ErrorMessage, Formik } from "formik";
+import { useModal } from "@hooks";
 import {
   Button,
   CardTitle,
   Icons,
   ImageUploader,
-  Separator,
   InputWithLabel,
   Modal,
   ModalCategory,
-} from '@components';
-import { useModal } from '@hooks';
-import { handleSubmit } from './handleSubmit';
+  Separator,
+} from "@components";
+import { handleSubmit } from "./handleSubmit";
 
 export const CreateVariationForm: React.FC = () => {
   const [images, setImages] = useState<ImagesValues[]>([]);
@@ -21,9 +21,9 @@ export const CreateVariationForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        category: { category_id: '', category_value_id: '' },
-        title: '',
-        label: '',
+        category: { category_id: "", category_value_id: "" },
+        title: "",
+        label: "",
         images: [] as ImagesValues[],
       }}
       onSubmit={async (values, formikHelpers) => {
@@ -51,7 +51,7 @@ export const CreateVariationForm: React.FC = () => {
                       const res = values.images.filter(
                         (e: { id: string }) => e?.id !== value.id,
                       );
-                      setFieldValue('images', res);
+                      setFieldValue("images", res);
                       setImages(res);
                     }}
                   />
@@ -69,11 +69,11 @@ export const CreateVariationForm: React.FC = () => {
             type="button"
             onClick={() =>
               showModal(
-                'Selecciona una categoría :',
+                "Selecciona una categoría :",
                 <ModalCategory
                   onRequestClose={hideModal}
                   handleChange={(value) => {
-                    setFieldValue('category', value);
+                    setFieldValue("category", value);
                     hideModal();
                   }}
                   values={values.category}
@@ -93,7 +93,7 @@ export const CreateVariationForm: React.FC = () => {
             disabled={isSubmitting}
             onClick={() => handleSubmit()}
           >
-            <div className={`${isSubmitting ? 'relative' : 'hidden'} mx-1 w-5`}>
+            <div className={`${isSubmitting ? "relative" : "hidden"} mx-1 w-5`}>
               {isSubmitting && (
                 <Icons type="refresh" className="h-5 animate-spin" />
               )}

@@ -1,5 +1,5 @@
-import React from 'react';
-import { HashLoader } from './HashLoader';
+import React from "react";
+import { HashLoader } from "./HashLoader";
 
 interface Props {
   isLoading: boolean;

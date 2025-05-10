@@ -1,18 +1,18 @@
-import React, { ReactNode } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { ReactNode } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { removeImageCollection } from "@services";
 import {
-  Icons,
-  AlertDialogHeader,
-  AlertDialogFooter,
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Icons,
   ImageLoader,
-} from '@components';
-import { removeImageCollection } from '@services';
+} from "@components";
 
 interface Props {
   label: string;
@@ -36,7 +36,7 @@ export const AlertRemoveImage: React.FC<Props> = ({
     mutationFn: removeImageCollection,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['variation_details', variationId],
+        queryKey: ["variation_details", variationId],
       });
     },
   });

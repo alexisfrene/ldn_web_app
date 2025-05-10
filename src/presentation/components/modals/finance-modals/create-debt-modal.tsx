@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { CreateDebtForm } from "@forms";
 import {
   Button,
   Dialog,
@@ -7,9 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@components';
-
-import { CreateDebtForm } from '@forms';
+} from "@components";
 
 export const CreateDebtModal: React.FC = () => {
   return (

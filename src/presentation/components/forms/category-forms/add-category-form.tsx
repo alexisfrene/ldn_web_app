@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
-import { Label, Input, ImageUploader, Button } from '@components';
-import { useAddCategoryValue } from '@hooks';
+import React, { useState } from "react";
+import { Formik } from "formik";
+import { useAddCategoryValue } from "@hooks";
+import { Button, ImageUploader, Input, Label } from "@components";
 
 interface Props {
   category_id: number;
@@ -13,9 +13,9 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
   return (
     <Formik
       initialValues={{
-        value: '',
+        value: "",
         icon: null as File | null,
-        icon_url: '',
+        icon_url: "",
       }}
       onSubmit={(values, formikHelpers) => {
         mutation.mutate({
@@ -34,7 +34,7 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
             type="text"
             minLength={3}
             value={values.value}
-            onChange={(e) => setFieldValue('value', e.target.value)}
+            onChange={(e) => setFieldValue("value", e.target.value)}
           />
           <Label>Ingrese un icono :</Label>
           <ImageUploader
@@ -42,15 +42,15 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
             images={image}
             setImages={setImage}
             onChange={() => {
-              setFieldValue('icon', image[0].file);
-              setFieldValue('icon_url', image[0].url);
+              setFieldValue("icon", image[0].file);
+              setFieldValue("icon_url", image[0].url);
               setImage([]);
             }}
           />
           <div className="flex flex-col items-center rounded-lg bg-white p-4 shadow-md">
             <p className="mb-2 text-lg font-semibold text-gray-700">Valor:</p>
             <p className="text-md text-gray-500 italic">
-              {values.value || 'Ej: Zapatillas deportivas'}
+              {values.value || "Ej: Zapatillas deportivas"}
             </p>
             {values.icon && (
               <div className="mt-4">

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSessionStore } from '@global';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSessionStore } from "@global";
 
 export const WithAuth: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -9,7 +9,7 @@ export const WithAuth: React.FC<{ children: React.ReactNode }> = ({
   const token = useSessionStore((state) => state.session_token);
   useEffect(() => {
     if (!token || token.length === 0) {
-      setTimeout(() => navigate('/'), 2000);
+      setTimeout(() => navigate("/"), 2000);
     }
   }, [token]);
 

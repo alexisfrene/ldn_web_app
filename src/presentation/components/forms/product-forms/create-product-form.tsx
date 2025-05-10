@@ -1,25 +1,25 @@
-import React from 'react';
-import { ErrorMessage, Formik } from 'formik';
-import {
-  Button,
-  CardTitle,
-  InputWithLabel,
-  Modal,
-  ModalCategory,
-  ModalSize,
-  FileUpload,
-  LoadingButton,
-} from '@components';
-import { useModal } from '@hooks';
+import React from "react";
+import { ErrorMessage, Formik } from "formik";
 import {
   SelectBrand,
   SelectProductAge,
   SelectProductGender,
   SelectProductStyle,
-} from '@selects';
-import handleSubmit from './handleSubmit';
-import initialValues from './initialValues';
-import validationSchema from './validationSchema';
+} from "@selects";
+import { useModal } from "@hooks";
+import {
+  Button,
+  CardTitle,
+  FileUpload,
+  InputWithLabel,
+  LoadingButton,
+  Modal,
+  ModalCategory,
+  ModalSize,
+} from "@components";
+import handleSubmit from "./handleSubmit";
+import initialValues from "./initialValues";
+import validationSchema from "./validationSchema";
 
 export const CreateProductForm: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
@@ -103,11 +103,11 @@ export const CreateProductForm: React.FC = () => {
             type="button"
             onClick={() =>
               showModal(
-                'Selecciona una categoría :',
+                "Selecciona una categoría :",
                 <ModalCategory
                   onRequestClose={hideModal}
                   handleChange={(value) => {
-                    setFieldValue('category', value);
+                    setFieldValue("category", value);
                     hideModal();
                   }}
                   values={values.category}
@@ -125,11 +125,11 @@ export const CreateProductForm: React.FC = () => {
             type="button"
             onClick={() =>
               showModal(
-                'Selecciona un talle/numero :',
+                "Selecciona un talle/numero :",
                 <ModalSize
                   onRequestClose={hideModal}
                   handleChange={(value) => {
-                    setFieldValue('size', value);
+                    setFieldValue("size", value);
                     hideModal();
                   }}
                   values={values.size}

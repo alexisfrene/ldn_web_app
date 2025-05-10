@@ -1,8 +1,8 @@
-import React from 'react';
-import { Icons, Label, Skeleton, PieChartComponent } from '@components';
-import { CardDebt, InfoCard } from '@cards';
-import { CreateDebtModal } from '@presentation/components/modals';
-import { useGetDebts } from '@hooks';
+import React from "react";
+import { CardDebt, InfoCard } from "@cards";
+import { useGetDebts } from "@hooks";
+import { Icons, Label, PieChartComponent, Skeleton } from "@components";
+import { CreateDebtModal } from "@presentation/components/modals";
 
 const Debts: React.FC = () => {
   const { debts, isLoading } = useGetDebts();
@@ -68,14 +68,14 @@ const Debts: React.FC = () => {
                 }%`}
                 chartData={[
                   {
-                    debt_type: 'Pagado: $',
+                    debt_type: "Pagado: $",
                     total: debts?.debtsTotalPaid,
-                    fill: 'green',
+                    fill: "green",
                   },
                   {
-                    debt_type: 'Pendiente: $',
+                    debt_type: "Pendiente: $",
                     total: debts?.debtsTotalUnpaid,
-                    fill: 'red',
+                    fill: "red",
                   },
                 ]}
               />

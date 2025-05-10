@@ -1,7 +1,7 @@
-import React from 'react';
-import { NotSizes } from '@presentation/components/empty-states';
-import { ViewSizes } from './ViewSizes';
-import { useGetSizes } from '@hooks';
+import React from "react";
+import { useGetSizes } from "@hooks";
+import { NotSizes } from "@presentation/components/empty-states";
+import { ViewSizes } from "./ViewSizes";
 
 interface SizeEditProps {
   showSheet: (title: string, content: React.ReactElement) => void;

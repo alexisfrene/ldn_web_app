@@ -1,4 +1,4 @@
-import { Card } from '@components';
+import { Card } from "@components";
 
 interface ImageGalleryProps {
   setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>;

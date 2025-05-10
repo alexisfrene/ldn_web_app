@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import clsx from 'clsx';
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 import {
   Pagination,
   PaginationContent,
@@ -7,7 +7,8 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@components';
+} from "@components";
+
 type Props = {
   currentPage: number;
   totalPages: number;
@@ -39,8 +40,8 @@ export const AnimatedPagination: React.FC<Props> = ({
     <Pagination>
       <PaginationContent
         className={clsx(
-          'transition-opacity duration-300',
-          fade ? 'opacity-100' : 'opacity-0',
+          "transition-opacity duration-300",
+          fade ? "opacity-100" : "opacity-0",
         )}
       >
         <PaginationItem>

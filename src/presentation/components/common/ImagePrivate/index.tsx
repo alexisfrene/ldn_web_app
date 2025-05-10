@@ -1,11 +1,11 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@components';
-import { axiosInstance, cn } from '@utils';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { axiosInstance, cn } from "@utils";
+import { Avatar, AvatarFallback, AvatarImage, Skeleton } from "@components";
 
 interface TokenImageProps {
   url?: string;
-  variant: 'default' | 'avatar';
+  variant: "default" | "avatar";
   skeletonWidth?: number;
   skeletonHeight?: number;
   className?: string;
@@ -13,21 +13,21 @@ interface TokenImageProps {
 
 export const TokenImage: React.FC<TokenImageProps> = ({
   url,
-  variant = 'default',
-  skeletonWidth = variant === 'avatar' ? 60 : 230,
-  skeletonHeight = variant === 'avatar' ? 60 : 230,
-  className = '',
+  variant = "default",
+  skeletonWidth = variant === "avatar" ? 60 : 230,
+  skeletonHeight = variant === "avatar" ? 60 : 230,
+  className = "",
 }) => {
   const {
     data: imageSrc,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ['image', url],
+    queryKey: ["image", url],
     queryFn: async () => {
-      if (!url) throw new Error('URL no proporcionada');
+      if (!url) throw new Error("URL no proporcionada");
       const res = await axiosInstance.get(url, {
-        responseType: 'blob',
+        responseType: "blob",
         timeout: 2000,
       });
       return URL.createObjectURL(res.data);
@@ -38,12 +38,12 @@ export const TokenImage: React.FC<TokenImageProps> = ({
   });
 
   if (error) {
-    console.error('Error cargando imagen:', error);
+    console.error("Error cargando imagen:", error);
     return <img src="/default.png" alt="Imagen" className={className} />;
   }
 
   if (isLoading) {
-    const skeletonClass = variant === 'avatar' ? 'rounded-full' : '';
+    const skeletonClass = variant === "avatar" ? "rounded-full" : "";
     return (
       <Skeleton
         className={cn([skeletonClass, className])}
@@ -56,7 +56,7 @@ export const TokenImage: React.FC<TokenImageProps> = ({
     return <div>No se pudo cargar la imagen</div>;
   }
 
-  if (variant === 'avatar') {
+  if (variant === "avatar") {
     return (
       <Avatar className={className}>
         <AvatarImage src={imageSrc} alt="Avatar" />

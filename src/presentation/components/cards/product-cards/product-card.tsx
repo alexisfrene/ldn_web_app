@@ -1,4 +1,4 @@
-import { AlertModal, Icons, TokenImage } from '@components';
+import { AlertModal, Icons, TokenImage } from "@components";
 
 interface Props {
   product: Product;
@@ -27,8 +27,8 @@ export const ProductCard: React.FC<Props> = ({
       />
       <div className="px-4 py-2">
         <h1 className="flex justify-between text-xl font-bold text-gray-800 uppercase dark:text-white">
-          <p className={`${product.state ? 'text-green-500' : 'text-red-600'}`}>
-            {`${product.name}(${product.state ? 'D' : 'A'})`}{' '}
+          <p className={`${product.state ? "text-green-500" : "text-red-600"}`}>
+            {`${product.name}(${product.state ? "D" : "A"})`}{" "}
           </p>
         </h1>
       </div>
@@ -43,7 +43,7 @@ export const ProductCard: React.FC<Props> = ({
         <div className="flex items-center justify-between bg-gray-900 px-4 py-2">
           <h1 className="text-lg font-bold text-white">${product.price}</h1>
           <button className="transform rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-            {product.size === 'Sin talla/numero' ? 'N/A' : product.size}
+            {product.size === "Sin talla/numero" ? "N/A" : product.size}
           </button>
         </div>
       </div>

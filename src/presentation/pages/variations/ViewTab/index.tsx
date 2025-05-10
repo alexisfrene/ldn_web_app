@@ -1,11 +1,11 @@
-import React from 'react';
-import { toast } from 'sonner';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { VariationCard } from './VariationCard';
-import { VariationDetail } from './VariationDetail';
-import { deleteVariationById, getAllVariations } from '@services';
-import { useModal } from '@hooks';
-import { Button, Label, LoadingIndicator, Modal } from '@components';
+import React from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { deleteVariationById, getAllVariations } from "@services";
+import { useModal } from "@hooks";
+import { Button, Label, LoadingIndicator, Modal } from "@components";
+import { VariationCard } from "./VariationCard";
+import { VariationDetail } from "./VariationDetail";
 
 const VariantsGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
@@ -15,18 +15,18 @@ const VariantsGrid: React.FC = () => {
     mutationFn: deleteVariationById,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['variations'],
+        queryKey: ["variations"],
       });
     },
   });
   const { isPending, error, data } = useQuery({
-    queryKey: ['variations'],
+    queryKey: ["variations"],
     queryFn: () => getAllVariations(),
   });
   if (isPending) {
     return <LoadingIndicator isLoading />;
   }
-  if (error) return 'An error has occurred: ' + error.message;
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <div className="flex min-h-96 flex-col gap-3 sm:grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5">
@@ -35,13 +35,13 @@ const VariantsGrid: React.FC = () => {
           <VariationCard
             onCLickImage={() => {
               showModal(
-                '',
+                "",
                 <VariationDetail variationId={variation.variation_id} />,
               );
             }}
             handleDelete={() =>
               showModal(
-                '¿Estás seguro de eliminar esta variación?',
+                "¿Estás seguro de eliminar esta variación?",
                 <div className="flex justify-evenly">
                   <Button variant="outline" type="button" onClick={hideModal}>
                     Cancel
@@ -52,7 +52,7 @@ const VariantsGrid: React.FC = () => {
                     onClick={() => {
                       mutation.mutate(variation.variation_id);
                       hideModal();
-                      toast('Variation eliminado');
+                      toast("Variation eliminado");
                     }}
                   >
                     Eliminar

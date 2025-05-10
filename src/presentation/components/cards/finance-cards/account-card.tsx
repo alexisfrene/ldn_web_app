@@ -1,4 +1,7 @@
-import React from 'react';
+import React from "react";
+import { formattedValue } from "@utils";
+import { EditFinancialAccountDialog } from "@modals";
+import { useDeleteAccount } from "@hooks";
 import {
   AlertModal,
   Badge,
@@ -7,10 +10,7 @@ import {
   CardHeader,
   CardTitle,
   Icons,
-} from '@components';
-import { formattedValue } from '@utils';
-import { EditFinancialAccountDialog } from '@modals';
-import { useDeleteAccount } from '@hooks';
+} from "@components";
 
 interface Props {
   financial_accounts_id: UUID;

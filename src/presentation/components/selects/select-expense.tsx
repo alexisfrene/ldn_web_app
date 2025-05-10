@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { FormikValues, useFormikContext } from 'formik';
-import { useQuery } from '@tanstack/react-query';
-import { getExpenses } from '@services';
-import { Badge, Label } from '@components';
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { FormikValues, useFormikContext } from "formik";
+import { getExpenses } from "@services";
+import { Badge, Label } from "@components";
 
 export const SelectTag: React.FC = () => {
   const { setFieldValue } = useFormikContext<FormikValues>();
@@ -13,18 +13,18 @@ export const SelectTag: React.FC = () => {
 
     error,
   } = useQuery({
-    queryKey: ['expenses'],
+    queryKey: ["expenses"],
     queryFn: getExpenses,
   });
 
   if (error) {
     return (
-      <div>Error: {(error as Error).message || 'An error has occurred'}</div>
+      <div>Error: {(error as Error).message || "An error has occurred"}</div>
     );
   }
 
   const handleSelectExpense = (expenseId: UUID) => {
-    setFieldValue('expense_id', expenseId);
+    setFieldValue("expense_id", expenseId);
     setSelectedExpenseId(expenseId);
   };
 
@@ -35,7 +35,7 @@ export const SelectTag: React.FC = () => {
           <Badge
             key={expense.expense_id}
             variant={
-              selectedExpenseId === expense.expense_id ? 'default' : 'outline'
+              selectedExpenseId === expense.expense_id ? "default" : "outline"
             }
             className="cursor-pointer"
             onClick={() => handleSelectExpense(expense.expense_id)}

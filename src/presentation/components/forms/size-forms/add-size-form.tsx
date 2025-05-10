@@ -1,8 +1,8 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { Label, Input, Button } from '@components';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { addValueSize } from '@services';
+import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Formik } from "formik";
+import { addValueSize } from "@services";
+import { Button, Input, Label } from "@components";
 
 interface FormAddNewValueProps {
   size_id: string;
@@ -12,13 +12,13 @@ export const AddSizeForm: React.FC<FormAddNewValueProps> = ({ size_id }) => {
   const mutation = useMutation({
     mutationFn: addValueSize,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sizes'] });
+      queryClient.invalidateQueries({ queryKey: ["sizes"] });
     },
   });
   return (
     <Formik
       initialValues={{
-        value: '',
+        value: "",
       }}
       onSubmit={async (values, formikHelpers) => {
         mutation.mutate({ value: values.value, size_id });
@@ -34,8 +34,8 @@ export const AddSizeForm: React.FC<FormAddNewValueProps> = ({ size_id }) => {
             name="value"
             type="text"
             minLength={3}
-            value={values['value']}
-            onChange={(e) => setFieldValue('value', e.target.value)}
+            value={values["value"]}
+            onChange={(e) => setFieldValue("value", e.target.value)}
           />
           <Button
             type="submit"

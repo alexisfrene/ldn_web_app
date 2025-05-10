@@ -1,7 +1,7 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { cn, fetchImage } from '@utils';
-import { Skeleton } from '@presentation/components/ui';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { cn, fetchImage } from "@utils";
+import { Skeleton } from "@presentation/components/ui";
 
 export const ImageLoader: React.FC<Props> = ({
   url,
@@ -15,11 +15,11 @@ export const ImageLoader: React.FC<Props> = ({
     data: imageSrc,
     error,
     isLoading,
-  } = useQuery({ queryKey: ['image', url], queryFn: () => fetchImage(url) });
+  } = useQuery({ queryKey: ["image", url], queryFn: () => fetchImage(url) });
 
   const styles = cn(
     `col-span-1 ${
-      isLoading ? 'hidden' : 'block'
+      isLoading ? "hidden" : "block"
     } object-fill h-${height} w-${width} ${className}`,
   );
 

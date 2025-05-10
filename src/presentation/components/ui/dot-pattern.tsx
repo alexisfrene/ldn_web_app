@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@utils';
-import { motion } from 'motion/react';
-import React, { useEffect, useId, useRef, useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { cn } from "@utils";
 
 /**
  *  DotPattern Component Props
@@ -85,8 +85,8 @@ export function DotPattern({
     };
 
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   const dots = Array.from(
@@ -112,7 +112,7 @@ export function DotPattern({
       ref={containerRef}
       aria-hidden="true"
       className={cn(
-        'pointer-events-none absolute inset-0 h-full w-full',
+        "pointer-events-none absolute inset-0 h-full w-full",
         className,
       )}
       {...props}
@@ -129,7 +129,7 @@ export function DotPattern({
           cx={dot.x}
           cy={dot.y}
           r={cr}
-          fill={glow ? `url(#${id}-gradient)` : 'currentColor'}
+          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
           className="text-neutral-400/80"
           initial={glow ? { opacity: 0.4, scale: 1 } : {}}
           animate={
@@ -145,9 +145,9 @@ export function DotPattern({
               ? {
                   duration: dot.duration,
                   repeat: Infinity,
-                  repeatType: 'reverse',
+                  repeatType: "reverse",
                   delay: dot.delay,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }
               : {}
           }

@@ -1,6 +1,6 @@
-import { axiosInstance, axiosInstanceFormData } from '@utils';
-import axios from 'axios';
-import { toast } from 'sonner';
+import axios from "axios";
+import { toast } from "sonner";
+import { axiosInstance, axiosInstanceFormData } from "@utils";
 
 export const registerUser = async (values: registerUserValues) => {
   try {
@@ -10,11 +10,11 @@ export const registerUser = async (values: registerUserValues) => {
       values,
     );
 
-    toast.success('Usuario registrado con éxito!');
+    toast.success("Usuario registrado con éxito!");
     return res;
   } catch (error) {
-    toast.error('Ocurrió un error al registrar el usuario');
-    console.error('ERROR IN registerUser:', error);
+    toast.error("Ocurrió un error al registrar el usuario");
+    console.error("ERROR IN registerUser:", error);
   }
 };
 
@@ -26,40 +26,40 @@ export const loginUser = async (values: loginUserValues) => {
       { password, email_or_user },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       },
     );
 
-    toast.success('Inicio de sesión exitoso!');
+    toast.success("Inicio de sesión exitoso!");
     return res.data;
   } catch (error) {
-    toast.error('Credenciales incorrectas');
-    console.error('ERROR IN loginUser:', error);
+    toast.error("Credenciales incorrectas");
+    console.error("ERROR IN loginUser:", error);
   }
 };
 
 export const getUrlAvatar = async () => {
   try {
-    const res = await axiosInstance.get('/user/avatar');
+    const res = await axiosInstance.get("/user/avatar");
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al obtener la URL del avatar');
-    console.error('ERROR IN getUrlAvatar:', error);
+    toast.error("Ocurrió un error al obtener la URL del avatar");
+    console.error("ERROR IN getUrlAvatar:", error);
   }
 };
 
 export const getPreferenceProductView = async () => {
   try {
-    const res = await axiosInstance.get('/user/preference');
-    if (res.data.preference_in_product_view === 'true') {
+    const res = await axiosInstance.get("/user/preference");
+    if (res.data.preference_in_product_view === "true") {
       return true;
     } else {
       return false;
     }
   } catch (error) {
-    toast.error('Ocurrió un error al getPreferenceProductView');
-    console.error('ERROR IN getPreferenceProductView:', error);
+    toast.error("Ocurrió un error al getPreferenceProductView");
+    console.error("ERROR IN getPreferenceProductView:", error);
   }
 };
 
@@ -71,20 +71,20 @@ export const changePreferenceProductView = async (value: boolean) => {
 
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al changePreferenceProductView');
-    console.error('ERROR IN changePreferenceProductView:', error);
+    toast.error("Ocurrió un error al changePreferenceProductView");
+    console.error("ERROR IN changePreferenceProductView:", error);
   }
 };
 
 export const changeAvatar = async (image: File) => {
   try {
     const formData = new FormData();
-    formData.append('file', image);
-    const res = await axiosInstanceFormData.patch('/user/avatar', formData);
+    formData.append("file", image);
+    const res = await axiosInstanceFormData.patch("/user/avatar", formData);
 
     return res.data;
   } catch (error) {
-    toast.error('Ocurrió un error al changeAvatar');
-    console.error('ERROR IN changeAvatar:', error);
+    toast.error("Ocurrió un error al changeAvatar");
+    console.error("ERROR IN changeAvatar:", error);
   }
 };

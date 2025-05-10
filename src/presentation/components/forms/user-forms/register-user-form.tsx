@@ -1,7 +1,7 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { toast } from 'sonner';
-import { registerUser } from '@services';
+import React from "react";
+import { Formik } from "formik";
+import { toast } from "sonner";
+import { registerUser } from "@services";
 import {
   Button,
   InputWithLabel,
@@ -14,18 +14,18 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@components';
+} from "@components";
 
 export const RegisterUserForm: React.FC = () => {
   const initialValues = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
-    gender: '',
-    birthday_date: '',
-    username: '',
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+    gender: "",
+    birthday_date: "",
+    username: "",
   };
 
   return (
@@ -34,10 +34,10 @@ export const RegisterUserForm: React.FC = () => {
       onSubmit={async ({ passwordConfirm, ...values }, formikHelpers) => {
         const res = await registerUser(values);
         if (res?.status === 201) {
-          toast('Usuario creado exitosamente!');
+          toast("Usuario creado exitosamente!");
           return formikHelpers.resetForm();
         } else {
-          toast.error('Error al crear el usuario');
+          toast.error("Error al crear el usuario");
         }
       }}
     >
@@ -81,7 +81,7 @@ export const RegisterUserForm: React.FC = () => {
             </Label>
             <Select
               name="gender"
-              onValueChange={(value) => setFieldValue('gender', value)}
+              onValueChange={(value) => setFieldValue("gender", value)}
               value={values.gender}
             >
               <SelectTrigger className="w-full">

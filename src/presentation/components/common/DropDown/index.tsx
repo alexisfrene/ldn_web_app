@@ -1,6 +1,6 @@
-import React from 'react';
-import { Field, FieldProps, useFormikContext } from 'formik';
-import { capitalizeFirstLetter } from '@utils';
+import React from "react";
+import { Field, FieldProps, useFormikContext } from "formik";
+import { capitalizeFirstLetter } from "@utils";
 import {
   Label,
   Select,
@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@components';
+} from "@components";
 
 interface Props {
   title: string;

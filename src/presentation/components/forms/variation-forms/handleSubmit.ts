@@ -1,5 +1,5 @@
-import { FormikHelpers } from 'formik';
-import { createVariation } from '@services';
+import { FormikHelpers } from "formik";
+import { createVariation } from "@services";
 
 export const handleSubmit = async (
   values: initialValues,
@@ -15,7 +15,7 @@ export const handleSubmit = async (
     };
     await createVariation(data);
   } catch (error) {
-    console.error('Error in Create Variation ->', error);
+    console.error("Error in Create Variation ->", error);
   } finally {
     formikHelpers.resetForm();
   }

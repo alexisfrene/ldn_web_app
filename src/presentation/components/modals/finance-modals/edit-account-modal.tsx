@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { EditAccountForm } from "@forms";
 import {
   Dialog,
   DialogContent,
@@ -7,8 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Icons,
-} from '@components';
-import { EditAccountForm } from '@forms';
+} from "@components";
 
 type Props = {
   name: string;

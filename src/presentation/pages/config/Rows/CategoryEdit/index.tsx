@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
-import { NotCategories } from '@presentation/components/empty-states';
-import { ViewCategories } from './ViewCategories';
-import { useGetCategories } from '@hooks';
+import React, { ReactElement } from "react";
+import { useGetCategories } from "@hooks";
+import { NotCategories } from "@presentation/components/empty-states";
+import { ViewCategories } from "./ViewCategories";
 
 interface CategoryEditProps {
   showSheet: (title: string, content: ReactElement) => void;

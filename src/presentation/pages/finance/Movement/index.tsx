@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
+import { CreateMovementForm } from "@forms";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  ScrollArea,
   MovementList,
-} from '@components';
-import { CreateMovementForm } from '@forms';
+  ScrollArea,
+} from "@components";
 
 const Movement: React.FC = () => {
   return (

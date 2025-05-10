@@ -1,7 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@components';
-import { useSessionStore } from '@global';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSessionStore } from "@global";
+import { Button } from "@components";
 
 interface Props {
   hideModal: () => void;
@@ -21,9 +21,9 @@ export const SignOff: React.FC<Props> = ({ hideModal }) => {
       <Button
         variant="destructive"
         onClick={() => {
-          insertSessionToken('');
-          insertAvatar('');
-          navigate('/');
+          insertSessionToken("");
+          insertAvatar("");
+          navigate("/");
         }}
       >
         Cerrar sesión

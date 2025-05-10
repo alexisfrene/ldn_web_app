@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { LoginUserForm } from "@forms";
 import {
   BorderBeam,
   Card,
   CardContent,
   CardDescription,
+  CardHeader,
   CardTitle,
   Particles,
   useTheme,
-  CardHeader,
-} from '@components';
-import { LoginUserForm } from '@forms';
+} from "@components";
 
 const LoginPage: React.FC = () => {
-  const [color, setColor] = useState('#ffffff');
+  const [color, setColor] = useState("#ffffff");
   const { theme } = useTheme();
 
   useEffect(() => {
-    setColor(theme === 'dark' ? '#ffffff' : '#000000');
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
   return (

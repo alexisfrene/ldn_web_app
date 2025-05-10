@@ -1,15 +1,15 @@
-import { Button, DialogClose, Icons, InputWithLabel } from '@components';
-import { Formik } from 'formik';
-import React from 'react';
-import { paymentMethodSchema } from './validations';
-import { useCreatePaymentMethod } from '@hooks';
+import React from "react";
+import { Formik } from "formik";
+import { useCreatePaymentMethod } from "@hooks";
+import { Button, DialogClose, Icons, InputWithLabel } from "@components";
+import { paymentMethodSchema } from "./validations";
 
 export const FormCreatePaymentMethod: React.FC = () => {
   const mutation = useCreatePaymentMethod();
 
   return (
     <Formik
-      initialValues={{ name: '' }}
+      initialValues={{ name: "" }}
       validationSchema={paymentMethodSchema}
       onSubmit={async (values, formikHelpers) => {
         mutation.mutate(values);
@@ -32,7 +32,7 @@ export const FormCreatePaymentMethod: React.FC = () => {
                     <span>Creando método...</span>
                   </div>
                 ) : (
-                  'Crear método de pago'
+                  "Crear método de pago"
                 )}
               </Button>
             </DialogClose>

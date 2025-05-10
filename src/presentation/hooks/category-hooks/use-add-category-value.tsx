@@ -1,5 +1,5 @@
-import { addValueCategory, categoryKeys } from '@services';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addValueCategory, categoryKeys } from "@services";
 
 export const useAddCategoryValue = () => {
   const queryClient = useQueryClient();

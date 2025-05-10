@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
+  CardContent,
   CardHeader,
   CardTitle,
-  CardContent,
   Clock,
   MovementList,
-} from '@components';
-import { CardsInfo } from './CardsInfo';
+} from "@components";
+import { CardsInfo } from "./CardsInfo";
 
 const RelevantInfo: React.FC = () => {
   return (

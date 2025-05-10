@@ -1,24 +1,25 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React from "react";
+import { Formik } from "formik";
+import { cn, formattedValue } from "@utils";
+import { SelectFinancialAccount, SelectPaymentMethod } from "@selects";
+import { useMarkDebtPaid } from "@hooks";
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Label,
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
-  Button,
-} from '@components';
-import { cn, formattedValue } from '@utils';
-import { SelectFinancialAccount, SelectPaymentMethod } from '@selects';
-import { useMarkDebtPaid } from '@hooks';
+  Label,
+} from "@components";
+
 interface Props {
   installment_id: number;
   quota_number: number;
@@ -30,9 +31,9 @@ interface Props {
 }
 
 const statusColors = {
-  paid: 'bg-rose-600/60 dark:bg-red-950',
+  paid: "bg-rose-600/60 dark:bg-red-950",
   pending:
-    'bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-500 cursor-pointer delay-75',
+    "bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-500 cursor-pointer delay-75",
 };
 
 export const CardFee: React.FC<Props> = ({
@@ -44,7 +45,7 @@ export const CardFee: React.FC<Props> = ({
   debt_id,
   debt_name,
 }) => {
-  const cardStatus = status === 'paid' ? 'paid' : 'pending';
+  const cardStatus = status === "paid" ? "paid" : "pending";
   const mutation = useMarkDebtPaid();
   return (
     <Dialog>
@@ -53,7 +54,7 @@ export const CardFee: React.FC<Props> = ({
           <CardHeader>
             <CardTitle>Cuota número {quota_number + 1}</CardTitle>
             <CardDescription>
-              {status === 'paid' ? 'Ya pagado' : 'Sin Pagar'}
+              {status === "paid" ? "Ya pagado" : "Sin Pagar"}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -65,8 +66,8 @@ export const CardFee: React.FC<Props> = ({
               <Label>Fecha de vencimiento:</Label>
               <p>
                 {new Date(
-                  new Date(due_date).toLocaleString('en-US', {
-                    timeZone: 'UTC',
+                  new Date(due_date).toLocaleString("en-US", {
+                    timeZone: "UTC",
                   }),
                 ).toLocaleDateString()}
               </p>
@@ -80,13 +81,13 @@ export const CardFee: React.FC<Props> = ({
           <DialogDescription>
             Esta cuota se encenta con el estado de :
             <div className="text-lg font-semibold">
-              {status === 'paid' ? 'Pagado' : 'Sin pagar'}
+              {status === "paid" ? "Pagado" : "Sin pagar"}
             </div>
           </DialogDescription>
         </DialogHeader>
         <Formik
           initialValues={{
-            financial_accounts_id: '' as UUID,
+            financial_accounts_id: "" as UUID,
             total: 0,
             payment_method_id: null,
             value: amount,
@@ -110,14 +111,14 @@ export const CardFee: React.FC<Props> = ({
             <form onSubmit={handleSubmit} className="min-h-52">
               <div>Monto : {formattedValue(amount)}</div>
               <div>
-                Fecha de vencimiento :{' '}
+                Fecha de vencimiento :{" "}
                 {new Date(
-                  new Date(due_date).toLocaleString('en-US', {
-                    timeZone: 'UTC',
+                  new Date(due_date).toLocaleString("en-US", {
+                    timeZone: "UTC",
                   }),
                 ).toLocaleDateString()}
               </div>
-              {status === 'unpaid' && (
+              {status === "unpaid" && (
                 <div>
                   <div className="mt-3 gap-3 md:flex md:flex-col md:justify-between">
                     <div className="items-center md:flex md:justify-between">

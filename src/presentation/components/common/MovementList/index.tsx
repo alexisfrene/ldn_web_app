@@ -1,9 +1,9 @@
-import React from 'react';
-import { MovementCard } from '@cards';
-import { Skeleton, ScrollArea, AnimatedPagination } from '@components';
-import { useGetMovements } from '@hooks';
-import { Movement } from 'src/types/finance';
-import { cn } from '@utils';
+import React from "react";
+import { Movement } from "src/types/finance";
+import { cn } from "@utils";
+import { MovementCard } from "@cards";
+import { useGetMovements } from "@hooks";
+import { AnimatedPagination, ScrollArea, Skeleton } from "@components";
 
 type Props = {
   expenseMovements?: {
@@ -23,7 +23,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
 
   return (
     <div className="border-none sm:min-h-96">
-      <ScrollArea className={cn(height ?? 'h-96')}>
+      <ScrollArea className={cn(height ?? "h-96")}>
         {isLoading ? (
           <div>
             {Array(6)

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { Formik } from "formik";
+import { useCreateCategoryCollection } from "@hooks";
 import {
-  Label,
-  Input,
-  ImageUploader,
   Button,
   Icons,
-  Separator,
+  ImageUploader,
+  Input,
+  Label,
   LoadingIndicator,
-} from '@components';
-import { useCreateCategoryCollection } from '@hooks';
+  Separator,
+} from "@components";
 
 type IconProps = {
   url: string;
@@ -22,7 +22,7 @@ type ValueProps = {
   value: string;
 };
 export const CreateCollectionCategoryForm: React.FC = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [imageCount, setImageCount] = useState(0);
   const [image, setImage] = useState<ImagesValues[]>([]);
   const mutation = useCreateCategoryCollection();
@@ -30,18 +30,18 @@ export const CreateCollectionCategoryForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        title: '',
+        title: "",
         values: [] as ValueProps[],
       }}
       onSubmit={(values, formikHelpers) => {
         mutation.mutate({
           title: values.title,
           values: values.values,
-          category_id: '',
-          user_id: '',
+          category_id: "",
+          user_id: "",
         });
         setTimeout(() => {
-          setValue('');
+          setValue("");
           setImageCount(0);
           setImage([]);
           formikHelpers.resetForm();
@@ -55,7 +55,7 @@ export const CreateCollectionCategoryForm: React.FC = () => {
             name="title"
             type="text"
             value={values.title}
-            onChange={(e) => setFieldValue('title', e.target.value)}
+            onChange={(e) => setFieldValue("title", e.target.value)}
           />
           <Label>Valores :</Label>
           <Input
@@ -71,7 +71,7 @@ export const CreateCollectionCategoryForm: React.FC = () => {
             images={image}
             setImages={setImage}
             onChange={() => {
-              setFieldValue('values', [
+              setFieldValue("values", [
                 ...values.values,
                 {
                   id: crypto.randomUUID(),
@@ -83,7 +83,7 @@ export const CreateCollectionCategoryForm: React.FC = () => {
                 },
               ]);
               setImageCount(imageCount + 1);
-              setValue('');
+              setValue("");
             }}
           />
           <div className="my-3 grid grid-cols-2 gap-3">
@@ -98,7 +98,7 @@ export const CreateCollectionCategoryForm: React.FC = () => {
                         const res = values.values.filter(
                           (e) => e.id !== value.id,
                         );
-                        setFieldValue('values', res);
+                        setFieldValue("values", res);
                       }}
                     />
                     <div className="m-1 flex justify-center">

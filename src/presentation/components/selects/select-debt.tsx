@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useFormikContext } from 'formik';
-import { useQuery } from '@tanstack/react-query';
-import { getDebts } from '@services';
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useFormikContext } from "formik";
+import { getDebts } from "@services";
+import { cn, formattedValue } from "@utils";
 import {
   Badge,
   Button,
@@ -15,8 +16,7 @@ import {
   DialogTrigger,
   Label,
   ScrollArea,
-} from '@components';
-import { cn, formattedValue } from '@utils';
+} from "@components";
 
 export const SelectDebt: React.FC = () => {
   const { setFieldValue } = useFormikContext();
@@ -25,13 +25,13 @@ export const SelectDebt: React.FC = () => {
   >(null);
 
   const { data, error } = useQuery({
-    queryKey: ['debts'],
+    queryKey: ["debts"],
     queryFn: getDebts,
   });
 
   if (error) {
     return (
-      <div>Error: {(error as Error).message || 'An error has occurred'}</div>
+      <div>Error: {(error as Error).message || "An error has occurred"}</div>
     );
   }
 
@@ -44,9 +44,9 @@ export const SelectDebt: React.FC = () => {
     installment_id: number;
     amount: number;
   }) => {
-    setFieldValue('debt_id', debt_id);
-    setFieldValue('installment_id', installment_id);
-    setFieldValue('value', amount);
+    setFieldValue("debt_id", debt_id);
+    setFieldValue("installment_id", installment_id);
+    setFieldValue("value", amount);
     setSelectedInstallmentId(installment_id);
   };
 
@@ -70,19 +70,19 @@ export const SelectDebt: React.FC = () => {
               installments: {
                 amount: number;
                 installment_id: number;
-                status: 'unpaid' | 'paid';
+                status: "unpaid" | "paid";
                 due_date: string;
               }[];
             }) => (
               <div
                 key={debt.debt_id}
-                className={'mb-2 cursor-pointer rounded-md p-2'}
+                className={"mb-2 cursor-pointer rounded-md p-2"}
               >
                 {debt.name}
                 <div className="mt-3 flex gap-3">
                   {debt.installments.map((installment) => (
                     <div>
-                      {installment.status === 'paid' ? (
+                      {installment.status === "paid" ? (
                         <div className="flex h-20 cursor-no-drop flex-col items-center justify-center gap-3 rounded-md bg-slate-500 px-3 dark:bg-slate-900">
                           <Label className="text-slate-600">
                             {new Date(
@@ -91,7 +91,7 @@ export const SelectDebt: React.FC = () => {
                           </Label>
                           <Badge
                             className={
-                              'bg-slate-700 p-1 text-lg hover:bg-slate-800'
+                              "bg-slate-700 p-1 text-lg hover:bg-slate-800"
                             }
                           >
                             {formattedValue(installment.amount)}
@@ -106,10 +106,10 @@ export const SelectDebt: React.FC = () => {
                           </Label>
                           <Badge
                             className={cn([
-                              'bg-slate-300 p-1 text-lg',
+                              "bg-slate-300 p-1 text-lg",
                               selectedInstallmentId ===
                                 installment.installment_id &&
-                                'bg-blue-300 dark:bg-slate-400',
+                                "bg-blue-300 dark:bg-slate-400",
                             ])}
                             onClick={() =>
                               handleSelectDebt({

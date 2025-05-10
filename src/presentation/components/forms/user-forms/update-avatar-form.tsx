@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
-import { useSessionStore } from '@global';
+import React, { useState } from "react";
+import { Formik } from "formik";
+import { changeAvatar } from "@services";
+import { useSessionStore } from "@global";
 import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogFooter,
   ImageLoader,
   ImageUploader,
-} from '@components';
-import { changeAvatar } from '@services';
+} from "@components";
 
 export const UpdateAvatarForm: React.FC = () => {
   const insertAvatar = useSessionStore((state) => state.insertAvatar);
@@ -16,9 +16,9 @@ export const UpdateAvatarForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        value: '',
+        value: "",
         avatar: null as File | null,
-        avatar_url: '',
+        avatar_url: "",
       }}
       onSubmit={async (values) => {
         if (values.avatar) {
@@ -35,8 +35,8 @@ export const UpdateAvatarForm: React.FC = () => {
             images={image}
             setImages={setImage}
             onChange={() => {
-              setFieldValue('avatar', image[0].file);
-              setFieldValue('avatar_url', image[0].url);
+              setFieldValue("avatar", image[0].file);
+              setFieldValue("avatar_url", image[0].url);
               setImage([]);
             }}
           />

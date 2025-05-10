@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { FormikValues, useFormikContext } from 'formik';
-import { useQuery } from '@tanstack/react-query';
-import { getAllPaymentMethodForAccount } from '@services';
-import { Badge, Label } from '@components';
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { FormikValues, useFormikContext } from "formik";
+import { getAllPaymentMethodForAccount } from "@services";
+import { Badge, Label } from "@components";
 
 export const SelectPaymentMethod: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();
   const [selectedMethodId, setSelectedMethodId] = useState<number | null>(null);
 
   const { data: paymentMethods, error } = useQuery({
-    queryKey: ['finances', 'payment_method', values.financial_accounts_id],
+    queryKey: ["finances", "payment_method", values.financial_accounts_id],
     queryFn: async () => {
       if (values.financial_accounts_id) {
         const paymentMethods = await getAllPaymentMethodForAccount(
@@ -26,12 +26,12 @@ export const SelectPaymentMethod: React.FC = () => {
 
   if (error) {
     return (
-      <div>Error: {(error as Error).message || 'An error has occurred'}</div>
+      <div>Error: {(error as Error).message || "An error has occurred"}</div>
     );
   }
 
   const handleSelectMethod = (paymentMethodId: number) => {
-    setFieldValue('payment_method_id', paymentMethodId);
+    setFieldValue("payment_method_id", paymentMethodId);
     setSelectedMethodId(paymentMethodId);
   };
 
@@ -52,8 +52,8 @@ export const SelectPaymentMethod: React.FC = () => {
               key={method.payment_method_id}
               variant={
                 selectedMethodId === method.payment_method_id
-                  ? 'default'
-                  : 'outline'
+                  ? "default"
+                  : "outline"
               }
               onClick={() => handleSelectMethod(method.payment_method_id)}
               className="cursor-pointer"

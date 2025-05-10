@@ -1,11 +1,11 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { useIsFetching } from '@tanstack/react-query';
-import { RouterProvider } from 'react-router-dom';
-import NProgress from 'nprogress';
-import axios from 'axios';
-import { Toaster } from '@components';
-import router from '@presentation/pages';
-import 'nprogress/nprogress.css';
+import React, { Suspense, useEffect, useState } from "react";
+import { useIsFetching } from "@tanstack/react-query";
+import axios from "axios";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+import { RouterProvider } from "react-router-dom";
+import { Toaster } from "@components";
+import router from "@presentation/pages";
 
 const App: React.FC = () => {
   const [serverStatus, setServerStatus] = useState<boolean | null>(null);
@@ -28,11 +28,11 @@ const App: React.FC = () => {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_NAME}/test`,
         );
-        setServerStatus(data?.server === 'on');
+        setServerStatus(data?.server === "on");
       } catch (error) {
-        console.error('Error checking server status:', error);
+        console.error("Error checking server status:", error);
         setErrorMessage(
-          'No se pudo conectar al servidor. Por favor, intenta más tarde.',
+          "No se pudo conectar al servidor. Por favor, intenta más tarde.",
         );
         setServerStatus(false);
       }

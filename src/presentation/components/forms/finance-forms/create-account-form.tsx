@@ -1,15 +1,15 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React from "react";
+import { Formik } from "formik";
+import { PaymentMethodCheckbox } from "@selects";
+import { useCreateAccount } from "@hooks";
 import {
   Button,
-  Icons,
-  InputWithLabel,
+  CheckAvailable,
   DialogClose,
   DialogFooter,
-  CheckAvailable,
-} from '@components';
-import { PaymentMethodCheckbox } from '@selects';
-import { useCreateAccount } from '@hooks';
+  Icons,
+  InputWithLabel,
+} from "@components";
 
 export const FormCreateAccount: React.FC = () => {
   const mutation = useCreateAccount();
@@ -17,7 +17,7 @@ export const FormCreateAccount: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        account: '',
+        account: "",
         payment_method: [] as number[],
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
@@ -54,7 +54,7 @@ export const FormCreateAccount: React.FC = () => {
                 type="submit"
                 disabled={
                   isSubmitting ||
-                  values.account === '' ||
+                  values.account === "" ||
                   values.payment_method.length === 0 ||
                   !!errors.account
                 }
@@ -65,7 +65,7 @@ export const FormCreateAccount: React.FC = () => {
                     <span>Creando cuenta...</span>
                   </div>
                 ) : (
-                  'Crear cuenta'
+                  "Crear cuenta"
                 )}
               </Button>
             </DialogClose>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Formik } from "formik";
+import { addNewCollection } from "@services";
 import {
   Button,
   Card,
@@ -12,8 +13,7 @@ import {
   ImageUploader,
   InputWithLabel,
   Separator,
-} from '@components';
-import { addNewCollection } from '@services';
+} from "@components";
 
 interface Props {
   variationId: string;
@@ -26,7 +26,7 @@ export const CollectionTab: React.FC<Props> = ({ variationId }) => {
     mutationFn: addNewCollection,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['variation_details', variationId],
+        queryKey: ["variation_details", variationId],
       });
     },
   });
@@ -38,7 +38,7 @@ export const CollectionTab: React.FC<Props> = ({ variationId }) => {
       </CardHeader>
       <CardContent>
         <Formik
-          initialValues={{ label: '', images: [] as ImagesValues[] }}
+          initialValues={{ label: "", images: [] as ImagesValues[] }}
           onSubmit={(values, formikHelpers) => {
             mutation.mutate({
               label: values.label,
@@ -71,7 +71,7 @@ export const CollectionTab: React.FC<Props> = ({ variationId }) => {
                           const res = values.images.filter(
                             (e: { id: string }) => e?.id !== value.id,
                           );
-                          setFieldValue('images', res);
+                          setFieldValue("images", res);
                           setImages(res);
                         }}
                       />
@@ -90,7 +90,7 @@ export const CollectionTab: React.FC<Props> = ({ variationId }) => {
                 onClick={() => handleSubmit()}
               >
                 <div
-                  className={`${mutation.isPending ? 'relative' : 'hidden'} mx-1 w-5`}
+                  className={`${mutation.isPending ? "relative" : "hidden"} mx-1 w-5`}
                 >
                   {mutation.isPending && (
                     <Icons type="refresh" className="h-5 animate-spin" />

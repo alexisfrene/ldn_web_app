@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
   TokenImage,
-} from '@components';
+} from "@components";
 
 interface Props {
   variation: Variants;

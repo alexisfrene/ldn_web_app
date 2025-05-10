@@ -1,8 +1,8 @@
-import React from 'react';
-import { ProductDataTable } from '@components';
-import { useForm } from './useForm';
-import { handleSubmit } from './handleSubmit';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ProductDataTable } from "@components";
+import { handleSubmit } from "./handleSubmit";
+import { useForm } from "./useForm";
 
 export interface Props {
   price: string;
@@ -26,35 +26,35 @@ export const ProductData: React.FC<Props> = ({
     mutationFn: handleSubmit,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product_details', product_id],
+        queryKey: ["product_details", product_id],
       });
       queryClient.invalidateQueries({
-        queryKey: ['products'],
+        queryKey: ["products"],
       });
     },
   });
   const dataVist = [
     {
-      label: 'Nombre :',
+      label: "Nombre :",
       value: name,
-      name: 'name',
+      name: "name",
     },
     {
-      label: 'Precio:',
+      label: "Precio:",
       value: `$ ${price}`,
-      name: 'price',
+      name: "price",
     },
     {
-      label: 'Descripción:',
+      label: "Descripción:",
       value: description,
-      name: 'description',
+      name: "description",
     },
     {
-      label: 'Categoría:',
+      label: "Categoría:",
       value: category,
-      name: 'category',
+      name: "category",
     },
-    { label: 'Numero/Talle:', value: size, name: 'size' },
+    { label: "Numero/Talle:", value: size, name: "size" },
   ];
   const initialValues = useForm(product_id!);
 

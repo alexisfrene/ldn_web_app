@@ -1,1 +1,1 @@
-export * from './create-brand-modal';
+export * from "./create-brand-modal";

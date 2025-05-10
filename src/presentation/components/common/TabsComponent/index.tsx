@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import React, { Suspense } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { cn } from "@utils";
+import { useIsMobile } from "@hooks";
 import {
   Card,
   CardContent,
   CardHeader,
-  Label,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -12,10 +13,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   Icons,
+  Label,
   LoadingIndicator,
-} from '@components';
-import { cn } from '@utils';
-import { useIsMobile } from '@hooks';
+} from "@components";
 
 interface TabsProps {
   tabs: {
@@ -31,8 +31,8 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
 
   const tabsStyles = cn(
     `flex`,
-    'rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60',
-    bgColor || 'bg-amber-300/90 ring-amber-400/50',
+    "rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60",
+    bgColor || "bg-amber-300/90 ring-amber-400/50",
   );
 
   return (
@@ -45,7 +45,7 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
                 <Icons type="bars3" height={40} className="pl-3" />
                 <Label className="w-full pr-6 align-middle text-xl">
                   {tabs.map((e) =>
-                    location.pathname.includes(e.path) ? e.label : '',
+                    location.pathname.includes(e.path) ? e.label : "",
                   )}
                 </Label>
               </DropdownMenuTrigger>
@@ -62,10 +62,10 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
                       to={tab.path}
                       className={(data) =>
                         cn([
-                          'w-full rounded-lg px-4 py-2 transition-all duration-300 ease-in-out',
+                          "w-full rounded-lg px-4 py-2 transition-all duration-300 ease-in-out",
                           data.isActive
-                            ? 'bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 dark:bg-slate-800 dark:ring-slate-600'
-                            : 'bg-amber-400 text-black ring-1 ring-amber-400/70 hover:bg-amber-500/80 dark:bg-slate-700 dark:text-slate-300 dark:ring-slate-500/70 dark:hover:bg-slate-600 dark:hover:ring-slate-500',
+                            ? "bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 dark:bg-slate-800 dark:ring-slate-600"
+                            : "bg-amber-400 text-black ring-1 ring-amber-400/70 hover:bg-amber-500/80 dark:bg-slate-700 dark:text-slate-300 dark:ring-slate-500/70 dark:hover:bg-slate-600 dark:hover:ring-slate-500",
                         ])
                       }
                     >
@@ -84,10 +84,10 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
                   to={tab.path}
                   className={(data) =>
                     cn([
-                      'mx-3 flex justify-center rounded-lg p-3 transition-all duration-300 ease-in-out',
+                      "mx-3 flex justify-center rounded-lg p-3 transition-all duration-300 ease-in-out",
                       data.isActive
-                        ? 'bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 hover:bg-amber-600 dark:bg-slate-600 dark:text-white dark:ring-slate-800/70 dark:hover:bg-slate-500 dark:hover:ring-slate-500/80'
-                        : 'bg-amber-400 text-black ring-1 ring-amber-400/70 hover:bg-amber-500/80 dark:bg-slate-700 dark:text-slate-300 dark:ring-slate-500/70 dark:hover:bg-slate-600 dark:hover:ring-slate-500',
+                        ? "bg-amber-500 text-white shadow-lg ring-1 ring-amber-500/70 hover:bg-amber-600 dark:bg-slate-600 dark:text-white dark:ring-slate-800/70 dark:hover:bg-slate-500 dark:hover:ring-slate-500/80"
+                        : "bg-amber-400 text-black ring-1 ring-amber-400/70 hover:bg-amber-500/80 dark:bg-slate-700 dark:text-slate-300 dark:ring-slate-500/70 dark:hover:bg-slate-600 dark:hover:ring-slate-500",
                     ])
                   }
                 >

@@ -1,14 +1,14 @@
-import React from 'react';
-import { TabsComponent } from '@components';
+import React from "react";
+import { TabsComponent } from "@components";
 
 const VariationsTabs = [
   {
-    path: '/app/variations/view',
-    label: 'Ver imágenes',
+    path: "/app/variations/view",
+    label: "Ver imágenes",
   },
   {
-    path: '/app/variations/create-variations',
-    label: 'Crear Variaciones',
+    path: "/app/variations/create-variations",
+    label: "Crear Variaciones",
   },
 ];
 

@@ -1,5 +1,7 @@
-import React from 'react';
-import { formattedValue } from '@utils';
+import React from "react";
+import { formattedValue } from "@utils";
+import { EditExpenseModal, ExpenseDetailModal } from "@modals";
+import { useDeleteExpense, useIsMobile } from "@hooks";
 import {
   AlertModal,
   Card,
@@ -10,9 +12,7 @@ import {
   Icons,
   Label,
   Separator,
-} from '@components';
-import { EditExpenseModal, ExpenseDetailModal } from '@modals';
-import { useDeleteExpense, useIsMobile } from '@hooks';
+} from "@components";
 
 interface Props {
   description: string;
@@ -66,7 +66,7 @@ export const CardExpense: React.FC<Props> = ({
           </div>
         </CardTitle>
         <CardDescription className="text-left">
-          {description || ''}
+          {description || ""}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -74,8 +74,8 @@ export const CardExpense: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <Label className="text-xs md:text-base">
               {isMobile
-                ? 'Cantidad de movimientos:'
-                : 'Cantidad de movimientos para este gasto:'}
+                ? "Cantidad de movimientos:"
+                : "Cantidad de movimientos para este gasto:"}
             </Label>
             <p className="md:text-xl">{count_movements}</p>
           </div>
@@ -87,16 +87,16 @@ export const CardExpense: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <Label className="text-xs md:text-base">
               {isMobile
-                ? 'Cantidad de movimientos ( mes ):'
-                : 'Cantidad de movimientos para este gasto ( mes ):'}
+                ? "Cantidad de movimientos ( mes ):"
+                : "Cantidad de movimientos para este gasto ( mes ):"}
             </Label>
             <p className="md:text-xl">{count_movements_month}</p>
           </div>
           <div className="flex items-center justify-between">
             <Label className="text-xs md:text-base">
               {isMobile
-                ? 'Total de gastos ( mes ):'
-                : 'Total de gastos para este gasto ( mes ):'}
+                ? "Total de gastos ( mes ):"
+                : "Total de gastos para este gasto ( mes ):"}
             </Label>
             <p className="md:text-xl">{formattedValue(money_outflow_month)}</p>
           </div>

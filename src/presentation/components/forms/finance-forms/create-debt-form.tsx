@@ -1,21 +1,21 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React from "react";
+import { Formik } from "formik";
+import { useCreateDebt } from "@hooks";
 import {
   Button,
+  CalculateInterest,
   CounterButton,
   DialogClose,
   DialogFooter,
   DropdownInput,
+  GenerateInstallments,
   Icons,
   InputWithLabel,
   Label,
   ScrollArea,
-  CalculateInterest,
-  GenerateInstallments,
-} from '@components';
-import { paymentFrequency } from '@presentation/mocks';
-import { initialValuesDebt, debtSchema } from './create-debt-utils';
-import { useCreateDebt } from '@hooks';
+} from "@components";
+import { paymentFrequency } from "@presentation/mocks";
+import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 
 export const CreateDebtForm: React.FC = () => {
   const mutation = useCreateDebt();
@@ -77,8 +77,8 @@ export const CreateDebtForm: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <Label>Total de cuotas: </Label>
                 <CounterButton
-                  onDecrease={(value) => setFieldValue('number_quota', value)}
-                  onIncrease={(value) => setFieldValue('number_quota', value)}
+                  onDecrease={(value) => setFieldValue("number_quota", value)}
+                  onIncrease={(value) => setFieldValue("number_quota", value)}
                   defaultValue={values.number_quota}
                   max={72}
                   min={1}
@@ -112,7 +112,7 @@ export const CreateDebtForm: React.FC = () => {
                   <span>Creando cuenta...</span>
                 </div>
               ) : (
-                'Crear cuenta'
+                "Crear cuenta"
               )}
             </Button>
           </DialogFooter>

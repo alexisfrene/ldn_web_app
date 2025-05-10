@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  Icons,
-  AlertDialogHeader,
-  AlertDialogFooter,
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
   AlertDialogAction,
   AlertDialogCancel,
-  Input,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Icons,
   ImageLoader,
-} from '@components';
+  Input,
+} from "@components";
 
 interface Props {
   label: string;

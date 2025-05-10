@@ -1,6 +1,7 @@
-import { TokenImage } from '@components';
-import { getVariationById } from '@services';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { getVariationById } from "@services";
+import { TokenImage } from "@components";
+
 interface GalleryImagesVariantsProps {
   ImageVariantsId: string | null;
 }

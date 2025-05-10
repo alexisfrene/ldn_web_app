@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { ErrorMessage, FormikValues, useFormikContext } from 'formik';
-import { v4 as uuidv4 } from 'uuid';
-import { toast } from 'sonner';
-import { Button, Input } from '@components';
+import React, { useRef } from "react";
+import { ErrorMessage, FormikValues, useFormikContext } from "formik";
+import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
+import { Button, Input } from "@components";
 
 interface Props {
   name: string;
@@ -22,7 +22,7 @@ export const ImageUploader: React.FC<Props> = ({
 
   const removeImage = () => {
     if (inputRef.current) {
-      inputRef.current.value = '';
+      inputRef.current.value = "";
     }
   };
 
@@ -34,13 +34,13 @@ export const ImageUploader: React.FC<Props> = ({
         name={name}
         type="file"
         className={`cursor-pointer hover:text-slate-600 ${
-          errors[name] && 'border-red-600 text-red-600'
+          errors[name] && "border-red-600 text-red-600"
         }`}
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (file) {
             if (file.size > 15 * 1024 * 1024) {
-              toast('El archivo no debe superar los 15 MB');
+              toast("El archivo no debe superar los 15 MB");
               return;
             }
             const url = URL.createObjectURL(file);

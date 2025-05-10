@@ -1,6 +1,6 @@
-import React from 'react';
-import { Dialog, DialogContent, DialogTrigger, Icons } from '@components';
-import { FormCreatePaymentMethod } from '@forms';
+import React from "react";
+import { FormCreatePaymentMethod } from "@forms";
+import { Dialog, DialogContent, DialogTrigger, Icons } from "@components";
 
 export const CreatePaymentMethodModal: React.FC = () => {
   return (

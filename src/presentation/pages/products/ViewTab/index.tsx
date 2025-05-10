@@ -1,22 +1,22 @@
-import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import React from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   changePreferenceProductView,
   getPreferenceProductView,
-} from '@services';
+} from "@services";
+import { useGetProducts, useIsMobile, useModal } from "@hooks";
 import {
-  Modal,
   Menubar,
+  MenubarCheckboxItem,
   MenubarContent,
   MenubarMenu,
   MenubarSeparator,
   MenubarTrigger,
-  MenubarCheckboxItem,
+  Modal,
   Switch,
-} from '@components';
-import { useGetProducts, useIsMobile, useModal } from '@hooks';
-import { ProductsGrid } from './ProductsGrid';
-import { ProductsTable } from './ProductTable';
+} from "@components";
+import { ProductsGrid } from "./ProductsGrid";
+import { ProductsTable } from "./ProductTable";
 
 const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
@@ -27,16 +27,16 @@ const ProductGrid: React.FC = () => {
     mutationFn: changePreferenceProductView,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['preference_product_view'],
+        queryKey: ["preference_product_view"],
       });
       queryClient.invalidateQueries({
-        queryKey: ['products'],
+        queryKey: ["products"],
       });
     },
   });
   const { products } = useGetProducts();
   const preferments = useQuery({
-    queryKey: ['preference_product_view'],
+    queryKey: ["preference_product_view"],
     queryFn: getPreferenceProductView,
   });
 

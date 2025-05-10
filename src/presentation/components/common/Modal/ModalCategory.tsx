@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getAllCategories } from '@services';
-import { ModalGeneric } from './ModalGeneric';
+import React, { useEffect, useState } from "react";
+import { getAllCategories } from "@services";
+import { ModalGeneric } from "./ModalGeneric";
 
 export interface CategoryIds {
   category_id: string;

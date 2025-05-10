@@ -1,5 +1,5 @@
-import React from 'react';
-import { useFormikContext } from 'formik';
+import React from "react";
+import { useFormikContext } from "formik";
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   Label,
   RadioGroup,
   RadioGroupItem,
-} from '@components';
+} from "@components";
 
 type Props = {
   installment_number: number;

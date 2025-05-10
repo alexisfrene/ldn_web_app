@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useFormik } from 'formik';
-import { useIsMobile, useModal } from '@hooks';
+import { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import { useIsMobile, useModal } from "@hooks";
 import {
   Button,
   CardTitle,
@@ -8,7 +8,7 @@ import {
   Modal,
   ModalCategory,
   ModalSize,
-} from '@components';
+} from "@components";
 
 export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   dataVist,
@@ -32,11 +32,11 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
       type="button"
       onClick={() =>
         showModal(
-          'Selecciona un talle/numero :',
+          "Selecciona un talle/numero :",
           <ModalSize
             onRequestClose={hideModal}
             handleChange={(value) => {
-              formik.setFieldValue('size', value);
+              formik.setFieldValue("size", value);
               hideModal();
             }}
             values={formik.values.size}
@@ -55,11 +55,11 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
       type="button"
       onClick={() =>
         showModal(
-          'Selecciona una categoría :',
+          "Selecciona una categoría :",
           <ModalCategory
             onRequestClose={hideModal}
             handleChange={(value) => {
-              formik.setFieldValue('category', value);
+              formik.setFieldValue("category", value);
               hideModal();
             }}
             values={formik.values.category}
@@ -79,7 +79,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
     <>
       <div className="mb-5 flex items-center font-bold sm:text-2xl">
         <Icons
-          type={modalEdit ? 'arrow_small_left' : 'copy_manual'}
+          type={modalEdit ? "arrow_small_left" : "copy_manual"}
           height={isMobile ? 20 : 30}
           className="cursor-pointer hover:scale-105 hover:text-slate-800"
           onClick={() => setModalEdit(!modalEdit)}
@@ -97,9 +97,9 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
             </label>
             {modalEdit ? (
               <>
-                {name === 'size' && btnSize()}
-                {name === 'category' && btnCategory()}
-                {name !== 'category' && name !== 'size' && (
+                {name === "size" && btnSize()}
+                {name === "category" && btnCategory()}
+                {name !== "category" && name !== "size" && (
                   <input
                     name={name}
                     placeholder={value}
@@ -112,21 +112,21 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
             ) : (
               <div className="w-52 truncate px-1 pb-1 text-xs sm:text-base">
                 {value ? (
-                  value[0] === '#' ? (
+                  value[0] === "#" ? (
                     <span
                       style={{
                         backgroundColor: value,
-                        height: '20px',
-                        width: '20px',
-                        display: 'inline-block',
-                        borderRadius: '30%',
+                        height: "20px",
+                        width: "20px",
+                        display: "inline-block",
+                        borderRadius: "30%",
                       }}
                     />
                   ) : (
                     value
                   )
                 ) : (
-                  'No cargado'
+                  "No cargado"
                 )}
               </div>
             )}

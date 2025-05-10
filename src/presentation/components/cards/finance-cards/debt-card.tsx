@@ -1,4 +1,8 @@
-import React from 'react';
+import React from "react";
+import { formattedValue } from "@utils";
+import { CardFee } from "@cards";
+import { FormEditDebt } from "@forms";
+import { useDeleteDebt, useIsMobile } from "@hooks";
 import {
   AlertModal,
   Card,
@@ -7,11 +11,7 @@ import {
   CardHeader,
   CardTitle,
   Icons,
-} from '@components';
-import { CardFee } from '@cards';
-import { FormEditDebt } from '@forms';
-import { useDeleteDebt, useIsMobile } from '@hooks';
-import { formattedValue } from '@utils';
+} from "@components";
 
 interface Props {
   debt_id: UUID;
@@ -51,7 +51,7 @@ export const CardDebt: React.FC<Props> = ({
       <CardHeader>
         <CardTitle className="flex justify-between text-2xl">
           <p className="truncate">
-            {isMobile ? '' : ' Deuda : '} {name}
+            {isMobile ? "" : " Deuda : "} {name}
           </p>
           <div>
             <FormEditDebt debt_id={debt_id} />
@@ -73,43 +73,43 @@ export const CardDebt: React.FC<Props> = ({
         <CardDescription>
           <div className="grid grid-cols-1 gap-4 rounded-lg p-4 sm:grid-cols-2 lg:grid-cols-3">
             <p className="text-lg font-semibold">
-              Notas:{' '}
+              Notas:{" "}
               <span className="font-normal text-gray-600">
-                {notes || 'Sin Notas'}
+                {notes || "Sin Notas"}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total:{' '}
+              Total:{" "}
               <span className="font-normal text-green-600">
                 {formattedValue(total) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Cantidad de cuotas:{' '}
+              Cantidad de cuotas:{" "}
               <span className="font-normal text-gray-600">
                 {installments.length}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total sin pagar:{' '}
+              Total sin pagar:{" "}
               <span className="font-normal text-red-600">
                 {formattedValue(total_unpaid) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total pagado:{' '}
+              Total pagado:{" "}
               <span className="font-normal text-blue-600">
                 {formattedValue(total_paid) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Intereses:{' '}
+              Intereses:{" "}
               <span className="font-normal text-orange-600">
                 {total_interest ? total_interest.toFixed(2) : 0}%
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Intereses por meses:{' '}
+              Intereses por meses:{" "}
               <span className="font-normal text-orange-600">
                 {interest_per_installment
                   ? interest_per_installment.toFixed(2)

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { useFormikContext, FormikValues } from 'formik';
-import { useDebounce } from 'use-debounce';
-import { useCheckAccountName } from '@hooks';
-import { Icons } from '../Icons';
+import React, { useEffect } from "react";
+import { FormikValues, useFormikContext } from "formik";
+import { useDebounce } from "use-debounce";
+import { useCheckAccountName } from "@hooks";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@components';
+} from "@components";
+import { Icons } from "../Icons";
 
 export const CheckAvailable: React.FC = () => {
   const { values, setErrors } = useFormikContext<FormikValues>();
@@ -20,13 +20,13 @@ export const CheckAvailable: React.FC = () => {
 
   useEffect(() => {
     if (shouldShowWarning) {
-      setErrors({ account: 'Cuenta no disponible' });
+      setErrors({ account: "Cuenta no disponible" });
     }
   }, [shouldShowWarning, setErrors]);
 
   const iconProps = {
     height: 25,
-    className: 'mt-1.5 ml-1.5',
+    className: "mt-1.5 ml-1.5",
   };
 
   if (isLoading || isPending()) {

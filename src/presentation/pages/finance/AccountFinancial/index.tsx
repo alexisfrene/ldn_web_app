@@ -1,6 +1,6 @@
-import React from 'react';
-import { FinancialAccountGrid } from './FinancialAccountGrid';
-import { CreateAccountModal } from '@modals';
+import React from "react";
+import { CreateAccountModal } from "@modals";
+import { FinancialAccountGrid } from "./FinancialAccountGrid";
 
 const AccountFinancial: React.FC = () => {
   return (

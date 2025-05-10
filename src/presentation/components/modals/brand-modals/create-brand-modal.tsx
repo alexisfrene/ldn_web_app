@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { CreateBrandForm } from "@forms";
 import {
   Button,
   Dialog,
@@ -8,8 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
   Icons,
-} from '@components';
-import { CreateBrandForm } from '@forms';
+} from "@components";
+
 export const CreateBrandModal: React.FC = () => {
   return (
     <Dialog>

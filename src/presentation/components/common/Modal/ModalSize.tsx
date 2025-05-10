@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getAllSizes } from '@services';
-import { ModalGeneric } from './ModalGeneric';
+import React, { useEffect, useState } from "react";
+import { getAllSizes } from "@services";
+import { ModalGeneric } from "./ModalGeneric";
 
 interface SizeIds {
   size_id: string;

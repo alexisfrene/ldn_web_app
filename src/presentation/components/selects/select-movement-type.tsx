@@ -1,6 +1,6 @@
-import React, { useId } from 'react';
-import { Label, RadioGroup, RadioGroupItem, Icons } from '@components';
-import { FormikValues, useFormikContext } from 'formik';
+import React, { useId } from "react";
+import { FormikValues, useFormikContext } from "formik";
+import { Icons, Label, RadioGroup, RadioGroupItem } from "@components";
 
 export const SelectMovementType: React.FC = () => {
   const id = useId();
@@ -13,9 +13,9 @@ export const SelectMovementType: React.FC = () => {
         defaultValue="inflow_of_money"
         onValueChange={(value) => {
           const defaultLabels: Record<string, string> = {
-            inflow_of_money: 'Entrada de dinero',
-            money_outflow: 'Salida de dinero',
-            debt: 'Pago de deuda',
+            inflow_of_money: "Entrada de dinero",
+            money_outflow: "Salida de dinero",
+            debt: "Pago de deuda",
           };
 
           if (
@@ -24,10 +24,10 @@ export const SelectMovementType: React.FC = () => {
           ) {
             const newLabel = defaultLabels[value];
             if (newLabel) {
-              setFieldValue('label', newLabel);
+              setFieldValue("label", newLabel);
             }
           }
-          setFieldValue('type', value);
+          setFieldValue("type", value);
         }}
         value={values.type}
       >

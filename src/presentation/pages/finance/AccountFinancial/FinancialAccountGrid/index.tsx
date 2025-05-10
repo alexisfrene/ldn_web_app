@@ -1,7 +1,7 @@
-import React from 'react';
-import { Skeleton } from '@components';
-import { useGetAccounts } from '@hooks';
-import { FinancialAccountCard } from '@cards';
+import React from "react";
+import { FinancialAccountCard } from "@cards";
+import { useGetAccounts } from "@hooks";
+import { Skeleton } from "@components";
 
 export const FinancialAccountGrid: React.FC = () => {
   const { accounts, isLoading, isFetching } = useGetAccounts();

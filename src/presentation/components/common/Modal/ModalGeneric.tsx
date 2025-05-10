@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Card, CardContent, CardTitle, ScrollArea } from '@components';
+import React, { useState } from "react";
+import { Button, Card, CardContent, CardTitle, ScrollArea } from "@components";
 
 interface ModalGenericProps {
   items: any[];
@@ -35,8 +35,8 @@ export const ModalGeneric: React.FC<ModalGenericProps> = ({
                     className={`col-span-1 ${
                       currentSelection[selectedKey] === item[selectedKey] &&
                       currentSelection[selectedValueKey] === data.id
-                        ? 'bg-amber-300 dark:bg-slate-600'
-                        : 'bg-slate-200 dark:bg-slate-800'
+                        ? "bg-amber-300 dark:bg-slate-600"
+                        : "bg-slate-200 dark:bg-slate-800"
                     }`}
                     onClick={() =>
                       setCurrentSelection({

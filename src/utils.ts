@@ -1,21 +1,21 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import axios from 'axios';
+import axios from "axios";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 const getToken = () => {
-  const localStorageUserData = localStorage.getItem('user-storage');
+  const localStorageUserData = localStorage.getItem("user-storage");
   const parsedDataUser =
-    typeof localStorageUserData === 'string'
-      ? JSON?.parse(localStorageUserData || '')
+    typeof localStorageUserData === "string"
+      ? JSON?.parse(localStorageUserData || "")
       : null;
-  return parsedDataUser?.state?.session_token || '';
+  return parsedDataUser?.state?.session_token || "";
 };
 
 const axiosInstanceCreate = (contentType: string) => {
   const instance = axios.create({
     baseURL: import.meta.env.VITE_API_NAME,
     headers: {
-      'Content-Type': contentType,
+      "Content-Type": contentType,
     },
     timeout: 2000,
   });
@@ -35,16 +35,16 @@ const axiosInstanceCreate = (contentType: string) => {
 
   return instance;
 };
-export const axiosInstance = axiosInstanceCreate('application/json');
+export const axiosInstance = axiosInstanceCreate("application/json");
 
-export const axiosInstanceFormData = axiosInstanceCreate('multipart/form-data');
+export const axiosInstanceFormData = axiosInstanceCreate("multipart/form-data");
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export const fetchImage = async (url: string) => {
-  const response = await axios.get(url, { responseType: 'blob' });
+  const response = await axios.get(url, { responseType: "blob" });
   return URL.createObjectURL(response.data);
 };
 
@@ -54,16 +54,16 @@ export const formatDate = (date: {
   getDate: () => any;
 }) => {
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
 };
 
 export const formattedValue = (value: number) =>
-  new Intl.NumberFormat('es-AR', {
-    style: 'currency',
-    currency: 'ARS',
+  new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
   }).format(value);
 
 export const capitalizeFirstLetter = (string: string) => {
@@ -77,11 +77,11 @@ export const createAnimation = (
 ): string => {
   const animationName = `react-spinners-${loaderName}-${suffix}`;
 
-  if (typeof window == 'undefined' || !window.document) {
+  if (typeof window == "undefined" || !window.document) {
     return animationName;
   }
 
-  const styleEl = document.createElement('style');
+  const styleEl = document.createElement("style");
   document.head.appendChild(styleEl);
   const styleSheet = styleEl.sheet;
 
@@ -117,24 +117,24 @@ const cssUnit: { [unit: string]: boolean } = {
   vh: true,
   vmin: true,
   vmax: true,
-  '%': true,
+  "%": true,
 };
 export function parseLengthAndUnit(size: number | string): LengthObject {
-  if (typeof size === 'number') {
+  if (typeof size === "number") {
     return {
       value: size,
-      unit: 'px',
+      unit: "px",
     };
   }
   let value: number;
-  const valueString: string = (size.match(/^[0-9.]*/) || '').toString();
-  if (valueString.includes('.')) {
+  const valueString: string = (size.match(/^[0-9.]*/) || "").toString();
+  if (valueString.includes(".")) {
     value = parseFloat(valueString);
   } else {
     value = parseInt(valueString, 10);
   }
 
-  const unit: string = (size.match(/[^0-9]*$/) || '').toString();
+  const unit: string = (size.match(/[^0-9]*$/) || "").toString();
 
   if (cssUnit[unit]) {
     return {
@@ -149,7 +149,7 @@ export function parseLengthAndUnit(size: number | string): LengthObject {
 
   return {
     value,
-    unit: 'px',
+    unit: "px",
   };
 }
 export function cssValue(value: number | string): string {
@@ -159,36 +159,36 @@ export function cssValue(value: number | string): string {
 }
 
 enum BasicColors {
-  maroon = '#800000',
-  red = '#FF0000',
-  orange = '#FFA500',
-  yellow = '#FFFF00',
-  olive = '#808000',
-  green = '#008000',
-  purple = '#800080',
-  fuchsia = '#FF00FF',
-  lime = '#00FF00',
-  teal = '#008080',
-  aqua = '#00FFFF',
-  blue = '#0000FF',
-  navy = '#000080',
-  black = '#000000',
-  gray = '#808080',
-  silver = '#C0C0C0',
-  white = '#FFFFFF',
+  maroon = "#800000",
+  red = "#FF0000",
+  orange = "#FFA500",
+  yellow = "#FFFF00",
+  olive = "#808000",
+  green = "#008000",
+  purple = "#800080",
+  fuchsia = "#FF00FF",
+  lime = "#00FF00",
+  teal = "#008080",
+  aqua = "#00FFFF",
+  blue = "#0000FF",
+  navy = "#000080",
+  black = "#000000",
+  gray = "#808080",
+  silver = "#C0C0C0",
+  white = "#FFFFFF",
 }
 const handleRgbColorString = (color: string, opacity: number): string => {
-  if (color.includes('/')) {
-    return color.replace('rgb(', 'rgba(');
+  if (color.includes("/")) {
+    return color.replace("rgb(", "rgba(");
   }
 
   const rgbValues = color
-    .substring(color.startsWith('rgba(') ? 5 : 4, color.length - 1)
+    .substring(color.startsWith("rgba(") ? 5 : 4, color.length - 1)
     .trim();
-  const splittedByCommas = rgbValues.split(',');
+  const splittedByCommas = rgbValues.split(",");
 
   if (splittedByCommas.length === 4) {
-    return color.replace('rgb(', 'rgba(');
+    return color.replace("rgb(", "rgba(");
   }
 
   if (splittedByCommas.length === 3) {
@@ -199,7 +199,7 @@ const handleRgbColorString = (color: string, opacity: number): string => {
 };
 
 export const calculateRgba = (color: string, opacity: number): string => {
-  if (color.startsWith('rgb')) {
+  if (color.startsWith("rgb")) {
     return handleRgbColorString(color, opacity);
   }
 
@@ -207,13 +207,13 @@ export const calculateRgba = (color: string, opacity: number): string => {
     color = BasicColors[color as keyof typeof BasicColors];
   }
 
-  if (color[0] === '#') {
+  if (color[0] === "#") {
     color = color.slice(1);
   }
 
   if (color.length === 3) {
-    let res = '';
-    color.split('').forEach((c: string) => {
+    let res = "";
+    color.split("").forEach((c: string) => {
       res += c;
       res += c;
     });
@@ -222,7 +222,7 @@ export const calculateRgba = (color: string, opacity: number): string => {
 
   const rgbValues: string = (color.match(/.{2}/g) || [])
     .map((hex: string) => parseInt(hex, 16))
-    .join(', ');
+    .join(", ");
 
   return `rgba(${rgbValues}, ${opacity})`;
 };

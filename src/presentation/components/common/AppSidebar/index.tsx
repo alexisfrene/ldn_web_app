@@ -1,53 +1,53 @@
-import React from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { cn } from "@utils";
+import logo from "@assets/ldn_icon-70x70.webp";
+import { useAvatar } from "@hooks";
 import {
+  GridPattern,
   Icons,
   Label,
+  Sidebar,
+  SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarHeader,
-  GridPattern,
-  TokenImage,
   Skeleton,
-} from '@components';
-import { useAvatar } from '@hooks';
-import logo from '@assets/ldn_icon-70x70.webp';
-import { cn } from '@utils';
+  TokenImage,
+} from "@components";
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { avatar, session_token, username, email } = useAvatar();
 
-  const tabsStyles = 'h-8 dark:text-slate-200 text-slate-950 text-slate-100';
+  const tabsStyles = "h-8 dark:text-slate-200 text-slate-950 text-slate-100";
   const tabButtons = [
     {
-      title: 'Finanzas',
+      title: "Finanzas",
       icon: <Icons type="statistics" className={tabsStyles} />,
-      path: '/app/finance',
+      path: "/app/finance",
     },
     {
-      title: 'Calendario',
+      title: "Calendario",
       icon: <Icons type="schedule" className={tabsStyles} />,
-      path: '/app/schedule',
+      path: "/app/schedule",
     },
     {
-      title: 'Productos',
+      title: "Productos",
       icon: <Icons type="bag" className={tabsStyles} />,
-      path: '/app/products',
+      path: "/app/products",
     },
     {
-      title: 'Variaciones',
+      title: "Variaciones",
       icon: <Icons type="stack" className={tabsStyles} />,
-      path: '/app/variations',
+      path: "/app/variations",
     },
   ];
 
@@ -88,8 +88,8 @@ export const AppSidebar: React.FC = () => {
             [15, 10],
           ]}
           className={cn(
-            '[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]',
-            'inset-x-4 inset-y-[-10%] h-[200%] skew-y-12',
+            "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+            "inset-x-4 inset-y-[-10%] h-[200%] skew-y-12",
           )}
         />
         <SidebarGroup>
@@ -117,7 +117,7 @@ export const AppSidebar: React.FC = () => {
       </SidebarContent>
       {session_token && avatar && username ? (
         <SidebarFooter className="h-[6vh] bg-linear-to-t from-amber-500 to-amber-400 dark:from-slate-950 dark:to-slate-900">
-          <div className="space-y-6" onClick={() => navigate('/app/config')}>
+          <div className="space-y-6" onClick={() => navigate("/app/config")}>
             <div className="flex items-center gap-x-2">
               <TokenImage
                 url={`${avatar}?width=50&height=50&quality=50&format=webp`}

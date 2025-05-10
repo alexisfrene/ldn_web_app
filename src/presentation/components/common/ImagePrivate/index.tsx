@@ -29,7 +29,7 @@ export const TokenImage: React.FC<TokenImageProps> = ({
       if (!url) throw new Error("URL no proporcionada");
       const res = await axiosInstance.get(url, {
         responseType: "blob",
-        timeout: 2000,
+        timeout: 10000,
       });
       return URL.createObjectURL(res.data);
     },

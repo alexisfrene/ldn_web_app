@@ -4,8 +4,22 @@ import { cn, formattedValue } from "@utils";
 import { SelectFinancialAccount, SelectPaymentMethod } from "@selects";
 import { useMarkDebtPaid } from "@hooks";
 import { Button } from "@ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 import { Label } from "@ui/label";
 
 interface Props {

@@ -2,8 +2,13 @@ import React, { useEffect } from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { useDebounce } from "use-debounce";
 import { useCheckAccountName } from "@hooks";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@ui/tooltip";
 import { Icons } from "../Icons";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@ui/tooltip";
 
 export const CheckAvailable: React.FC = () => {
   const { values, setErrors } = useFormikContext<FormikValues>();

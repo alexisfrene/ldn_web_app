@@ -20,9 +20,11 @@
     "^@empty-states",
     "^@forms",
     "^@global",
-    "^@assets",
+    "^@assets/(.*)$",
     "^@hooks",
-    "^@components",
+    "^@common/(.*)$",
+    "^@components/(.*)$",
+    "^@ui/(.*)$",
     "^@presentation",
     "^[./]"
   ],

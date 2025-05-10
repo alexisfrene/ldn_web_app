@@ -6,15 +6,15 @@ import {
   useDeleteValueCategory,
 } from "@hooks";
 import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
 import { Avatar, AvatarFallback } from "@ui/avatar";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
-import { Icons } from "@common/Icons";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
-import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   data: Category[];

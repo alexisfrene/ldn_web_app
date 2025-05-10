@@ -1,11 +1,11 @@
 import React from "react";
+import { Icons } from "@common/Icons";
+import { CardDescription } from "@ui/card";
+import { Separator } from "@ui/separator";
 import { CategoryEdit } from "./CategoryEdit";
 import { ChangePassword } from "./ChangePassword";
 import { SignOff } from "./SignOff";
 import { SizeEdit } from "./SizeEdit";
-import { CardDescription } from "@ui/card";
-import { Icons } from "@common/Icons";
-import { Separator } from "@ui/separator";
 
 interface Props {
   showModal: (title: string, content: React.ReactNode) => void;

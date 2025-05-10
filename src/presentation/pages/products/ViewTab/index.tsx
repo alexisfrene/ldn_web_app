@@ -5,11 +5,18 @@ import {
   getPreferenceProductView,
 } from "@services";
 import { useGetProducts, useIsMobile, useModal } from "@hooks";
+import { Modal } from "@common/Modal";
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger,
+} from "@ui/menubar";
+import { Switch } from "@ui/switch";
 import { ProductsGrid } from "./ProductsGrid";
 import { ProductsTable } from "./ProductTable";
-import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarMenu, MenubarSeparator, MenubarTrigger } from "@ui/menubar";
-import { Modal } from "@common/Modal";
-import { Switch } from "@ui/switch";
 
 const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =

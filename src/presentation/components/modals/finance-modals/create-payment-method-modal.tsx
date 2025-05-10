@@ -1,7 +1,7 @@
 import React from "react";
 import { FormCreatePaymentMethod } from "@forms";
-import { Dialog, DialogContent, DialogTrigger } from "@ui/dialog";
 import { Icons } from "@common/Icons";
+import { Dialog, DialogContent, DialogTrigger } from "@ui/dialog";
 
 export const CreatePaymentMethodModal: React.FC = () => {
   return (

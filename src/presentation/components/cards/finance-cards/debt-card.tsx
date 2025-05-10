@@ -4,8 +4,14 @@ import { CardFee } from "@cards";
 import { FormEditDebt } from "@forms";
 import { useDeleteDebt, useIsMobile } from "@hooks";
 import { AlertModal } from "@common/AlertModal";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
 import { Icons } from "@common/Icons";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@ui/card";
 
 interface Props {
   debt_id: UUID;

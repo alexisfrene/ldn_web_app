@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { handleSubmit } from "./handleSubmit";
 import { ProductDataTable } from "@common/DataTable";
+import { handleSubmit } from "./handleSubmit";
 
 export interface StyleDataProps {
   style: string;

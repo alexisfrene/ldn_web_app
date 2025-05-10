@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { addNewCollection } from "@services";
-import { Button } from "@ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { Icons } from "@common/Icons";
 import { ImageLoader } from "@common/ImageLoader";
 import { ImageUploader } from "@common/ImageUploader";
 import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { Separator } from "@ui/separator";
 
 interface Props {

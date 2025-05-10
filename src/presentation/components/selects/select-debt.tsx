@@ -5,7 +5,16 @@ import { getDebts } from "@services";
 import { cn, formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 

@@ -3,8 +3,14 @@ import { formattedValue } from "@utils";
 import { EditExpenseModal, ExpenseDetailModal } from "@modals";
 import { useDeleteExpense, useIsMobile } from "@hooks";
 import { AlertModal } from "@common/AlertModal";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/card";
 import { Icons } from "@common/Icons";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@ui/card";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
 

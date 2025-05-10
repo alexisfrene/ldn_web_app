@@ -1,9 +1,18 @@
 import React, { ReactNode } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeImageCollection } from "@services";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@ui/alert-dialog";
 import { Icons } from "@common/Icons";
 import { ImageLoader } from "@common/ImageLoader";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@ui/alert-dialog";
 
 interface Props {
   label: string;

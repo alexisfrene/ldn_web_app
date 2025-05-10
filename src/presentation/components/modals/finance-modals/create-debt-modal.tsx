@@ -1,7 +1,14 @@
 import React from "react";
 import { CreateDebtForm } from "@forms";
 import { Button } from "@ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 
 export const CreateDebtModal: React.FC = () => {
   return (

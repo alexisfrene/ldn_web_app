@@ -1,9 +1,16 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getExpenseById } from "@services";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
-import { Label } from "@ui/label";
 import { MovementList } from "@common/MovementList";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
+import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
 

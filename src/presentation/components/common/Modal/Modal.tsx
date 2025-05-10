@@ -1,5 +1,11 @@
 import React, { ReactNode } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@ui/dialog";
 
 export interface ModalProps {
   isOpen: boolean;

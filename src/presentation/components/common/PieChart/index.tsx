@@ -1,3 +1,4 @@
+import { Pie, PieChart } from "recharts";
 import {
   Card,
   CardContent,
@@ -12,7 +13,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@ui/chart";
-import { Pie, PieChart } from "recharts";
 
 const chartConfig = {
   total: {

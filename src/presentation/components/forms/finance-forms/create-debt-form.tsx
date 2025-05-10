@@ -1,18 +1,18 @@
 import React from "react";
 import { Formik } from "formik";
 import { useCreateDebt } from "@hooks";
-import { paymentFrequency } from "@presentation/mocks";
-import { debtSchema, initialValuesDebt } from "./create-debt-utils";
-import { Button } from "@ui/button";
 import { CalculateInterest } from "@common/CalculateInterest";
 import { CounterButton } from "@common/CounterButton";
-import { DialogClose, DialogFooter } from "@ui/dialog";
 import { DropdownInput } from "@common/DropDown";
 import { GenerateInstallments } from "@common/GenerateInstallments";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
+import { paymentFrequency } from "@presentation/mocks";
+import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 
 export const CreateDebtForm: React.FC = () => {
   const mutation = useCreateDebt();

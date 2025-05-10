@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@ui/pagination";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@ui/pagination";
 
 type Props = {
   currentPage: number;

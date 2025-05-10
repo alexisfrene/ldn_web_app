@@ -1,7 +1,7 @@
 import React from "react";
 import { CreateCollectionSizeForm } from "@forms";
-import { Button } from "@ui/button";
 import { Icons } from "@common/Icons";
+import { Button } from "@ui/button";
 
 interface Props {
   showSheet: (title: string, content: React.ReactElement) => void;

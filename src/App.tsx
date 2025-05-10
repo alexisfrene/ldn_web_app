@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useIsFetching } from "@tanstack/react-query";
-import { Toaster } from "@ui/sonner";
 import axios from "axios";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { RouterProvider } from "react-router-dom";
 import { API_NAME } from "@config/environment";
+import { Toaster } from "@ui/sonner";
 import router from "@presentation/pages";
 
 const App: React.FC = () => {

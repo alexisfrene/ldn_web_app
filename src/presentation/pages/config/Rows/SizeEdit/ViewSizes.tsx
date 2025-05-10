@@ -6,10 +6,10 @@ import {
   useDeleteCollectionSize,
 } from "@hooks";
 import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
-import { Icons } from "@common/Icons";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";

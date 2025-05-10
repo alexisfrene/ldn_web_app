@@ -3,9 +3,9 @@ import { formattedValue } from "@utils";
 import { EditFinancialAccountDialog } from "@modals";
 import { useDeleteAccount } from "@hooks";
 import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
-import { Icons } from "@common/Icons";
 
 interface Props {
   financial_accounts_id: UUID;

@@ -1,7 +1,14 @@
 import React from "react";
 import { EditAccountForm } from "@forms";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
 import { Icons } from "@common/Icons";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 
 type Props = {
   name: string;

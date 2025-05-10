@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import { useIsMobile, useModal } from "@hooks";
 import { Icons } from "@common/Icons";
 import { Modal, ModalCategory, ModalSize } from "@common/Modal";
 import { Button } from "@ui/button";
 import { CardTitle } from "@ui/card";
-import { useFormik } from "formik";
-import { useIsMobile, useModal } from "@hooks";
 
 export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   dataVist,

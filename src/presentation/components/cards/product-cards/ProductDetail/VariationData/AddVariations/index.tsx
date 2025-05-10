@@ -2,13 +2,22 @@ import React, { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllVariations, linkVariation } from "@services";
 import { cn } from "@utils";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { LoadingIndicator } from "@common/Loading";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@ui/card";
-import { Icons } from "@common/Icons";
-import { LoadingIndicator } from "@common/Loading";
 import { ScrollArea } from "@ui/scroll-area";
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@ui/sheet";
-import { TokenImage } from "@common/ImagePrivate";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@ui/sheet";
 
 interface AddVariationsProps {
   product_id: Product["product_id"];

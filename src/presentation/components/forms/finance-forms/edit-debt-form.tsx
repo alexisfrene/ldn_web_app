@@ -3,15 +3,23 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import { editDebt, getDebtById } from "@services";
 import { useLoading } from "@hooks";
-import { paymentFrequency } from "@presentation/mocks";
 import { CalculateInterest } from "@common/CalculateInterest";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@ui/dialog";
 import { DropdownInput } from "@common/DropDown";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 import { LoadingButton } from "@ui/loading-button";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
+import { paymentFrequency } from "@presentation/mocks";
 
 interface Props {
   debt_id: UUID;

@@ -3,12 +3,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { deleteVariationById, getAllVariations } from "@services";
 import { useModal } from "@hooks";
-import { VariationCard } from "./VariationCard";
-import { VariationDetail } from "./VariationDetail";
-import { Button } from "@ui/button";
-import { Label } from "@ui/label";
 import { LoadingIndicator } from "@common/Loading";
 import { Modal } from "@common/Modal";
+import { Button } from "@ui/button";
+import { Label } from "@ui/label";
+import { VariationCard } from "./VariationCard";
+import { VariationDetail } from "./VariationDetail";
 
 const VariantsGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =

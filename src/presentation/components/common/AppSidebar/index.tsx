@@ -1,14 +1,25 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@utils";
-import logo from "@assets/ldn_icon-70x70.webp";
 import { useAvatar } from "@hooks";
-import { GridPattern } from "@ui/grid-pattern";
 import { Icons } from "@common/Icons";
-import { Label } from "@ui/label";
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from "@ui/sidebar";
-import { Skeleton } from "@ui/skeleton";
 import { TokenImage } from "@common/ImagePrivate";
+import { GridPattern } from "@ui/grid-pattern";
+import { Label } from "@ui/label";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarSeparator,
+} from "@ui/sidebar";
+import { Skeleton } from "@ui/skeleton";
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
@@ -49,7 +60,7 @@ export const AppSidebar: React.FC = () => {
             rel="noopener noreferrer"
           >
             <img
-              src={logo}
+              src="/ldn_icon-70x70.webp"
               className="relative h-12 cursor-pointer object-scale-down transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6"
               alt="logo-ldn"
             />

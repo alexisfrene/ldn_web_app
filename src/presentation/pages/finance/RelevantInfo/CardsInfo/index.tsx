@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@utils";
-import { InfoCard } from "@cards";
+import { InfoCard } from "@cards/general-cards";
 import { useGetMovementsPerMonth, useIsMobile } from "@hooks";
 import { Skeleton } from "@ui/skeleton";
 

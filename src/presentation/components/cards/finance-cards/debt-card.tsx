@@ -1,6 +1,6 @@
 import React from "react";
 import { formattedValue } from "@utils";
-import { CardFee } from "@cards";
+import { CardFee } from "@cards/finance-cards";
 import { FormEditDebt } from "@forms";
 import { useDeleteDebt, useIsMobile } from "@hooks";
 import { AlertModal } from "@common/AlertModal";

@@ -22,6 +22,12 @@ export const sizeKeys = {
   detail: (id: string) => [...sizeKeys.all, "detail", id],
 };
 
+export const variationKeys = {
+  all: ["variations"] as const,
+  list: () => [...variationKeys.all, "list"],
+  detail: (id: string) => [...sizeKeys.all, "detail", id],
+};
+
 export const brandKeys = {
   all: ["brands"] as const,
   list: () => [...brandKeys.all, "list"],

@@ -1,2 +1,2 @@
-export * from "./product-card";
-export * from "./product-detail-card";
+export { ProductCard } from "./product-card";
+export { ProductDetailCard } from "./product-detail-card";

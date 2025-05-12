@@ -1,6 +1,6 @@
-export * from "./account-card";
-export * from "./debt-card";
-export * from "./expense-card";
-export * from "./fee-card";
-export * from "./installment-card";
-export * from "./movement-card";
+export { FinancialAccountCard } from "./account-card";
+export { CardDebt } from "./debt-card";
+export { CardExpense } from "./expense-card";
+export { CardFee } from "./fee-card";
+export { InstallmentCard } from "./installment-card";
+export { MovementCard } from "./movement-card";

@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductCard, ProductDetailCard } from "@cards";
+import { ProductCard, ProductDetailCard } from "@cards/product-cards";
 import { useDeleteProduct } from "@hooks";
 
 interface Props {

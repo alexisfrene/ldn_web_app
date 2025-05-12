@@ -1,5 +1,5 @@
 import React from "react";
-import { FinancialAccountCard } from "@cards";
+import { FinancialAccountCard } from "@cards/finance-cards";
 import { useGetAccounts } from "@hooks";
 import { Skeleton } from "@ui/skeleton";
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { CardDebt, InfoCard } from "@cards";
+import { CardDebt } from "@cards/finance-cards";
+import { InfoCard } from "@cards/general-cards";
 import { useGetDebts } from "@hooks";
 import { Icons } from "@common/Icons";
 import { PieChartComponent } from "@common/PieChart";

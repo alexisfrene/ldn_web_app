@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useFormikContext } from "formik";
 import { formattedValue } from "@utils";
-import { InstallmentCard } from "@cards";
+import { InstallmentCard } from "@cards/finance-cards";
 
 export const GenerateInstallments: React.FC = () => {
   const { values, setFieldValue } = useFormikContext<{

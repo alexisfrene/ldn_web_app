@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import { useCreateExpense } from "@hooks";
+import { useCreateExpense } from "@hooks/finance-hooks";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
 import {

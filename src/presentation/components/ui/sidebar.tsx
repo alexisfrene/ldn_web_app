@@ -22,12 +22,12 @@ import {
   TooltipTrigger,
 } from "src/presentation/components/ui/tooltip";
 import { cn } from "@utils";
+import { useIsMobile } from "@hooks/use-mobile";
 import {
   SidebarContext,
   SidebarContextProps,
-  useIsMobile,
   useSidebar,
-} from "@hooks";
+} from "@hooks/use-sidebar";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

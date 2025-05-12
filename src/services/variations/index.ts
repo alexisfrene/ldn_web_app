@@ -32,13 +32,19 @@ export const createVariation = async (values: VariationCreate) => {
   }
 };
 
-export const getVariationById = async (id: string) => {
+export const getVariationById = async (id: string): Promise<Variation> => {
   try {
-    const res = await axiosInstance(`/variations/${id}`);
+    const res = await axiosInstance<Variation>(`/variations/${id}`);
+    console.log("res", res);
     return res.data;
   } catch (error) {
     toast.error("Ocurrió un error al obtener la variación por ID");
     console.error("ERROR IN getVariationById:", error);
+    return {
+      title: "",
+      values: [],
+      variation_id: "",
+    };
   }
 };
 
@@ -88,8 +94,8 @@ export const removeImageCollection = async ({
 }) => {
   try {
     const formData = new FormData();
-    const publicId = url.match(/\/variations\/([^/?]+)/);
-    const extractedNumber = publicId ? publicId[1] : null;
+    const publicId = url.split("/");
+    const extractedNumber = publicId ? publicId[publicId.length - 1] : null;
 
     if (extractedNumber) {
       formData.append("public_id", extractedNumber);

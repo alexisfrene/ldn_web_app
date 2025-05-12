@@ -2,7 +2,7 @@ import React from "react";
 import { Movement } from "src/types/finance";
 import { cn } from "@utils";
 import { MovementCard } from "@cards/finance-cards";
-import { useGetMovements } from "@hooks";
+import { useGetMovements } from "@hooks/finance-hooks";
 import { AnimatedPagination } from "@common/AnimatedPagination";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
@@ -13,6 +13,7 @@ type Props = {
     isLoading: boolean;
     totalPages: number;
     currentPage: number;
+    isPlaceholderData: any;
   };
   height?: string;
 };
@@ -21,7 +22,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
   const [page, setPage] = React.useState(1);
   const fallback = useGetMovements(page);
 
-  const { movements, isLoading, totalPages, currentPage } =
+  const { movements, isLoading, totalPages, currentPage, isPlaceholderData } =
     expenseMovements ?? fallback;
 
   return (
@@ -62,6 +63,12 @@ export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
           currentPage={currentPage}
           totalPages={totalPages}
           setPage={setPage}
+          onClickPrevious={() => setPage((old) => Math.max(old - 1, 0))}
+          onClickNext={() => {
+            if (!isPlaceholderData && currentPage < totalPages) {
+              setPage((old) => old + 1);
+            }
+          }}
         />
       ) : (
         <div className="mt-1 flex w-full items-center justify-center gap-2">

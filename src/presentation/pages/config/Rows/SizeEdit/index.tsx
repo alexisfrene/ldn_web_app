@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetSizes } from "@hooks";
+import { useGetSizes } from "@hooks/size-hooks";
 import { NotSizes } from "@presentation/components/empty-states";
 import { ViewSizes } from "./ViewSizes";
 

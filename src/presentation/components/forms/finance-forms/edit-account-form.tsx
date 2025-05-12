@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { PaymentMethodCheckbox } from "@selects";
-import { useEditAccount } from "@hooks";
+import { useEditAccount } from "@hooks/finance-hooks";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";

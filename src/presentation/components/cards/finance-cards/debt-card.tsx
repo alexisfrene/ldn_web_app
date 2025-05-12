@@ -2,7 +2,8 @@ import React from "react";
 import { formattedValue } from "@utils";
 import { CardFee } from "@cards/finance-cards";
 import { FormEditDebt } from "@forms";
-import { useDeleteDebt, useIsMobile } from "@hooks";
+import { useDeleteDebt } from "@hooks/finance-hooks";
+import { useIsMobile } from "@hooks/use-mobile";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import {

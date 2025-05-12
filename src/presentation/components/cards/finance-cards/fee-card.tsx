@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { cn, formattedValue } from "@utils";
 import { SelectFinancialAccount, SelectPaymentMethod } from "@selects";
-import { useMarkDebtPaid } from "@hooks";
+import { useMarkDebtPaid } from "@hooks/finance-hooks";
 import { Button } from "@ui/button";
 import {
   Card,

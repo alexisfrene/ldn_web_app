@@ -18,7 +18,7 @@
       "@forms": ["./src/presentation/components/forms"],
       "@global": ["./src/presentation/global"],
       "@assets/*": ["./src/presentation/assets/*"],
-      "@hooks": ["./src/presentation/hooks"],
+      "@hooks/*": ["./src/presentation/hooks/*"],
       "@ui/*": ["./src/presentation/components/ui/*"],
       "@common/*": ["./src/presentation/components/common/*"],
       "@components/*": ["./src/presentation/components/*"],
@@ -39,6 +39,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "replace-imports.ts"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

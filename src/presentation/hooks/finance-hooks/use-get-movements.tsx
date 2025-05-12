@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Movement } from "src/types/finance";
 import { financeKeys, getAllMovements } from "@services";
 
@@ -13,7 +13,8 @@ interface MovementsResponse {
 export const useGetMovements = (page?: number, limit?: number) => {
   const query = useQuery<MovementsResponse, Error>({
     queryKey: financeKeys.movement.pages(page, limit),
-    queryFn: async () => getAllMovements({ page, limit }),
+    placeholderData: keepPreviousData,
+    queryFn: () => getAllMovements({ page, limit }),
   });
 
   return {
@@ -24,5 +25,6 @@ export const useGetMovements = (page?: number, limit?: number) => {
     limit: query.data?.limit || 0,
     isLoading: query.isLoading,
     isError: query.isError,
+    isPlaceholderData: query.isPlaceholderData,
   };
 };

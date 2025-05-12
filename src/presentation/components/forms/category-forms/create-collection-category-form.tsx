@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useCreateCategoryCollection } from "@hooks";
+import { useCreateCategoryCollection } from "@hooks/category-hooks";
 import { Icons } from "@common/Icons";
 import { ImageUploader } from "@common/ImageUploader";
 import { LoadingIndicator } from "@common/Loading";

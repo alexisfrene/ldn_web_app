@@ -1,7 +1,7 @@
 import React from "react";
 import { CardExpense } from "@cards/finance-cards";
 import { CreateExpenseForm } from "@forms";
-import { useGetExpenses } from "@hooks";
+import { useGetExpenses } from "@hooks/finance-hooks";
 import { Icons } from "@common/Icons";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";

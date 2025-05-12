@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import { editDebt, getDebtById } from "@services";
-import { useLoading } from "@hooks";
+import { useLoading } from "@hooks/use-loading";
 import { CalculateInterest } from "@common/CalculateInterest";
 import { DropdownInput } from "@common/DropDown";
 import { Icons } from "@common/Icons";

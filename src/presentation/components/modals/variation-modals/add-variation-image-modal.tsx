@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { Icons } from "@common/Icons";
 import { ImageLoader } from "@common/ImageLoader";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@ui/alert-dialog";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@ui/dialog";
 import { Input } from "@ui/input";
 
 interface Props {
@@ -23,7 +22,7 @@ interface Props {
   ) => void;
 }
 
-export const AlertAddImage: React.FC<Props> = ({
+export const ModalAddVariationImage: React.FC<Props> = ({
   label,
   collectionId,
   onClick,
@@ -31,19 +30,18 @@ export const AlertAddImage: React.FC<Props> = ({
   const [image, setImage] = useState<{ file: File; url: string }>();
 
   return (
-    <AlertDialog>
-      <AlertDialogTrigger>
+    <Dialog>
+      <DialogTrigger>
         <Icons
           type="plus_circle"
           className="m-0.5 h-32 w-32 cursor-pointer rounded-md bg-emerald-400 p-3 text-emerald-100 hover:bg-emerald-500 hover:text-emerald-200"
         />
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>
-            {`Agregar una imagen a : ${label}`}
-          </AlertDialogTitle>
-        </AlertDialogHeader>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{`Agregar una imagen a: ${label}`}</DialogTitle>
+        </DialogHeader>
+
         <Input
           type="file"
           accept="image/*"
@@ -51,13 +49,11 @@ export const AlertAddImage: React.FC<Props> = ({
             const file = e.target.files?.[0];
             if (file) {
               const url = URL.createObjectURL(file);
-              setImage({
-                file,
-                url,
-              });
+              setImage({ file, url });
             }
           }}
         />
+
         <div className="flex justify-center bg-slate-200 dark:bg-slate-700">
           {image && (
             <ImageLoader
@@ -70,27 +66,29 @@ export const AlertAddImage: React.FC<Props> = ({
           )}
         </div>
 
-        <AlertDialogFooter>
-          <AlertDialogAction
-            onClick={async () => {
-              if (!image?.file) return;
-              onClick(
-                {
-                  collectionId,
-                  image: image.file,
-                },
-                setImage,
-              );
-            }}
-            disabled={!image?.file}
-          >
-            Ok
-          </AlertDialogAction>
-          <AlertDialogCancel onClick={() => setImage(undefined)}>
-            Cancelar
-          </AlertDialogCancel>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+        <DialogFooter>
+          <DialogClose asChild>
+            <button
+              className="btn btn-primary disabled:opacity-50"
+              onClick={() => {
+                if (!image?.file) return;
+                onClick({ collectionId, image: image.file }, setImage);
+              }}
+              disabled={!image?.file}
+            >
+              Ok
+            </button>
+          </DialogClose>
+          <DialogClose asChild>
+            <button
+              className="btn btn-secondary"
+              onClick={() => setImage(undefined)}
+            >
+              Cancelar
+            </button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };

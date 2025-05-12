@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { useIsMobile, useModal } from "@hooks";
+import { useIsMobile } from "@hooks/use-mobile";
+import { useModal } from "@hooks/use-modal";
 import { Icons } from "@common/Icons";
 import { Modal, ModalCategory, ModalSize } from "@common/Modal";
 import { Button } from "@ui/button";

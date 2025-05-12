@@ -1,7 +1,8 @@
 import React from "react";
 import { cn } from "@utils";
 import { InfoCard } from "@cards/general-cards";
-import { useGetMovementsPerMonth, useIsMobile } from "@hooks";
+import { useGetMovementsPerMonth } from "@hooks/finance-hooks";
+import { useIsMobile } from "@hooks/use-mobile";
 import { Skeleton } from "@ui/skeleton";
 
 export const CardsInfo: React.FC = () => {

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { CardDebt } from "@cards/finance-cards";
 import { InfoCard } from "@cards/general-cards";
-import { useGetDebts } from "@hooks";
+import { useGetDebts } from "@hooks/finance-hooks";
 import { Icons } from "@common/Icons";
-import { PieChartComponent } from "@common/PieChart";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
 import { CreateDebtModal } from "@presentation/components/modals";
+
+const PieChartComponent = React.lazy(() => import("@common/PieChart"));
 
 const Debts: React.FC = () => {
   const { debts, isLoading } = useGetDebts();
@@ -47,42 +48,44 @@ const Debts: React.FC = () => {
               valueStyles="text-red-500 dark:text-red-500"
             />
             <div className="col-span-3">
-              <PieChartComponent
-                title="Deudas Pagadas/Pendientes"
-                description="Se muestra el porcentaje de deudas pagadas y pendientes"
-                footer_title="Porcentaje de deudas pagadas y pendientes"
-                dataKey="total"
-                nameKey="debt_type"
-                footer_description={`Deudas pagadas ${
-                  debts
-                    ? (
-                        (debts.debtsTotalPaid /
-                          (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
-                        100
-                      ).toFixed(2)
-                    : 0
-                }% y pendientes ${
-                  debts
-                    ? (
-                        (debts.debtsTotalUnpaid /
-                          (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
-                        100
-                      ).toFixed(2)
-                    : 0
-                }%`}
-                chartData={[
-                  {
-                    debt_type: "Pagado: $",
-                    total: debts?.debtsTotalPaid,
-                    fill: "green",
-                  },
-                  {
-                    debt_type: "Pendiente: $",
-                    total: debts?.debtsTotalUnpaid,
-                    fill: "red",
-                  },
-                ]}
-              />
+              <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+                <PieChartComponent
+                  title="Deudas Pagadas/Pendientes"
+                  description="Se muestra el porcentaje de deudas pagadas y pendientes"
+                  footer_title="Porcentaje de deudas pagadas y pendientes"
+                  dataKey="total"
+                  nameKey="debt_type"
+                  footer_description={`Deudas pagadas ${
+                    debts
+                      ? (
+                          (debts.debtsTotalPaid /
+                            (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
+                          100
+                        ).toFixed(2)
+                      : 0
+                  }% y pendientes ${
+                    debts
+                      ? (
+                          (debts.debtsTotalUnpaid /
+                            (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
+                          100
+                        ).toFixed(2)
+                      : 0
+                  }%`}
+                  chartData={[
+                    {
+                      debt_type: "Pagado: $",
+                      total: debts?.debtsTotalPaid,
+                      fill: "green",
+                    },
+                    {
+                      debt_type: "Pendiente: $",
+                      total: debts?.debtsTotalUnpaid,
+                      fill: "red",
+                    },
+                  ]}
+                />
+              </Suspense>
             </div>
           </>
         ) : null}

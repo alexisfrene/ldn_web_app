@@ -13,11 +13,15 @@ type Props = {
   currentPage: number;
   totalPages: number;
   setPage: (page: number) => void;
+  onClickPrevious?: () => void;
+  onClickNext?: () => void;
 };
 export const AnimatedPagination: React.FC<Props> = ({
   currentPage,
   totalPages,
   setPage,
+  onClickPrevious,
+  onClickNext,
 }) => {
   const [fade, setFade] = useState(true);
 
@@ -45,13 +49,8 @@ export const AnimatedPagination: React.FC<Props> = ({
         )}
       >
         <PaginationItem>
-          <PaginationPrevious
-            onClick={() => {
-              if (currentPage > 1) setPage(currentPage - 1);
-            }}
-          />
+          <PaginationPrevious onClick={onClickPrevious} />
         </PaginationItem>
-
         {visiblePages.map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
@@ -62,13 +61,8 @@ export const AnimatedPagination: React.FC<Props> = ({
             </PaginationLink>
           </PaginationItem>
         ))}
-
         <PaginationItem>
-          <PaginationNext
-            onClick={() => {
-              if (currentPage < totalPages) setPage(currentPage + 1);
-            }}
-          />
+          <PaginationNext onClick={onClickNext} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

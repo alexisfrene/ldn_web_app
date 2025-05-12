@@ -46,6 +46,7 @@
     "@radix-ui/react-tooltip": "^1.2.3",
     "@tailwindcss/vite": "^4.1.4",
     "@tanstack/react-query": "^5.74.4",
+    "@tanstack/react-query-devtools": "^5.76.0",
     "@tanstack/react-table": "^8.21.3",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",

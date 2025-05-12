@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import { useCreateDebt } from "@hooks";
+import { useCreateDebt } from "@hooks/finance-hooks";
 import { CalculateInterest } from "@common/CalculateInterest";
 import { CounterButton } from "@common/CounterButton";
 import { DropdownInput } from "@common/DropDown";

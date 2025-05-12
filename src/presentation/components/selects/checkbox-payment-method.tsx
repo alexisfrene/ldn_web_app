@@ -1,7 +1,7 @@
 import React, { useId } from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { CreatePaymentMethodModal } from "@modals";
-import { useGetPaymentMethods } from "@hooks";
+import { useGetPaymentMethods } from "@hooks/finance-hooks";
 import { Checkbox } from "@ui/checkbox";
 import { Label } from "@ui/label";
 

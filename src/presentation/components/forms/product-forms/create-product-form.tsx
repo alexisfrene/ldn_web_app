@@ -6,7 +6,7 @@ import {
   SelectProductGender,
   SelectProductStyle,
 } from "@selects";
-import { useModal } from "@hooks";
+import { useModal } from "@hooks/use-modal";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { Modal, ModalCategory, ModalSize } from "@common/Modal";
 import { Button } from "@ui/button";

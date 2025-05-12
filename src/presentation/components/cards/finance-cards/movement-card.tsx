@@ -1,6 +1,6 @@
 import React from "react";
 import { cn, formattedValue } from "@utils";
-import { useDeleteMovement } from "@hooks";
+import { useDeleteMovement } from "@hooks/finance-hooks";
 import { Icons } from "@common/Icons";
 import {
   AlertDialog,

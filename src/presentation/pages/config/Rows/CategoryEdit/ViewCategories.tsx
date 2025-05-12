@@ -4,7 +4,7 @@ import {
   useChangeTitleCollectionCategory,
   useDeleteCollectionCategory,
   useDeleteValueCategory,
-} from "@hooks";
+} from "@hooks/category-hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";

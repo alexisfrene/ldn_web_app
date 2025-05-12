@@ -4,7 +4,9 @@ import {
   changePreferenceProductView,
   getPreferenceProductView,
 } from "@services";
-import { useGetProducts, useIsMobile, useModal } from "@hooks";
+import { useGetProducts } from "@hooks/product-hooks";
+import { useIsMobile } from "@hooks/use-mobile";
+import { useModal } from "@hooks/use-modal";
 import { Modal } from "@common/Modal";
 import {
   Menubar,

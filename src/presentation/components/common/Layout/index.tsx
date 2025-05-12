@@ -1,5 +1,5 @@
 import React, { ReactNode, Suspense } from "react";
-import { useAvatar } from "@hooks";
+import { useAvatar } from "@hooks/use-avatar";
 import { ModeToggle } from "@common/ModeToggle";
 import { SidebarProvider, SidebarTrigger } from "@ui/sidebar";
 import { Skeleton } from "@ui/skeleton";

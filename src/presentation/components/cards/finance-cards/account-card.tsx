@@ -1,7 +1,7 @@
 import React from "react";
 import { formattedValue } from "@utils";
 import { EditFinancialAccountDialog } from "@modals";
-import { useDeleteAccount } from "@hooks";
+import { useDeleteAccount } from "@hooks/finance-hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";

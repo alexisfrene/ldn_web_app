@@ -3,7 +3,7 @@ import { FormikValues, useFormikContext } from "formik";
 import get from "lodash/get";
 import { cn } from "@utils";
 import { CreateBrandModal } from "@modals";
-import { useGetBrands } from "@hooks";
+import { useGetBrands } from "@hooks/brand-hooks";
 import { Label } from "@ui/label";
 import {
   Select,

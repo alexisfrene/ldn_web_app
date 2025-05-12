@@ -1,7 +1,8 @@
 import React from "react";
 import { formattedValue } from "@utils";
 import { EditExpenseModal, ExpenseDetailModal } from "@modals";
-import { useDeleteExpense, useIsMobile } from "@hooks";
+import { useDeleteExpense } from "@hooks/finance-hooks";
+import { useIsMobile } from "@hooks/use-mobile";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import {

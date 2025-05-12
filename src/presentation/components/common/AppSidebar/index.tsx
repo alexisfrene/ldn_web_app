@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@utils";
-import { useAvatar } from "@hooks";
+import { useAvatar } from "@hooks/use-avatar";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { GridPattern } from "@ui/grid-pattern";

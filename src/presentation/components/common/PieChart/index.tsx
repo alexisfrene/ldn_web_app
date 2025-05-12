@@ -38,7 +38,7 @@ type Props = {
   chartData: any[];
 };
 
-export const PieChartComponent: React.FC<Props> = ({
+const PieChartComponent: React.FC<Props> = ({
   title,
   description,
   footer_title,
@@ -78,3 +78,5 @@ export const PieChartComponent: React.FC<Props> = ({
     </Card>
   );
 };
+
+export default PieChartComponent;

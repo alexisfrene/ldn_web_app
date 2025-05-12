@@ -1,4 +1,4 @@
-import { FileWithPreview } from "@hooks";
+import { FileWithPreview } from "@hooks/use-file-upload";
 
 const initialValues = {
   name: "Nuevo producto",

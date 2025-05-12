@@ -1,6 +1,7 @@
 import React from "react";
 import { EditAvatarModal } from "@modals";
-import { useAvatar, useModal } from "@hooks";
+import { useAvatar } from "@hooks/use-avatar";
+import { useModal } from "@hooks/use-modal";
 import { Modal } from "@common/Modal";
 import { Card, CardContent, CardHeader } from "@ui/card";
 import { Separator } from "@ui/separator";

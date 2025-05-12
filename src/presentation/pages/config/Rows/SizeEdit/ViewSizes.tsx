@@ -4,7 +4,7 @@ import {
   useChangeDeleteValueSize,
   useChangeTitleCollectionSize,
   useDeleteCollectionSize,
-} from "@hooks";
+} from "@hooks/size-hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";

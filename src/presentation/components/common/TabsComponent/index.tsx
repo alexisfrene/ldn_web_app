@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { cn } from "@utils";
-import { useIsMobile } from "@hooks";
+import { useIsMobile } from "@hooks/use-mobile";
 import { Icons } from "@common/Icons";
 import { LoadingIndicator } from "@common/Loading";
 import { Card, CardContent, CardHeader } from "@ui/card";

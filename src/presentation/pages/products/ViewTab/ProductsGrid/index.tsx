@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductCard, ProductDetailCard } from "@cards/product-cards";
-import { useDeleteProduct } from "@hooks";
+import { useDeleteProduct } from "@hooks/product-hooks";
 
 interface Props {
   data: Product[];

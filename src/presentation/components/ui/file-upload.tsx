@@ -13,7 +13,7 @@ import {
   VideoIcon,
   XIcon,
 } from "lucide-react";
-import { formatBytes, useFileUpload } from "@hooks";
+import { formatBytes, useFileUpload } from "@hooks/use-file-upload";
 import { Button } from "@ui/button";
 
 const getFileIcon = (file: { file: File | { type: string; name: string } }) => {

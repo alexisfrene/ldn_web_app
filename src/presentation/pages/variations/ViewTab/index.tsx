@@ -1,7 +1,8 @@
 import React from "react";
 import { toast } from "sonner";
 import { VariationCard } from "@cards/variation-cards";
-import { useModal } from "@hooks";
+import { VariationDetailCard } from "@cards/variation-cards";
+import { useModal } from "@hooks/use-modal";
 import { Modal } from "@common/Modal";
 import { Button } from "@ui/button";
 import { Label } from "@ui/label";
@@ -9,7 +10,6 @@ import {
   useDeleteVariation,
   useGetVariations,
 } from "@presentation/hooks/variation-hooks";
-import { VariationDetail } from "./VariationDetail";
 
 const VariantsGrid: React.FC = () => {
   const { variations } = useGetVariations();
@@ -25,7 +25,7 @@ const VariantsGrid: React.FC = () => {
             onCLickImage={() => {
               showModal(
                 "",
-                <VariationDetail variationId={variation.variation_id} />,
+                <VariationDetailCard variationId={variation.variation_id} />,
               );
             }}
             handleDelete={() =>

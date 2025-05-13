@@ -14,7 +14,7 @@ export const ProductCard: React.FC<Props> = ({
   removeProduct,
 }) => {
   return (
-    <div className="relative max-w-xs overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800">
+    <div className="relative sm:max-w-xs overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800">
       <AlertModal
         trigger={
           <Icons

@@ -102,11 +102,11 @@ export const VariationDetailCard: React.FC<Props> = ({ variationId }) => {
             </Card>
           </TabsContent>
           <TabsContent value={tabs[1]}>
-            <Card className="h-96">
+            <Card>
               <CardHeader>
                 <CardTitle>Crear una nueva colección </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="h-96">
                 <CreateVariationCollectionForm variationId={variationId} />
               </CardContent>
             </Card>

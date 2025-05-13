@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
+import { FileWithPreview } from "@hooks/use-file-upload";
 import { useCreateVariationCollection } from "@hooks/variation-hooks";
-import { Icons } from "@common/Icons";
-import { ImageLoader } from "@common/ImageLoader";
-import { ImageUploader } from "@common/ImageUploader";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { Button } from "@ui/button";
-import { Separator } from "@ui/separator";
+import { FileUpload } from "@ui/file-upload";
+import { LoadingButton } from "@ui/loading-button";
 
 type Props = {
   variationId: string;
@@ -15,67 +13,31 @@ type Props = {
 export const CreateVariationCollectionForm: React.FC<Props> = ({
   variationId,
 }) => {
-  const [images, setImages] = useState<ImagesValues[]>([]);
   const mutation = useCreateVariationCollection();
 
   return (
     <Formik
-      initialValues={{ label: "", images: [] as ImagesValues[] }}
+      initialValues={{ label: "", files: [] as FileWithPreview[] }}
       onSubmit={(values, formikHelpers) => {
         mutation.mutate({
           label: values.label,
-          images: values.images.map((image) => image.file),
+          images: values.files
+            .map((image: FileWithPreview) =>
+              image.file instanceof File ? image.file : null,
+            )
+            .filter((file): file is File => file !== null),
           variation_id: variationId,
         });
-        setImages([]);
         formikHelpers.resetForm();
       }}
     >
-      {({ values, setFieldValue, handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+      {({ handleSubmit }) => (
+        <form onSubmit={handleSubmit} className="flex gap-3 flex-col">
           <InputWithLabel label="Nombre" name="label" />
-          <ImageUploader name="images" images={images} setImages={setImages} />
-          <div className="my-3 grid grid-cols-4 gap-3">
-            {values.images.map((value: ImagesValues) => {
-              return (
-                <div
-                  key={value.id}
-                  className="relative bg-slate-200 dark:bg-slate-600/50"
-                >
-                  <Icons
-                    type="close"
-                    className="absolute right-0 h-4 cursor-pointer bg-red-500"
-                    onClick={() => {
-                      const res = values.images.filter(
-                        (e: { id: string }) => e?.id !== value.id,
-                      );
-                      setFieldValue("images", res);
-                      setImages(res);
-                    }}
-                  />
-
-                  <div className="m-1 flex justify-center">
-                    <ImageLoader alt="Imagen" url={value.url} />
-                  </div>
-                  <Separator />
-                </div>
-              );
-            })}
-          </div>
-          <Button
-            type="submit"
-            disabled={mutation.isPending}
-            onClick={() => handleSubmit()}
-          >
-            <div
-              className={`${mutation.isPending ? "relative" : "hidden"} mx-1 w-5`}
-            >
-              {mutation.isPending && (
-                <Icons type="refresh" className="h-5 animate-spin" />
-              )}
-            </div>
-            Crear producto
-          </Button>
+          <FileUpload accept="image/*" maxFiles={10} maxSizeMB={10} />
+          <LoadingButton type="submit" loading={mutation.isPending}>
+            Crear colección
+          </LoadingButton>
         </form>
       )}
     </Formik>

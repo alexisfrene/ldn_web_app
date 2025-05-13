@@ -59,6 +59,7 @@ export const ExpenseDetailModal: React.FC<Props> = ({
                   isLoading: expenses.isLoading,
                   totalPages: 10,
                   currentPage: 1,
+                  isPlaceholderData: false,
                 }}
               />
             </ScrollArea>

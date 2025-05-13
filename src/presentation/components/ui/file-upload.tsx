@@ -191,7 +191,7 @@ export const FileUpload: React.FC<Props> = ({
                     className="-ms-1 size-4 opacity-60"
                     aria-hidden="true"
                   />
-                  Select image
+                  Subir imagen
                 </Button>
               </div>
             )}
@@ -243,7 +243,7 @@ export const FileUpload: React.FC<Props> = ({
           <div className="flex w-full flex-col gap-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="truncate text-sm font-medium">
-                Files ({files.length})
+                Archivos ({files.length})
               </h3>
               <div className="flex gap-2">
                 <Button
@@ -256,7 +256,7 @@ export const FileUpload: React.FC<Props> = ({
                     className="-ms-0.5 size-3.5 opacity-60"
                     aria-hidden="true"
                   />
-                  Add files
+                  Agregar archivo
                 </Button>
                 <Button
                   variant="outline"
@@ -268,7 +268,7 @@ export const FileUpload: React.FC<Props> = ({
                     className="-ms-0.5 size-3.5 opacity-60"
                     aria-hidden="true"
                   />
-                  Remove all
+                  Limpiar
                 </Button>
               </div>
             </div>
@@ -309,9 +309,9 @@ export const FileUpload: React.FC<Props> = ({
             >
               <ImageIcon className="size-4 opacity-60" />
             </div>
-            <p className="mb-1.5 text-sm font-medium">Drop your files here</p>
+            <p className="mb-1.5 text-sm font-medium">Suelta el archivo aquí</p>
             <p className="text-muted-foreground text-xs">
-              Max {maxFiles} files ∙ Up to {maxSizeMB}MB
+              Max {maxFiles} de archivos ∙ Tamaño max. {maxSizeMB}MB
             </p>
             <Button
               variant="outline"
@@ -320,7 +320,7 @@ export const FileUpload: React.FC<Props> = ({
               onClick={openFileDialog}
             >
               <UploadIcon className="-ms-1 opacity-60" aria-hidden="true" />
-              Select images
+              Selecciona imágenes
             </Button>
           </div>
         )}

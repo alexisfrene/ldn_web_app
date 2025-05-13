@@ -35,7 +35,7 @@ export const createVariation = async (values: VariationCreate) => {
 export const getVariationById = async (id: string): Promise<Variation> => {
   try {
     const res = await axiosInstance<Variation>(`/variations/${id}`);
-    console.log("res", res);
+
     return res.data;
   } catch (error) {
     toast.error("Ocurrió un error al obtener la variación por ID");

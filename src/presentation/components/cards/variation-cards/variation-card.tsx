@@ -21,7 +21,6 @@ export const VariationCard: React.FC<Props> = ({
           className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
         />
       </div>
-
       <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800 relative">
         <Button
           variant="destructive"

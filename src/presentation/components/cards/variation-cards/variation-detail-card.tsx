@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { ModalAddVariationImage } from "@modals";
 import { CreateVariationCollectionForm } from "@forms";
 import { useGetVariationById } from "@hooks/variation-hooks";
-import {
-  useAddVariationCollectionValue,
-  useDeleteVariationImage,
-} from "@hooks/variation-hooks";
+import { useDeleteVariationImage } from "@hooks/variation-hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
@@ -29,20 +26,8 @@ interface Props {
 export const VariationDetailCard: React.FC<Props> = ({ variationId }) => {
   const { variation } = useGetVariationById(variationId);
   const [edit, setEdit] = useState("");
-  const mutation = useAddVariationCollectionValue();
+
   const mutationRemoveImage = useDeleteVariationImage();
-  const handleSubmitAddImage = (
-    data: { collectionId: string; image: File },
-    setImage: (arg0: undefined) => void,
-  ) => {
-    mutation.mutate({
-      variation_id: variation?.variation_id || "",
-      collection_id: data.collectionId,
-      file: data.image,
-    });
-    setImage(undefined);
-    setEdit("");
-  };
   return (
     <MenuTabs tabs={tabs}>
       {variation && (
@@ -73,7 +58,7 @@ export const VariationDetailCard: React.FC<Props> = ({ variationId }) => {
                       )}
                     </div>
                     <CardDescription>{value.label}</CardDescription>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-3">
+                    <div className="grid grid-cols-3 gap-2 my-3">
                       {value.images.map((image, index) => (
                         <div className="relative" key={index}>
                           {edit === value.id && (
@@ -108,7 +93,6 @@ export const VariationDetailCard: React.FC<Props> = ({ variationId }) => {
                           label={value.label}
                           variationId={variation.variation_id}
                           collectionId={value.id}
-                          onClick={handleSubmitAddImage}
                         />
                       )}
                     </div>

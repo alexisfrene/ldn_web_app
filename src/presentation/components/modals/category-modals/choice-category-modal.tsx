@@ -16,7 +16,7 @@ export const ChoiceCategoryModal: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="mb-3">
+        <Button variant="outline" className="mt-1">
           Selecciona una categoría
         </Button>
       </DialogTrigger>

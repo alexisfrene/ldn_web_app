@@ -59,7 +59,7 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   </div>
                 </div>
               ) : (
-                <Label className="mt-8">{title}</Label>
+                <Label className="mt-8 mb-2">{title}</Label>
               )}
               {selected === category_id ? (
                 <Icons

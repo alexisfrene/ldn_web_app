@@ -34,7 +34,13 @@ export const InfoCard: React.FC<Props> = ({
           )}
         />
         <Label className="min-h-10  sm:text-base">{title}</Label>
-        <div className={cn(["text-3xl sm:text-2xl", valueStyles])}>
+        <div
+          className={cn([
+            "text-3xl  sm:text-2xl",
+            valueStyles,
+            value.toString().length > 4 && "text-xl truncate",
+          ])}
+        >
           {currency ? (
             <div>
               <span>$</span>

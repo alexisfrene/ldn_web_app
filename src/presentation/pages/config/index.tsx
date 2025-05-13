@@ -47,12 +47,7 @@ const Config: React.FC = () => {
           />
         </div>
       </CardContent>
-      <Modal
-        isOpen={isOpenModal}
-        onRequestClose={hideModal}
-        className="max-w-fit"
-        title={modalTitle}
-      >
+      <Modal isOpen={isOpenModal} onRequestClose={hideModal} title={modalTitle}>
         {modalContent}
       </Modal>
       <Sheet open={isOpenSheet} onOpenChange={hideSheet}>

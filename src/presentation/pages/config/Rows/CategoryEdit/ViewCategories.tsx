@@ -9,9 +9,7 @@ import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { Avatar, AvatarFallback } from "@ui/avatar";
-import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
@@ -30,20 +28,21 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
 
   return (
     <>
-      <ScrollArea>
+      <ScrollArea className="h-96 mb-3">
         {data.map(({ values, title, category_id }) => (
-          <Card key={category_id}>
-            <CardHeader className="relative">
+          <div key={category_id}>
+            <div className="relative">
               {selected === category_id ? (
-                <>
+                <div className="mt-8">
                   <Label className="w-full">Nombre de la colección </Label>
-                  <div className="flex">
+                  <div className="flex gap-1">
                     <Input
                       placeholder={title}
                       onChange={(e) => setCollectionTitle(e.target.value)}
+                      className="my-3"
                     />
                     <Button
-                      className="cursor-pointer rounded-md bg-green-400 hover:bg-green-500"
+                      className="cursor-pointer rounded-md bg-green-400 hover:bg-green-500 my-3"
                       disabled={
                         title === collectionTitle ||
                         collectionTitle.length === 0
@@ -58,9 +57,9 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                       <Icons type="check" className="h-8" />
                     </Button>
                   </div>
-                </>
+                </div>
               ) : (
-                <CardTitle className="my-5">{title}</CardTitle>
+                <Label className="mt-8">{title}</Label>
               )}
               {selected === category_id ? (
                 <Icons
@@ -95,12 +94,12 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   />
                 </div>
               )}
-            </CardHeader>
-            <CardContent className="flex flex-row flex-wrap gap-5">
+            </div>
+            <div className="flex flex-wrap gap-3">
               {values.map((e) => (
                 <div
                   key={e.id}
-                  className="relative flex flex-row gap-1 rounded-md bg-slate-200 px-2 py-2 dark:bg-slate-700"
+                  className="relative flex  gap-1 rounded-md bg-slate-200 px-1 py-2 dark:bg-slate-700"
                 >
                   <Avatar>
                     <TokenImage
@@ -132,8 +131,8 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                 </div>
               ))}
               {category_id === selected && (
-                <Badge
-                  className="cursor-pointer bg-green-400 hover:bg-green-500"
+                <div
+                  className="cursor-pointer bg-green-400 hover:bg-green-500 flex justify-center items-center rounded-sm"
                   onClick={() => {
                     return showSheet(
                       "Agregar una categoría nueva",
@@ -142,10 +141,10 @@ export const ViewCategories: React.FC<Props> = ({ data, showSheet }) => {
                   }}
                 >
                   <Icons type="plus_circle" height={35} />
-                </Badge>
+                </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ))}
       </ScrollArea>
       <Button

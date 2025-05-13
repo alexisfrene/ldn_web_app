@@ -27,7 +27,7 @@ export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
 
   return (
     <div className="border-none sm:min-h-96">
-      <ScrollArea className={cn(height ?? "h-96")}>
+      <ScrollArea className={cn([height ?? "h-96", "mb-3"])}>
         {isLoading ? (
           <div>
             {Array(6)

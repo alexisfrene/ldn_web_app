@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { cn } from "@utils";
 import { useIsMobile } from "@hooks/use-mobile";
@@ -24,6 +25,7 @@ interface TabsProps {
 }
 
 export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
+  const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
 
@@ -38,9 +40,13 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
       <CardHeader>
         <div className={tabsStyles}>
           {isMobile ? (
-            <DropdownMenu>
+            <DropdownMenu open={open} onOpenChange={setOpen}>
               <DropdownMenuTrigger className="flex w-full items-center">
-                <Icons type="bars3" height={40} className="pl-3" />
+                <Icons
+                  type={open ? "close" : "bars3"}
+                  height={40}
+                  className="pl-5 pr-3 active:bg-red-900"
+                />
                 <Label className="w-full pr-6 align-middle text-xl">
                   {tabs.map((e) =>
                     location.pathname.includes(e.path) ? e.label : "",

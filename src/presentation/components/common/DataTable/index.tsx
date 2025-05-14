@@ -23,23 +23,21 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   return (
     <>
       <div className="mb-5 flex items-center font-bold sm:text-2xl">
-        <Icons
-          type={modalEdit ? "arrow_small_left" : "copy_manual"}
-          height={isMobile ? 20 : 30}
+        <button
+          type="button"
           className="cursor-pointer hover:scale-105 hover:text-slate-800"
           onClick={() => setModalEdit(!modalEdit)}
-        />
+        >
+          <Icons
+            type={modalEdit ? "arrow_small_left" : "copy_manual"}
+            height={isMobile ? 20 : 30}
+          />
+        </button>
         <h2 className="ml-2">{title}</h2>
       </div>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values, { setSubmitting }) => {
-          handleSubmit(values, setSubmitting);
-          setModalEdit(!modalEdit);
-        }}
-      >
-        {({ values, handleSubmit, setFieldValue }) => (
-          <form onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        {({ values, setFieldValue, handleSubmit: formikHandleSubmit }) => (
+          <form onSubmit={formikHandleSubmit}>
             {dataVist.map(({ label, value, name }) => (
               <div
                 key={name}
@@ -56,7 +54,13 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
                       <Input
                         name={name}
                         placeholder={values[name]}
-                        type={name === "price" ? "number" : "text"}
+                        type={
+                          name === "price"
+                            ? "number"
+                            : name === "color"
+                              ? "color"
+                              : "text"
+                        }
                         onChange={(e) => setFieldValue(name, e.target.value)}
                         className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs sm:text-base dark:bg-slate-300"
                       />

@@ -39,7 +39,7 @@ export const PrimaryImage: React.FC<Props> = ({ product }) => {
   });
 
   return (
-    <div className="relative flex justify-center rounded-sm bg-slate-200 py-2 dark:bg-slate-900">
+    <div className="relative flex justify-center rounded-sm py-2">
       <AlertDialog>
         <AlertDialogTrigger className="relative">
           <Icons

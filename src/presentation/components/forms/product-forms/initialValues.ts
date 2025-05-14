@@ -5,7 +5,7 @@ const initialValues = {
   files: {} as FileWithPreview[],
   price: 1,
   description: "",
-  detail: { age: "", brand: "", color: "", gender: "", style: "" },
+  detail: { age: "", brand: "", color: "#eaf5f5", gender: "", style: "" },
   stock: 1,
   category: {
     category_id: "",

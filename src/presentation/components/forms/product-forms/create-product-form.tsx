@@ -7,12 +7,8 @@ import {
   SelectProductGender,
   SelectProductStyle,
 } from "@selects";
-import { useModal } from "@hooks/use-modal";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { Modal, ModalSize } from "@common/Modal";
 import { ChoiceSizeModal } from "@components/modals/size-modals/choice-size-modal";
-import { Button } from "@ui/button";
-import { CardTitle } from "@ui/card";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
 import handleSubmit from "./handleSubmit";
@@ -20,9 +16,6 @@ import initialValues from "./initialValues";
 import validationSchema from "./validationSchema";
 
 export const CreateProductForm: React.FC = () => {
-  const { hideModal, isOpenModal, modalContent, modalTitle, showModal } =
-    useModal();
-
   return (
     <Formik
       initialValues={initialValues}
@@ -31,7 +24,7 @@ export const CreateProductForm: React.FC = () => {
       }}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, setFieldValue, values, isSubmitting }) => (
+      {({ handleSubmit, values, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
           className="md:grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 md:grid-rows-4 xl:grid-cols-4"
@@ -99,10 +92,6 @@ export const CreateProductForm: React.FC = () => {
           <ErrorMessage name="category" />
           <ChoiceSizeModal />
           <ErrorMessage name="size" />
-          <Modal isOpen={isOpenModal} onRequestClose={hideModal}>
-            <CardTitle className="text-center">{modalTitle}</CardTitle>
-            {modalContent}
-          </Modal>
           <LoadingButton
             className="col-span-full"
             type="submit"

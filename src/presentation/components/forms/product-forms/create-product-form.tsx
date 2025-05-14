@@ -10,6 +10,7 @@ import {
 import { useModal } from "@hooks/use-modal";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { Modal, ModalSize } from "@common/Modal";
+import { ChoiceSizeModal } from "@components/modals/size-modals/choice-size-modal";
 import { Button } from "@ui/button";
 import { CardTitle } from "@ui/card";
 import { FileUpload } from "@ui/file-upload";
@@ -96,26 +97,7 @@ export const CreateProductForm: React.FC = () => {
           </div>
           <ChoiceCategoryModal />
           <ErrorMessage name="category" />
-          <Button
-            className="col-span-full"
-            variant="outline"
-            type="button"
-            onClick={() =>
-              showModal(
-                "Selecciona un talle/numero :",
-                <ModalSize
-                  onRequestClose={hideModal}
-                  handleChange={(value) => {
-                    setFieldValue("size", value);
-                    hideModal();
-                  }}
-                  values={values.size}
-                />,
-              )
-            }
-          >
-            Selecciona un talle/numero
-          </Button>
+          <ChoiceSizeModal />
           <ErrorMessage name="size" />
           <Modal isOpen={isOpenModal} onRequestClose={hideModal}>
             <CardTitle className="text-center">{modalTitle}</CardTitle>

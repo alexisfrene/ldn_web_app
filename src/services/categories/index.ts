@@ -109,3 +109,20 @@ export const deleteCollectionCategory = async (category_id: number) => {
     console.error("ERROR IN deleteCollectionCategory:", error);
   }
 };
+
+export const getCategoryByNames = async ({
+  collection_item_name,
+}: {
+  collection_item_name: string;
+}) => {
+  try {
+    const res = await axiosInstance.get(
+      `/categories?collection_item_name=${collection_item_name}`,
+    );
+
+    return res.data;
+  } catch (error) {
+    toast.error("Ocurrido un error getCategoryByNames");
+    console.error("ERROR IN getCategoryByNames:", error);
+  }
+};

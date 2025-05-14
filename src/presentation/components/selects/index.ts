@@ -10,3 +10,4 @@ export * from "./select-product-age";
 export * from "./select-product-gender";
 export * from "./select-product-style";
 export * from "./select-category";
+export * from "./select-size";

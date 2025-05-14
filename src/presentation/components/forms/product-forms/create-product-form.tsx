@@ -1,5 +1,6 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
+import { ChoiceCategoryModal } from "@modals";
 import {
   SelectBrand,
   SelectProductAge,
@@ -8,7 +9,7 @@ import {
 } from "@selects";
 import { useModal } from "@hooks/use-modal";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { Modal, ModalCategory, ModalSize } from "@common/Modal";
+import { Modal, ModalSize } from "@common/Modal";
 import { Button } from "@ui/button";
 import { CardTitle } from "@ui/card";
 import { FileUpload } from "@ui/file-upload";
@@ -93,27 +94,7 @@ export const CreateProductForm: React.FC = () => {
           <div className="md:hidden">
             <FileUpload maxSizeMB={10} accept="image/*" />
           </div>
-          <Button
-            className="col-span-full"
-            variant="outline"
-            type="button"
-            onClick={() =>
-              showModal(
-                "Selecciona una categoría :",
-                <ModalCategory
-                  onRequestClose={hideModal}
-                  handleChange={(value) => {
-                    setFieldValue("category", value);
-                    hideModal();
-                  }}
-                  values={values.category}
-                  key="category"
-                />,
-              )
-            }
-          >
-            Seleccionar categoría
-          </Button>
+          <ChoiceCategoryModal />
           <ErrorMessage name="category" />
           <Button
             className="col-span-full"

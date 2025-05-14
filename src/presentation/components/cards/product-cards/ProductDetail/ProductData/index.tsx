@@ -1,8 +1,9 @@
 import React from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useGetCategoryByNames } from "@hooks/category-hooks";
+import { useEditProduct, useGetProductById } from "@hooks/product-hooks";
+import { useGetSizeByNames } from "@hooks/size-hooks";
 import { ProductDataTable } from "@common/DataTable";
-import { handleSubmit } from "./handleSubmit";
-import { useForm } from "./useForm";
+import { Skeleton } from "@ui/skeleton";
 
 export interface Props {
   price: string;
@@ -21,18 +22,19 @@ export const ProductData: React.FC<Props> = ({
   size,
   product_id,
 }) => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: handleSubmit,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["product_details", product_id],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ["products"],
-      });
-    },
-  });
+  const mutation = useEditProduct();
+  const { product } = useGetProductById(product_id);
+  const {
+    category_id,
+    category_value_id,
+    isLoading: isLoadingCategory,
+  } = useGetCategoryByNames(category, product_id);
+  const {
+    size_id,
+    size_value_id,
+    isLoading: isLoadingSize,
+  } = useGetSizeByNames(size, product_id);
+
   const dataVist = [
     {
       label: "Nombre :",
@@ -56,15 +58,30 @@ export const ProductData: React.FC<Props> = ({
     },
     { label: "Numero/Talle:", value: size, name: "size" },
   ];
-  const initialValues = useForm(product_id!);
+
+  if (isLoadingCategory || isLoadingSize) {
+    return <Skeleton className="h-96 min-w-md" />;
+  }
 
   return (
     <ProductDataTable
       dataVist={dataVist}
-      handleSubmit={(values, formikHelpers) =>
-        mutation.mutate({ formikHelpers: formikHelpers, values: values })
+      handleSubmit={(values) =>
+        mutation.mutate({ product_id, newDetails: values })
       }
-      initialValues={initialValues}
+      initialValues={{
+        description: product?.description,
+        name: product?.name,
+        price: product?.price,
+        category: {
+          category_id,
+          category_value_id,
+        },
+        size: {
+          size_id,
+          size_value_id,
+        },
+      }}
       title="Información básica"
     />
   );

@@ -99,3 +99,20 @@ export const deleteCollectionSize = async (size_id: string) => {
     console.error("ERROR IN deleteCollectionSize:", error);
   }
 };
+
+export const getSizeByNames = async ({
+  collection_item_name,
+}: {
+  collection_item_name: string;
+}) => {
+  try {
+    const res = await axiosInstance.get(
+      `/size?collection_item_name=${collection_item_name}`,
+    );
+
+    return res.data;
+  } catch (error) {
+    toast.error("Ocurrido un error getSizeByNames");
+    console.error("ERROR IN getSizeByNames:", error);
+  }
+};

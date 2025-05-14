@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllCategories } from "@services";
+import { SelectCategory } from "@selects";
 import { ModalGeneric } from "./ModalGeneric";
 
 export interface CategoryIds {
@@ -12,30 +13,16 @@ export interface ModalCategoryProps {
   values: CategoryIds;
 }
 
-export const ModalCategory: React.FC<ModalCategoryProps> = ({
-  onRequestClose,
-  handleChange,
-  values,
-}) => {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  const getCategories = async () => {
-    const res = await getAllCategories();
-    if (res) setCategories(res);
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
+export const ModalCategory: React.FC<ModalCategoryProps> = ({}) => {
   return (
-    <ModalGeneric
-      items={categories}
-      selected={values as any}
-      onRequestClose={onRequestClose}
-      handleChange={handleChange as any}
-      selectedKey="category_id"
-      selectedValueKey="category_value_id"
-    />
+    <SelectCategory />
+    // <ModalGeneric
+    //   items={categories}
+    //   selected={values as any}
+    //   onRequestClose={onRequestClose}
+    //   handleChange={handleChange as any}
+    //   selectedKey="category_id"
+    //   selectedValueKey="category_value_id"
+    // />
   );
 };

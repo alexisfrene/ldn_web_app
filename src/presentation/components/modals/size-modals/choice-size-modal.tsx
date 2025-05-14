@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectCategory } from "@selects";
+import { SelectSize } from "@selects";
 import { Button } from "@ui/button";
 import {
   Dialog,
@@ -12,28 +12,30 @@ import {
   DialogTrigger,
 } from "@ui/dialog";
 
-export const ChoiceCategoryModal: React.FC = () => {
+export const ChoiceSizeModal: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="mt-1">
-          Selecciona una categoría
+          Selecciona una talle/numero
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Selecciona una categoría</DialogTitle>
+          <DialogTitle>Selecciona un talle / número </DialogTitle>
           <DialogDescription>
-            Aquí puede seleccionar una categoría o crear una nueva
+            Aquí puede seleccionar un talle o crear una nueva
           </DialogDescription>
         </DialogHeader>
-        <SelectCategory />
+        <SelectSize />
         <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="secondary">Cancelar</Button>
+          <DialogClose>
+            <Button variant="secondary" className="w-full">
+              Cancelar
+            </Button>
           </DialogClose>
-          <DialogClose asChild>
-            <Button>Seleccionar</Button>
+          <DialogClose>
+            <Button className="w-full">Seleccionar</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

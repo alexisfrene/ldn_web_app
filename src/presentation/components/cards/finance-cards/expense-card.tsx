@@ -40,7 +40,7 @@ export const CardExpense: React.FC<Props> = ({
   return (
     <Card
       key={expense_id}
-      className="bg-linear-to-br from-amber-400/70 to-pink-300 transition delay-200 duration-300 ease-out hover:scale-[1.02] hover:from-amber-400/50 hover:to-pink-300 dark:from-pink-800/70 dark:to-slate-900/90 dark:hover:bg-red-900"
+      className="bg-linear-to-br from-amber-400/70 to-pink-300 hover:from-amber-400/50 hover:to-pink-300 dark:from-pink-800/70 dark:to-slate-900/90 dark:hover:bg-red-900"
     >
       <CardHeader>
         <CardTitle>

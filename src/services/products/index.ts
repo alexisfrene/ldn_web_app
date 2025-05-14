@@ -105,7 +105,15 @@ export const updateProductData = async ({
   newDetails,
   product_id,
 }: {
-  newDetails: Details;
+  newDetails: {
+    name: string;
+    price: string;
+    description: string;
+    category_id: string;
+    category_value: string;
+    size_id: string;
+    size_value: string;
+  };
   product_id: string;
 }) => {
   try {

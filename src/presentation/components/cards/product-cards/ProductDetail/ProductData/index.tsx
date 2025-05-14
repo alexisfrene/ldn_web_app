@@ -67,7 +67,18 @@ export const ProductData: React.FC<Props> = ({
     <ProductDataTable
       dataVist={dataVist}
       handleSubmit={(values) =>
-        mutation.mutate({ product_id, newDetails: values })
+        mutation.mutate({
+          product_id,
+          newDetails: {
+            name: values?.name || "",
+            price: values?.price || "",
+            description: values?.description || "",
+            category_id: values?.category?.category_id || "",
+            category_value: values?.category?.category_value_id || "",
+            size_id: values?.size?.size_id || "",
+            size_value: values?.size?.size_value_id || "",
+          },
+        })
       }
       initialValues={{
         description: product?.description,

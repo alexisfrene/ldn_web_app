@@ -14,6 +14,7 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   dataVist,
   initialValues,
   title,
+  handleSubmit,
 }) => {
   const [modalEdit, setModalEdit] = useState(false);
   const isMobile = useIsMobile();
@@ -33,13 +34,11 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
       <Formik
         initialValues={initialValues}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          handleSubmit(values, setSubmitting);
+          setModalEdit(!modalEdit);
         }}
       >
-        {({ values, handleSubmit }) => (
+        {({ values, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit}>
             {dataVist.map(({ label, value, name }) => (
               <div
@@ -57,6 +56,8 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
                       <Input
                         name={name}
                         placeholder={values[name]}
+                        type={name === "price" ? "number" : "text"}
+                        onChange={(e) => setFieldValue(name, e.target.value)}
                         className="w-52 truncate bg-slate-100 px-1 pb-1 text-xs sm:text-base dark:bg-slate-300"
                       />
                     )}

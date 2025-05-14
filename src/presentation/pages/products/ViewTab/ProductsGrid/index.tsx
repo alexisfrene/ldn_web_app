@@ -1,13 +1,12 @@
 import React from "react";
-import { ProductCard, ProductDetailCard } from "@cards/product-cards";
-import { useDeleteProduct } from "@hooks/product-hooks";
+import { ProductCard } from "@features/products/components/cards/product-card";
+import { useDeleteProduct } from "@features/products/hooks/use-delete-product";
 
 interface Props {
   data: Product[];
-  showModal: (title: string, content: React.ReactElement) => void;
 }
 
-export const ProductsGrid: React.FC<Props> = ({ data, showModal }) => {
+export const ProductsGrid: React.FC<Props> = ({ data }) => {
   const mutation = useDeleteProduct();
 
   return (
@@ -17,12 +16,6 @@ export const ProductsGrid: React.FC<Props> = ({ data, showModal }) => {
           return (
             <ProductCard
               key={index}
-              handleClick={() => {
-                showModal(
-                  "",
-                  <ProductDetailCard product_id={product.product_id!} />,
-                );
-              }}
               removeProduct={() => {
                 mutation.mutate(product.product_id!);
               }}

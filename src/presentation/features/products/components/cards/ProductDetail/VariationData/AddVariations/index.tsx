@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { linkVariation } from "@features/products/services";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getAllVariations, linkVariation } from "@services";
+import { getAllVariations } from "@services";
 import { cn } from "@utils";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";

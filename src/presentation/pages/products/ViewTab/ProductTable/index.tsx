@@ -11,7 +11,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { ProductDetailCard } from "@cards/product-cards";
+import { ProductDetailCard } from "@features/products/components/cards/product-detail-card";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { Avatar, AvatarFallback } from "@ui/avatar";

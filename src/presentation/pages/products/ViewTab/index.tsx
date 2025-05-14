@@ -4,9 +4,9 @@ import {
   changePreferenceProductView,
   getPreferenceProductView,
 } from "@services";
-import { useGetProducts } from "@hooks/product-hooks";
 import { useIsMobile } from "@hooks/use-mobile";
 import { useModal } from "@hooks/use-modal";
+import { useGetProducts } from "@features/products/hooks/use-get-products";
 import { Modal } from "@common/Modal";
 import {
   Menubar,
@@ -63,7 +63,7 @@ const ProductGrid: React.FC = () => {
         </MenubarMenu>
       </Menubar>
       {preferments.data || isMobile ? (
-        <ProductsGrid data={products} showModal={showModal} />
+        <ProductsGrid data={products} />
       ) : (
         <ProductsTable
           data={products}

@@ -1,7 +1,7 @@
 import { FormikHelpers } from "formik";
 import { toast } from "sonner";
-import { createProducts } from "@services";
 import { FileWithPreview } from "@hooks/use-file-upload";
+import { createProducts } from "@features/products/services";
 
 interface InitialValues {
   name: string;

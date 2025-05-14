@@ -18,6 +18,7 @@
       "@forms": ["./src/presentation/components/forms"],
       "@global": ["./src/presentation/global"],
       "@assets/*": ["./src/presentation/assets/*"],
+      "@features/*": ["./src/presentation/features/*"],
       "@hooks/*": ["./src/presentation/hooks/*"],
       "@ui/*": ["./src/presentation/components/ui/*"],
       "@common/*": ["./src/presentation/components/common/*"],

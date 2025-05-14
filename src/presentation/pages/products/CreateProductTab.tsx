@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateProductForm } from "@forms";
+import { CreateProductForm } from "@features/products/components/forms";
 
 const CreateProductTab: React.FC = () => {
   return <CreateProductForm />;

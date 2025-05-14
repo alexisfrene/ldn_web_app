@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { updatePrimaryImage } from "@services";
 import { Icons } from "@common/Icons";
 import { ImageLoader } from "@common/ImageLoader";
 import { TokenImage } from "@common/ImagePrivate";
@@ -18,6 +17,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
+import { updatePrimaryImage } from "@presentation/features/products/services";
 
 interface Props {
   product: Product;

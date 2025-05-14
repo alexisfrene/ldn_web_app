@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetProductById } from "@hooks/product-hooks";
+import { useGetProductById } from "@features/products/hooks/use-get-product-by-id";
 import { MenuTabs } from "@common/MenuTabs";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";

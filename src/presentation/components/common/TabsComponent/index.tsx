@@ -1,5 +1,4 @@
 import React, { Suspense, useState } from "react";
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { cn } from "@utils";
 import { useIsMobile } from "@hooks/use-mobile";

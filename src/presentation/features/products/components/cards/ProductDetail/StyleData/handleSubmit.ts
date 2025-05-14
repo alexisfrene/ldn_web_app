@@ -1,5 +1,5 @@
+import { updateProductDetails } from "@features/products/services";
 import { FormikHelpers, FormikValues } from "formik";
-import { updateProductDetails } from "@services";
 
 export const handleSubmit = async ({
   formikHelpers,

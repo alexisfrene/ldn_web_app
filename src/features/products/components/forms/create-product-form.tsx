@@ -9,16 +9,31 @@ import { SelectBrand } from "@brands-selects/select-brand";
 import { SelectProductAge } from "@products-selects/select-product-age";
 import { SelectProductGender } from "@products-selects/select-product-gender";
 import { SelectProductStyle } from "@products-selects/select-product-style";
-import handleSubmit from "./handleSubmit";
+import { useCreateProduct } from "@products-hooks/use-create-product";
 import initialValues from "./initialValues";
 import validationSchema from "./validationSchema";
 
 export const CreateProductForm: React.FC = () => {
+  const mutation = useCreateProduct();
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values, formikHelpers) => {
-        handleSubmit(values, formikHelpers);
+        const product: Product = {
+          size_value: values.size.size_value_id,
+          size_id: values.size.size_id,
+          category_id: values.category.category_id,
+          category_value: values.category.category_value_id,
+          description: values.description,
+          detail: values.detail,
+          stock: values.stock,
+          name: values.name,
+          price: values.price,
+          primary_image: values.files[0].file as File,
+        };
+        mutation.mutate(product);
+        formikHelpers.resetForm();
+        formikHelpers.setFieldValue("detail[brand]", "");
       }}
       validationSchema={validationSchema}
     >
@@ -98,7 +113,7 @@ export const CreateProductForm: React.FC = () => {
               !values.category.category_id ||
               !values.size.size_id
             }
-            loading={isSubmitting}
+            loading={isSubmitting || mutation.isPending}
           >
             Crear producto
           </LoadingButton>

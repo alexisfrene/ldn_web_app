@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
-import { CheckAvailable } from "@common/CheckAvailable";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
+import { CheckAvailable } from "@common/check-available";
+import { Icons } from "@common/icons";
+import { InputWithLabel } from "@common/input-with-label";
 import { PaymentMethodCheckbox } from "@payment-methods-selects/checkbox-payment-method";
 import { useCreateAccount } from "@accounts-hooks/use-create-account";
 

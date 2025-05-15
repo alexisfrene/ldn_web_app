@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
-import { Icons } from "@common/Icons";
+import { Icons } from "@common/icons";
 import { EditExpenseForm } from "../forms/edit-expense-form";
 
 interface Props {

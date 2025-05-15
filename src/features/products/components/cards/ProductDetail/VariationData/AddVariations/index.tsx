@@ -15,9 +15,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@ui/sheet";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
-import { LoadingIndicator } from "@common/Loading";
+import { Icons } from "@common/icons";
+import { TokenImage } from "@common/image-private";
+import { LoadingIndicator } from "@common/loading";
 import { getAllVariations } from "@variations-services/index";
 
 interface AddVariationsProps {

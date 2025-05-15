@@ -2,8 +2,8 @@ import React from "react";
 import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose } from "@ui/dialog";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
+import { Icons } from "@common/icons";
+import { InputWithLabel } from "@common/input-with-label";
 import { useCreatePaymentMethod } from "@payment-methods-hooks/use-create-payment-method";
 import { paymentMethodSchema } from "./validations";
 

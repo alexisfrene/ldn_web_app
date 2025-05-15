@@ -15,10 +15,10 @@ import {
 import { LoadingButton } from "@ui/loading-button";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
-import { CalculateInterest } from "@common/CalculateInterest";
-import { DropdownInput } from "@common/DropDown";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
+import { CalculateInterest } from "@common/calculate-interest";
+import { DropdownInput } from "@common/drop-down";
+import { Icons } from "@common/icons";
+import { InputWithLabel } from "@common/input-with-label";
 import { editDebt, getDebtById } from "@debts-services/index";
 
 interface Props {

@@ -10,7 +10,7 @@ import {
   MenubarTrigger,
 } from "@ui/menubar";
 import { Switch } from "@ui/switch";
-import { Modal } from "@common/Modal";
+import { Modal } from "@common/modal";
 import { useGetProducts } from "@products-hooks/use-get-products";
 import { useChangePreference } from "@users-hooks/use-change-preference";
 import { useGetPreferences } from "@users-hooks/use-get-preference";

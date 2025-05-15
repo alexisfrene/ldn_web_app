@@ -8,8 +8,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
+import { Icons } from "@common/icons";
+import { TokenImage } from "@common/image-private";
 import { UpdateAvatarForm } from "@components/forms/user-forms";
 
 export const EditAvatarModal: React.FC = () => {

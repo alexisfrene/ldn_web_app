@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@ui/button";
-import { Icons } from "@common/Icons";
-import { useTheme } from "../ThemeProvider";
+import { Icons } from "@common/icons";
+import { useTheme } from "../theme-provider";
 
 export const ModeToggle: React.FC = () => {
   const { setTheme, theme } = useTheme();

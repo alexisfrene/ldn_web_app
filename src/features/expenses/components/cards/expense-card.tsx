@@ -10,8 +10,8 @@ import {
 } from "@ui/card";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
+import { AlertModal } from "@common/alert-modal";
+import { Icons } from "@common/icons";
 import { ExpenseDetailModal } from "@expenses-modals/detail-expense-modal";
 import { EditExpenseModal } from "@expenses-modals/edit-expense-modal";
 import { useDeleteExpense } from "@expenses-hooks/use-delete-expense";

@@ -2,8 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { useSessionStore } from "src/global";
 import { ScrollArea } from "@ui/scroll-area";
-import { Layout } from "@common/Layout";
-import { LoadingIndicator } from "@common/Loading";
+import { Layout } from "@common/layout";
+import { LoadingIndicator } from "@common/loading";
 
 const HomePage: React.FC = () => {
   const session_token = useSessionStore((state) => state.session_token);

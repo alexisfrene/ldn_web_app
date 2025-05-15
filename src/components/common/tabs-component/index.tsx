@@ -12,8 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@ui/dropdown-menu";
 import { Label } from "@ui/label";
-import { Icons } from "@common/Icons";
-import { LoadingIndicator } from "@common/Loading";
+import { Icons } from "@common/icons";
+import { LoadingIndicator } from "@common/loading";
 
 interface TabsProps {
   tabs: {

@@ -11,7 +11,7 @@ import {
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
-import { MovementList } from "@common/MovementList";
+import { MovementList } from "@common/movement-list";
 import { getExpenseById } from "@expenses-services/index";
 
 interface Props {

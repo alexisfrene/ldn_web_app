@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
-import { Icons } from "@common/Icons";
+import { Icons } from "@common/icons";
 import { AddVariationImageForm } from "../forms";
 
 interface Props {

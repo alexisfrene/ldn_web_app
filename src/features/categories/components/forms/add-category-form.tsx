@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
-import { ImageUploader } from "@common/ImageUploader";
+import { ImageUploader } from "@common/image-uploader";
 import { useAddCategoryValue } from "@categories-hooks/use-add-category-value";
 
 interface Props {

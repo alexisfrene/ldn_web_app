@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@ui/sheet";
-import { Modal } from "@common/Modal";
+import { Modal } from "@common/modal";
 import { EditAvatarModal } from "@components/modals";
 import { useAvatar } from "@users-hooks/use-avatar";
 import { Rows } from "./Rows";

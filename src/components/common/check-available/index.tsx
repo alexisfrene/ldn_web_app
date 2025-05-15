@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from "@ui/tooltip";
 import { useCheckAccountName } from "@accounts-hooks/use-check-financial-name";
-import { Icons } from "../Icons";
+import { Icons } from "../icons";
 
 export const CheckAvailable: React.FC = () => {
   const { values, setErrors } = useFormikContext<FormikValues>();

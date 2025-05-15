@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@ui/card";
 import { Particles } from "@ui/particles";
-import { useTheme } from "@common/ThemeProvider";
+import { useTheme } from "@common/theme-provider";
 import { LoginUserForm } from "@components/forms/user-forms";
 
 const LoginPage: React.FC = () => {

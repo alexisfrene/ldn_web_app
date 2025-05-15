@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { useModal } from "@hooks/use-modal";
 import { Button } from "@ui/button";
 import { Label } from "@ui/label";
-import { Modal } from "@common/Modal";
+import { Modal } from "@common/modal";
 import { VariationCard } from "@variations-cards/variation-card";
 import { VariationDetailCard } from "@variations-cards/variation-detail-card";
 import { useDeleteVariation } from "@variations-hooks/use-delete-variation";

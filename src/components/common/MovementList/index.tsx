@@ -1,8 +1,8 @@
 import React from "react";
 import { Movement } from "src/types/finance";
 import { cn } from "@utils";
-import { MovementCard } from "@cards/finance-cards";
-import { useGetMovements } from "@hooks/finance-hooks";
+import { MovementCard } from "@features/movements/components/cards/movement-card";
+import { useGetMovements } from "@features/movements/hooks/use-get-movements";
 import { AnimatedPagination } from "@common/AnimatedPagination";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";

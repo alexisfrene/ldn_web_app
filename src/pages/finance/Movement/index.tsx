@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateMovementForm } from "@forms";
+import { CreateMovementForm } from "@features/movements/components/forms/create-movement-form";
 import { MovementList } from "@common/MovementList";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";

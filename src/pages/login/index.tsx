@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { LoginUserForm } from "@forms";
 import { useTheme } from "@common/ThemeProvider";
+import { LoginUserForm } from "@components/forms/user-forms";
 import { BorderBeam } from "@ui/border-beam";
 import {
   Card,

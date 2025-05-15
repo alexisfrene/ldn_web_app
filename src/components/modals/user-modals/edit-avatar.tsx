@@ -1,8 +1,8 @@
 import React from "react";
 import { useSessionStore } from "src/global";
-import { UpdateAvatarForm } from "@forms";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
+import { UpdateAvatarForm } from "@components/forms/user-forms";
 import {
   AlertDialog,
   AlertDialogContent,

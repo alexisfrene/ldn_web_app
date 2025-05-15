@@ -1,6 +1,6 @@
 import React from "react";
-import { FinancialAccountCard } from "@cards/finance-cards";
-import { useGetAccounts } from "@hooks/finance-hooks";
+import { FinancialAccountCard } from "@features/accounts/components/cards/account-card";
+import { useGetAccounts } from "@features/accounts/hooks/use-get-accounts";
 import { Skeleton } from "@ui/skeleton";
 
 export const FinancialAccountGrid: React.FC = () => {

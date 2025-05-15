@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSessionStore } from "src/global";
 import { Opulento, Velustro } from "uvcanvas";
-import { LoginUserForm } from "@forms";
 import { useTheme } from "@common/ThemeProvider";
+import { LoginUserForm } from "@components/forms/user-forms";
 import { BorderBeam } from "@ui/border-beam";
 import {
   Card,

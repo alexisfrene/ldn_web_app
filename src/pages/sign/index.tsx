@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RegisterUserForm } from "@forms";
 import { useTheme } from "@common/ThemeProvider";
+import { RegisterUserForm } from "@components/forms/user-forms";
 import { Card, CardContent, CardDescription, CardHeader } from "@ui/card";
 import { Particles } from "@ui/particles";
 

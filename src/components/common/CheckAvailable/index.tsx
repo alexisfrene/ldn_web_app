@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { useDebounce } from "use-debounce";
-import { useCheckAccountName } from "@hooks/finance-hooks";
+import { useCheckAccountName } from "@features/accounts/hooks/use-check-financial-name";
 import {
   Tooltip,
   TooltipContent,

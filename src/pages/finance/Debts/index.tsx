@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
-import { CardDebt } from "@cards/finance-cards";
 import { InfoCard } from "@cards/general-cards";
-import { useGetDebts } from "@hooks/finance-hooks";
+import { CardDebt } from "@features/debts/components/cards/debt-card";
+import { CreateDebtModal } from "@features/debts/components/modals/create-debt-modal";
+import { useGetDebts } from "@features/debts/hooks/use-get-debts";
 import { Icons } from "@common/Icons";
-import { CreateDebtModal } from "@components/modals";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
 

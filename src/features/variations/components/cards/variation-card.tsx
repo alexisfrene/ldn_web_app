@@ -16,9 +16,9 @@ export const VariationCard: React.FC<Props> = ({
     <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
       <div onClick={onCLickImage}>
         <TokenImage
-          url={`${variation.values[0].images[0]}?width=250&height=150&quality=70&format=webp`}
+          url={`${variation.values[0].images[0]}?width=250&height=250&quality=70&format=webp`}
           variant="default"
-          className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
+          className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md object-cover"
         />
       </div>
       <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800 relative">

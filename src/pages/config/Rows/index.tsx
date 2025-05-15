@@ -1,7 +1,7 @@
 import React from "react";
 import { CardDescription } from "@ui/card";
 import { Separator } from "@ui/separator";
-import { Icons } from "@components/common2/icons";
+import { Icons } from "@components/common/icons";
 import { CategoryEdit } from "./CategoryEdit";
 import { ChangePassword } from "./ChangePassword";
 import { SignOff } from "./SignOff";

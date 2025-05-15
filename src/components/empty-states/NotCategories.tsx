@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Button } from "@ui/button";
-import { Icons } from "@components/common2/icons";
+import { Icons } from "@components/common/icons";
 import { CreateCollectionCategoryForm } from "@categories-forms/create-collection-category-form";
 
 interface Props {

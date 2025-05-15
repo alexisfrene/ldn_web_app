@@ -106,7 +106,7 @@
       "@features/*": ["src/features/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@ui/*": ["./src/components/ui/*"],
-      "@common/*": ["src/components/common2/*"],
+      "@common/*": ["src/components/common/*"],
       "@components/*": ["./src/components/*"]
     },
     /* Bundler mode */

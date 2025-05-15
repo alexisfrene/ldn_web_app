@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/select";
-import { InputWithLabel } from "@components/common2/input-with-label";
+import { InputWithLabel } from "@components/common/input-with-label";
 import { registerUser } from "@users-services/index";
 
 export const RegisterUserForm: React.FC = () => {

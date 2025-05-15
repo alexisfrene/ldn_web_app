@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
-import { MenuTabs } from "@components/common2/menu-tabs";
+import { MenuTabs } from "@components/common/menu-tabs";
 import { useGetProductById } from "@products-hooks/use-get-product-by-id";
 import { PrimaryImage } from "./ProductDetail/PrimaryImage";
 import { ProductData } from "./ProductDetail/ProductData";

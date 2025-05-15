@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@ui/button";
-import { Icons } from "@components/common2/icons";
+import { Icons } from "@components/common/icons";
 import { CreateCollectionSizeForm } from "@sizes-forms/create-collection-size-form";
 
 interface Props {

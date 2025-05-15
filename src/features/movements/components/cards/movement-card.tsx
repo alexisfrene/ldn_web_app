@@ -12,7 +12,7 @@ import {
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
 import { Badge } from "@ui/badge";
-import { Icons } from "@components/common2/icons";
+import { Icons } from "@components/common/icons";
 import { useDeleteMovement } from "@movements-hooks/use-delete-movement";
 
 interface MovementCardProps {

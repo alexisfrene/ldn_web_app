@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductDataTable } from "@components/common2/data-table";
+import { ProductDataTable } from "@components/common/data-table";
 import { useEditProductStyles } from "@products-hooks/use-edit-product-styles";
 import { useGetProductById } from "@products-hooks/use-get-product-by-id";
 

@@ -13,11 +13,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
-import { Icons } from "@components/common2/icons";
-import { ImageLoader } from "@components/common2/image-loader";
-import { TokenImage } from "@components/common2/image-private";
-import { ImageUploader } from "@components/common2/image-uploader";
-import { LoadingIndicator } from "@components/common2/loading";
+import { Icons } from "@components/common/icons";
+import { ImageLoader } from "@components/common/image-loader";
+import { TokenImage } from "@components/common/image-private";
+import { ImageUploader } from "@components/common/image-uploader";
+import { LoadingIndicator } from "@components/common/loading";
 
 interface Props {
   product: Product;

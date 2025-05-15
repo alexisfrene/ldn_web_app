@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { FileWithPreview } from "@hooks/use-file-upload";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
-import { InputWithLabel } from "@components/common2/input-with-label";
+import { InputWithLabel } from "@components/common/input-with-label";
 import { useCreateVariationCollection } from "@variations-hooks/use-create-variation-collection";
 
 type Props = {

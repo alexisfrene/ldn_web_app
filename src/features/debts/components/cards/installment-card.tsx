@@ -3,7 +3,7 @@ import { useFormikContext } from "formik";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { Label } from "@ui/label";
 import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
-import { InputWithLabel } from "@components/common2/input-with-label";
+import { InputWithLabel } from "@components/common/input-with-label";
 
 type Props = {
   installment_number: number;

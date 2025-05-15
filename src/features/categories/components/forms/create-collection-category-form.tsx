@@ -4,9 +4,9 @@ import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
-import { Icons } from "@components/common2/icons";
-import { ImageUploader } from "@components/common2/image-uploader";
-import { LoadingIndicator } from "@components/common2/loading";
+import { Icons } from "@components/common/icons";
+import { ImageUploader } from "@components/common/image-uploader";
+import { LoadingIndicator } from "@components/common/loading";
 import { useCreateCategoryCollection } from "@categories-hooks/use-create-category-collection";
 
 type IconProps = {

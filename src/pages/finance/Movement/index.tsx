@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";
-import { MovementList } from "@components/common2/movement-list";
+import { MovementList } from "@components/common/movement-list";
 import { CreateMovementForm } from "@movements-forms/create-movement-form";
 
 const Movement: React.FC = () => {

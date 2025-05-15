@@ -17,8 +17,8 @@ import {
   SidebarSeparator,
 } from "@ui/sidebar";
 import { Skeleton } from "@ui/skeleton";
-import { Icons } from "@components/common2/icons";
-import { TokenImage } from "@components/common2/image-private";
+import { Icons } from "@components/common/icons";
+import { TokenImage } from "@components/common/image-private";
 import { useAvatar } from "@users-hooks/use-avatar";
 
 export const AppSidebar: React.FC = () => {

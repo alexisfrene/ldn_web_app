@@ -1,7 +1,7 @@
 import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { cn } from "@utils";
-import { TokenImage } from "@components/common2/image-private";
+import { TokenImage } from "@components/common/image-private";
 import { useGetCategories } from "@categories-hooks/use-get-categories";
 
 export const SelectCategory: React.FC = () => {

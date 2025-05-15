@@ -32,8 +32,8 @@ import {
   TableHeader,
   TableRow,
 } from "@ui/table";
-import { Icons } from "@components/common2/icons";
-import { TokenImage } from "@components/common2/image-private";
+import { Icons } from "@components/common/icons";
+import { TokenImage } from "@components/common/image-private";
 import { ProductDetailCard } from "@products-cards/product-detail-card";
 
 interface Props {

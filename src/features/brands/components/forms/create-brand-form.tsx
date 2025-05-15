@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { LoadingButton } from "@ui/loading-button";
-import { InputWithLabel } from "@components/common2/input-with-label";
+import { InputWithLabel } from "@components/common/input-with-label";
 import { useCreateBrand } from "@brands-hooks/use-create-brand";
 
 export const CreateBrandForm: React.FC = () => {

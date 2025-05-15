@@ -8,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@ui/card";
-import { AlertModal } from "@components/common2/alert-modal";
-import { Icons } from "@components/common2/icons";
+import { AlertModal } from "@components/common/alert-modal";
+import { Icons } from "@components/common/icons";
 import { CardFee } from "@expenses-cards/fee-card";
 import { FormEditDebt } from "@debts-forms/edit-debt-form";
 import { useDeleteDebt } from "@debts-hooks/use-delete-debt";

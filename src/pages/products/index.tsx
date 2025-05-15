@@ -1,5 +1,5 @@
 import React from "react";
-import { TabsComponent } from "@components/common2/tabs-component";
+import { TabsComponent } from "@components/common/tabs-component";
 
 const ProductsTabs = [
   {

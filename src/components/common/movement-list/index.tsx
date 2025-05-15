@@ -3,7 +3,7 @@ import { Movement } from "src/types/finance";
 import { cn } from "@utils";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
-import { AnimatedPagination } from "@components/common2/animated-pagination";
+import { AnimatedPagination } from "@components/common/animated-pagination";
 import { MovementCard } from "@movements-cards/movement-card";
 import { useGetMovements } from "@movements-hooks/use-get-movements";
 

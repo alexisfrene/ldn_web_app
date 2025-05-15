@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
-import { WithAuth } from "@components/common2/with-auth";
+import { WithAuth } from "@components/common/with-auth";
 import Expense from "./finance/Expense";
 import RelevantInfo from "./finance/RelevantInfo";
 import ProductGrid from "./products/ViewTab";

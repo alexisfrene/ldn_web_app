@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@ui/dialog";
 import { LoadingButton } from "@ui/loading-button";
-import { InputWithLabel } from "@components/common2/input-with-label";
+import { InputWithLabel } from "@components/common/input-with-label";
 import { useCreateExpense } from "@expenses-hooks/use-create-expense";
 
 export const CreateExpenseForm: React.FC = () => {

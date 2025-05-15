@@ -2,7 +2,7 @@ import React from "react";
 import { useEditProduct } from "src/features/products/hooks/use-edit-product";
 import { useGetProductById } from "src/features/products/hooks/use-get-product-by-id";
 import { Skeleton } from "@ui/skeleton";
-import { ProductDataTable } from "@components/common2/data-table";
+import { ProductDataTable } from "@components/common/data-table";
 import { useGetCategoryByNames } from "@categories-hooks/use-get-category-by-names";
 import { useGetSizeByNames } from "@sizes-hooks/use-get-size-by-names";
 

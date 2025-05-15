@@ -6,8 +6,8 @@ import {
   AlertDialogCancel,
   AlertDialogFooter,
 } from "@ui/alert-dialog";
-import { ImageLoader } from "@components/common2/image-loader";
-import { ImageUploader } from "@components/common2/image-uploader";
+import { ImageLoader } from "@components/common/image-loader";
+import { ImageUploader } from "@components/common/image-uploader";
 import { changeAvatar } from "@users-services/index";
 
 export const UpdateAvatarForm: React.FC = () => {

@@ -2,8 +2,8 @@ import React from "react";
 import { formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
-import { AlertModal } from "@components/common2/alert-modal";
-import { Icons } from "@components/common2/icons";
+import { AlertModal } from "@components/common/alert-modal";
+import { Icons } from "@components/common/icons";
 import { EditFinancialAccountDialog } from "@accounts-modals/edit-account-modal";
 import { useDeleteAccount } from "@accounts-hooks/use-delete-account";
 

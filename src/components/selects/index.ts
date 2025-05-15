@@ -1,5 +1,4 @@
 export * from "./checkbox-payment-method";
-export * from "./select-brand";
 export * from "./select-debt";
 export * from "./select-expense";
 export * from "./select-financial-account";

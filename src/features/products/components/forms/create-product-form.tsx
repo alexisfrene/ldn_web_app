@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { SelectBrand } from "@selects";
+import { SelectBrand } from "@features/brands/components/selects/select-brand";
 import { ChoiceCategoryModal } from "@features/categories/components/modals";
 import { ChoiceSizeModal } from "@features/sizes/components/modals/choice-size-modal";
 import { InputWithLabel } from "@common/InputWithLabel";

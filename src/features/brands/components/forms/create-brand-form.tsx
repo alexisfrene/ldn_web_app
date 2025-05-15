@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import { useCreateBrand } from "@hooks/brand-hooks";
+import { useCreateBrand } from "@features/brands/hooks";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";

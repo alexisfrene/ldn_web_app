@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { brandKeys, createBrand } from "@services";
+import { brandKeys } from "@services";
+import { createBrand } from "../services";
 
 export const useCreateBrand = () => {
   const queryClient = useQueryClient();

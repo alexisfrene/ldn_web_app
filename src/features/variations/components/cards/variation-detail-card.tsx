@@ -12,8 +12,8 @@ import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { MenuTabs } from "@common/MenuTabs";
-import { useGetVariationById } from "@features/variations/hooks";
-import { useDeleteVariationImage } from "@features/variations/hooks";
+import { useGetVariationById } from "@variations-hooks/use-get-variation-by-id";
+import { useDeleteVariationImage } from "@variations-hooks/use-remove-variation-image";
 import { CreateVariationCollectionForm } from "../forms";
 import { ModalAddVariationImage } from "../modals";
 

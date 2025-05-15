@@ -13,7 +13,7 @@ import {
 } from "@ui/alert-dialog";
 import { Badge } from "@ui/badge";
 import { Icons } from "@common/Icons";
-import { useDeleteMovement } from "@features/movements/hooks/use-delete-movement";
+import { useDeleteMovement } from "@movements-hooks/use-delete-movement";
 
 interface MovementCardProps {
   label: string;

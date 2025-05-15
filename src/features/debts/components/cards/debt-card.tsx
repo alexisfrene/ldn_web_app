@@ -10,9 +10,9 @@ import {
 } from "@ui/card";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
-import { useDeleteDebt } from "@features/debts/hooks/use-delete-debt";
-import { CardFee } from "@features/expenses/components/cards/fee-card";
-import { FormEditDebt } from "../forms/edit-debt-form";
+import { CardFee } from "@expenses-cards/fee-card";
+import { FormEditDebt } from "@debts-forms/edit-debt-form";
+import { useDeleteDebt } from "@debts-hooks/use-delete-debt";
 
 interface Props {
   debt_id: UUID;

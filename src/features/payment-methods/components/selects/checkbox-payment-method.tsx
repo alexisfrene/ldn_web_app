@@ -2,8 +2,8 @@ import React, { useId } from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { Checkbox } from "@ui/checkbox";
 import { Label } from "@ui/label";
-import { useGetPaymentMethods } from "@features/payment-methods/hooks/use-get-payment-method";
-import { CreatePaymentMethodModal } from "../modals/create-payment-method-modal";
+import { CreatePaymentMethodModal } from "@payment-methods-modals/create-payment-method-modal";
+import { useGetPaymentMethods } from "@payment-methods-hooks/use-get-payment-method";
 
 export const PaymentMethodCheckbox: React.FC = () => {
   const id = useId();

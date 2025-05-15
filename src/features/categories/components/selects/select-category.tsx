@@ -2,7 +2,7 @@ import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { cn } from "@utils";
 import { TokenImage } from "@common/ImagePrivate";
-import { useGetCategories } from "@features/categories/hooks";
+import { useGetCategories } from "@categories-hooks/use-get-categories";
 
 export const SelectCategory: React.FC = () => {
   const { categories, isLoading } = useGetCategories();

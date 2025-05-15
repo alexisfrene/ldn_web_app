@@ -3,7 +3,7 @@ import { ErrorMessage, Formik } from "formik";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { ChoiceCategoryModal } from "@features/categories/components/modals";
+import { ChoiceCategoryModal } from "@categories-modals/choice-category-modal";
 import { handleSubmit } from "./handleSubmit";
 
 export const CreateVariationForm: React.FC = () => {

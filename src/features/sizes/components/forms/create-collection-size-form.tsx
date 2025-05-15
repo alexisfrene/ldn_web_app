@@ -7,7 +7,7 @@ import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
 import { Icons } from "@common/Icons";
-import { addSizeCollection } from "@features/sizes/services";
+import { addSizeCollection } from "@sizes-services/index";
 
 type ValueProps = {
   id?: string;

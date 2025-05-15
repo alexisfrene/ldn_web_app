@@ -11,7 +11,7 @@ import { DropdownInput } from "@common/DropDown";
 import { GenerateInstallments } from "@common/GenerateInstallments";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useCreateDebt } from "@features/debts/hooks/use-create-debt";
+import { useCreateDebt } from "@debts-hooks/use-create-debt";
 import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 
 export const CreateDebtForm: React.FC = () => {

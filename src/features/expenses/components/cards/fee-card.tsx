@@ -19,9 +19,9 @@ import {
   DialogTrigger,
 } from "@ui/dialog";
 import { Label } from "@ui/label";
-import { SelectFinancialAccount } from "@features/accounts/components/selects/select-financial-account";
-import { useMarkDebtPaid } from "@features/debts/hooks/use-mark-debt-paid";
-import { SelectPaymentMethod } from "@features/payment-methods/components/selects/select-payment-method";
+import { SelectFinancialAccount } from "@accounts-selects/select-financial-account";
+import { SelectPaymentMethod } from "@payment-methods-selects/select-payment-method";
+import { useMarkDebtPaid } from "@debts-hooks/use-mark-debt-paid";
 
 interface Props {
   installment_id: number;

@@ -5,8 +5,8 @@ import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useEditAccount } from "@features/accounts/hooks/use-edit-account";
-import { PaymentMethodCheckbox } from "@features/payment-methods/components/selects/checkbox-payment-method";
+import { PaymentMethodCheckbox } from "@payment-methods-selects/checkbox-payment-method";
+import { useEditAccount } from "@accounts-hooks/use-edit-account";
 
 type Props = {
   name: string;

@@ -4,7 +4,7 @@ import { FileWithPreview } from "@hooks/use-file-upload";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { FileUpload } from "@ui/file-upload";
-import { useAddVariationCollectionValue } from "@features/variations/hooks";
+import { useAddVariationCollectionValue } from "@variations-hooks/use-add-variation-value";
 
 type Props = {
   collectionId: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateVariationForm } from "@features/variations/components/forms";
+import { CreateVariationForm } from "@variations-forms/create-variation-form";
 
 const CreateVariationTab: React.FC = () => {
   return <CreateVariationForm />;

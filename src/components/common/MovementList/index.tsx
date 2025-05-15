@@ -4,8 +4,8 @@ import { cn } from "@utils";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
 import { AnimatedPagination } from "@common/AnimatedPagination";
-import { MovementCard } from "@features/movements/components/cards/movement-card";
-import { useGetMovements } from "@features/movements/hooks/use-get-movements";
+import { MovementCard } from "@movements-cards/movement-card";
+import { useGetMovements } from "@movements-hooks/use-get-movements";
 
 type Props = {
   expenseMovements?: {

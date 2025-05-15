@@ -4,7 +4,7 @@ import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { ImageUploader } from "@common/ImageUploader";
-import { useAddCategoryValue } from "@features/categories/hooks";
+import { useAddCategoryValue } from "@categories-hooks/use-add-category-value";
 
 interface Props {
   category_id: number;

@@ -4,7 +4,7 @@ import { FormikValues, useFormikContext } from "formik";
 import { formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
-import { getAllFinancialAccount } from "@features/accounts/services";
+import { getAllFinancialAccount } from "@accounts-services/index";
 
 export const SelectFinancialAccount: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();

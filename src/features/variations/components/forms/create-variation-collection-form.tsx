@@ -4,7 +4,7 @@ import { FileWithPreview } from "@hooks/use-file-upload";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useCreateVariationCollection } from "@features/variations/hooks";
+import { useCreateVariationCollection } from "@variations-hooks/use-create-variation-collection";
 
 type Props = {
   variationId: string;

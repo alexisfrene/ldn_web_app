@@ -19,7 +19,7 @@ import { CalculateInterest } from "@common/CalculateInterest";
 import { DropdownInput } from "@common/DropDown";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { editDebt, getDebtById } from "@features/debts/services";
+import { editDebt, getDebtById } from "@debts-services/index";
 
 interface Props {
   debt_id: UUID;

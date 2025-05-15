@@ -5,8 +5,8 @@ import { DialogClose, DialogFooter } from "@ui/dialog";
 import { CheckAvailable } from "@common/CheckAvailable";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useCreateAccount } from "@features/accounts/hooks/use-create-account";
-import { PaymentMethodCheckbox } from "@features/payment-methods/components/selects/checkbox-payment-method";
+import { PaymentMethodCheckbox } from "@payment-methods-selects/checkbox-payment-method";
+import { useCreateAccount } from "@accounts-hooks/use-create-account";
 
 export const FormCreateAccount: React.FC = () => {
   const mutation = useCreateAccount();

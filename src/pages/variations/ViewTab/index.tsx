@@ -4,12 +4,10 @@ import { useModal } from "@hooks/use-modal";
 import { Button } from "@ui/button";
 import { Label } from "@ui/label";
 import { Modal } from "@common/Modal";
-import { VariationCard } from "@features/variations/components/cards";
-import { VariationDetailCard } from "@features/variations/components/cards";
-import {
-  useDeleteVariation,
-  useGetVariations,
-} from "@features/variations/hooks";
+import { VariationCard } from "@variations-cards/variation-card";
+import { VariationDetailCard } from "@variations-cards/variation-detail-card";
+import { useDeleteVariation } from "@variations-hooks/use-delete-variation";
+import { useGetVariations } from "@variations-hooks/use-get-variations";
 
 const VariantsGrid: React.FC = () => {
   const { variations } = useGetVariations();

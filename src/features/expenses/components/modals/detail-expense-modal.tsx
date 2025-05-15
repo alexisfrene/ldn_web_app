@@ -12,7 +12,7 @@ import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
 import { MovementList } from "@common/MovementList";
-import { getExpenseById } from "@features/expenses/services";
+import { getExpenseById } from "@expenses-services/index";
 
 interface Props {
   children: React.ReactNode;

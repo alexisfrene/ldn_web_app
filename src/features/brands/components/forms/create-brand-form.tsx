@@ -4,7 +4,7 @@ import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useCreateBrand } from "@features/brands/hooks";
+import { useCreateBrand } from "@brands-hooks/use-create-brand";
 
 export const CreateBrandForm: React.FC = () => {
   const mutation = useCreateBrand();

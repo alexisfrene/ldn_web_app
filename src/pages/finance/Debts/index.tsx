@@ -3,9 +3,9 @@ import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
 import { Icons } from "@common/Icons";
 import { InfoCard } from "@components/cards/general-cards";
-import { CardDebt } from "@features/debts/components/cards/debt-card";
-import { CreateDebtModal } from "@features/debts/components/modals/create-debt-modal";
-import { useGetDebts } from "@features/debts/hooks/use-get-debts";
+import { CardDebt } from "@debts-cards/debt-card";
+import { CreateDebtModal } from "@debts-modals/create-debt-modal";
+import { useGetDebts } from "@debts-hooks/use-get-debts";
 
 const PieChartComponent = React.lazy(() => import("@common/PieChart"));
 

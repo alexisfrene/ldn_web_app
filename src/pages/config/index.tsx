@@ -11,7 +11,7 @@ import {
 } from "@ui/sheet";
 import { Modal } from "@common/Modal";
 import { EditAvatarModal } from "@components/modals";
-import { useAvatar } from "@features/users/hooks/use-avatar";
+import { useAvatar } from "@users-hooks/use-avatar";
 import { Rows } from "./Rows";
 
 const Config: React.FC = () => {

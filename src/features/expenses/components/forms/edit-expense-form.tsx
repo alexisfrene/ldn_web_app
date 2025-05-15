@@ -6,7 +6,7 @@ import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { LoadingIndicator } from "@common/Loading";
-import { editExpense } from "@features/expenses/services";
+import { editExpense } from "@expenses-services/index";
 
 interface Props {
   name: string;

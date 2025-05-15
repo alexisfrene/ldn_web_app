@@ -1,5 +1,5 @@
 import { FormikHelpers } from "formik";
-import { createVariation } from "@features/variations/services";
+import { createVariation } from "@variations-services/index";
 
 export const handleSubmit = async (
   values: initialValues,

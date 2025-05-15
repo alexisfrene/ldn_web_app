@@ -16,7 +16,7 @@ import {
 } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
-import { getDebts } from "@features/debts/services";
+import { getDebts } from "@debts-services/index";
 
 export const SelectDebt: React.FC = () => {
   const { setFieldValue } = useFormikContext();

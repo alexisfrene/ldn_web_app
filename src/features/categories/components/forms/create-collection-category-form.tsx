@@ -7,7 +7,7 @@ import { Separator } from "@ui/separator";
 import { Icons } from "@common/Icons";
 import { ImageUploader } from "@common/ImageUploader";
 import { LoadingIndicator } from "@common/Loading";
-import { useCreateCategoryCollection } from "@features/categories/hooks";
+import { useCreateCategoryCollection } from "@categories-hooks/use-create-category-collection";
 
 type IconProps = {
   url: string;

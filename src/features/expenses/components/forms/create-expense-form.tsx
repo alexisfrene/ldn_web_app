@@ -13,7 +13,7 @@ import {
 } from "@ui/dialog";
 import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@common/InputWithLabel";
-import { useCreateExpense } from "@features/expenses/hooks/use-create-expense";
+import { useCreateExpense } from "@expenses-hooks/use-create-expense";
 
 export const CreateExpenseForm: React.FC = () => {
   const mutation = useCreateExpense();

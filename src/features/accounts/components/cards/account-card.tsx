@@ -4,8 +4,8 @@ import { Badge } from "@ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
-import { useDeleteAccount } from "@features/accounts/hooks/use-delete-account";
-import { EditFinancialAccountDialog } from "../modals/edit-account-modal";
+import { EditFinancialAccountDialog } from "@accounts-modals/edit-account-modal";
+import { useDeleteAccount } from "@accounts-hooks/use-delete-account";
 
 interface Props {
   financial_accounts_id: UUID;

@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 import { axiosInstance, formatDate } from "@utils";
-import { createMovement } from "@features/movements/services";
+import { createMovement } from "@movements-services/index";
 
 export const createDebt = async ({
   notes,

@@ -19,7 +19,7 @@ import {
 import { Skeleton } from "@ui/skeleton";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
-import { useAvatar } from "@features/users/hooks/use-avatar";
+import { useAvatar } from "@users-hooks/use-avatar";
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();

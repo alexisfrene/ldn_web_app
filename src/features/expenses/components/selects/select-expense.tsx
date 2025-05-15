@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
-import { getExpenses } from "@features/expenses/services";
+import { getExpenses } from "@expenses-services/index";
 
 export const SelectTag: React.FC = () => {
   const { setFieldValue } = useFormikContext<FormikValues>();

@@ -7,15 +7,11 @@ import { ScrollArea } from "@ui/scroll-area";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
-import {
-  AddCategoryForm,
-  CreateCollectionCategoryForm,
-} from "@features/categories/components/forms";
-import {
-  useChangeTitleCollectionCategory,
-  useDeleteCollectionCategory,
-  useDeleteValueCategory,
-} from "@features/categories/hooks";
+import { AddCategoryForm } from "@categories-forms/add-category-form";
+import { CreateCollectionCategoryForm } from "@categories-forms/create-collection-category-form";
+import { useDeleteCollectionCategory } from "@categories-hooks/use-delete-collection-category";
+import { useDeleteValueCategory } from "@categories-hooks/use-delete-value-category";
+import { useChangeTitleCollectionCategory } from "@categories-hooks/use-edit-title-collection-category";
 
 interface Props {
   data: Category[];

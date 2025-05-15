@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { TokenImage } from "@common/ImagePrivate";
-import { getVariationById } from "@features/variations/services";
+import { getVariationById } from "@variations-services/index";
 
 interface GalleryImagesVariantsProps {
   ImageVariantsId: string | null;

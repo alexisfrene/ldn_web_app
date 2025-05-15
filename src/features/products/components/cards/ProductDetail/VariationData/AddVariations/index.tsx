@@ -18,7 +18,7 @@ import {
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { LoadingIndicator } from "@common/Loading";
-import { getAllVariations } from "@features/variations/services";
+import { getAllVariations } from "@variations-services/index";
 
 interface AddVariationsProps {
   product_id: Product["product_id"];

@@ -3,7 +3,7 @@ import { useIsMobile } from "src/hooks/use-mobile";
 import { cn } from "@utils";
 import { Skeleton } from "@ui/skeleton";
 import { InfoCard } from "@components/cards/general-cards";
-import { useGetMovementsPerMonth } from "@features/movements/hooks/use-get-movements-per-month";
+import { useGetMovementsPerMonth } from "@movements-hooks/use-get-movements-per-month";
 
 export const CardsInfo: React.FC = () => {
   const isMobile = useIsMobile();

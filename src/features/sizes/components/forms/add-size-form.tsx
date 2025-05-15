@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
-import { addValueSize } from "@features/sizes/services";
+import { addValueSize } from "@sizes-services/index";
 
 interface FormAddNewValueProps {
   size_id: string;

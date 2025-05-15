@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateAccountModal } from "@features/accounts/components/modals/create-account-modal";
+import { CreateAccountModal } from "@accounts-modals/create-account-modal";
 import { FinancialAccountGrid } from "./FinancialAccountGrid";
 
 const AccountFinancial: React.FC = () => {

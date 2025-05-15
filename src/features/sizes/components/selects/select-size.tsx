@@ -1,7 +1,7 @@
 import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { cn } from "@utils";
-import { useGetSizes } from "@features/sizes/hooks/use-get-sizes";
+import { useGetSizes } from "@sizes-hooks/use-get-sizes";
 
 export const SelectSize: React.FC = () => {
   const { sizes } = useGetSizes();

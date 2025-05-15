@@ -7,7 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
-import { useCheckAccountName } from "@features/accounts/hooks/use-check-financial-name";
+import { useCheckAccountName } from "@accounts-hooks/use-check-financial-name";
 import { Icons } from "../Icons";
 
 export const CheckAvailable: React.FC = () => {

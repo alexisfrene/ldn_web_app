@@ -10,8 +10,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/select";
-import { useGetBrands } from "@features/brands/hooks";
-import { CreateBrandModal } from "../modals";
+import { CreateBrandModal } from "@brands-modals/create-brand-modal";
+import { useGetBrands } from "@brands-hooks/use-get-brands";
 
 type Props = {
   label: string;

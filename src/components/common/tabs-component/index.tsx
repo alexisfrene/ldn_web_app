@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useIsMobile } from "src/hooks/use-mobile";
 import { cn } from "@utils";
+import { useIsMobile } from "@hooks/use-mobile";
 import { Card, CardContent, CardHeader } from "@ui/card";
 import {
   DropdownMenu,
@@ -12,8 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@ui/dropdown-menu";
 import { Label } from "@ui/label";
-import { Icons } from "@components/common/icons";
-import { LoadingIndicator } from "@components/common/loading";
+import { Icons } from "@common/icons";
+import { LoadingIndicator } from "@common/loading";
 
 interface TabsProps {
   tabs: {
@@ -30,8 +30,9 @@ export const TabsComponent: React.FC<TabsProps> = ({ tabs, bgColor }) => {
 
   const tabsStyles = cn(
     `flex`,
-    "rounded-lg py-4 shadow-md ring-1 dark:bg-slate-700/80 dark:ring-slate-600/60",
-    bgColor || "bg-amber-300/90 ring-amber-400/50",
+    "rounded-lg py-4 shadow-md ring-1 ring-amber-400 dark:ring-slate-600",
+    bgColor ||
+      "bg-gradient-to-r from-amber-200 to-amber-300 dark:from-slate-700 dark:to-slate-800",
   );
 
   return (

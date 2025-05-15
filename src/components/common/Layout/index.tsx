@@ -1,8 +1,8 @@
 import React, { ReactNode, Suspense } from "react";
-import { useAvatar } from "@hooks/use-avatar";
-import { ModeToggle } from "@common/ModeToggle";
 import { SidebarProvider, SidebarTrigger } from "@ui/sidebar";
 import { Skeleton } from "@ui/skeleton";
+import { ModeToggle } from "@common/ModeToggle";
+import { useAvatar } from "@features/users/hooks/use-avatar";
 import { AppSidebar } from "../AppSidebar";
 
 interface LayoutProps {

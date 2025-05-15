@@ -1,7 +1,5 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getExpenseById } from "@features/expenses/services";
-import { MovementList } from "@common/MovementList";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +11,8 @@ import {
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
+import { MovementList } from "@common/MovementList";
+import { getExpenseById } from "@features/expenses/services";
 
 interface Props {
   children: React.ReactNode;

@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useSessionStore } from "src/global";
-import { loginUser } from "@services";
-import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { loginUser } from "@users-services/index";
 
 export const LoginUserForm: React.FC = () => {
   const navigate = useNavigate();

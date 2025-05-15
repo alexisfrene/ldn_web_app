@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-import { useGetVariationById } from "@features/variations/hooks";
-import { useDeleteVariationImage } from "@features/variations/hooks";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
-import { MenuTabs } from "@common/MenuTabs";
 import {
   Card,
   CardContent,
@@ -14,6 +8,12 @@ import {
 } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { MenuTabs } from "@common/MenuTabs";
+import { useGetVariationById } from "@features/variations/hooks";
+import { useDeleteVariationImage } from "@features/variations/hooks";
 import { CreateVariationCollectionForm } from "../forms";
 import { ModalAddVariationImage } from "../modals";
 

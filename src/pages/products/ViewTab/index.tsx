@@ -4,11 +4,6 @@ import { useGetProducts } from "src/features/products/hooks/use-get-products";
 import { useIsMobile } from "src/hooks/use-mobile";
 import { useModal } from "src/hooks/use-modal";
 import {
-  changePreferenceProductView,
-  getPreferenceProductView,
-} from "@services";
-import { Modal } from "@common/Modal";
-import {
   Menubar,
   MenubarCheckboxItem,
   MenubarContent,
@@ -17,6 +12,11 @@ import {
   MenubarTrigger,
 } from "@ui/menubar";
 import { Switch } from "@ui/switch";
+import { Modal } from "@common/Modal";
+import {
+  changePreferenceProductView,
+  getPreferenceProductView,
+} from "@users-services/index";
 import { ProductsGrid } from "./ProductsGrid";
 import { ProductsTable } from "./ProductTable";
 

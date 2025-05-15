@@ -12,8 +12,6 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 import { ProductDetailCard } from "src/features/products/components/cards/product-detail-card";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
 import { Avatar, AvatarFallback } from "@ui/avatar";
 import { Button } from "@ui/button";
 import { Checkbox } from "@ui/checkbox";
@@ -35,6 +33,8 @@ import {
   TableHeader,
   TableRow,
 } from "@ui/table";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   data: Product[];

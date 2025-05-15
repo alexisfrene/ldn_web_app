@@ -1,9 +1,6 @@
 import React from "react";
 import { formattedValue } from "@utils";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDeleteExpense } from "@features/expenses/hooks/use-delete-expense";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
 import {
   Card,
   CardContent,
@@ -13,6 +10,9 @@ import {
 } from "@ui/card";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { useDeleteExpense } from "@features/expenses/hooks/use-delete-expense";
 import { ExpenseDetailModal } from "../modals/detail-expense-modal";
 import { EditExpenseModal } from "../modals/edit-expense-modal";
 

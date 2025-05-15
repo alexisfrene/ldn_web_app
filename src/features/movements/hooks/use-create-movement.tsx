@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { createMovement } from "../services";
 
 export const useCreateMovement = () => {

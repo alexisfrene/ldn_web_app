@@ -2,9 +2,9 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { formattedValue } from "@utils";
-import { getAllFinancialAccount } from "@features/accounts/services";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
+import { getAllFinancialAccount } from "@features/accounts/services";
 
 export const SelectFinancialAccount: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();

@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { categoryKeys } from "@services";
+import { categoryKeys } from "src/services";
 import { getAllCategories } from "../services";
 
 export const useGetCategories = (

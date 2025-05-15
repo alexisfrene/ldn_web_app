@@ -1,7 +1,7 @@
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
-import { ProductDetailsModal } from "../modals/product-details-modal";
+import { ProductDetailsModal } from "@products-modals/product-details-modal";
 
 interface Props {
   product: Product;

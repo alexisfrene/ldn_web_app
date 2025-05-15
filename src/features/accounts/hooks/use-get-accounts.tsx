@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { FinancialAccount } from "src/types/finance";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { getAllFinancialAccount } from "../services";
 
 export const useGetAccounts = (

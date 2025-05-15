@@ -1,6 +1,6 @@
 import React from "react";
-import { Icons } from "@common/Icons";
 import { Button } from "@ui/button";
+import { Icons } from "@common/Icons";
 import { useTheme } from "../ThemeProvider";
 
 export const ModeToggle: React.FC = () => {

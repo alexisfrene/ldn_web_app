@@ -1,10 +1,10 @@
 import React from "react";
 import { FormikValues, useFormikContext } from "formik";
+import { Label } from "@ui/label";
 import { SelectFinancialAccount } from "@features/accounts/components/selects/select-financial-account";
 import { SelectDebt } from "@features/debts/components/selects/select-debt";
 import { SelectTag } from "@features/expenses/components/selects/select-expense";
 import { SelectPaymentMethod } from "@features/payment-methods/components/selects/select-payment-method";
-import { Label } from "@ui/label";
 
 export const SelectMovementAccount: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();

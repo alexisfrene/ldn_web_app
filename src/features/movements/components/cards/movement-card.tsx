@@ -1,7 +1,5 @@
 import React from "react";
 import { cn, formattedValue } from "@utils";
-import { useDeleteMovement } from "@features/movements/hooks/use-delete-movement";
-import { Icons } from "@common/Icons";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,6 +12,8 @@ import {
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
 import { Badge } from "@ui/badge";
+import { Icons } from "@common/Icons";
+import { useDeleteMovement } from "@features/movements/hooks/use-delete-movement";
 
 interface MovementCardProps {
   label: string;

@@ -1,8 +1,8 @@
 import React, { useId } from "react";
 import { FormikValues, useFormikContext } from "formik";
-import { Icons } from "@common/Icons";
 import { Label } from "@ui/label";
 import { RadioGroup, RadioGroupItem } from "@ui/radio-group";
+import { Icons } from "@common/Icons";
 
 export const SelectMovementType: React.FC = () => {
   const id = useId();

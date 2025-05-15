@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
-import { useGetCategories } from "@features/categories/hooks";
 import { NotCategories } from "@components/empty-states";
+import { useGetCategories } from "@features/categories/hooks";
 import { ViewCategories } from "./ViewCategories";
 
 interface CategoryEditProps {

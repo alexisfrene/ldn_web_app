@@ -8,18 +8,103 @@
     "baseUrl": ".",
     "paths": {
       "@config/*": ["./src/config/*"],
-      "@core/*": ["./src/core/*"],
-      "@services": ["./src/services"],
       "@utils": ["./src/utils"],
-      "@cards/*": ["./src/components/cards/*"],
-      "@modals": ["./src/components/modals"],
-      "@selects": ["./src/components/selects"],
       "@empty-states": ["./src/components/empty-states"],
-      "@forms": ["./src/components/forms"],
       "@global": ["src/global"],
       "@assets/*": ["./src/assets/*"],
+      "@accounts-cards/*": ["./src/features/accounts/components/cards/*"],
+      "@accounts-selects/*": ["./src/features/accounts/components/selects/*"],
+      "@accounts-modals/*": ["./src/features/accounts/components/modals/*"],
+      "@accounts-forms/*": ["./src/features/accounts/components/forms/*"],
+      "@accounts-services/*": ["./src/features/accounts/services/*"],
+      "@accounts-hooks/*": ["./src/features/accounts/hooks/*"],
+
+      "@brands-cards/*": ["./src/features/brands/components/cards/*"],
+      "@brands-selects/*": ["./src/features/brands/components/selects/*"],
+      "@brands-modals/*": ["./src/features/brands/components/modals/*"],
+      "@brands-forms/*": ["./src/features/brands/components/forms/*"],
+      "@brands-services/*": ["./src/features/brands/services/*"],
+      "@brands-hooks/*": ["./src/features/brands/hooks/*"],
+
+      "@categories-cards/*": ["./src/features/categories/components/cards/*"],
+      "@categories-selects/*": [
+        "./src/features/categories/components/selects/*"
+      ],
+      "@categories-modals/*": ["./src/features/categories/components/modals/*"],
+      "@categories-forms/*": ["./src/features/categories/components/forms/*"],
+      "@categories-services/*": ["./src/features/categories/services/*"],
+      "@categories-hooks/*": ["./src/features/categories/hooks/*"],
+
+      "@debts-cards/*": ["./src/features/debts/components/cards/*"],
+      "@debts-selects/*": ["./src/features/debts/components/selects/*"],
+      "@debts-modals/*": ["./src/features/debts/components/modals/*"],
+      "@debts-forms/*": ["./src/features/debts/components/forms/*"],
+      "@debts-services/*": ["./src/features/debts/services/*"],
+      "@debts-hooks/*": ["./src/features/debts/hooks/*"],
+
+      "@expenses-cards/*": ["./src/features/expenses/components/cards/*"],
+      "@expenses-selects/*": ["./src/features/expenses/components/selects/*"],
+      "@expenses-modals/*": ["./src/features/expenses/components/modals/*"],
+      "@expenses-forms/*": ["./src/features/expenses/components/forms/*"],
+      "@expenses-services/*": ["./src/features/expenses/services/*"],
+      "@expenses-hooks/*": ["./src/features/expenses/hooks/*"],
+
+      "@movements-cards/*": ["./src/features/movements/components/cards/*"],
+      "@movements-selects/*": ["./src/features/movements/components/selects/*"],
+      "@movements-modals/*": ["./src/features/movements/components/modals/*"],
+      "@movements-forms/*": ["./src/features/movements/components/forms/*"],
+      "@movements-services/*": ["./src/features/movements/services/*"],
+      "@movements-hooks/*": ["./src/features/movements/hooks/*"],
+
+      "@payment-methods-cards/*": [
+        "./src/features/payment-methods/components/cards/*"
+      ],
+      "@payment-methods-selects/*": [
+        "./src/features/payment-methods/components/selects/*"
+      ],
+      "@payment-methods-modals/*": [
+        "./src/features/payment-methods/components/modals/*"
+      ],
+      "@payment-methods-forms/*": [
+        "./src/features/payment-methods/components/forms/*"
+      ],
+      "@payment-methods-services/*": [
+        "./src/features/payment-methods/services/*"
+      ],
+      "@payment-methods-hooks/*": ["./src/features/payment-methods/hooks/*"],
+
+      "@products-cards/*": ["./src/features/products/components/cards/*"],
+      "@products-selects/*": ["./src/features/products/components/selects/*"],
+      "@products-modals/*": ["./src/features/products/components/modals/*"],
+      "@products-forms/*": ["./src/features/products/components/forms/*"],
+      "@products-services/*": ["./src/features/products/services/*"],
+      "@products-hooks/*": ["./src/features/products/hooks/*"],
+
+      "@sizes-cards/*": ["./src/features/sizes/components/cards/*"],
+      "@sizes-selects/*": ["./src/features/sizes/components/selects/*"],
+      "@sizes-modals/*": ["./src/features/sizes/components/modals/*"],
+      "@sizes-forms/*": ["./src/features/sizes/components/forms/*"],
+      "@sizes-services/*": ["./src/features/sizes/services/*"],
+      "@sizes-hooks/*": ["./src/features/sizes/hooks/*"],
+
+      "@users-cards/*": ["./src/features/users/components/cards/*"],
+      "@users-selects/*": ["./src/features/users/components/selects/*"],
+      "@users-modals/*": ["./src/features/users/components/modals/*"],
+      "@users-forms/*": ["./src/features/users/components/forms/*"],
+      "@users-services/*": ["./src/features/users/services/*"],
+      "@users-hooks/*": ["./src/features/users/hooks/*"],
+
+      "@variations-cards/*": ["./src/features/variations/components/cards/*"],
+      "@variations-selects/*": [
+        "./src/features/variations/components/selects/*"
+      ],
+      "@variations-modals/*": ["./src/features/variations/components/modals/*"],
+      "@variations-forms/*": ["./src/features/variations/components/forms/*"],
+      "@variations-services/*": ["./src/features/variations/services/*"],
+      "@variations-hooks/*": ["./src/features/variations/hooks/*"],
+
       "@features/*": ["src/features/*"],
-      "@hooks/*": ["src/hooks/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@common/*": ["./src/components/common/*"],
       "@components/*": ["./src/components/*"]

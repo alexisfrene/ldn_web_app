@@ -2,7 +2,6 @@ import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import get from "lodash/get";
 import { cn } from "@utils";
-import { useGetBrands } from "@features/brands/hooks";
 import { Label } from "@ui/label";
 import {
   Select,
@@ -11,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/select";
+import { useGetBrands } from "@features/brands/hooks";
 import { CreateBrandModal } from "../modals";
 
 type Props = {

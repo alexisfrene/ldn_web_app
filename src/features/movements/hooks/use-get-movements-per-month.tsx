@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { MovementPerMonth } from "src/types/finance";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { getMovementTotalMonth } from "../services";
 
 export const useGetMovementsPerMonth = (

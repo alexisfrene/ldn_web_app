@@ -2,8 +2,6 @@ import React, { Suspense, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useIsMobile } from "src/hooks/use-mobile";
 import { cn } from "@utils";
-import { Icons } from "@common/Icons";
-import { LoadingIndicator } from "@common/Loading";
 import { Card, CardContent, CardHeader } from "@ui/card";
 import {
   DropdownMenu,
@@ -14,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@ui/dropdown-menu";
 import { Label } from "@ui/label";
+import { Icons } from "@common/Icons";
+import { LoadingIndicator } from "@common/Loading";
 
 interface TabsProps {
   tabs: {

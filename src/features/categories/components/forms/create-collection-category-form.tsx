@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useCreateCategoryCollection } from "@features/categories/hooks";
-import { Icons } from "@common/Icons";
-import { ImageUploader } from "@common/ImageUploader";
-import { LoadingIndicator } from "@common/Loading";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
+import { Icons } from "@common/Icons";
+import { ImageUploader } from "@common/ImageUploader";
+import { LoadingIndicator } from "@common/Loading";
+import { useCreateCategoryCollection } from "@features/categories/hooks";
 
 type IconProps = {
   url: string;

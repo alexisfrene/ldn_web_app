@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
-import { addSizeCollection } from "@features/sizes/services";
-import { Icons } from "@common/Icons";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
+import { Icons } from "@common/Icons";
+import { addSizeCollection } from "@features/sizes/services";
 
 type ValueProps = {
   id?: string;

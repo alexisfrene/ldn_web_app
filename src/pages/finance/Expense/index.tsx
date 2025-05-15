@@ -1,10 +1,10 @@
 import React from "react";
+import { Label } from "@ui/label";
+import { Skeleton } from "@ui/skeleton";
+import { Icons } from "@common/Icons";
 import { CardExpense } from "@features/expenses/components/cards/expense-card";
 import { CreateExpenseForm } from "@features/expenses/components/forms/create-expense-form";
 import { useGetExpenses } from "@features/expenses/hooks/use-get-expenses";
-import { Icons } from "@common/Icons";
-import { Label } from "@ui/label";
-import { Skeleton } from "@ui/skeleton";
 
 const Expense: React.FC = () => {
   const { expenses, isLoading } = useGetExpenses();

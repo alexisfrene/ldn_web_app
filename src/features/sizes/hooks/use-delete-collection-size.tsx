@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { sizeKeys } from "@services";
+import { sizeKeys } from "src/services";
 import { deleteCollectionSize } from "../services";
 
 export const useDeleteCollectionSize = () => {

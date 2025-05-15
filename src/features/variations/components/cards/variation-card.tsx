@@ -1,5 +1,5 @@
-import { TokenImage } from "@common/ImagePrivate";
 import { Button } from "@ui/button";
+import { TokenImage } from "@common/ImagePrivate";
 
 interface Props {
   variation: Variants;

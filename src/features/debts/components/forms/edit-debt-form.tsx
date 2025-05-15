@@ -3,11 +3,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import { useLoading } from "src/hooks/use-loading";
 import { paymentFrequency } from "src/mocks";
-import { editDebt, getDebtById } from "@features/debts/services";
-import { CalculateInterest } from "@common/CalculateInterest";
-import { DropdownInput } from "@common/DropDown";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +15,11 @@ import {
 import { LoadingButton } from "@ui/loading-button";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
+import { CalculateInterest } from "@common/CalculateInterest";
+import { DropdownInput } from "@common/DropDown";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { editDebt, getDebtById } from "@features/debts/services";
 
 interface Props {
   debt_id: UUID;

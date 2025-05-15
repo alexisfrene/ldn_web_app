@@ -1,10 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
-import { useCreatePaymentMethod } from "@features/payment-methods/hooks/use-create-payment-method";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
 import { DialogClose } from "@ui/dialog";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { useCreatePaymentMethod } from "@features/payment-methods/hooks/use-create-payment-method";
 import { paymentMethodSchema } from "./validations";
 
 export const FormCreatePaymentMethod: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductCard } from "src/features/products/components/cards/product-card";
-import { useDeleteProduct } from "src/features/products/hooks/use-delete-product";
+import { useDeleteProduct } from "@products-hooks/use-delete-product";
 
 interface Props {
   data: Product[];

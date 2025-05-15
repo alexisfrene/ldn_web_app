@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { useDebounce } from "use-debounce";
-import { useCheckAccountName } from "@features/accounts/hooks/use-check-financial-name";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
+import { useCheckAccountName } from "@features/accounts/hooks/use-check-financial-name";
 import { Icons } from "../Icons";
 
 export const CheckAvailable: React.FC = () => {

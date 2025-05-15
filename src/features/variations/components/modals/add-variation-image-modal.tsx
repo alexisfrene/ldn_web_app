@@ -1,5 +1,4 @@
 import React from "react";
-import { Icons } from "@common/Icons";
 import {
   Dialog,
   DialogContent,
@@ -7,6 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
+import { Icons } from "@common/Icons";
 import { AddVariationImageForm } from "../forms";
 
 interface Props {

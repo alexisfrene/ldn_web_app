@@ -1,8 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import { toast } from "sonner";
-import { registerUser } from "@services";
-import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
 import { InputWithVerifyPassword } from "@ui/input";
 import { Label } from "@ui/label";
@@ -15,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/select";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { registerUser } from "@users-services/index";
 
 export const RegisterUserForm: React.FC = () => {
   const initialValues = {

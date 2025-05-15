@@ -1,5 +1,4 @@
 import React from "react";
-import { Icons } from "@common/Icons";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
+import { Icons } from "@common/Icons";
 import { EditAccountForm } from "./edit-account-form";
 
 type Props = {

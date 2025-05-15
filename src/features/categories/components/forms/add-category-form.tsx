@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useAddCategoryValue } from "@features/categories/hooks";
-import { ImageUploader } from "@common/ImageUploader";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
+import { ImageUploader } from "@common/ImageUploader";
+import { useAddCategoryValue } from "@features/categories/hooks";
 
 interface Props {
   category_id: number;

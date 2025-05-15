@@ -1,9 +1,6 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@utils";
-import { useAvatar } from "@hooks/use-avatar";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
 import { GridPattern } from "@ui/grid-pattern";
 import { Label } from "@ui/label";
 import {
@@ -20,6 +17,9 @@ import {
   SidebarSeparator,
 } from "@ui/sidebar";
 import { Skeleton } from "@ui/skeleton";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
+import { useAvatar } from "@features/users/hooks/use-avatar";
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();

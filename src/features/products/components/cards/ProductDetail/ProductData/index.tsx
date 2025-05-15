@@ -1,10 +1,10 @@
 import React from "react";
 import { useEditProduct } from "src/features/products/hooks/use-edit-product";
 import { useGetProductById } from "src/features/products/hooks/use-get-product-by-id";
+import { Skeleton } from "@ui/skeleton";
+import { ProductDataTable } from "@common/DataTable";
 import { useGetCategoryByNames } from "@features/categories/hooks";
 import { useGetSizeByNames } from "@features/sizes/hooks/use-get-size-by-names";
-import { ProductDataTable } from "@common/DataTable";
-import { Skeleton } from "@ui/skeleton";
 
 export interface Props {
   price: string;

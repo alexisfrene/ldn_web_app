@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { PaymentMethod } from "src/types/finance";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { getAllPaymentMethodForUser } from "../services";
 
 export const useGetPaymentMethods = (

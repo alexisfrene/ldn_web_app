@@ -1,15 +1,15 @@
 import React from "react";
 import { toast } from "sonner";
 import { useModal } from "@hooks/use-modal";
+import { Button } from "@ui/button";
+import { Label } from "@ui/label";
+import { Modal } from "@common/Modal";
 import { VariationCard } from "@features/variations/components/cards";
 import { VariationDetailCard } from "@features/variations/components/cards";
 import {
   useDeleteVariation,
   useGetVariations,
 } from "@features/variations/hooks";
-import { Modal } from "@common/Modal";
-import { Button } from "@ui/button";
-import { Label } from "@ui/label";
 
 const VariantsGrid: React.FC = () => {
   const { variations } = useGetVariations();

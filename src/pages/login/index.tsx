@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "@common/ThemeProvider";
-import { LoginUserForm } from "@components/forms/user-forms";
 import { BorderBeam } from "@ui/border-beam";
 import {
   Card,
@@ -10,6 +8,8 @@ import {
   CardTitle,
 } from "@ui/card";
 import { Particles } from "@ui/particles";
+import { useTheme } from "@common/ThemeProvider";
+import { LoginUserForm } from "@components/forms/user-forms";
 
 const LoginPage: React.FC = () => {
   const [color, setColor] = useState("#ffffff");

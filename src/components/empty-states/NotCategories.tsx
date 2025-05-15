@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
-import { CreateCollectionCategoryForm } from "@features/categories/components/forms";
-import { Icons } from "@common/Icons";
 import { Button } from "@ui/button";
+import { Icons } from "@common/Icons";
+import { CreateCollectionCategoryForm } from "@features/categories/components/forms";
 
 interface Props {
   showSheet: (title: string, content: ReactElement) => void;

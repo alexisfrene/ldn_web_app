@@ -1,10 +1,6 @@
 import React from "react";
 import { formattedValue } from "@utils";
 import { useIsMobile } from "@hooks/use-mobile";
-import { useDeleteDebt } from "@features/debts/hooks/use-delete-debt";
-import { CardFee } from "@features/expenses/components/cards/fee-card";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
 import {
   Card,
   CardContent,
@@ -12,6 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@ui/card";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { useDeleteDebt } from "@features/debts/hooks/use-delete-debt";
+import { CardFee } from "@features/expenses/components/cards/fee-card";
 import { FormEditDebt } from "../forms/edit-debt-form";
 
 interface Props {

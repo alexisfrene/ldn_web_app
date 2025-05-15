@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { variationKeys } from "@services";
+import { variationKeys } from "src/services";
 import { addNewCollection } from "../services";
 
 export const useCreateVariationCollection = () => {

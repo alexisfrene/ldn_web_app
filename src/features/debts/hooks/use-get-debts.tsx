@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { DebtResponse } from "src/types/finance";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { getDebts } from "../services";
 
 export const useGetDebts = (options?: UseQueryOptions<DebtResponse, Error>) => {

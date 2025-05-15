@@ -1,11 +1,11 @@
 import React from "react";
 import { Movement } from "src/types/finance";
 import { cn } from "@utils";
-import { MovementCard } from "@features/movements/components/cards/movement-card";
-import { useGetMovements } from "@features/movements/hooks/use-get-movements";
-import { AnimatedPagination } from "@common/AnimatedPagination";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
+import { AnimatedPagination } from "@common/AnimatedPagination";
+import { MovementCard } from "@features/movements/components/cards/movement-card";
+import { useGetMovements } from "@features/movements/hooks/use-get-movements";
 
 type Props = {
   expenseMovements?: {

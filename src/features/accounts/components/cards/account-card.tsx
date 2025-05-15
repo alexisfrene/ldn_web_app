@@ -1,10 +1,10 @@
 import React from "react";
 import { formattedValue } from "@utils";
-import { useDeleteAccount } from "@features/accounts/hooks/use-delete-account";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { useDeleteAccount } from "@features/accounts/hooks/use-delete-account";
 import { EditFinancialAccountDialog } from "../modals/edit-account-modal";
 
 interface Props {

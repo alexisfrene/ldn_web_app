@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSessionStore } from "src/global";
-import { getUrlAvatar } from "@services";
+import { getUrlAvatar } from "@users-services/index";
 
 export const useAvatar = () => {
   const {

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { categoryKeys } from "@services";
+import { categoryKeys } from "src/services";
 import { modifyTitleCollectionCategory } from "../services";
 
 export const useChangeTitleCollectionCategory = () => {

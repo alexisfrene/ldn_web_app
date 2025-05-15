@@ -1,6 +1,6 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Movement } from "src/types/finance";
-import { financeKeys } from "@services";
+import { financeKeys } from "src/services";
 import { getAllMovements } from "../services";
 
 interface MovementsResponse {

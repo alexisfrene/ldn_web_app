@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useFormikContext } from "formik";
 import { cn, formattedValue } from "@utils";
-import { getDebts } from "@features/debts/services";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 import {
@@ -17,6 +16,7 @@ import {
 } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
+import { getDebts } from "@features/debts/services";
 
 export const SelectDebt: React.FC = () => {
   const { setFieldValue } = useFormikContext();

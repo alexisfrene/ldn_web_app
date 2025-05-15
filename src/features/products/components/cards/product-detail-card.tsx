@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetProductById } from "src/features/products/hooks/use-get-product-by-id";
-import { MenuTabs } from "@common/MenuTabs";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
+import { MenuTabs } from "@common/MenuTabs";
+import { useGetProductById } from "@products-hooks/use-get-product-by-id";
 import { PrimaryImage } from "./ProductDetail/PrimaryImage";
 import { ProductData } from "./ProductDetail/ProductData";
 import { StyleData } from "./ProductDetail/StyleData";

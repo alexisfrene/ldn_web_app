@@ -1,9 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import { cn, formattedValue } from "@utils";
-import { SelectFinancialAccount } from "@features/accounts/components/selects/select-financial-account";
-import { useMarkDebtPaid } from "@features/debts/hooks/use-mark-debt-paid";
-import { SelectPaymentMethod } from "@features/payment-methods/components/selects/select-payment-method";
 import { Button } from "@ui/button";
 import {
   Card,
@@ -22,6 +19,9 @@ import {
   DialogTrigger,
 } from "@ui/dialog";
 import { Label } from "@ui/label";
+import { SelectFinancialAccount } from "@features/accounts/components/selects/select-financial-account";
+import { useMarkDebtPaid } from "@features/debts/hooks/use-mark-debt-paid";
+import { SelectPaymentMethod } from "@features/payment-methods/components/selects/select-payment-method";
 
 interface Props {
   installment_id: number;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Formik } from "formik";
-import { useEditAccount } from "@features/accounts/hooks/use-edit-account";
-import { PaymentMethodCheckbox } from "@features/payment-methods/components/selects/checkbox-payment-method";
-import { Icons } from "@common/Icons";
-import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
+import { Icons } from "@common/Icons";
+import { InputWithLabel } from "@common/InputWithLabel";
+import { useEditAccount } from "@features/accounts/hooks/use-edit-account";
+import { PaymentMethodCheckbox } from "@features/payment-methods/components/selects/checkbox-payment-method";
 
 type Props = {
   name: string;

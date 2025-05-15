@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Formik } from "formik";
 import { useIsMobile } from "@hooks/use-mobile";
 import { useModal } from "@hooks/use-modal";
-import { ChoiceCategoryModal } from "@features/categories/components/modals";
-import { ChoiceSizeModal } from "@features/sizes/components/modals/choice-size-modal";
-import { Icons } from "@common/Icons";
-import { Modal } from "@common/Modal";
 import { Button } from "@ui/button";
 import { CardTitle } from "@ui/card";
 import { Input } from "@ui/input";
+import { Icons } from "@common/Icons";
+import { Modal } from "@common/Modal";
+import { ChoiceCategoryModal } from "@features/categories/components/modals";
+import { ChoiceSizeModal } from "@features/sizes/components/modals/choice-size-modal";
 
 export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   dataVist,

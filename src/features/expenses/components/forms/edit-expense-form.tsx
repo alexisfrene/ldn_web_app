@@ -1,12 +1,12 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
-import { editExpense } from "@features/expenses/services";
+import { Button } from "@ui/button";
+import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Icons } from "@common/Icons";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { LoadingIndicator } from "@common/Loading";
-import { Button } from "@ui/button";
-import { DialogClose, DialogFooter } from "@ui/dialog";
+import { editExpense } from "@features/expenses/services";
 
 interface Props {
   name: string;

@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import { Avatar, AvatarFallback } from "@ui/avatar";
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
+import { Label } from "@ui/label";
+import { ScrollArea } from "@ui/scroll-area";
+import { AlertModal } from "@common/AlertModal";
+import { Icons } from "@common/Icons";
+import { TokenImage } from "@common/ImagePrivate";
 import {
   AddCategoryForm,
   CreateCollectionCategoryForm,
@@ -8,14 +16,6 @@ import {
   useDeleteCollectionCategory,
   useDeleteValueCategory,
 } from "@features/categories/hooks";
-import { AlertModal } from "@common/AlertModal";
-import { Icons } from "@common/Icons";
-import { TokenImage } from "@common/ImagePrivate";
-import { Avatar, AvatarFallback } from "@ui/avatar";
-import { Button } from "@ui/button";
-import { Input } from "@ui/input";
-import { Label } from "@ui/label";
-import { ScrollArea } from "@ui/scroll-area";
 
 interface Props {
   data: Category[];

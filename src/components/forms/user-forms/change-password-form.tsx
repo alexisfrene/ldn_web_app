@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
-import { InputWithLabel } from "@common/InputWithLabel";
 import { Button } from "@ui/button";
+import { InputWithLabel } from "@common/InputWithLabel";
 
 export const ChangePasswordForm: React.FC = () => {
   return (

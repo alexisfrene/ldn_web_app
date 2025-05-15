@@ -22,9 +22,7 @@
   ],
 
   "files.exclude": {
-    "**/.next": true,
     "**/node_modules": true,
-    "**/dist": true,
     "**/.turbo": true
   },
   "cSpell.words": [

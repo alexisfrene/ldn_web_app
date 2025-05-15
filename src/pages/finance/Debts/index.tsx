@@ -53,8 +53,6 @@ const Debts: React.FC = () => {
                   title="Deudas Pagadas/Pendientes"
                   description="Se muestra el porcentaje de deudas pagadas y pendientes"
                   footer_title="Porcentaje de deudas pagadas y pendientes"
-                  dataKey="total"
-                  nameKey="debt_type"
                   footer_description={`Deudas pagadas ${
                     debts
                       ? (
@@ -74,14 +72,14 @@ const Debts: React.FC = () => {
                   }%`}
                   chartData={[
                     {
-                      debt_type: "Pagado: $",
-                      total: debts?.debtsTotalPaid,
-                      fill: "green",
+                      title: `Pagado : $${debts?.debtsTotalPaid}`,
+                      value: debts?.debtsTotalPaid,
+                      color: "green",
                     },
                     {
-                      debt_type: "Pendiente: $",
-                      total: debts?.debtsTotalUnpaid,
-                      fill: "red",
+                      title: `Pendiente : $${debts?.debtsTotalUnpaid}`,
+                      value: debts?.debtsTotalUnpaid,
+                      color: "red",
                     },
                   ]}
                 />

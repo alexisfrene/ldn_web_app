@@ -12,7 +12,8 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
     visualizer({
-      open: false,
+      open: true,
+      template: "sunburst",
     }),
   ],
   resolve: {
@@ -29,7 +30,6 @@ export default defineConfig({
         manualChunks(id) {
           const chunks = {
             lodash: /lodash/,
-            recharts: /recharts/,
             motion: /framer-motion/,
           };
 

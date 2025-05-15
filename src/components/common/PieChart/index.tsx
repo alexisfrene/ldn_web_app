@@ -1,4 +1,4 @@
-import { Pie, PieChart } from "recharts";
+import { PieChart, PieChartProps } from "react-minimal-pie-chart";
 import {
   Card,
   CardContent,
@@ -7,35 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@ui/card";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@ui/chart";
-
-const chartConfig = {
-  total: {
-    label: "total",
-  },
-  debt_paid: {
-    label: "Pagado",
-    color: "var(--chart-1)",
-  },
-  debt_unpaid: {
-    label: "Pendiente",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig;
 
 type Props = {
   title: string;
   description?: string;
   footer_title?: string;
   footer_description?: string;
-  dataKey: string;
-  nameKey: string;
-  chartData: any[];
+
+  chartData: PieChartProps["data"];
 };
 
 const PieChartComponent: React.FC<Props> = ({
@@ -44,8 +23,6 @@ const PieChartComponent: React.FC<Props> = ({
   footer_title,
   footer_description,
   chartData,
-  dataKey,
-  nameKey,
 }) => {
   return (
     <Card className="flex flex-col">
@@ -54,18 +31,7 @@ const PieChartComponent: React.FC<Props> = ({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie data={chartData} dataKey={dataKey} nameKey={nameKey} />
-          </PieChart>
-        </ChartContainer>
+        <PieChart data={chartData} className="h-96" />
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 leading-none font-medium">

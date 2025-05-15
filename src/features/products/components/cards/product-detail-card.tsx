@@ -1,9 +1,10 @@
 import React from "react";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
+import { TokenImage } from "@common/image-private";
 import { MenuTabs } from "@components/common/menu-tabs";
+import { EditProductImageModal } from "@products-modals/edit-product-image-modal";
 import { useGetProductById } from "@products-hooks/use-get-product-by-id";
-import { PrimaryImage } from "./ProductDetail/PrimaryImage";
 import { ProductData } from "./ProductDetail/ProductData";
 import { StyleData } from "./ProductDetail/StyleData";
 import { VariationData } from "./ProductDetail/VariationData";
@@ -20,7 +21,18 @@ export const ProductDetailCard: React.FC<Props> = ({ product_id }) => {
     <MenuTabs tabs={tabs}>
       {product && (
         <div className="sm:w-[46rem]">
-          <PrimaryImage product={product} />
+          <div className="flex justify-center rounded-sm py-2">
+            <div className="sm:h-60 sm:w-60 flex relative">
+              <div className="absolute top-0 right-0">
+                <EditProductImageModal product_id={product_id} />
+              </div>
+              <TokenImage
+                url={`${product.primary_image?.toString()}?width=450&height=450&quality=70&format=webp`}
+                variant="default"
+                className="w-full rounded-md object-cover"
+              />
+            </div>
+          </div>
           <TabsContent value={tabs[0]}>
             <ScrollArea className="h-52">
               <ProductData

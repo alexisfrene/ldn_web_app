@@ -1,8 +1,6 @@
 import React from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useGetProducts } from "src/features/products/hooks/use-get-products";
-import { useIsMobile } from "src/hooks/use-mobile";
-import { useModal } from "src/hooks/use-modal";
+import { useIsMobile } from "@hooks/use-mobile";
+import { useModal } from "@hooks/use-modal";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -13,10 +11,9 @@ import {
 } from "@ui/menubar";
 import { Switch } from "@ui/switch";
 import { Modal } from "@common/Modal";
-import {
-  changePreferenceProductView,
-  getPreferenceProductView,
-} from "@users-services/index";
+import { useGetProducts } from "@products-hooks/use-get-products";
+import { useChangePreference } from "@users-hooks/use-change-preference";
+import { useGetPreferences } from "@users-hooks/use-get-preference";
 import { ProductsGrid } from "./ProductsGrid";
 import { ProductsTable } from "./ProductTable";
 
@@ -24,23 +21,9 @@ const ProductGrid: React.FC = () => {
   const { hideModal, isOpenModal, modalContent, showModal, modalTitle } =
     useModal();
   const isMobile = useIsMobile();
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: changePreferenceProductView,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["preference_product_view"],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ["products"],
-      });
-    },
-  });
+  const mutation = useChangePreference();
   const { products } = useGetProducts();
-  const preferments = useQuery({
-    queryKey: ["preference_product_view"],
-    queryFn: getPreferenceProductView,
-  });
+  const { preferences } = useGetPreferences();
 
   return (
     <div>
@@ -51,9 +34,9 @@ const ProductGrid: React.FC = () => {
             <MenubarCheckboxItem>
               Ver en grilla :
               <Switch
-                checked={preferments.data}
+                checked={preferences}
                 onCheckedChange={() => {
-                  mutation.mutate(!preferments.data);
+                  mutation.mutate(!preferences);
                 }}
                 className="mx-1"
               />
@@ -62,7 +45,7 @@ const ProductGrid: React.FC = () => {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-      {preferments.data || isMobile ? (
+      {preferences || isMobile ? (
         <ProductsGrid data={products} />
       ) : (
         <ProductsTable

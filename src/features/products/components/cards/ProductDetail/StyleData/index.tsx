@@ -1,7 +1,7 @@
 import React from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductDataTable } from "@common/DataTable";
-import { handleSubmit } from "./handleSubmit";
+import { useEditProductStyles } from "@products-hooks/use-edit-product-styles";
+import { useGetProductById } from "@products-hooks/use-get-product-by-id";
 
 export interface StyleDataProps {
   style: string;
@@ -20,15 +20,8 @@ export const StyleData: React.FC<StyleDataProps> = ({
   product_id,
   style,
 }) => {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: handleSubmit,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["product_details", product_id],
-      });
-    },
-  });
+  const { product } = useGetProductById(product_id);
+  const mutation = useEditProductStyles();
   const dataVist = [
     {
       label: "Estilo :",
@@ -57,19 +50,28 @@ export const StyleData: React.FC<StyleDataProps> = ({
     },
   ];
   const initialValues = {
-    brand: "",
-    age: "",
-    color: "",
-    gender: "",
-    styles: "",
+    brand: product?.detail?.brand ?? "",
+    age: product?.detail?.age ?? "",
+    color: product?.detail?.color ?? "",
+    gender: product?.detail?.gender ?? "",
+    styles: product?.detail?.style ?? "",
     product_id: product_id,
   };
 
   return (
     <ProductDataTable
       dataVist={dataVist}
-      handleSubmit={(values, formikHelpers) =>
-        mutation.mutate({ formikHelpers: formikHelpers, values: values })
+      handleSubmit={(values) =>
+        mutation.mutate({
+          product_id: product_id,
+          newDetails: {
+            age: values?.age || "",
+            brand: values?.brand || "",
+            color: values?.color || "",
+            gender: values?.gender || "",
+            style: values?.style || "",
+          },
+        })
       }
       initialValues={initialValues}
       title="Detalles del producto"

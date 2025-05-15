@@ -2,6 +2,7 @@ export const usersKeys = {
   all: ["users"] as const,
   list: () => [...usersKeys.all, "list"],
   detail: (id: string) => [...usersKeys.all, "detail", id],
+  preference: ["preference"],
 };
 
 export const productKeys = {

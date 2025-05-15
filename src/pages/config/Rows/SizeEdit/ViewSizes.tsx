@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { AddSizeForm, CreateCollectionSizeForm } from "@forms";
-import {
-  useChangeDeleteValueSize,
-  useChangeTitleCollectionSize,
-  useDeleteCollectionSize,
-} from "@hooks/size-hooks";
+import { AddSizeForm } from "@features/sizes/components/forms/add-size-form";
+import { CreateCollectionSizeForm } from "@features/sizes/components/forms/create-collection-size-form";
+import { useDeleteCollectionSize } from "@features/sizes/hooks/use-delete-collection-size";
+import { useChangeDeleteValueSize } from "@features/sizes/hooks/use-delete-value-size";
+import { useChangeTitleCollectionSize } from "@features/sizes/hooks/use-edit-title-collection-size";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { Badge } from "@ui/badge";

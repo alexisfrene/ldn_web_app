@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { modifyTitleCollectionSize, sizeKeys } from "@services";
+import { sizeKeys } from "@services";
+import { modifyTitleCollectionSize } from "../services";
 
 export const useChangeTitleCollectionSize = () => {
   const queryClient = useQueryClient();

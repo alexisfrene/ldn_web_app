@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteValueSize, sizeKeys } from "@services";
+import { sizeKeys } from "@services";
+import { deleteValueSize } from "../services";
 
 export const useChangeDeleteValueSize = () => {
   const queryClient = useQueryClient();

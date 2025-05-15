@@ -1,5 +1,4 @@
 import React from "react";
-import { SelectSize } from "@selects";
 import { Button } from "@ui/button";
 import {
   Dialog,
@@ -11,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
+import { SelectSize } from "../selects/select-size";
 
 export const ChoiceSizeModal: React.FC = () => {
   return (

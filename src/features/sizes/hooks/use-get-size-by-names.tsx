@@ -1,5 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { getSizeByNames, sizeKeys } from "@services";
+import { sizeKeys } from "@services";
+import { getSizeByNames } from "../services";
 
 export const useGetSizeByNames = (
   collection_item_name: string,

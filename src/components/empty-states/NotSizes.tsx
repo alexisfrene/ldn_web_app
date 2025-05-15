@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateCollectionSizeForm } from "@forms";
+import { CreateCollectionSizeForm } from "@features/sizes/components/forms/create-collection-size-form";
 import { Icons } from "@common/Icons";
 import { Button } from "@ui/button";
 

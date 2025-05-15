@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllSizes } from "@services";
+import { getAllSizes } from "@features/sizes/services";
 import { ModalGeneric } from "./ModalGeneric";
 
 interface SizeIds {

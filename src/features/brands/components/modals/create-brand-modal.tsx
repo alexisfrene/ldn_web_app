@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
-import { Icons } from "@common/icons";
+import { Icons } from "@components/common2/icons";
 import { CreateBrandForm } from "../forms";
 
 export const CreateBrandModal: React.FC = () => {

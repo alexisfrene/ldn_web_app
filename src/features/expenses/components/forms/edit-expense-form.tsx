@@ -3,9 +3,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
-import { Icons } from "@common/icons";
-import { InputWithLabel } from "@common/input-with-label";
-import { LoadingIndicator } from "@common/loading";
+import { Icons } from "@components/common2/icons";
+import { InputWithLabel } from "@components/common2/input-with-label";
+import { LoadingIndicator } from "@components/common2/loading";
 import { editExpense } from "@expenses-services/index";
 
 interface Props {

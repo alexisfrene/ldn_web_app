@@ -5,12 +5,12 @@ import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
-import { CalculateInterest } from "@common/calculate-interest";
-import { CounterButton } from "@common/counter-button";
-import { DropdownInput } from "@common/drop-down";
-import { GenerateInstallments } from "@common/generate-installments";
-import { Icons } from "@common/icons";
-import { InputWithLabel } from "@common/input-with-label";
+import { CalculateInterest } from "@components/common2/calculate-interest";
+import { CounterButton } from "@components/common2/counter-button";
+import { DropdownInput } from "@components/common2/drop-down";
+import { GenerateInstallments } from "@components/common2/generate-installments";
+import { Icons } from "@components/common2/icons";
+import { InputWithLabel } from "@components/common2/input-with-label";
 import { useCreateDebt } from "@debts-hooks/use-create-debt";
 import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 

@@ -1,6 +1,6 @@
-import { AlertModal } from "@common/alert-modal";
-import { Icons } from "@common/icons";
-import { TokenImage } from "@common/image-private";
+import { AlertModal } from "@components/common2/alert-modal";
+import { Icons } from "@components/common2/icons";
+import { TokenImage } from "@components/common2/image-private";
 import { ProductDetailsModal } from "@products-modals/product-details-modal";
 
 interface Props {

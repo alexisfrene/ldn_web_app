@@ -1,5 +1,5 @@
 import React from "react";
-import { TokenImage } from "@common/image-private";
+import { TokenImage } from "@components/common2/image-private";
 import { AddVariations } from "./AddVariations";
 
 interface ImagesVariantsProps {

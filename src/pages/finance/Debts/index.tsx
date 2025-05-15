@@ -1,13 +1,15 @@
 import React, { Suspense } from "react";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
-import { Icons } from "@common/icons";
 import { InfoCard } from "@components/cards/general-cards";
+import { Icons } from "@components/common2/icons";
 import { CardDebt } from "@debts-cards/debt-card";
 import { CreateDebtModal } from "@debts-modals/create-debt-modal";
 import { useGetDebts } from "@debts-hooks/use-get-debts";
 
-const PieChartComponent = React.lazy(() => import("@common/pie-chart"));
+const PieChartComponent = React.lazy(
+  () => import("@components/common2/pie-chart"),
+);
 
 const Debts: React.FC = () => {
   const { debts, isLoading } = useGetDebts();

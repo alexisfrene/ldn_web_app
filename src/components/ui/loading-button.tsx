@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slottable } from "@radix-ui/react-slot";
 import { type VariantProps } from "class-variance-authority";
 import { Button, buttonVariants } from "@ui/button";
-import { Icons } from "@common/icons";
+import { Icons } from "@components/common2/icons";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

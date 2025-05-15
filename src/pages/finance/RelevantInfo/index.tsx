@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
-import { Clock } from "@common/clock";
-import { MovementList } from "@common/movement-list";
+import { Clock } from "@components/common2/clock";
+import { MovementList } from "@components/common2/movement-list";
 import { CardsInfo } from "./CardsInfo";
 
 const RelevantInfo: React.FC = () => {

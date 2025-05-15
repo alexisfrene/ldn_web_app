@@ -6,7 +6,7 @@ import { Button } from "@ui/button";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
 import { Separator } from "@ui/separator";
-import { Icons } from "@common/icons";
+import { Icons } from "@components/common2/icons";
 import { addSizeCollection } from "@sizes-services/index";
 
 type ValueProps = {

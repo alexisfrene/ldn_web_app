@@ -8,10 +8,10 @@ import {
 } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
-import { AlertModal } from "@common/alert-modal";
-import { Icons } from "@common/icons";
-import { TokenImage } from "@common/image-private";
-import { MenuTabs } from "@common/menu-tabs";
+import { AlertModal } from "@components/common2/alert-modal";
+import { Icons } from "@components/common2/icons";
+import { TokenImage } from "@components/common2/image-private";
+import { MenuTabs } from "@components/common2/menu-tabs";
 import { useGetVariationById } from "@variations-hooks/use-get-variation-by-id";
 import { useDeleteVariationImage } from "@variations-hooks/use-remove-variation-image";
 import { CreateVariationCollectionForm } from "../forms";

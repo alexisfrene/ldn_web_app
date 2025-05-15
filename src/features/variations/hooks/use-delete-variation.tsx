@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteVariationById, variationKeys } from "@services";
+import { variationKeys } from "@services";
+import { deleteVariationById } from "../services";
 
 export const useDeleteVariation = () => {
   const queryClient = useQueryClient();

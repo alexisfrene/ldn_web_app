@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { ModalAddVariationImage } from "@modals";
-import { CreateVariationCollectionForm } from "@forms";
-import { useGetVariationById } from "@hooks/variation-hooks";
-import { useDeleteVariationImage } from "@hooks/variation-hooks";
+import { useGetVariationById } from "@features/variations/hooks";
+import { useDeleteVariationImage } from "@features/variations/hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
@@ -16,6 +14,8 @@ import {
 } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";
 import { TabsContent } from "@ui/tabs";
+import { CreateVariationCollectionForm } from "../forms";
+import { ModalAddVariationImage } from "../modals";
 
 const tabs = ["Ver imágenes", "Agregar una colección"];
 

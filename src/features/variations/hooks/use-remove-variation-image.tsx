@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { removeImageCollection, variationKeys } from "@services";
+import { variationKeys } from "@services";
+import { removeImageCollection } from "../services";
 
 export const useDeleteVariationImage = () => {
   const queryClient = useQueryClient();

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { linkVariation } from "src/features/products/services";
-import { getAllVariations } from "@services";
 import { cn } from "@utils";
+import { getAllVariations } from "@features/variations/services";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";
 import { LoadingIndicator } from "@common/Loading";

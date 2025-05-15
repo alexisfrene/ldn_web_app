@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addImageCollection, variationKeys } from "@services";
+import { variationKeys } from "@services";
+import { addNewCollection } from "../services";
 
-export const useAddVariationCollectionValue = () => {
+export const useCreateVariationCollection = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: addImageCollection,
+    mutationFn: addNewCollection,
     onSuccess: (_, { variation_id }) => {
       queryClient.invalidateQueries({ queryKey: variationKeys.all });
       queryClient.invalidateQueries({

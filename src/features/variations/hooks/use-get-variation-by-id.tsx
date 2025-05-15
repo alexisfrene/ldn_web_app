@@ -1,5 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { getVariationById, variationKeys } from "@services";
+import { variationKeys } from "@services";
+import { getVariationById } from "../services";
 
 export const useGetVariationById = (
   variationId: string,

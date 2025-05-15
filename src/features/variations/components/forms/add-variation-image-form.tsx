@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { FileWithPreview } from "@hooks/use-file-upload";
-import { useAddVariationCollectionValue } from "@hooks/variation-hooks";
+import { useAddVariationCollectionValue } from "@features/variations/hooks";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { FileUpload } from "@ui/file-upload";

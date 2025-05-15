@@ -1,9 +1,12 @@
 import React from "react";
 import { toast } from "sonner";
-import { VariationCard } from "@cards/variation-cards";
-import { VariationDetailCard } from "@cards/variation-cards";
 import { useModal } from "@hooks/use-modal";
-import { useDeleteVariation, useGetVariations } from "@hooks/variation-hooks";
+import { VariationCard } from "@features/variations/components/cards";
+import { VariationDetailCard } from "@features/variations/components/cards";
+import {
+  useDeleteVariation,
+  useGetVariations,
+} from "@features/variations/hooks";
 import { Modal } from "@common/Modal";
 import { Button } from "@ui/button";
 import { Label } from "@ui/label";

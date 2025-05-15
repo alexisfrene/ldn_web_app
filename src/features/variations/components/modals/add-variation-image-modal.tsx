@@ -1,5 +1,4 @@
 import React from "react";
-import { AddVariationImageForm } from "@forms";
 import { Icons } from "@common/Icons";
 import {
   Dialog,
@@ -8,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
+import { AddVariationImageForm } from "../forms";
 
 interface Props {
   label: string;

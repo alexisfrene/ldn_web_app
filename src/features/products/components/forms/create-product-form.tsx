@@ -1,16 +1,14 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { ChoiceCategoryModal } from "@modals";
-import {
-  SelectBrand,
-  SelectProductAge,
-  SelectProductGender,
-  SelectProductStyle,
-} from "@selects";
+import { SelectBrand } from "@selects";
+import { ChoiceCategoryModal } from "@features/categories/components/modals";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { ChoiceSizeModal } from "@components/modals/size-modals/choice-size-modal";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
+import { SelectProductAge } from "../selects/select-product-age";
+import { SelectProductGender } from "../selects/select-product-gender";
+import { SelectProductStyle } from "../selects/select-product-style";
 import handleSubmit from "./handleSubmit";
 import initialValues from "./initialValues";
 import validationSchema from "./validationSchema";

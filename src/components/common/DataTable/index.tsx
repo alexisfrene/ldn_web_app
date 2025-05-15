@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Formik } from "formik";
-import { ChoiceCategoryModal } from "@modals";
 import { useIsMobile } from "@hooks/use-mobile";
 import { useModal } from "@hooks/use-modal";
+import { ChoiceCategoryModal } from "@features/categories/components/modals";
 import { Icons } from "@common/Icons";
 import { Modal } from "@common/Modal";
 import { ChoiceSizeModal } from "@components/modals/size-modals/choice-size-modal";

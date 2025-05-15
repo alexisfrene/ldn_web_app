@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectCategory } from "@selects";
+import { SelectCategory } from "@features/categories/components/selects/select-category";
 
 export interface CategoryIds {
   category_id: string;

@@ -6,8 +6,4 @@ export * from "./select-financial-account";
 export * from "./select-movement-account";
 export * from "./select-movement-type";
 export * from "./select-payment-method";
-export * from "../../features/products/components/selects/select-product-age";
-export * from "../../features/products/components/selects/select-product-gender";
-export * from "../../features/products/components/selects/select-product-style";
-export * from "./select-category";
 export * from "./select-size";

@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { categoryKeys, modifyTitleCollectionCategory } from "@services";
+import { categoryKeys } from "@services";
+import { addCategoryConfig } from "../services";
 
-export const useChangeTitleCollectionCategory = () => {
+export const useCreateCategoryCollection = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: modifyTitleCollectionCategory,
+    mutationFn: addCategoryConfig,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: categoryKeys.all });
     },
   });
-
   return mutation;
 };

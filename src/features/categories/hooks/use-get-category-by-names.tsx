@@ -1,5 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { categoryKeys, getCategoryByNames } from "@services";
+import { categoryKeys } from "@services";
+import { getCategoryByNames } from "../services";
 
 export const useGetCategoryByNames = (
   collection_item_name: string,

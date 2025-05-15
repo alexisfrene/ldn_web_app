@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { CreateCollectionCategoryForm } from "@forms";
+import { CreateCollectionCategoryForm } from "@features/categories/components/forms";
 import { Icons } from "@common/Icons";
 import { Button } from "@ui/button";
 

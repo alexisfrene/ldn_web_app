@@ -1,8 +1,8 @@
 import React from "react";
 import { useEditProduct } from "src/features/products/hooks/use-edit-product";
 import { useGetProductById } from "src/features/products/hooks/use-get-product-by-id";
-import { useGetCategoryByNames } from "@hooks/category-hooks";
 import { useGetSizeByNames } from "@hooks/size-hooks";
+import { useGetCategoryByNames } from "@features/categories/hooks";
 import { ProductDataTable } from "@common/DataTable";
 import { Skeleton } from "@ui/skeleton";
 

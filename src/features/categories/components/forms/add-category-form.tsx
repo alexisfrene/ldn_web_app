@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useAddCategoryValue } from "@hooks/category-hooks";
+import { useAddCategoryValue } from "@features/categories/hooks";
 import { ImageUploader } from "@common/ImageUploader";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";

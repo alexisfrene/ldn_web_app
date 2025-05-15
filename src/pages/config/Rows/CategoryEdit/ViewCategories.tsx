@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { AddCategoryForm, CreateCollectionCategoryForm } from "@forms";
+import {
+  AddCategoryForm,
+  CreateCollectionCategoryForm,
+} from "@features/categories/components/forms";
 import {
   useChangeTitleCollectionCategory,
   useDeleteCollectionCategory,
   useDeleteValueCategory,
-} from "@hooks/category-hooks";
+} from "@features/categories/hooks";
 import { AlertModal } from "@common/AlertModal";
 import { Icons } from "@common/Icons";
 import { TokenImage } from "@common/ImagePrivate";

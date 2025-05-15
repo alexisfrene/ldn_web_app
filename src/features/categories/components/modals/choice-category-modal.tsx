@@ -1,5 +1,4 @@
 import React from "react";
-import { SelectCategory } from "@selects";
 import { Button } from "@ui/button";
 import {
   Dialog,
@@ -11,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@ui/dialog";
+import { SelectCategory } from "../selects/select-category";
 
 export const ChoiceCategoryModal: React.FC = () => {
   return (

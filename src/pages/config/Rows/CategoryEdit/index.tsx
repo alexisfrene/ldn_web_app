@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { useGetCategories } from "@hooks/category-hooks";
+import { useGetCategories } from "@features/categories/hooks";
 import { NotCategories } from "@components/empty-states";
 import { ViewCategories } from "./ViewCategories";
 

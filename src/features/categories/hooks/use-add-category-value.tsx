@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { categoryKeys, deleteValueCategory } from "@services";
+import { categoryKeys } from "@services";
+import { addValueCategory } from "../services";
 
-export const useDeleteValueCategory = () => {
+export const useAddCategoryValue = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: deleteValueCategory,
+    mutationFn: addValueCategory,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: categoryKeys.all });
     },
   });
-
   return mutation;
 };

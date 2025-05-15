@@ -1,5 +1,4 @@
 export * from "./brands";
-export * from "./categories";
 export * from "./finances";
 export * from "./query-keys";
 export * from "./sizes";

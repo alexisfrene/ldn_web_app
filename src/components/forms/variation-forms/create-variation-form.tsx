@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
-import { ChoiceCategoryModal } from "@modals";
+import { ChoiceCategoryModal } from "@features/categories/components/modals";
 import { InputWithLabel } from "@common/InputWithLabel";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";

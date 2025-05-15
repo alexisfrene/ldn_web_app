@@ -10,7 +10,7 @@ import {
 } from "@ui/card";
 import { AlertModal } from "@components/common/alert-modal";
 import { Icons } from "@components/common/icons";
-import { CardFee } from "@expenses-cards/fee-card";
+import { MarkPaidFeeModal } from "@expenses-modals/mark-paid-fee-modal";
 import { FormEditDebt } from "@debts-forms/edit-debt-form";
 import { useDeleteDebt } from "@debts-hooks/use-delete-debt";
 
@@ -122,7 +122,7 @@ export const CardDebt: React.FC<Props> = ({
         </CardDescription>
         <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-3">
           {installments.map((installment, index) => (
-            <CardFee
+            <MarkPaidFeeModal
               installment_id={installment.installment_id}
               amount={installment.amount}
               due_date={installment.due_date}

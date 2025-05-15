@@ -28,7 +28,7 @@ const Expense: React.FC = () => {
   return (
     <div>
       <CreateExpenseForm />
-      <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
+      <div className="flex flex-col gap-6 xl:grid xl:grid-cols-2">
         {expenses.length ? (
           expenses.map((expense) => (
             <CardExpense

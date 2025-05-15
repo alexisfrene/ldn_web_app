@@ -74,43 +74,43 @@ export const CardDebt: React.FC<Props> = ({
         <CardDescription>
           <div className="grid grid-cols-1 gap-4 rounded-lg p-4 sm:grid-cols-2 lg:grid-cols-3">
             <p className="text-lg font-semibold">
-              Notas:{" "}
+              Notas:
               <span className="font-normal text-gray-600">
                 {notes || "Sin Notas"}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total:{" "}
+              Total:
               <span className="font-normal text-green-600">
                 {formattedValue(total) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Cantidad de cuotas:{" "}
+              Cantidad de cuotas:
               <span className="font-normal text-gray-600">
                 {installments.length}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total sin pagar:{" "}
+              Total sin pagar:
               <span className="font-normal text-red-600">
                 {formattedValue(total_unpaid) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Total pagado:{" "}
+              Total pagado:
               <span className="font-normal text-blue-600">
                 {formattedValue(total_paid) || 0}
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Intereses:{" "}
+              Intereses:
               <span className="font-normal text-orange-600">
                 {total_interest ? total_interest.toFixed(2) : 0}%
               </span>
             </p>
             <p className="text-lg font-semibold">
-              Intereses por meses:{" "}
+              Intereses por meses:
               <span className="font-normal text-orange-600">
                 {interest_per_installment
                   ? interest_per_installment.toFixed(2)
@@ -120,7 +120,7 @@ export const CardDebt: React.FC<Props> = ({
             </p>
           </div>
         </CardDescription>
-        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-4">
+        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-3">
           {installments.map((installment, index) => (
             <CardFee
               installment_id={installment.installment_id}

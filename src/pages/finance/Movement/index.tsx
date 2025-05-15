@@ -1,16 +1,16 @@
 import React from "react";
+import { MovementList } from "@movements-common/movement-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { ScrollArea } from "@ui/scroll-area";
 import { CreateMovementForm } from "@movements-forms/create-movement-form";
-import { MovementList } from "@features/movements/components/common/movement-list";
 
 const Movement: React.FC = () => {
   return (
     <div className="grid grid-cols-12">
-      <div className="col-span-full sm:col-span-7 sm:mr-6">
+      <div className="col-span-full xl:col-span-7 sm:mr-6">
         <CreateMovementForm />
       </div>
-      <div className="hidden sm:col-span-5 sm:block">
+      <div className="hidden xl:col-span-5 xl:block">
         <Card>
           <CardHeader>
             <CardTitle>Historial de movimientos :</CardTitle>

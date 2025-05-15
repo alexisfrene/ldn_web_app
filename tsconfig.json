@@ -51,6 +51,7 @@
 
       "@movements-cards/*": ["./src/features/movements/components/cards/*"],
       "@movements-selects/*": ["./src/features/movements/components/selects/*"],
+      "@movements-common/*": ["./src/features/movements/components/common/*"],
       "@movements-modals/*": ["./src/features/movements/components/modals/*"],
       "@movements-forms/*": ["./src/features/movements/components/forms/*"],
       "@movements-services/*": ["./src/features/movements/services/*"],

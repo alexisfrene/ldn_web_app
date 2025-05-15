@@ -5,13 +5,13 @@ import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
-import { CalculateInterest } from "@components/common/calculate-interest";
 import { CounterButton } from "@components/common/counter-button";
 import { DropdownInput } from "@components/common/drop-down";
-import { GenerateInstallments } from "@components/common/generate-installments";
 import { Icons } from "@components/common/icons";
 import { InputWithLabel } from "@components/common/input-with-label";
 import { useCreateDebt } from "@debts-hooks/use-create-debt";
+import { CalculateInterest } from "@features/debts/components/common/calculate-interest";
+import { GenerateInstallments } from "@features/debts/components/common/generate-installments";
 import { debtSchema, initialValuesDebt } from "./create-debt-utils";
 
 export const CreateDebtForm: React.FC = () => {

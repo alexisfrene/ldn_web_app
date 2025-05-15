@@ -15,11 +15,11 @@ import {
 import { LoadingButton } from "@ui/loading-button";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
-import { CalculateInterest } from "@components/common/calculate-interest";
 import { DropdownInput } from "@components/common/drop-down";
 import { Icons } from "@components/common/icons";
 import { InputWithLabel } from "@components/common/input-with-label";
 import { editDebt, getDebtById } from "@debts-services/index";
+import { CalculateInterest } from "@features/debts/components/common/calculate-interest";
 
 interface Props {
   debt_id: UUID;

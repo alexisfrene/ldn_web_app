@@ -15,7 +15,7 @@ interface Props {
 }
 export const ProductDetailCard: React.FC<Props> = ({ product_id }) => {
   const { product } = useGetProductById(product_id);
-  console.log("product", product);
+
   return (
     <MenuTabs tabs={tabs}>
       {product && (

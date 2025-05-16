@@ -15,7 +15,7 @@ export const ProductDetailsModal: React.FC<
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="min-w-3xl">
+      <DialogContent className="lg:min-w-3xl">
         <DialogHeader>
           <DialogTitle>Detalles del producto</DialogTitle>
           <DialogDescription>

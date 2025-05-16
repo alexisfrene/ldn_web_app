@@ -42,9 +42,9 @@ export const CardFee: React.FC<Props> = ({
       </CardHeader>
       <CardContent className="grid grid-cols-2">
         <Label>Monto:</Label>
-        <p>{formattedValue(amount)}</p>
+        <p className="text-right">{formattedValue(amount)}</p>
         <Label>Vencimiento:</Label>
-        <p>
+        <p className="text-right">
           {new Date(
             new Date(due_date).toLocaleString("en-US", {
               timeZone: "UTC",

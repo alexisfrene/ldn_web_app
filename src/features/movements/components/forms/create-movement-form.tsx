@@ -31,7 +31,7 @@ export const CreateMovementForm: React.FC = () => {
           label: values.label || "Sin nombre",
           payment_method_id: values.payment_method_id,
           type: values.type,
-          value: values.value,
+          value: Number(values.value),
           entry_date: values.entry_date,
           expense_id: values.expense_id || undefined,
           debt_id: values.debt_id || undefined,
@@ -53,6 +53,7 @@ export const CreateMovementForm: React.FC = () => {
             <InputWithLabel
               label="Monto"
               name="value"
+              step="0.01"
               type="number"
               disabled={values.type === "debt"}
             />

@@ -11,8 +11,8 @@ import {
 import { Label } from "@ui/label";
 import { ScrollArea } from "@ui/scroll-area";
 import { Skeleton } from "@ui/skeleton";
+import { MovementList } from "@movements-common/movement-list";
 import { getExpenseById } from "@expenses-services/index";
-import { MovementList } from "@features/movements/components/common/movement-list";
 
 interface Props {
   children: React.ReactNode;

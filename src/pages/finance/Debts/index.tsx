@@ -23,26 +23,22 @@ const Debts: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3">
+      <div>
         <Label className="col-span-3 text-2xl">Información general</Label>
         <div className="col-span-3">
           <CreateDebtModal />
         </div>
         {debts?.debts.length ? (
-          <>
+          <div className="grid grid-cols-3 gap-3 mt-3">
+            <InfoCard title="Total" value={debts?.debtsTotal} currency />
             <InfoCard
-              title="Total de deudas"
-              value={debts?.debtsTotal}
-              currency
-            />
-            <InfoCard
-              title="Deudas pagadas"
+              title="Pagadas"
               value={debts?.debtsTotalPaid}
               currency
               valueStyles="text-green-500 dark:text-green-500"
             />
             <InfoCard
-              title="Deudas pendientes"
+              title="Pendientes"
               value={debts?.debtsTotalUnpaid}
               currency
               valueStyles="text-red-500 dark:text-red-500"
@@ -85,7 +81,7 @@ const Debts: React.FC = () => {
                 />
               </Suspense>
             </div>
-          </>
+          </div>
         ) : null}
       </div>
       {debts?.debts.length ? (

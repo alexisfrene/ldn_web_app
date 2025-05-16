@@ -1,24 +1,13 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
-import { getAllFinancialAccount } from "@accounts-services/index";
+import { useGetAccounts } from "@accounts-hooks/use-get-accounts";
 
 export const SelectFinancialAccount: React.FC = () => {
   const { setFieldValue, values } = useFormikContext<FormikValues>();
-
-  const { data: financialAccount, error } = useQuery({
-    queryKey: ["finances", "financial_account"],
-    queryFn: getAllFinancialAccount,
-  });
-
-  if (error) {
-    return (
-      <div>Error: {(error as Error).message || "An error has occurred"}</div>
-    );
-  }
+  const { accounts: financialAccount } = useGetAccounts();
 
   const handleSelectFinancialAccount = ({
     financial_accounts_id,
@@ -54,7 +43,7 @@ export const SelectFinancialAccount: React.FC = () => {
           >
             <Label>{financialAccount.name}</Label>
             <Label>{formattedValue(financialAccount.total)}</Label>
-            <div className="grid grid-cols-2 gap-1">
+            <div className="flex flex-wrap gap-1">
               {financialAccount?.paymentMethods.map((paymentMethod) => (
                 <Badge key={paymentMethod.payment_method_id}>
                   {paymentMethod.name}

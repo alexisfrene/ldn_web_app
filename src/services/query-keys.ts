@@ -64,6 +64,11 @@ export const financeKeys = {
     all: ["payment_methods"] as const,
     list: () => [...financeKeys.payment_method.all, "list"],
     detail: (id: string) => [...financeKeys.payment_method.all, "detail", id],
+    by_account: (id: string) => [
+      ...financeKeys.payment_method.all,
+      "by-account",
+      id,
+    ],
   },
   debt: {
     all: ["debts"] as const,

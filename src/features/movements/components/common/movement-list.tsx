@@ -16,17 +16,22 @@ type Props = {
     isPlaceholderData: any;
   };
   height?: string;
+  limit?: number;
 };
 
-export const MovementList: React.FC<Props> = ({ expenseMovements, height }) => {
+export const MovementList: React.FC<Props> = ({
+  expenseMovements,
+  height,
+  limit = 10,
+}) => {
   const [page, setPage] = React.useState(1);
-  const fallback = useGetMovements(page);
+  const fallback = useGetMovements(page, limit);
 
   const { movements, isLoading, totalPages, currentPage, isPlaceholderData } =
     expenseMovements ?? fallback;
 
   return (
-    <div className="border-none sm:min-h-96">
+    <div className="border-none">
       <ScrollArea className={cn([height ?? "h-96", "mb-3"])}>
         {isLoading ? (
           <div>

@@ -40,7 +40,7 @@ export const CreateProductForm: React.FC = () => {
       {({ handleSubmit, values, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
-          className="md:grid-row-6 grid grid-cols-1 gap-3 p-10 md:grid-cols-2 md:grid-rows-4 xl:grid-cols-4"
+          className="md:grid-row-6 grid grid-cols-1 gap-3  md:grid-cols-2 md:grid-rows-4 xl:grid-cols-4 items-center"
         >
           <InputWithLabel
             label="Nombre del producto"
@@ -48,13 +48,7 @@ export const CreateProductForm: React.FC = () => {
             maxLength={50}
             minLength={3}
           />
-          <InputWithLabel
-            label="Precio"
-            name="price"
-            type="number"
-            min={1}
-            max={5000000000}
-          />
+          <InputWithLabel label="Precio" name="price" type="number" min={1} />
           <div className="hidden md:col-span-2 md:row-span-2 md:block">
             <FileUpload maxSizeMB={10} accept="image/*" />
           </div>

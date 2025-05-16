@@ -31,7 +31,7 @@ const PieChartComponent: React.FC<Props> = ({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <PieChart data={chartData} className="h-96" />
+        <PieChart data={chartData} className="h-28" />
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 leading-none font-medium">

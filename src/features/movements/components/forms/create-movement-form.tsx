@@ -75,7 +75,7 @@ export const CreateMovementForm: React.FC = () => {
                 <Icons type="refresh" className="h-5 animate-spin" />
               </div>
             )}
-            Crear método de pago
+            Crear movimiento
           </Button>
         </form>
       )}

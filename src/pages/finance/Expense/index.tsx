@@ -1,8 +1,9 @@
 import React from "react";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
-import { Icons } from "@components/common/icons";
+import { Icons } from "@common/icons";
 import { CardExpense } from "@expenses-cards/expense-card";
+import { CreateExpenseModal } from "@expenses-modals/create-expense-modal";
 import { CreateExpenseForm } from "@expenses-forms/create-expense-form";
 import { useGetExpenses } from "@expenses-hooks/use-get-expenses";
 
@@ -27,7 +28,7 @@ const Expense: React.FC = () => {
 
   return (
     <div>
-      <CreateExpenseForm />
+      <CreateExpenseModal />
       <div className="flex flex-col gap-6 xl:grid xl:grid-cols-2">
         {expenses.length ? (
           expenses.map((expense) => (

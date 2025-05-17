@@ -1,6 +1,8 @@
 import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { Label } from "@ui/label";
+import { CreateAccountModal } from "@accounts-modals/create-account-modal";
+import { CreateExpenseModal } from "@expenses-modals/create-expense-modal";
 import { SelectFinancialAccount } from "@accounts-selects/select-financial-account";
 import { SelectDebt } from "@debts-selects/select-debt";
 import { SelectTag } from "@expenses-selects/select-expense";
@@ -13,7 +15,9 @@ export const SelectMovementAccount: React.FC = () => {
     <div>
       {values.type === "inflow_of_money" ? (
         <div className="w-full items-center gap-1.5">
-          <Label>Destino donde ingresara el dinero</Label>
+          <Label>
+            Destino donde ingresara el dinero o <CreateAccountModal />
+          </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
             <>
@@ -24,7 +28,9 @@ export const SelectMovementAccount: React.FC = () => {
         </div>
       ) : values.type === "money_outflow" ? (
         <div className="w-full items-center gap-1.5">
-          <Label>Cuenta donde saldrá el dinero :</Label>
+          <Label>
+            Cuenta donde saldrá el dinero o <CreateAccountModal />
+          </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
             <>
@@ -32,12 +38,16 @@ export const SelectMovementAccount: React.FC = () => {
               <SelectPaymentMethod />
             </>
           )}
-          <Label>Etiqueta del gasto :</Label>
+          <Label>
+            Etiqueta del gasto o <CreateExpenseModal />
+          </Label>
           <SelectTag />
         </div>
       ) : (
         <div className="w-full items-center gap-1.5">
-          <Label>Cuenta donde saldrá el dinero :</Label>
+          <Label>
+            Cuenta donde saldrá el dinero o <CreateAccountModal />
+          </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
             <>

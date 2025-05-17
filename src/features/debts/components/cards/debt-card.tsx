@@ -8,10 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@ui/card";
-import { AlertModal } from "@components/common/alert-modal";
+import { AlertModal } from "@common/alert-modal";
 import { Icons } from "@components/common/icons";
-import { MarkPaidFeeModal } from "@expenses-modals/mark-paid-fee-modal";
 import { FormEditDebt } from "@debts-forms/edit-debt-form";
+import { MarkPaidFeeModal } from "@debts-forms/mark-paid-fee-modal";
 import { useDeleteDebt } from "@debts-hooks/use-delete-debt";
 
 interface Props {

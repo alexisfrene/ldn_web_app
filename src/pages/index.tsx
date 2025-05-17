@@ -22,6 +22,8 @@ const Debts = lazy(() => import("./finance/Debts"));
 const CreateProducts = lazy(() => import("./products/CreateProductTab"));
 const CreateVariation = lazy(() => import("./variations/CreateVariationTab"));
 
+const EventCalendarPage = lazy(() => import("./event-calendar"));
+
 const FinanceRoutes = [
   {
     index: true,
@@ -104,7 +106,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "schedule",
-        element: <div className="mt-96 text-center">Próximamente ...</div>,
+        element: <EventCalendarPage />,
       },
       {
         path: "products",

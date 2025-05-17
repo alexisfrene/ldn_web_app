@@ -19,7 +19,7 @@ export const EditProductImageModal: React.FC<Props> = ({ product_id }) => {
       <DialogTrigger asChild>
         <Icons
           type="copy_manual"
-          className=" top-0 left-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 sm:h-10 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50"
+          className="top-0 left-0 m-2 h-7 cursor-pointer rounded-sm bg-white p-1 hover:text-slate-700 sm:h-10 dark:bg-slate-700 dark:hover:bg-slate-900 dark:hover:text-slate-50"
         />
       </DialogTrigger>
       <DialogContent className="min-w-3xl">

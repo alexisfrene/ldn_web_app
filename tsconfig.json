@@ -57,6 +57,28 @@
       "@movements-services/*": ["./src/features/movements/services/*"],
       "@movements-hooks/*": ["./src/features/movements/hooks/*"],
 
+      "@event-calendar-cards/*": [
+        "./src/features/event-calendar/components/cards/*"
+      ],
+      "@event-calendar-types/*": ["./src/features/event-calendar/types/*"],
+      "@event-calendar-utils/*": ["./src/features/event-calendar/utils/*"],
+      "@event-calendar-selects/*": [
+        "./src/features/event-calendar/components/selects/*"
+      ],
+      "@event-calendar-common/*": [
+        "./src/features/event-calendar/components/common/*"
+      ],
+      "@event-calendar-modals/*": [
+        "./src/features/event-calendar/components/modals/*"
+      ],
+      "@event-calendar-forms/*": [
+        "./src/features/event-calendar/components/forms/*"
+      ],
+      "@event-calendar-services/*": [
+        "./src/features/event-calendar/services/*"
+      ],
+      "@event-calendar-hooks/*": ["./src/features/event-calendar/hooks/*"],
+
       "@payment-methods-cards/*": [
         "./src/features/payment-methods/components/cards/*"
       ],

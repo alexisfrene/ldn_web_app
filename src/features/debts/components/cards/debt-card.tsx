@@ -51,7 +51,7 @@ export const CardDebt: React.FC<Props> = ({
     >
       <CardHeader>
         <CardTitle className="flex justify-between text-2xl">
-          <p className="truncate">
+          <p>
             {isMobile ? "" : " Deuda : "} {name}
           </p>
           <div>
@@ -120,7 +120,7 @@ export const CardDebt: React.FC<Props> = ({
             </p>
           </div>
         </CardDescription>
-        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {installments.map((installment, index) => (
             <MarkPaidFeeModal
               installment_id={installment.installment_id}

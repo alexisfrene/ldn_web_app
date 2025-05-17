@@ -5,7 +5,7 @@ import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
 import { getExpenses } from "@expenses-services/index";
 
-export const SelectTag: React.FC = () => {
+export const SelectExpense: React.FC = () => {
   const { setFieldValue } = useFormikContext<FormikValues>();
   const [selectedExpenseId, setSelectedExpenseId] = useState<UUID | null>(null);
 
@@ -32,7 +32,7 @@ export const SelectTag: React.FC = () => {
   return (
     <div className="my-3">
       {expenses?.length ? (
-        expenses?.map((expense: { description: string; expense_id: UUID }) => (
+        expenses?.map((expense: { name: string; expense_id: UUID }) => (
           <Badge
             key={expense.expense_id}
             variant={
@@ -41,7 +41,7 @@ export const SelectTag: React.FC = () => {
             className="cursor-pointer"
             onClick={() => handleSelectExpense(expense.expense_id)}
           >
-            {expense.description}
+            {expense.name}
           </Badge>
         ))
       ) : (

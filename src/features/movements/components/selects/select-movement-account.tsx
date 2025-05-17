@@ -5,7 +5,7 @@ import { CreateAccountModal } from "@accounts-modals/create-account-modal";
 import { CreateExpenseModal } from "@expenses-modals/create-expense-modal";
 import { SelectFinancialAccount } from "@accounts-selects/select-financial-account";
 import { SelectDebt } from "@debts-selects/select-debt";
-import { SelectTag } from "@expenses-selects/select-expense";
+import { SelectExpense } from "@expenses-selects/select-expense";
 import { SelectPaymentMethod } from "@payment-methods-selects/select-payment-method";
 
 export const SelectMovementAccount: React.FC = () => {
@@ -41,7 +41,7 @@ export const SelectMovementAccount: React.FC = () => {
           <Label>
             Etiqueta del gasto o <CreateExpenseModal />
           </Label>
-          <SelectTag />
+          <SelectExpense />
         </div>
       ) : (
         <div className="w-full items-center gap-1.5">

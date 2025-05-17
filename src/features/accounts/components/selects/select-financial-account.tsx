@@ -3,6 +3,8 @@ import { FormikValues, useFormikContext } from "formik";
 import { formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
+import { Icons } from "@common/icons";
+import { CreateAccountModal } from "@accounts-modals/create-account-modal";
 import { useGetAccounts } from "@accounts-hooks/use-get-accounts";
 
 export const SelectFinancialAccount: React.FC = () => {
@@ -53,7 +55,10 @@ export const SelectFinancialAccount: React.FC = () => {
           </div>
         ))
       ) : (
-        <div> sas </div> //Poner boton de agregar cuenta financiera
+        <div className="flex items-center gap-3">
+          <p>No tienes ninguna cuenta</p>
+          <Icons type="warning" height={30} />
+        </div>
       )}
     </div>
   );

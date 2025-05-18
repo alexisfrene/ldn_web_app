@@ -13,7 +13,7 @@ const Expense: React.FC = () => {
   if (isLoading) {
     return (
       <div>
-        <CreateExpenseForm />
+        <CreateExpenseModal />
         <div className="grid grid-cols-2 gap-6">
           <Skeleton className="col-span-1 h-[230px] px-6" />
           <Skeleton className="col-span-1 h-[230px]" />

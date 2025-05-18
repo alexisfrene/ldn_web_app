@@ -11,6 +11,7 @@
     "release": "standard-version",
     "check:ts": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check .",
     "change-imports": "tsc replace-imports.ts"
   },
   "dependencies": {

@@ -173,6 +173,7 @@ export function EventCalendar({
   const handleEventSave = (event: CalendarEvent) => {
     if (event.id) {
       onEventUpdate?.(event);
+
       // Show toast notification when an event is updated
       toast(`Event "${event.title}" updated`, {
         description: format(new Date(event.start), "MMM d, yyyy"),

@@ -32,6 +32,7 @@ import {
   SelectValue,
 } from "@ui/select";
 import { Textarea } from "@ui/textarea";
+import { useCreateEvent } from "@event-calendar-hooks/use-create-event";
 
 interface EventDialogProps {
   event: CalendarEvent | null;
@@ -60,6 +61,8 @@ export function EventDialog({
   const [error, setError] = useState<string | null>(null);
   const [startDateOpen, setStartDateOpen] = useState(false);
   const [endDateOpen, setEndDateOpen] = useState(false);
+
+  const createEventMutation = useCreateEvent();
 
   // Debug log to check what event is being passed
   useEffect(() => {
@@ -162,6 +165,16 @@ export function EventDialog({
     const eventTitle = title.trim() ? title : "(no title)";
 
     onSave({
+      id: event?.id || "",
+      title: eventTitle,
+      description,
+      start,
+      end,
+      allDay,
+      location,
+      color,
+    });
+    createEventMutation.mutate({
       id: event?.id || "",
       title: eventTitle,
       description,

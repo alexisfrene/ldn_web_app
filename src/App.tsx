@@ -6,7 +6,7 @@ import "nprogress/nprogress.css";
 import { RouterProvider } from "react-router-dom";
 import { API_NAME } from "@config/environment";
 import { Toaster } from "@ui/sonner";
-import router from "@presentation/pages";
+import router from "./pages";
 
 const App: React.FC = () => {
   const [serverStatus, setServerStatus] = useState<boolean | null>(null);

@@ -2,6 +2,7 @@ export const usersKeys = {
   all: ["users"] as const,
   list: () => [...usersKeys.all, "list"],
   detail: (id: string) => [...usersKeys.all, "detail", id],
+  preference: ["preference"],
 };
 
 export const productKeys = {
@@ -19,6 +20,12 @@ export const categoryKeys = {
 export const sizeKeys = {
   all: ["sizes"] as const,
   list: () => [...sizeKeys.all, "list"],
+  detail: (id: string) => [...sizeKeys.all, "detail", id],
+};
+
+export const variationKeys = {
+  all: ["variations"] as const,
+  list: () => [...variationKeys.all, "list"],
   detail: (id: string) => [...sizeKeys.all, "detail", id],
 };
 
@@ -57,6 +64,11 @@ export const financeKeys = {
     all: ["payment_methods"] as const,
     list: () => [...financeKeys.payment_method.all, "list"],
     detail: (id: string) => [...financeKeys.payment_method.all, "detail", id],
+    by_account: (id: string) => [
+      ...financeKeys.payment_method.all,
+      "by-account",
+      id,
+    ],
   },
   debt: {
     all: ["debts"] as const,

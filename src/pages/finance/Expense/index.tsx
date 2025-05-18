@@ -4,7 +4,6 @@ import { Skeleton } from "@ui/skeleton";
 import { Icons } from "@common/icons";
 import { CardExpense } from "@expenses-cards/expense-card";
 import { CreateExpenseModal } from "@expenses-modals/create-expense-modal";
-import { CreateExpenseForm } from "@expenses-forms/create-expense-form";
 import { useGetExpenses } from "@expenses-hooks/use-get-expenses";
 
 const Expense: React.FC = () => {

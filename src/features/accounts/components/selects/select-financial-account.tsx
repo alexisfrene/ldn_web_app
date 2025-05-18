@@ -4,7 +4,6 @@ import { formattedValue } from "@utils";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
 import { Icons } from "@common/icons";
-import { CreateAccountModal } from "@accounts-modals/create-account-modal";
 import { useGetAccounts } from "@accounts-hooks/use-get-accounts";
 
 export const SelectFinancialAccount: React.FC = () => {

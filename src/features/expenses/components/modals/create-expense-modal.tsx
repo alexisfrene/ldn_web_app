@@ -10,11 +10,25 @@ import {
 } from "@ui/dialog";
 import { CreateExpenseForm } from "@expenses-forms/create-expense-form";
 
-export const CreateExpenseModal: React.FC = () => {
+type Props = {
+  buttonVariant?:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+};
+
+export const CreateExpenseModal: React.FC<Props> = ({
+  buttonVariant = "outline",
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="my-3">
+        <Button variant={buttonVariant} className="my-3">
           Crear etiqueta de gasto
         </Button>
       </DialogTrigger>

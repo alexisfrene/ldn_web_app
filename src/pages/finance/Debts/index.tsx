@@ -10,7 +10,7 @@ import { useGetDebts } from "@debts-hooks/use-get-debts";
 const PieChartComponent = React.lazy(() => import("@common/pie-chart"));
 
 const Debts: React.FC = () => {
-  const { debts, isLoading } = useGetDebts();
+  const { debts, isLoading, totalPaid, total, totalUnpaid } = useGetDebts();
 
   if (isLoading) {
     return (
@@ -28,18 +28,18 @@ const Debts: React.FC = () => {
         <div className="col-span-3">
           <CreateDebtModal />
         </div>
-        {debts?.debts.length ? (
+        {debts?.length ? (
           <div className="grid grid-cols-3 gap-3 mt-3">
-            <InfoCard title="Total" value={debts?.debtsTotal} currency />
+            <InfoCard title="Total" value={total} currency />
             <InfoCard
               title="Pagadas"
-              value={debts?.debtsTotalPaid}
+              value={totalPaid}
               currency
               valueStyles="text-green-500 dark:text-green-500"
             />
             <InfoCard
               title="Pendientes"
-              value={debts?.debtsTotalUnpaid}
+              value={totalUnpaid}
               currency
               valueStyles="text-red-500 dark:text-red-500"
             />
@@ -51,30 +51,27 @@ const Debts: React.FC = () => {
                   footer_title="Porcentaje de deudas pagadas y pendientes"
                   footer_description={`Deudas pagadas ${
                     debts
-                      ? (
-                          (debts.debtsTotalPaid /
-                            (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
-                          100
-                        ).toFixed(2)
+                      ? ((totalPaid / (totalPaid + totalUnpaid)) * 100).toFixed(
+                          2,
+                        )
                       : 0
                   }% y pendientes ${
                     debts
                       ? (
-                          (debts.debtsTotalUnpaid /
-                            (debts.debtsTotalPaid + debts.debtsTotalUnpaid)) *
+                          (totalUnpaid / (totalPaid + totalUnpaid)) *
                           100
                         ).toFixed(2)
                       : 0
                   }%`}
                   chartData={[
                     {
-                      title: `Pagado : $${debts?.debtsTotalPaid}`,
-                      value: debts?.debtsTotalPaid,
+                      title: `Pagado : $${totalPaid}`,
+                      value: totalPaid,
                       color: "green",
                     },
                     {
-                      title: `Pendiente : $${debts?.debtsTotalUnpaid}`,
-                      value: debts?.debtsTotalUnpaid,
+                      title: `Pendiente : $${totalUnpaid}`,
+                      value: totalUnpaid,
                       color: "red",
                     },
                   ]}
@@ -84,8 +81,8 @@ const Debts: React.FC = () => {
           </div>
         ) : null}
       </div>
-      {debts?.debts.length ? (
-        debts?.debts.map((debt) => (
+      {debts?.length ? (
+        debts?.map((debt) => (
           <CardDebt
             debt_id={debt.debt_id}
             total_interest={debt.total_interest}

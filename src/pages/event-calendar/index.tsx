@@ -8,7 +8,7 @@ import { useGetEvents } from "@event-calendar-hooks/use-get-events";
 
 export default function EventCalendarPage() {
   const { events: eventsData } = useGetEvents();
-  const [events, setEvents] = useState<CalendarEvent[]>(eventsData);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
   useEffect(() => {
     if (eventsData) {
       setEvents(eventsData);

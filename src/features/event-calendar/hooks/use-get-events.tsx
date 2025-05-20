@@ -7,7 +7,8 @@ export const useGetEvents = () => {
     queryFn: getEvents,
   });
 
-  console.log("Events:", query.data);
+  console.log("events", query.data);
+
   return {
     events: query.data || [],
     isLoading: query.isLoading,

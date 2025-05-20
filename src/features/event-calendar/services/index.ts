@@ -15,10 +15,10 @@ export const createEvent = async (data: CalendarEvent) => {
 export const getEvents = async () => {
   try {
     const res = await axiosInstance.get("/event-calendar");
-    return res.data;
+    return res?.data ?? [];
   } catch (error) {
-    toast.error("Ocurrió un error al crear una getEvents");
     console.error("ERROR IN getEvents:", error);
+    return [];
   }
 };
 

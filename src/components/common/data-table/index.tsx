@@ -27,8 +27,8 @@ export const ProductDataTable: React.FC<DataOfProductsProps> = ({
   const renderField = (
     name: string,
     value: string,
-    values: any,
-    setFieldValue: (field: string, value: any) => void,
+    values: { [key: string]: string },
+    setFieldValue: (field: string, value: string) => void,
   ) => {
     switch (name) {
       case "size":

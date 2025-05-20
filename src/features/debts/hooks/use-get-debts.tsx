@@ -11,7 +11,11 @@ export const useGetDebts = (options?: UseQueryOptions<DebtResponse, Error>) => {
   });
 
   return {
-    debts: query.data,
+    debts: query.data?.debts || [],
+    total: query.data?.debtsTotal || 0,
+    totalPaid: query.data?.debtsTotalPaid || 0,
+    totalUnpaid: query.data?.debtsTotalUnpaid || 0,
+    isSuccess: query.isSuccess,
     isLoading: query.isLoading,
     isError: query.isError,
   };

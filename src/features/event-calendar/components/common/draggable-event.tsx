@@ -3,7 +3,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { CalendarEvent } from "@event-calendar-types/types";
 import { differenceInDays } from "date-fns";
-import { useCalendarDnd } from "./calendar-dnd-context";
+import { useCalendarDnd } from "@hooks/use-calendar-dnd";
 import { EventItem } from "./event-item";
 
 interface DraggableEventProps {

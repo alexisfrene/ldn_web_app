@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@hooks/use-theme";
 import { Card, CardContent, CardDescription, CardHeader } from "@ui/card";
 import { Particles } from "@ui/particles";
-import { useTheme } from "@components/common/theme-provider";
 import { RegisterUserForm } from "@components/forms/user-forms";
 
 const SingUpPage: React.FC = () => {

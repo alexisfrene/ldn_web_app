@@ -10,11 +10,25 @@ import {
 } from "@ui/dialog";
 import { FormCreateAccount } from "../forms/create-account-form";
 
-export const CreateAccountModal: React.FC = () => {
+type Props = {
+  buttonVariant?:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+};
+
+export const CreateAccountModal: React.FC<Props> = ({
+  buttonVariant = "outline",
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="my-3">
+        <Button variant={buttonVariant} className="my-3">
           Crear nueva cuenta
         </Button>
       </DialogTrigger>

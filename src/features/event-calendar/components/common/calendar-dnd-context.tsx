@@ -1,11 +1,4 @@
-import {
-  createContext,
-  type ReactNode,
-  useContext,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { type ReactNode, useId, useRef, useState } from "react";
 import {
   DndContext,
   type DragEndEvent,
@@ -21,41 +14,10 @@ import {
 } from "@dnd-kit/core";
 import { CalendarEvent } from "@event-calendar-types/types";
 import { addMinutes, differenceInMinutes } from "date-fns";
+import { CalendarDndContext } from "@hooks/use-calendar-dnd";
 import { EventItem } from "./event-item";
 
 // Define the context type
-type CalendarDndContextType = {
-  activeEvent: CalendarEvent | null;
-  activeId: UniqueIdentifier | null;
-  activeView: "month" | "week" | "day" | null;
-  currentTime: Date | null;
-  eventHeight: number | null;
-  isMultiDay: boolean;
-  multiDayWidth: number | null;
-  dragHandlePosition: {
-    x?: number;
-    y?: number;
-    data?: {
-      isFirstDay?: boolean;
-      isLastDay?: boolean;
-    };
-  } | null;
-};
-
-// Create the context
-const CalendarDndContext = createContext<CalendarDndContextType>({
-  activeEvent: null,
-  activeId: null,
-  activeView: null,
-  currentTime: null,
-  eventHeight: null,
-  isMultiDay: false,
-  multiDayWidth: null,
-  dragHandlePosition: null,
-});
-
-// Hook to use the context
-export const useCalendarDnd = () => useContext(CalendarDndContext);
 
 // Props for the provider
 interface CalendarDndProviderProps {

@@ -173,6 +173,7 @@ export function EventCalendar({
   const handleEventSave = (event: CalendarEvent) => {
     if (event.id) {
       onEventUpdate?.(event);
+
       // Show toast notification when an event is updated
       toast(`Event "${event.title}" updated`, {
         description: format(new Date(event.start), "MMM d, yyyy"),
@@ -260,7 +261,7 @@ export function EventCalendar({
 
   return (
     <div
-      className="flex flex-col rounded-lg border has-data-[slot=month-view]:flex-1"
+      className="flex flex-col rounded-lg border has-data-[slot=month-view]:flex-1 m-6"
       style={
         {
           "--event-height": `${EventHeight}px`,

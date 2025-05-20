@@ -34,7 +34,7 @@ const ProductGrid: React.FC = () => {
             <MenubarCheckboxItem>
               Ver en grilla :
               <Switch
-                checked={preferences}
+                checked={!!preferences}
                 onCheckedChange={() => {
                   mutation.mutate(!preferences);
                 }}

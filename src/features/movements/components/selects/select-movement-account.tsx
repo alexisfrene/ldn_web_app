@@ -16,7 +16,8 @@ export const SelectMovementAccount: React.FC = () => {
       {values.type === "inflow_of_money" ? (
         <div className="w-full items-center gap-1.5">
           <Label>
-            Destino donde ingresara el dinero o <CreateAccountModal />
+            Destino donde ingresara el dinero o
+            <CreateAccountModal buttonVariant="link" />
           </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
@@ -29,7 +30,8 @@ export const SelectMovementAccount: React.FC = () => {
       ) : values.type === "money_outflow" ? (
         <div className="w-full items-center gap-1.5">
           <Label>
-            Cuenta donde saldrá el dinero o <CreateAccountModal />
+            Cuenta donde saldrá el dinero o
+            <CreateAccountModal buttonVariant="link" />
           </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
@@ -39,14 +41,15 @@ export const SelectMovementAccount: React.FC = () => {
             </>
           )}
           <Label>
-            Etiqueta del gasto o <CreateExpenseModal />
+            Etiqueta del gasto o <CreateExpenseModal buttonVariant="link" />
           </Label>
           <SelectExpense />
         </div>
       ) : (
         <div className="w-full items-center gap-1.5">
           <Label>
-            Cuenta donde saldrá el dinero o <CreateAccountModal />
+            Cuenta donde saldrá el dinero o
+            <CreateAccountModal buttonVariant="link" />
           </Label>
           <SelectFinancialAccount />
           {values.financial_accounts_id && (
@@ -56,7 +59,7 @@ export const SelectMovementAccount: React.FC = () => {
             </>
           )}
           <Label>Que deuda :</Label>
-          <SelectDebt />
+          <SelectDebt buttonVariant="ghost" />
         </div>
       )}
     </div>

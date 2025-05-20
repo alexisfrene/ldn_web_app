@@ -31,9 +31,9 @@ export const ModalSize: React.FC<ModalSizeProps> = ({
   return (
     <ModalGeneric
       items={sizes}
-      selected={values as any}
+      selected={values as { size_id: string; size_value_id: string }}
       onRequestClose={onRequestClose}
-      handleChange={handleChange as any}
+      handleChange={handleChange as () => void}
       selectedKey="size_id"
       selectedValueKey="size_value_id"
     />

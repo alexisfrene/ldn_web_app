@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTheme } from "@hooks/use-theme";
 import { BorderBeam } from "@ui/border-beam";
 import {
   Card,
@@ -8,7 +9,6 @@ import {
   CardTitle,
 } from "@ui/card";
 import { Particles } from "@ui/particles";
-import { useTheme } from "@components/common/theme-provider";
 import { LoginUserForm } from "@components/forms/user-forms";
 
 const LoginPage: React.FC = () => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSessionStore } from "src/global";
 import { Opulento, Velustro } from "uvcanvas";
+import { useTheme } from "@hooks/use-theme";
 import { BorderBeam } from "@ui/border-beam";
 import {
   Card,
@@ -11,7 +12,6 @@ import {
   CardTitle,
 } from "@ui/card";
 import { Particles } from "@ui/particles";
-import { useTheme } from "@components/common/theme-provider";
 import { LoginUserForm } from "@components/forms/user-forms";
 
 const Filing: React.FC = () => {

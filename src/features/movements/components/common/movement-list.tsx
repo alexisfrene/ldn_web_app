@@ -13,7 +13,7 @@ type Props = {
     isLoading: boolean;
     totalPages: number;
     currentPage: number;
-    isPlaceholderData: any;
+    isPlaceholderData: boolean;
   };
   height?: string;
   limit?: number;

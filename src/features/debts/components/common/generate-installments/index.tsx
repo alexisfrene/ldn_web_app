@@ -49,7 +49,7 @@ export const GenerateInstallments: React.FC = () => {
     );
     setFieldValue("total_debt", totalInstallmentsAmount);
     setFieldValue("total_debt_str", formattedValue(totalInstallmentsAmount));
-  }, [values.installments, values.total_debt]);
+  }, [values.installments, values.total_debt, setFieldValue]);
 
   const renderInstallments = (installmentsCount: number) => {
     return Array.from({ length: installmentsCount }, (_, index) => (
@@ -60,16 +60,12 @@ export const GenerateInstallments: React.FC = () => {
   return (
     <div>
       <div>
-        <div>
-          <div className="flex flex-wrap gap-3 p-3">
-            {renderInstallments(values.number_quota).map(
-              (installment, index) => (
-                <div key={index} className="grow">
-                  {installment}
-                </div>
-              ),
-            )}
-          </div>
+        <div className="flex flex-wrap gap-3 p-3">
+          {renderInstallments(values.number_quota).map((installment, index) => (
+            <div key={index} className="grow">
+              {installment}
+            </div>
+          ))}
         </div>
       </div>
     </div>

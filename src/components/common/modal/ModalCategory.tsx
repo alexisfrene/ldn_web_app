@@ -11,6 +11,6 @@ export interface ModalCategoryProps {
   values: CategoryIds;
 }
 
-export const ModalCategory: React.FC<ModalCategoryProps> = ({}) => {
+export const ModalCategory: React.FC<ModalCategoryProps> = () => {
   return <SelectCategory />;
 };

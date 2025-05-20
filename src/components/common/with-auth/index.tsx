@@ -11,7 +11,7 @@ export const WithAuth: React.FC<{ children: React.ReactNode }> = ({
     if (!token || token.length === 0) {
       setTimeout(() => navigate("/"), 2000);
     }
-  }, [token]);
+  }, [token, navigate]);
 
   if (!token || token.length === 0) {
     return <div>Error no estas autentificado</div>;

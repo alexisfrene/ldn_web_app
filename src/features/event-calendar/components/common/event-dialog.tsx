@@ -61,11 +61,6 @@ export function EventDialog({
   const [startDateOpen, setStartDateOpen] = useState(false);
   const [endDateOpen, setEndDateOpen] = useState(false);
 
-  // Debug log to check what event is being passed
-  useEffect(() => {
-    console.log("EventDialog received event:", event);
-  }, [event]);
-
   useEffect(() => {
     if (event) {
       setTitle(event.title || "");
@@ -81,7 +76,7 @@ export function EventDialog({
       setAllDay(event.allDay || false);
       setLocation(event.location || "");
       setColor((event.color as EventColor) || "sky");
-      setError(null); // Reset error when opening dialog
+      setError(null);
     } else {
       resetForm();
     }
@@ -106,7 +101,6 @@ export function EventDialog({
     return `${hours}:${minutes.toString().padStart(2, "0")}`;
   };
 
-  // Memoize time options so they're only calculated once
   const timeOptions = useMemo(() => {
     const options = [];
     for (let hour = StartHour; hour <= EndHour; hour++) {
@@ -114,14 +108,14 @@ export function EventDialog({
         const formattedHour = hour.toString().padStart(2, "0");
         const formattedMinute = minute.toString().padStart(2, "0");
         const value = `${formattedHour}:${formattedMinute}`;
-        // Use a fixed date to avoid unnecessary date object creations
+
         const date = new Date(2000, 0, 1, hour, minute);
         const label = format(date, "h:mm a");
         options.push({ value, label });
       }
     }
     return options;
-  }, []); // Empty dependency array ensures this only runs once
+  }, []);
 
   const handleSave = () => {
     const start = new Date(startDate);
@@ -152,13 +146,11 @@ export function EventDialog({
       end.setHours(23, 59, 59, 999);
     }
 
-    // Validate that end date is not before start date
     if (isBefore(end, start)) {
       setError("End date cannot be before start date");
       return;
     }
 
-    // Use generic title if empty
     const eventTitle = title.trim() ? title : "(no title)";
 
     onSave({
@@ -179,7 +171,6 @@ export function EventDialog({
     }
   };
 
-  // Updated color options to match types.ts
   const colorOptions: Array<{
     value: EventColor;
     label: string;
@@ -296,7 +287,6 @@ export function EventDialog({
                     onSelect={(date) => {
                       if (date) {
                         setStartDate(date);
-                        // If end date is before the new start date, update it to match the start date
                         if (isBefore(endDate, date)) {
                           setEndDate(date);
                         }

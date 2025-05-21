@@ -59,6 +59,11 @@ export const financeKeys = {
       "detail",
       id,
     ],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.financial_account.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   payment_method: {
     all: ["payment_methods"] as const,

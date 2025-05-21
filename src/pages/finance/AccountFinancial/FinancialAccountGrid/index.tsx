@@ -13,7 +13,7 @@ export const FinancialAccountGrid: React.FC = () => {
     totalPages,
     currentPage,
     isPlaceholderData,
-  } = useGetAccounts(page, 6);
+  } = useGetAccounts(page, 9);
 
   const skeletonItems = Array(9).fill(null);
   if (isLoading) {

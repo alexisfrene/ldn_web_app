@@ -79,6 +79,11 @@ export const financeKeys = {
     all: ["debts"] as const,
     list: () => [...financeKeys.debt.all, "list"],
     detail: (id: string) => [...financeKeys.debt.all, "detail", id],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.debt.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   installment: {
     all: ["installments"] as const,

@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Label } from "@ui/label";
 import { Skeleton } from "@ui/skeleton";
+import { AnimatedPagination } from "@common/animated-pagination";
 import { Icons } from "@common/icons";
 import { InfoCard } from "@components/cards/general-cards";
 import { CardDebt } from "@debts-cards/debt-card";
@@ -10,7 +11,18 @@ import { useGetDebts } from "@debts-hooks/use-get-debts";
 const PieChartComponent = React.lazy(() => import("@common/pie-chart"));
 
 const Debts: React.FC = () => {
-  const { debts, isLoading, totalPaid, total, totalUnpaid } = useGetDebts();
+  const [page, setPage] = React.useState(1);
+  const {
+    debts,
+    isLoading,
+    totalPaid,
+    total,
+    totalUnpaid,
+    totalPages,
+    isFetching,
+    isPlaceholderData,
+    currentPage,
+  } = useGetDebts(page, 2);
 
   if (isLoading) {
     return (
@@ -82,20 +94,47 @@ const Debts: React.FC = () => {
         ) : null}
       </div>
       {debts?.length ? (
-        debts?.map((debt) => (
-          <CardDebt
-            debt_id={debt.debt_id}
-            total_interest={debt.total_interest}
-            installments={debt.installments}
-            name={debt.name}
-            notes={debt.notes}
-            total={debt.total}
-            total_paid={debt.total_paid}
-            total_unpaid={debt.total_unpaid}
-            interest_per_installment={debt.interest_per_installment}
-            key={debt.debt_id}
-          />
-        ))
+        <div>
+          {debts?.map((debt: any) => (
+            <CardDebt
+              debt_id={debt.debt_id}
+              total_interest={debt.total_interest}
+              installments={debt.installments}
+              name={debt.name}
+              notes={debt.notes}
+              total={debt.total}
+              total_paid={debt.total_paid}
+              total_unpaid={debt.total_unpaid}
+              interest_per_installment={debt.interest_per_installment}
+              key={debt.debt_id}
+            />
+          ))}
+          {isFetching && <Skeleton className="col-span-1 rounded-xl" />}
+          <div className="col-span-full">
+            {!isLoading ? (
+              <AnimatedPagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                setPage={setPage}
+                onClickPrevious={() => setPage((old) => Math.max(old - 1, 0))}
+                onClickNext={() => {
+                  if (!isPlaceholderData && currentPage < totalPages) {
+                    setPage((old) => old + 1);
+                  }
+                }}
+              />
+            ) : (
+              <div className="mt-1 flex w-full items-center justify-center gap-2">
+                <Skeleton className="h-8 w-8 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-md" />
+              </div>
+            )}
+          </div>
+        </div>
       ) : (
         <div className="mx-auto mt-20 flex w-full flex-col justify-center">
           <Icons type="wrench_screwdriver" height={250} className="m-3 p-10" />

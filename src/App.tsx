@@ -42,10 +42,10 @@ const App: React.FC = () => {
 
   if (serverStatus === false) {
     return (
-      <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-t from-gray-100 to-gray-200 text-gray-800 dark:from-gray-700 dark:to-gray-900">
+      <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-t from-gray-100 to-gray-200 text-gray-800 dark:from-gray-700 dark:to-gray-900 dark:text-white">
         <h1 className="mb-4 text-3xl font-bold">Servidor no disponible</h1>
         {errorMessage ? (
-          <p className="text-red-500">{errorMessage}</p>
+          <p className="text-red-500 mx-3">{errorMessage}</p>
         ) : (
           <p>Por favor, intenta de nuevo más tarde.</p>
         )}

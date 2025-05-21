@@ -42,11 +42,19 @@ export const createDebt = async ({
   }
 };
 
-export const getDebts = async () => {
+export const getDebts = async ({
+  page,
+  limit,
+}: {
+  page?: number;
+  limit?: number;
+}) => {
   try {
-    const res = await axiosInstance.get("/debt");
+    const res = await axiosInstance.get(
+      `/debt?page=${page ?? 1}&limit=${limit ?? 10}`,
+    );
 
-    return res.data;
+    return res.data.body;
   } catch (error) {
     toast.error("Ocurrió un error al getDebts");
     console.error("ERROR IN getDebts:", error);

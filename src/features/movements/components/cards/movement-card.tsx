@@ -1,19 +1,8 @@
 import React from "react";
 import { cn, formattedValue } from "@utils";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@ui/alert-dialog";
 import { Badge } from "@ui/badge";
 import { Icons } from "@components/common/icons";
-import { useDeleteMovement } from "@movements-hooks/use-delete-movement";
+import { DeleteMovementModal } from "@movements-modals/delete-movement-modal";
 
 interface MovementCardProps {
   label: string;
@@ -32,8 +21,6 @@ export const MovementCard: React.FC<MovementCardProps> = ({
   amount,
   movementId,
 }) => {
-  const mutation = useDeleteMovement();
-
   const isMoneyInflow = type === "inflow_of_money";
 
   const containerClasses = cn([
@@ -73,34 +60,8 @@ export const MovementCard: React.FC<MovementCardProps> = ({
         </div>
       </div>
       <div className="flex items-start">
-        <p className="mx-3 my-3">{formattedValue(amount)} </p>
-        <AlertDialog>
-          <AlertDialogTrigger>
-            <Icons
-              type="close"
-              className="h-4 cursor-pointer hover:scale-105"
-            />
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>
-                ¿Estás seguro de eliminar este movimiento?
-              </AlertDialogTitle>
-              <AlertDialogDescription>
-                Esta acción es permanente
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancelar</AlertDialogCancel>
-              <AlertDialogAction
-                type="button"
-                onClick={() => mutation.mutate(movementId)}
-              >
-                Borrar
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <p className=" my-3">{formattedValue(amount)} </p>
+        <DeleteMovementModal movementId={movementId} />
       </div>
     </div>
   );

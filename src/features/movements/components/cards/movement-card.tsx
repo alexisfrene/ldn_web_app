@@ -60,7 +60,7 @@ export const MovementCard: React.FC<MovementCardProps> = ({
         </div>
       </div>
       <div className="flex items-start">
-        <p className="mx-3 my-3">{formattedValue(amount)} </p>
+        <p className=" my-3">{formattedValue(amount)} </p>
         <DeleteMovementModal movementId={movementId} />
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
-import { Icons } from "@components/common/icons";
+import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@components/common/input-with-label";
 import { PaymentMethodCheckbox } from "@payment-methods-selects/checkbox-payment-method";
 import { useCreateAccount } from "@accounts-hooks/use-create-account";
@@ -47,7 +47,7 @@ export const FormCreateAccount: React.FC = () => {
               </Button>
             </DialogClose>
             <DialogClose asChild>
-              <Button
+              <LoadingButton
                 type="submit"
                 disabled={
                   isSubmitting ||
@@ -55,16 +55,10 @@ export const FormCreateAccount: React.FC = () => {
                   values.payment_method.length === 0 ||
                   !!errors.account
                 }
+                loading={isSubmitting || mutation.isPending}
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <Icons type="refresh" className="h-5 w-5 animate-spin" />
-                    <span>Creando cuenta...</span>
-                  </div>
-                ) : (
-                  "Crear cuenta"
-                )}
-              </Button>
+                Crear cuenta
+              </LoadingButton>
             </DialogClose>
           </DialogFooter>
         </form>

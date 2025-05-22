@@ -49,10 +49,13 @@ export const AnimatedPagination: React.FC<Props> = ({
         )}
       >
         <PaginationItem>
-          <PaginationPrevious onClick={onClickPrevious} />
+          <PaginationPrevious
+            onClick={onClickPrevious}
+            className="cursor-pointer"
+          />
         </PaginationItem>
         {visiblePages.map((page) => (
-          <PaginationItem key={page}>
+          <PaginationItem key={page} className="cursor-pointer">
             <PaginationLink
               onClick={() => setPage(page)}
               isActive={page === currentPage}
@@ -62,7 +65,7 @@ export const AnimatedPagination: React.FC<Props> = ({
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationNext onClick={onClickNext} />
+          <PaginationNext onClick={onClickNext} className="cursor-pointer" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

@@ -40,6 +40,11 @@ export const financeKeys = {
     all: ["expenses"] as const,
     list: () => [...financeKeys.expense.all, "list"],
     detail: (id: string) => [...financeKeys.expense.all, "detail", id],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.expense.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   movement: {
     all: ["movements"] as const,

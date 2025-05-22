@@ -1,6 +1,8 @@
 import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+// utils/zod-to-formik.ts
+import { ZodError, ZodSchema } from "zod";
 import { API_NAME } from "@config/environment";
 
 const getToken = () => {
@@ -238,3 +240,22 @@ export const calculateInterest = ({
 
   return { totalInterest, effectiveInterestPerInstallment };
 };
+
+export const zodToFormikValidate =
+  <T>(schema: ZodSchema<T>) =>
+  (values: unknown) => {
+    try {
+      schema.parse(values);
+      return {};
+    } catch (err) {
+      const errors: Record<string, string> = {};
+      if (err instanceof ZodError) {
+        for (const issue of err.errors) {
+          if (issue.path.length > 0) {
+            errors[issue.path[0] as string] = issue.message;
+          }
+        }
+      }
+      return errors;
+    }
+  };

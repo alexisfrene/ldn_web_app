@@ -8,16 +8,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@ui/alert-dialog";
-import { Icons } from "@components/common/icons";
-import { TokenImage } from "@components/common/image-private";
-import { UpdateAvatarForm } from "@components/forms/user-forms";
+import { Icons } from "@common/icons";
+import { TokenImage } from "@common/image-private";
+import { UpdateAvatarForm } from "@users-forms/update-avatar-form";
 
 export const EditAvatarModal: React.FC = () => {
   const avatar = useSessionStore((state) => state.avatar);
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <div className="relative">
+        <div className="relative min-w-20 min-h-32">
           <Icons
             type="copy_manual"
             height={30}

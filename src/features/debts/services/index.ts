@@ -150,3 +150,14 @@ export const markPaidDebt = async ({
     console.error("ERROR IN markPaidDebt:", error);
   }
 };
+
+export const getStatsDebts = async () => {
+  try {
+    const res = await axiosInstance.get("/debt/stats");
+    return res.data;
+  } catch (error) {
+    toast.error("Ocurrió un error al getStatsDebts");
+    console.error("ERROR IN getStatsDebts:", error);
+    return {};
+  }
+};

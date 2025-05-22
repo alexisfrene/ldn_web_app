@@ -65,14 +65,14 @@ export const SelectDebt: React.FC<Props> = ({ buttonVariant = "outline" }) => {
           <DialogDescription>Deudas cargadas </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-96">
-          {debts?.map((debt) => (
+          {debts?.map((debt: any) => (
             <div
               key={debt.debt_id}
               className="mb-2 cursor-pointer rounded-md p-2"
             >
               {debt.name}
               <div className="mt-3 flex flex-wrap gap-3">
-                {debt.installments.map((installment) => (
+                {debt.installments.map((installment: any) => (
                   <div>
                     {installment.status === "paid" ? (
                       <div className="flex h-20 cursor-no-drop flex-col items-center justify-center gap-3 rounded-md bg-slate-500 px-3 dark:bg-slate-900">

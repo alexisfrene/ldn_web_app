@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import { toast } from "sonner";
 import { axiosInstance } from "@utils";
 

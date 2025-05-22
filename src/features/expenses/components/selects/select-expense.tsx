@@ -1,28 +1,14 @@
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { FormikValues, useFormikContext } from "formik";
 import { Badge } from "@ui/badge";
 import { Label } from "@ui/label";
-import { getExpenses } from "@expenses-services/index";
+import { useGetExpenses } from "@expenses-hooks/use-get-expenses";
 
 export const SelectExpense: React.FC = () => {
   const { setFieldValue } = useFormikContext<FormikValues>();
   const [selectedExpenseId, setSelectedExpenseId] = useState<UUID | null>(null);
 
-  const {
-    data: expenses,
-
-    error,
-  } = useQuery({
-    queryKey: ["expenses"],
-    queryFn: getExpenses,
-  });
-
-  if (error) {
-    return (
-      <div>Error: {(error as Error).message || "An error has occurred"}</div>
-    );
-  }
+  const { expenses } = useGetExpenses(1, 20);
 
   const handleSelectExpense = (expenseId: UUID) => {
     setFieldValue("expense_id", expenseId);

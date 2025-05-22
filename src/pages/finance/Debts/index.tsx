@@ -95,20 +95,37 @@ const Debts: React.FC = () => {
       </div>
       {debts?.length ? (
         <div>
-          {debts?.map((debt: any) => (
-            <CardDebt
-              debt_id={debt.debt_id}
-              total_interest={debt.total_interest}
-              installments={debt.installments}
-              name={debt.name}
-              notes={debt.notes}
-              total={debt.total}
-              total_paid={debt.total_paid}
-              total_unpaid={debt.total_unpaid}
-              interest_per_installment={debt.interest_per_installment}
-              key={debt.debt_id}
-            />
-          ))}
+          {debts?.map(
+            (debt: {
+              debt_id: UUID;
+              total_interest: number;
+              installments: {
+                installment_id: number;
+                amount: number;
+                due_date: string;
+                status: string;
+              }[];
+              name: string;
+              notes: string;
+              total: number;
+              total_paid: number;
+              total_unpaid: number;
+              interest_per_installment: number;
+            }) => (
+              <CardDebt
+                debt_id={debt.debt_id}
+                total_interest={debt.total_interest}
+                installments={debt.installments}
+                name={debt.name}
+                notes={debt.notes}
+                total={debt.total}
+                total_paid={debt.total_paid}
+                total_unpaid={debt.total_unpaid}
+                interest_per_installment={debt.interest_per_installment}
+                key={debt.debt_id}
+              />
+            ),
+          )}
           {isFetching && <Skeleton className="col-span-1 rounded-xl" />}
           <div className="col-span-full">
             {!isLoading ? (

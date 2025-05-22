@@ -65,57 +65,72 @@ export const SelectDebt: React.FC<Props> = ({ buttonVariant = "outline" }) => {
           <DialogDescription>Deudas cargadas </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-96">
-          {debts?.map((debt: any) => (
-            <div
-              key={debt.debt_id}
-              className="mb-2 cursor-pointer rounded-md p-2"
-            >
-              {debt.name}
-              <div className="mt-3 flex flex-wrap gap-3">
-                {debt.installments.map((installment: any) => (
-                  <div>
-                    {installment.status === "paid" ? (
-                      <div className="flex h-20 cursor-no-drop flex-col items-center justify-center gap-3 rounded-md bg-slate-500 px-3 dark:bg-slate-900">
-                        <Label className="text-slate-600">
-                          {new Date(installment.due_date).toLocaleDateString()}
-                        </Label>
-                        <Badge
-                          className={
-                            "bg-slate-700 p-1 text-lg hover:bg-slate-800"
-                          }
-                        >
-                          {formattedValue(installment.amount)}
-                        </Badge>
-                      </div>
-                    ) : (
-                      <div className="flex h-20 flex-col items-center justify-center gap-3 rounded-md bg-slate-200 px-3 dark:bg-slate-700">
-                        <Label>
-                          {new Date(installment.due_date).toLocaleDateString()}
-                        </Label>
-                        <Badge
-                          className={cn([
-                            "bg-slate-300 p-1 text-lg",
-                            selectedInstallmentId ===
-                              installment.installment_id &&
-                              "bg-blue-300 dark:bg-slate-400",
-                          ])}
-                          onClick={() =>
-                            handleSelectDebt({
-                              debt_id: debt.debt_id,
-                              installment_id: installment.installment_id,
-                              amount: installment.amount,
-                            })
-                          }
-                        >
-                          {formattedValue(installment.amount)}
-                        </Badge>
-                      </div>
-                    )}
-                  </div>
-                ))}
+          {debts?.map(
+            (debt: {
+              debt_id: UUID;
+              installments: {
+                status: string;
+                installment_id: number;
+                amount: number;
+                due_date: string;
+              }[];
+              name: string;
+            }) => (
+              <div
+                key={debt.debt_id}
+                className="mb-2 cursor-pointer rounded-md p-2"
+              >
+                {debt.name}
+                <div className="mt-3 flex flex-wrap gap-3">
+                  {debt.installments.map((installment) => (
+                    <div>
+                      {installment.status === "paid" ? (
+                        <div className="flex h-20 cursor-no-drop flex-col items-center justify-center gap-3 rounded-md bg-slate-500 px-3 dark:bg-slate-900">
+                          <Label className="text-slate-600">
+                            {new Date(
+                              installment.due_date,
+                            ).toLocaleDateString()}
+                          </Label>
+                          <Badge
+                            className={
+                              "bg-slate-700 p-1 text-lg hover:bg-slate-800"
+                            }
+                          >
+                            {formattedValue(installment.amount)}
+                          </Badge>
+                        </div>
+                      ) : (
+                        <div className="flex h-20 flex-col items-center justify-center gap-3 rounded-md bg-slate-200 px-3 dark:bg-slate-700">
+                          <Label>
+                            {new Date(
+                              installment.due_date,
+                            ).toLocaleDateString()}
+                          </Label>
+                          <Badge
+                            className={cn([
+                              "bg-slate-300 p-1 text-lg",
+                              selectedInstallmentId ===
+                                installment.installment_id &&
+                                "bg-blue-300 dark:bg-slate-400",
+                            ])}
+                            onClick={() =>
+                              handleSelectDebt({
+                                debt_id: debt.debt_id,
+                                installment_id: installment.installment_id,
+                                amount: installment.amount,
+                              })
+                            }
+                          >
+                            {formattedValue(installment.amount)}
+                          </Badge>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ),
+          )}
         </ScrollArea>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>

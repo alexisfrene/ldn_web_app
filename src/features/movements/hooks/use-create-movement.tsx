@@ -16,6 +16,9 @@ export const useCreateMovement = () => {
       queryClient.invalidateQueries({
         queryKey: financeKeys.debt.all,
       });
+      queryClient.invalidateQueries({
+        queryKey: financeKeys.financial_account.all,
+      });
     },
   });
   return mutation;

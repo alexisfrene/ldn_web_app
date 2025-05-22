@@ -40,6 +40,11 @@ export const financeKeys = {
     all: ["expenses"] as const,
     list: () => [...financeKeys.expense.all, "list"],
     detail: (id: string) => [...financeKeys.expense.all, "detail", id],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.expense.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   movement: {
     all: ["movements"] as const,
@@ -59,6 +64,11 @@ export const financeKeys = {
       "detail",
       id,
     ],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.financial_account.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   payment_method: {
     all: ["payment_methods"] as const,
@@ -74,6 +84,11 @@ export const financeKeys = {
     all: ["debts"] as const,
     list: () => [...financeKeys.debt.all, "list"],
     detail: (id: string) => [...financeKeys.debt.all, "detail", id],
+    pages: (page?: number, limit?: number) => [
+      ...financeKeys.debt.all,
+      page ?? 1,
+      limit ?? 10,
+    ],
   },
   installment: {
     all: ["installments"] as const,

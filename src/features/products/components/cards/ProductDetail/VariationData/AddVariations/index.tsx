@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { linkVariation } from "src/features/products/services";
 import { cn } from "@utils";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@ui/card";
@@ -17,8 +15,8 @@ import {
 } from "@ui/sheet";
 import { Icons } from "@components/common/icons";
 import { TokenImage } from "@components/common/image-private";
-import { LoadingIndicator } from "@components/common/loading";
-import { getAllVariations } from "@variations-services/index";
+import { useLinkVariation } from "@products-hooks/use-link-variation";
+import { useGetVariations } from "@variations-hooks/use-get-variations";
 
 interface AddVariationsProps {
   product_id: Product["product_id"];
@@ -26,23 +24,8 @@ interface AddVariationsProps {
 
 export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
   const [selected, setSelected] = useState<string>("");
-  const queryClient = useQueryClient();
-  const { isPending, error, data } = useQuery({
-    queryKey: ["variations"],
-    queryFn: () => getAllVariations(),
-  });
-  const mutation = useMutation({
-    mutationFn: linkVariation,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["product_details", product_id],
-      });
-    },
-  });
-  if (isPending) {
-    return <LoadingIndicator isLoading />;
-  }
-  if (error) return "An error has occurred: " + error.message;
+  const { variations } = useGetVariations();
+  const mutation = useLinkVariation();
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -66,8 +49,8 @@ export const AddVariations: React.FC<AddVariationsProps> = ({ product_id }) => {
             </SheetDescription>
           </SheetHeader>
           <ScrollArea className="h-[600px]">
-            {data.length ? (
-              data.map(
+            {variations.length ? (
+              variations.map(
                 (e: {
                   title: string;
                   variation_id: string;

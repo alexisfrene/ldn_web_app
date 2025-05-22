@@ -6,11 +6,22 @@ type PaymentMethod = {
   payment_method_id: number;
 };
 
-type MovementData = {
+type AccountData = {
   financial_accounts_id: string;
   total: number;
   name: string;
   paymentMethods: PaymentMethod[];
+};
+
+type GetAccountsResponse = {
+  status: number;
+  body: {
+    accounts: AccountData[];
+    totalPages: number;
+    currentPage: number;
+    totalItems: number;
+    limit: number;
+  };
 };
 
 export const createFinancialAccount = async (data: {
@@ -31,15 +42,29 @@ export const createFinancialAccount = async (data: {
   }
 };
 
-export const getAllFinancialAccount = async (): Promise<MovementData[]> => {
+export const getAllFinancialAccount = async ({
+  page,
+  limit,
+}: {
+  page?: number;
+  limit?: number;
+}): Promise<GetAccountsResponse["body"]> => {
   try {
-    const res = await axiosInstance.get<MovementData[]>("/financial_accounts");
+    const res = await axiosInstance.get(
+      `/financial_accounts?page=${page ?? 1}&limit=${limit ?? 10}`,
+    );
 
-    return res.data;
+    return res.data.body;
   } catch (error) {
     toast.error("Ocurrió un error al crear una getAllFinancialAccount");
     console.error("ERROR IN getAllFinancialAccount:", error);
-    return [];
+    return {
+      accounts: [],
+      totalPages: 0,
+      currentPage: 0,
+      totalItems: 0,
+      limit: 0,
+    };
   }
 };
 

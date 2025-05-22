@@ -1,36 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
+import { FileWithPreview } from "@hooks/use-file-upload";
 import { Button } from "@ui/button";
+import { FileUpload } from "@ui/file-upload";
 import { Input } from "@ui/input";
 import { Label } from "@ui/label";
-import { ImageUploader } from "@components/common/image-uploader";
 import { useAddCategoryValue } from "@categories-hooks/use-add-category-value";
 
 interface Props {
   category_id: number;
 }
 export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
-  const [image, setImage] = useState<ImagesValues[]>([]);
   const mutation = useAddCategoryValue();
 
   return (
     <Formik
       initialValues={{
         value: "",
-        icon: null as File | null,
-        icon_url: "",
+        icon: null as FileWithPreview[] | null,
       }}
       onSubmit={(values, formikHelpers) => {
-        mutation.mutate({
-          values: { value: values.value, icon: values.icon },
-          category_id,
-        });
-        setImage([]);
+        if (!values.icon) {
+          formikHelpers.setFieldError("icon", "El icono es requerido");
+          return;
+        } else {
+          mutation.mutate({
+            values: {
+              value: values.value,
+              icon:
+                values?.icon[0]?.file instanceof File
+                  ? values.icon[0].file
+                  : null,
+            },
+            category_id,
+          });
+        }
+
         formikHelpers.resetForm();
       }}
     >
       {({ handleSubmit, setFieldValue, values }) => (
-        <div>
+        <form onSubmit={handleSubmit}>
           <Label>Nombre de los nuevos valores :</Label>
           <Input
             name="value"
@@ -40,39 +50,11 @@ export const AddCategoryForm: React.FC<Props> = ({ category_id }) => {
             onChange={(e) => setFieldValue("value", e.target.value)}
           />
           <Label>Ingrese un icono :</Label>
-          <ImageUploader
-            name="icon"
-            images={image}
-            setImages={setImage}
-            onChange={() => {
-              setFieldValue("icon", image[0].file);
-              setFieldValue("icon_url", image[0].url);
-              setImage([]);
-            }}
-          />
-          <div className="flex flex-col items-center rounded-lg bg-white p-4 shadow-md">
-            <p className="mb-2 text-lg font-semibold text-gray-700">Valor:</p>
-            <p className="text-md text-gray-500 italic">
-              {values.value || "Ej: Zapatillas deportivas"}
-            </p>
-            {values.icon && (
-              <div className="mt-4">
-                <img
-                  src={values.icon_url}
-                  alt="Icon"
-                  className="h-36 w-36 rounded-full border-2 border-gray-300 shadow-xs"
-                />
-              </div>
-            )}
-          </div>
-          <Button
-            type="submit"
-            onClick={() => handleSubmit()}
-            disabled={mutation.isPending}
-          >
+          <FileUpload name="icon" accept="image/*" />
+          <Button type="submit" disabled={mutation.isPending}>
             Crear categoría
           </Button>
-        </div>
+        </form>
       )}
     </Formik>
   );

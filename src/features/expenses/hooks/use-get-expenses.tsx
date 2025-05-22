@@ -1,18 +1,22 @@
-import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { Expense } from "src/types/finance";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { financeKeys } from "src/services";
 import { getExpenses } from "../services";
 
-export const useGetExpenses = (options?: UseQueryOptions<Expense[], Error>) => {
+export const useGetExpenses = (page?: number, limit?: number) => {
   const query = useQuery({
-    queryKey: financeKeys.expense.all,
-    queryFn: getExpenses,
-    ...options,
+    queryKey: financeKeys.expense.pages(page ?? 1, limit ?? 10),
+    placeholderData: keepPreviousData,
+    queryFn: () => getExpenses({ page, limit }),
   });
 
   return {
-    expenses: query.data || [],
+    expenses: query.data?.expenses || [],
+    totalPages: query.data?.totalPages || 0,
+    currentPage: query.data?.currentPage || 0,
+    totalItems: query.data?.totalItems || 0,
+    limit: query.data?.limit || 0,
     isLoading: query.isLoading,
     isError: query.isError,
+    isPlaceholderData: query.isPlaceholderData,
   };
 };

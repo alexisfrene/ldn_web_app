@@ -18,14 +18,22 @@ export const createExpense = async ({
   }
 };
 
-export const getExpenses = async () => {
+export const getExpenses = async ({
+  page,
+  limit,
+}: {
+  page?: number;
+  limit?: number;
+}) => {
   try {
-    const res = await axiosInstance.get("/expenses");
+    const res = await axiosInstance.get(
+      `/expenses?page=${page ?? 1}&limit=${limit ?? 10}`,
+    );
 
     return res.data;
   } catch (error) {
-    toast.error("Ocurrió un error al crear una getExpenses");
     console.error("ERROR IN getExpenses:", error);
+    return [];
   }
 };
 

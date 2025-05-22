@@ -3,10 +3,11 @@ import { Formik } from "formik";
 import { Button } from "@ui/button";
 import { DialogClose, DialogFooter } from "@ui/dialog";
 import { Label } from "@ui/label";
-import { Icons } from "@components/common/icons";
+import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@components/common/input-with-label";
 import { PaymentMethodCheckbox } from "@payment-methods-selects/checkbox-payment-method";
 import { useEditAccount } from "@accounts-hooks/use-edit-account";
+import { CheckAvailable } from "../common/check-available";
 
 type Props = {
   name: string;
@@ -38,12 +39,13 @@ export const EditAccountForm: React.FC<Props> = ({
         }
       }}
     >
-      {({ handleSubmit, isSubmitting, values }) => (
+      {({ handleSubmit, isSubmitting, values, errors }) => (
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="flex items-center mb-3">
             <InputWithLabel label="Nombre de la cuenta" name="account" />
-            <Label className="font-semibold">Métodos de pago asociados:</Label>
+            <CheckAvailable />
           </div>
+          <Label className="font-semibold">Métodos de pago asociados:</Label>
           <PaymentMethodCheckbox />
           <DialogFooter>
             <DialogClose asChild>
@@ -52,23 +54,18 @@ export const EditAccountForm: React.FC<Props> = ({
               </Button>
             </DialogClose>
             <DialogClose asChild>
-              <Button
+              <LoadingButton
                 type="submit"
                 disabled={
                   isSubmitting ||
                   values.account === "" ||
-                  values.payment_method.length === 0
+                  values.payment_method.length === 0 ||
+                  !!errors.account
                 }
+                loading={isSubmitting || mutation.isPending}
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <Icons type="refresh" className="h-5 w-5 animate-spin" />
-                    <span>Editando cuenta...</span>
-                  </div>
-                ) : (
-                  "Editar cuenta"
-                )}
-              </Button>
+                Editar cuenta
+              </LoadingButton>
             </DialogClose>
           </DialogFooter>
         </form>

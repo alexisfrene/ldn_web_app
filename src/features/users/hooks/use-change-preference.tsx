@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { productKeys, usersKeys } from "src/services";
+import { usersKeys } from "src/services";
 import { changePreferenceProductView } from "../services";
 
 export const useChangePreference = () => {
@@ -9,9 +9,6 @@ export const useChangePreference = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: usersKeys.preference,
-      });
-      queryClient.invalidateQueries({
-        queryKey: productKeys.all,
       });
     },
   });

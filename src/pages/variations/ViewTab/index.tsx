@@ -2,12 +2,12 @@ import React from "react";
 import { toast } from "sonner";
 import { useModal } from "@hooks/use-modal";
 import { Button } from "@ui/button";
-import { Label } from "@ui/label";
 import { Modal } from "@components/common/modal";
 import { VariationCard } from "@variations-cards/variation-card";
 import { VariationDetailCard } from "@variations-cards/variation-detail-card";
 import { useDeleteVariation } from "@variations-hooks/use-delete-variation";
 import { useGetVariations } from "@variations-hooks/use-get-variations";
+import { NotVariations } from "@features/variations/components/empty-states/NotVariations";
 
 const VariantsGrid: React.FC = () => {
   const { variations } = useGetVariations();
@@ -52,7 +52,7 @@ const VariantsGrid: React.FC = () => {
           />
         ))
       ) : (
-        <Label>No hay variaciones cargadas...</Label>
+        <NotVariations />
       )}
       <Modal
         isOpen={isOpenModal}

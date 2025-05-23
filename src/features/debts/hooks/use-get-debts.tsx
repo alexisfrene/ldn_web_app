@@ -11,9 +11,6 @@ export const useGetDebts = (page?: number, limit?: number) => {
 
   return {
     debts: query.data?.debts || [],
-    total: query.data?.debtsTotal || 0,
-    totalUnpaid: query.data?.debtsTotalUnpaid || 0,
-    totalPaid: query.data?.debtsTotalPaid || 0,
     totalPages: query.data?.totalPages || 0,
     currentPage: query.data?.currentPage || 0,
     totalItems: query.data?.totalItems || 0,

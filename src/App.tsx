@@ -42,7 +42,12 @@ const App: React.FC = () => {
 
   if (serverStatus === false) {
     return (
-      <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-t from-gray-100 to-gray-200 text-gray-800 dark:from-gray-700 dark:to-gray-900 dark:text-white">
+      <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-t from-gray-100 to-gray-200 text-gray-800 dark:from-gray-700 dark:to-slate-600 dark:text-white">
+        <img
+          src="/500 Internal Server Error.svg"
+          alt="Error 404"
+          className="h-96"
+        />
         <h1 className="mb-4 text-3xl font-bold">Servidor no disponible</h1>
         {errorMessage ? (
           <p className="text-red-500 mx-3">{errorMessage}</p>

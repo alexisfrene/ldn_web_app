@@ -1,12 +1,19 @@
 import React from "react";
 import { ErrorMessage, Formik } from "formik";
+import { cn } from "@utils";
 import { FileUpload } from "@ui/file-upload";
 import { LoadingButton } from "@ui/loading-button";
 import { InputWithLabel } from "@components/common/input-with-label";
 import { ChoiceCategoryModal } from "@categories-modals/choice-category-modal";
-import { handleSubmit } from "./handleSubmit";
+import { useCreateVariation } from "@variations-hooks/use-create-variation";
 
-export const CreateVariationForm: React.FC = () => {
+type Props = {
+  className?: string;
+};
+
+export const CreateVariationForm: React.FC<Props> = ({ className }) => {
+  const mutation = useCreateVariation();
+
   return (
     <Formik
       initialValues={{
@@ -15,14 +22,24 @@ export const CreateVariationForm: React.FC = () => {
         label: "",
         images: [] as ImagesValues[],
       }}
-      onSubmit={async (values, formikHelpers) => {
-        await handleSubmit(values, formikHelpers);
+      onSubmit={async (values) => {
+        const data = {
+          title: values.title,
+          label: values.label,
+          category_id: values.category.category_id,
+          category_value: values.category.category_value_id,
+          files: values.images.map((image: { file: File }) => image.file),
+        };
+        mutation.mutate(data);
       }}
     >
       {({ handleSubmit, isSubmitting }) => (
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-center items-center"
+          className={cn([
+            "grid grid-cols-1 md:grid-cols-3 gap-3 justify-center items-center",
+            className,
+          ])}
         >
           <InputWithLabel label="Titulo" name="title" type="text" />
           <InputWithLabel

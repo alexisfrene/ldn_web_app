@@ -8,7 +8,6 @@ export const registerUser = async (values: registerUserValues) => {
     values.birthday_date = new Date(values.birthday_date);
     const res = await axios.post(`${API_NAME}/register`, values);
 
-    toast.success("Usuario registrado con éxito!");
     return res;
   } catch (error) {
     toast.error("Ocurrió un error al registrar el usuario");
@@ -29,7 +28,6 @@ export const loginUser = async (values: loginUserValues) => {
       },
     );
 
-    toast.success("Inicio de sesión exitoso!");
     return res.data;
   } catch (error) {
     toast.error("Credenciales incorrectas");

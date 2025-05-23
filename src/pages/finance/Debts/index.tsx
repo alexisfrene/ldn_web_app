@@ -7,6 +7,7 @@ import { InfoCard } from "@components/cards/general-cards";
 import { CardDebt } from "@debts-cards/debt-card";
 import { CreateDebtModal } from "@debts-modals/create-debt-modal";
 import { useGetDebts } from "@debts-hooks/use-get-debts";
+import { useGetStatsDebts } from "@debts-hooks/use-get-stats-debt";
 
 const PieChartComponent = React.lazy(() => import("@common/pie-chart"));
 
@@ -15,14 +16,12 @@ const Debts: React.FC = () => {
   const {
     debts,
     isLoading,
-    totalPaid,
-    total,
-    totalUnpaid,
     totalPages,
     isFetching,
     isPlaceholderData,
     currentPage,
   } = useGetDebts(page, 2);
+  const { totalPaid, total, totalUnpaid } = useGetStatsDebts();
 
   if (isLoading) {
     return (

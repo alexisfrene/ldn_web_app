@@ -44,6 +44,8 @@ export const CardDebt: React.FC<Props> = ({
 }) => {
   const isMobile = useIsMobile();
   const mutation = useDeleteDebt();
+
+  console.log("Installments", installments);
   return (
     <Card
       key={debt_id}
